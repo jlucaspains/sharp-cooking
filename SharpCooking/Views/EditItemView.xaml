@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SharpCooking.Views.EditItemView"
+             xmlns:v="clr-namespace:SharpCooking.Views"
+             xmlns:l="clr-namespace:SharpCooking.Localization"
+             xmlns:c="clr-namespace:SharpCooking.Controls"
+             xmlns:c1="clr-namespace:SharpCooking.Converters"
+             Title="{Binding Title}"
+             x:Name="EditItemViewPage"
+             v:ViewModelLocator.AutoWireViewModel="true"
+             IsBusy="{Binding IsBusy}">
+    <ContentPage.Resources>
+        <c1:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter" />
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{x:Static l:Resources.SaveEditRecipe}" Command="{Binding SaveCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="{DynamicResource MaterialFont}"
+                    Size="24"
+                    Glyph="{x:Static v:IconFont.ContentSave}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="15">
+                <Grid HeightRequest="200" BackgroundColor="#60ad5e" Margin="-15,-15,-15,10">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding MainImageTappedCommand}" />
+                    </Grid.GestureRecognizers>
+                    <Image IsVisible="{Binding Item.DoesNotHaveMainImage}"
+                           HorizontalOptions="Center" VerticalOptions="Center">
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="{DynamicResource MaterialFont}"
+                                Color="White"
+                                Size="50"
+                                Glyph="{x:Static v:IconFont.ImagePlus}"/>
+                        </Image.Source>
+                    </Image>
+                    <Image IsVisible="{Binding Item.HasMainImage}"
+                           Source="{Binding Item.MainImage}" 
+                           HeightRequest="200" />
+                </Grid>
+                <Label Text="Title" />
+                <Entry Text="{Binding Item.Title}" />
+                <Label Text="Source" />
+                <Entry Text="{Binding Item.Source}" />
+                <Label Text="Rating" />
+                <c:RatingEditor x:Name="RatingEditor" Rating="{Binding Item.Rating, Mode=TwoWay}" />
+                <Label Text="Yield" />
+                <Entry Text="{Binding Item.Yield}" Keyboard="Numeric" />
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0">
+                        <Label Text="Prep time" />
+                        <Entry Text="{Binding Item.ActiveTime}" Keyboard="Numeric" />
+                    </StackLayout>
+                    <StackLayout Grid.Column="1">
+                        <Label Text="Total time" />
+                        <Entry Text="{Binding Item.TotalTime}" Keyboard="Numeric" />
+                    </StackLayout>
+                </Grid>
+                <Label Text="Ingredients" />
+                <Editor AutoSize="TextChanges" Text="{Binding Item.Ingredients}" />
+
+                <Label Text="Instructions" />
+                <Editor AutoSize="TextChanges" Text="{Binding Item.Instructions}" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SharpCooking.Views.ItemsView"
+             xmlns:v="clr-namespace:SharpCooking.Views"
+             xmlns:b="clr-namespace:SharpCooking.Behaviors"
+             xmlns:l="clr-namespace:SharpCooking.Localization"
+             xmlns:c="clr-namespace:SharpCooking.Converters"
+             xmlns:c1="clr-namespace:SharpCooking.Controls"
+             Title="{Binding Title}"
+             x:Name="BrowseItemsPage"
+             v:ViewModelLocator.AutoWireViewModel="true">
+    <ContentPage.Resources>
+        <c:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter" />
+    </ContentPage.Resources>
+
+    <Shell.SearchHandler>
+        <v:RecipeSearchHandler Placeholder="Enter search term"
+                               ShowsResults="true"
+                               SearchBoxVisibility="Collapsible">
+            <v:RecipeSearchHandler.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.15*" />
+                            <ColumnDefinition Width="0.85*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding MainImage, Converter={x:StaticResource ByteArrayToImageSourceConverter}}"
+                               Aspect="AspectFill"
+                               HeightRequest="40" />
+                        <Label Grid.Column="1"
+                               Text="{Binding Title}"
+                               FontAttributes="Bold" />
+                    </Grid>
+                </DataTemplate>
+            </v:RecipeSearchHandler.ItemTemplate>
+        </v:RecipeSearchHandler>
+    </Shell.SearchHandler>
+
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Text="{x:Static l:Resources.AddRecipe}" Command="{Binding AddItemCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="{DynamicResource MaterialFont}"
+                    Glyph="{x:Static v:IconFont.Plus}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>-->
+
+    <AbsoluteLayout>
+        <ListView x:Name="ItemsListView"
+                ItemsSource="{Binding Items}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadItemsCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+                CachingStrategy="RecycleElement"
+                SelectionMode="None">
+            <ListView.Behaviors>
+                <b:EventToCommandBehavior                    
+                        EventName="ItemTapped"
+                        Command="{Binding ItemTappedCommand}"
+                        EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
+            </ListView.Behaviors>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="40" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="{Binding MainImage, Converter={x:StaticResource ByteArrayToImageSourceConverter}}"
+                               Aspect="AspectFill"
+                               HeightRequest="40" />
+                            <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Title}" 
+                                LineBreakMode="TailTruncation"
+                                FontSize="18" />
+                            <c1:RatingEditor Grid.Row="1" Grid.Column="1" Rating="{Binding Rating}" IsDisabled="true" />
+                            <Label Grid.Row="1" Grid.Column="2" Text="{Binding TotalTime}" 
+                                LineBreakMode="NoWrap"
+                                FontSize="13" VerticalOptions="Center" Margin="20,0,0,0" />
+                            <Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{DynamicResource MaterialFont}"
+                                        Color="Gray"
+                                        Size="25"
+                                        Glyph="{x:Static v:IconFont.StarOutline}"/>
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ImageButton
+            BackgroundColor="#2e7d32"
+            CornerRadius="100"
+            AbsoluteLayout.LayoutFlags="PositionProportional"  
+            AbsoluteLayout.LayoutBounds=".96,.97,57,57"
+            Padding="16"
+            Command="{Binding AddItemCommand}">
+            <ImageButton.Source>
+                <FontImageSource
+                    FontFamily="{DynamicResource MaterialFont}"
+                    Size="10"
+                    Glyph="{x:Static v:IconFont.Plus}"/>
+            </ImageButton.Source>
+        </ImageButton>
+    </AbsoluteLayout>
+</ContentPage>
