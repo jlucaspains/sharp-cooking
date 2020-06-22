@@ -117,25 +117,151 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutView_Title" xml:space="preserve">
+    <value>About</value>
+  </data>
   <data name="AddRecipe" xml:space="preserve">
     <value>Add</value>
   </data>
   <data name="AllRecipes" xml:space="preserve">
     <value>All Recipes</value>
   </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>Your personal cooking app.</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>Sharp Cooking</value>
+  </data>
+  <data name="AppShell_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="AppShell_Recipes" xml:space="preserve">
+    <value>Recipes</value>
+  </data>
+  <data name="AppShell_Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="BackupSetupView_Title" xml:space="preserve">
+    <value>Backup</value>
+  </data>
   <data name="CancelEditRecipe" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="EditItemView_FailedToParse" xml:space="preserve">
+    <value>Failed to parse recipe id</value>
+  </data>
+  <data name="EditItemView_Ingredients" xml:space="preserve">
+    <value>Ingredients</value>
+  </data>
+  <data name="EditItemView_Instructions" xml:space="preserve">
+    <value>Instructions</value>
+  </data>
+  <data name="EditItemView_Notes" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="EditItemView_PickImageCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="EditItemView_PickImagePickImage" xml:space="preserve">
+    <value>Pick from library</value>
+  </data>
+  <data name="EditItemView_PickImageTitle" xml:space="preserve">
+    <value>Where is your image?</value>
+  </data>
+  <data name="EditItemView_PickImageUseCamera" xml:space="preserve">
+    <value>Use Camera</value>
+  </data>
+  <data name="EditItemView_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="EditItemView_Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="EditItemView_Title" xml:space="preserve">
+    <value>Title</value>
   </data>
   <data name="EditRecipe" xml:space="preserve">
     <value>Edit Recipe</value>
   </data>
+  <data name="ErrorOk" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Failure</value>
+  </data>
   <data name="FavoriteRecipe" xml:space="preserve">
     <value>Favorite</value>
+  </data>
+  <data name="ItemDetailView_MoreCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ItemDetailView_MoreDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="ItemDetailView_MoreDeleteConfirmation" xml:space="preserve">
+    <value>Are you sure? This is not reversible.</value>
+  </data>
+  <data name="ItemDetailView_MoreDeleteNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="ItemDetailView_MoreDeleteYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="ItemDetailView_MoreTitle" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="ItemDetailView_MultiplierCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ItemDetailView_MultiplierDescription" xml:space="preserve">
+    <value>Enter decimal value of quantity. E.g. 0.5 or 2</value>
+  </data>
+  <data name="ItemDetailView_MultiplierOk" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="ItemDetailView_MultiplierTitle" xml:space="preserve">
+    <value>Multiplier</value>
+  </data>
+  <data name="ItemDetailView_Notes" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="ItemDetailView_Share" xml:space="preserve">
+    <value>Share Recipe</value>
   </data>
   <data name="NewRecipe" xml:space="preserve">
     <value>New Recipe</value>
   </data>
-  <data name="SaveEditRecipe" xml:space="preserve">
-    <value>Save</value>
+  <data name="SettingsView_BackingUpTo" xml:space="preserve">
+    <value>Backing up to</value>
+  </data>
+  <data name="SettingsView_Backup" xml:space="preserve">
+    <value>Backup</value>
+  </data>
+  <data name="SettingsView_Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="SettingsView_HelpContact" xml:space="preserve">
+    <value>Contact developer</value>
+  </data>
+  <data name="SettingsView_SetupBackup" xml:space="preserve">
+    <value>Setup backup</value>
+  </data>
+  <data name="SettingsView_StepsInterval" xml:space="preserve">
+    <value>Steps Interval</value>
+  </data>
+  <data name="SettingsView_StepsIntervalCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="SettingsView_StepsIntervalDescription" xml:space="preserve">
+    <value>How many minutes between not timed steps?</value>
+  </data>
+  <data name="SettingsView_StepsIntervalOk" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="SettingsView_StepsIntervalTitle" xml:space="preserve">
+    <value>Step interval</value>
+  </data>
+  <data name="SettingsView_TimeStepsDescriptoin" xml:space="preserve">
+    <value>minutes when no time information is given</value>
   </data>
 </root>

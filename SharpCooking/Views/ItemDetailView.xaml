@@ -6,59 +6,139 @@
              mc:Ignorable="d"
              x:Class="SharpCooking.Views.ItemDetailView"
              xmlns:v="clr-namespace:SharpCooking.Views"
-             xmlns:c="clr-namespace:SharpCooking.Controls"
-             xmlns:c1="clr-namespace:SharpCooking.Converters"
              xmlns:l="clr-namespace:SharpCooking.Localization"
              Title="{Binding Title}"
              v:ViewModelLocator.AutoWireViewModel="true">
-    <ContentPage.Resources>
-        <c1:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter" />
-    </ContentPage.Resources>
-
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="{x:Static l:Resources.EditRecipe}" Command="{Binding SaveCommand}">
+        <ToolbarItem Text="{x:Static l:Resources.EditRecipe}" Command="{Binding EditCommand}">
             <ToolbarItem.IconImageSource>
                 <FontImageSource
                     FontFamily="{DynamicResource MaterialFont}"
                     Size="24"
-                    Glyph="{x:Static v:IconFont.ContentSave}"/>
+                    Glyph="{x:Static v:IconFont.FileDocumentEdit}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem Text="More" Command="{Binding MoreCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="{DynamicResource MaterialFont}"
+                    Size="24"
+                    Glyph="{x:Static v:IconFont.DotsHorizontal}"/>
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
 
     <ScrollView>
         <StackLayout Padding="15">
-            <Grid HeightRequest="200" BackgroundColor="#60ad5e" Margin="-15,-15,-15,10">
-                <Image Source="{Binding Item.MainImage, Converter={x:StaticResource ByteArrayToImageSourceConverter}}"
-                       HeightRequest="200" />
+            <Grid Margin="-15,-15,-15,0">
+                <Image IsVisible="{Binding HasMainImage}" Aspect="AspectFill" HeightRequest="250">
+                    <Image.Source>
+                        <FileImageSource File="{Binding Item.MainImagePath}" />
+                    </Image.Source>
+                </Image>
+                <Grid IsVisible="{Binding DoesNotHaveMainImage}"
+                      HeightRequest="250"
+                      BackgroundColor="{DynamicResource NavigationSecondary}">
+                    <Image Aspect="AspectFill" 
+                           HorizontalOptions="Center" VerticalOptions="Center">
+                        <Image.Source>
+                            <FontImageSource FontFamily="{DynamicResource MaterialFont}"
+                                                Color="White"
+                                                Size="50"
+                                                Glyph="{x:Static v:IconFont.ImageBrokenVariant}"/>
+                        </Image.Source>
+                    </Image>
+                </Grid>
             </Grid>
-            <Label Text="Source" />
-            <Label Text="{Binding Item.Source}" />
-            <Label Text="Rating" />
-            <c:RatingEditor x:Name="RatingEditor" Rating="{Binding Item.Rating, Mode=TwoWay}" IsDisabled="true" />
-            <Label Text="Yield" />
-            <Label Text="{Binding Item.Yield}" />
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <StackLayout Grid.Column="0">
-                    <Label Text="Prep time" />
-                    <Label Text="{Binding Item.ActiveTime}" />
-                </StackLayout>
-                <StackLayout Grid.Column="1">
-                    <Label Text="Total time" />
-                    <Label Text="{Binding Item.TotalTime}" />
-                </StackLayout>
-            </Grid>
-            <Label Text="Ingredients" />
-            <Editor AutoSize="TextChanges" Text="{Binding Item.Ingredients}" />
+            <Frame CornerRadius="25" Margin="-15,-27,-15,-30"  HasShadow="True">
+                <StackLayout>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="50" />
+                        </Grid.ColumnDefinitions>
+                        <Button BackgroundColor="{DynamicResource NavigationPrimary}" TextColor="White" Grid.Column="3" CornerRadius="100" HeightRequest="50" Command="{Binding ChangeMultiplierCommand}" Text="{Binding Multiplier, StringFormat='{0}x'}">
+                        </Button>
+                        <!--<ImageButton BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="2" CornerRadius="100" HeightRequest="50" Padding="16">
+                            <ImageButton.Source>
+                                <FontImageSource
+                            Size="10"
+                            FontFamily="{DynamicResource MaterialFont}"
+                            Glyph="{x:Static v:IconFont.DirectionsFork}"/>
+                            </ImageButton.Source>
+                        </ImageButton>
+                        <ImageButton BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="3" CornerRadius="100" HeightRequest="50" Padding="15">
+                            <ImageButton.Source>
+                                <FontImageSource
+                            Size="10"
+                            FontFamily="{DynamicResource MaterialFont}"
+                            Glyph="{x:Static v:IconFont.WeightPound}"/>
+                            </ImageButton.Source>
+                        </ImageButton>-->
+                    </Grid>
+                    <StackLayout 
+                         Orientation="Vertical"
+                         VerticalOptions="Start"
+                         HorizontalOptions="Center"
+                         BindableLayout.ItemsSource="{Binding Steps}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Grid ColumnSpacing="0" RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="30" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
 
-            <Label Text="Instructions" />
-            <Editor AutoSize="TextChanges" Text="{Binding Item.Instructions}" />
+                                    <Label HorizontalOptions="Center" Margin="0,5,0,0" Text="{Binding Time}" />
+
+                                    <Label
+                                        Grid.Column="2"
+                                        Margin="20,5,0,0"
+                                        Text="{Binding Title}" />
+
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="2"
+                                        Margin="20,0,0,20"
+                                        Text="{Binding SubTitle}" />
+
+                                    <BoxView
+                                        Grid.RowSpan="2"
+                                        Grid.Column="1"
+                                        BackgroundColor="{DynamicResource NavigationPrimary}"
+                                        HorizontalOptions="Center"
+                                        IsVisible="{Binding IsNotLast}"
+                                        VerticalOptions="Fill"
+                                        Margin="0,10,0,0"
+                                        WidthRequest="3" />
+
+                                    <Image Grid.Column="1" VerticalOptions="Start">
+                                        <Image.Source>
+                                            <FontImageSource
+                                            FontFamily="{DynamicResource MaterialFont}"
+                                            Size="40"
+                                            Color="{DynamicResource NavigationPrimary}"
+                                            Glyph="{x:Static v:IconFont.Circle}"/>
+                                        </Image.Source>
+                                    </Image>
+
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+
+                    <Label Text="{x:Static l:Resources.ItemDetailView_Notes}" FontSize="Medium" IsVisible="{Binding HasNotes}" />
+                    <Label Text="{Binding Item.Notes}" FontSize="Small" Margin="0,0,0,20" IsVisible="{Binding HasNotes}" />
+                </StackLayout>
+            </Frame>
         </StackLayout>
     </ScrollView>
-
 </ContentPage>

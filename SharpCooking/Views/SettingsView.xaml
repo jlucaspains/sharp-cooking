@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SharpCooking.Views.SettingsView"
+             xmlns:v="clr-namespace:SharpCooking.Views"
+             xmlns:l="clr-namespace:SharpCooking.Localization"
+             xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
+             Title="{Binding Title}"
+             x:Name="BrowseItemsPage"
+             v:ViewModelLocator.AutoWireViewModel="true">
+
+    <StackLayout>
+        <TableView Intent="Settings" HasUnevenRows="True">
+            <TableView.IsVisible>
+                <OnPlatform x:TypeArguments="x:Boolean">
+                    <On Platform="iOS" Value="true"></On>
+                    <On Platform="Android" Value="false"></On>
+                </OnPlatform>
+            </TableView.IsVisible>
+            <TableRoot>
+                <TableSection Title="General">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Margin="15,0,0,0" Grid.Row="0" VerticalOptions="Center">Steps Interval</Label>
+                            <Entry Grid.Column="1" Grid.Row="0" Text="15" HorizontalOptions="Fill" HorizontalTextAlignment="End" Keyboard="Numeric"></Entry>
+                            <Label Margin="15,0,0,10"  Grid.Row="1" Grid.ColumnSpan="2" FontSize="Small">Minutes to add to overal time between steps without time information</Label>
+                        </Grid>
+                    </ViewCell>
+                    <ViewCell>
+                        <Grid>
+                            <Label Margin="15">Steps Interval</Label>
+                            <Picker Grid.Column="1" ItemsSource="{Binding Minutes}" />
+                        </Grid>
+                    </ViewCell>
+                    <ViewCell>
+                        <Grid>
+                            <Label Margin="15">Language</Label>
+                            <Picker Grid.Column="1" ItemsSource="{Binding Minutes}" />
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Others">
+                    <ViewCell>
+                        <Grid>
+                            <Label Margin="15">Backup</Label>
+                            <Image Grid.Column="1" HorizontalOptions="End">
+                                <Image.Source>
+                                    <FontImageSource Color="Green" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.ChevronRight}"/>
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Support">
+                    <ViewCell>
+                        <Grid>
+                            <Label Margin="15">Help</Label>
+                            <Image Grid.Column="1" HorizontalOptions="End">
+                                <Image.Source>
+                                    <FontImageSource Color="Green" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.ChevronRight}"/>
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+
+        <Grid>
+            <Grid.IsVisible>
+                <OnPlatform x:TypeArguments="x:Boolean">
+                    <On Platform="iOS" Value="false"></On>
+                    <On Platform="Android" Value="true"></On>
+                </OnPlatform>
+            </Grid.IsVisible>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70" />
+                <RowDefinition Height="70" />
+                <RowDefinition Height="70" />
+                <RowDefinition Height="70" />
+            </Grid.RowDefinitions>
+            <StackLayout Padding="15" xe:Commands.Tap="{Binding StepIntervalCommand}" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
+                <Image>
+                    <Image.Source>
+                        <FontImageSource Color="{DynamicResource NavigationPrimary}" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.StepForward}"/>
+                    </Image.Source>
+                </Image>
+                <StackLayout Margin="10,0,0,0">
+                    <Label FontSize="Medium" TextColor="Black" Text="{x:Static l:Resources.SettingsView_StepsInterval}"></Label>
+                    <Label FontSize="Small" TextColor="Gray" Text="{Binding DisplayTimeBetweenStepsInterval}"></Label>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Padding="15" xe:Commands.Tap="{Binding SetupBackupCommand}" Grid.Row="1" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
+                <Image>
+                    <Image.Source>
+                        <FontImageSource Color="{DynamicResource NavigationPrimary}" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.BackupRestore}"/>
+                    </Image.Source>
+                </Image>
+                <StackLayout Margin="10,0,0,0">
+                    <Label FontSize="Medium" TextColor="Black" Text="{x:Static l:Resources.SettingsView_Backup}"></Label>
+                    <Label FontSize="Small" TextColor="Gray" Text="{Binding DisplayBackupOption}"></Label>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Padding="15" xe:Commands.Tap="{Binding GetHelpCommand}" Grid.Row="2" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
+                <Image>
+                    <Image.Source>
+                        <FontImageSource Color="{DynamicResource NavigationPrimary}" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.Help}"/>
+                    </Image.Source>
+                </Image>
+                <StackLayout Margin="10,0,0,0">
+                    <Label FontSize="Medium" TextColor="Black" Text="{x:Static l:Resources.SettingsView_Help}"></Label>
+                    <Label FontSize="Small" TextColor="Gray" Text="{x:Static l:Resources.SettingsView_HelpContact}"></Label>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+</ContentPage>

@@ -1,5 +1,7 @@
-﻿using SharpCooking.Data;
+﻿using AiForms.Renderers;
+using SharpCooking.Data;
 using SharpCooking.Models;
+using SharpCooking.Services;
 using SharpCooking.ViewModels;
 using System.IO;
 using TinyIoC;
@@ -38,9 +40,12 @@ namespace SharpCooking
             container.Register<AboutViewModel>();
             container.Register<ItemsViewModel>();
             container.Register<ItemDetailViewModel>();
+            container.Register<SettingsView>();
+            container.Register<EditItemViewModel>();
 
             // Services - by default, TinyIoC will register interface registrations as singletons.
-            container.Register<IDataStore, DatStore>();
+            container.Register<IDataStore, DataStore>();
+            container.Register<IEssentials, Essentials>();
             container.Register(GetConnectionFactory());
         }
 
@@ -53,7 +58,7 @@ namespace SharpCooking
 
             var connection = result.GetConnection();
             connection.CreateTableAsync<Recipe>();
-            connection.CreateTableAsync<RecipePictures>();
+            //connection.CreateTableAsync<RecipePictures>();
             connection.CreateTableAsync<Uom>();
 
             return result;

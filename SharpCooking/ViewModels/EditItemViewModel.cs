@@ -1,9 +1,11 @@
-﻿using Xamarin.Forms;
-using SharpCooking.Models;
-using System.Threading.Tasks;
+﻿using Plugin.Media.Abstractions;
 using SharpCooking.Data;
 using SharpCooking.Localization;
-using Plugin.Media.Abstractions;
+using SharpCooking.Models;
+using System.IO;
+using System.Threading.Tasks;
+using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace SharpCooking.ViewModels
 {
@@ -25,13 +27,17 @@ namespace SharpCooking.ViewModels
         public RecipeViewModel Item { get; set; }
         public Command SaveCommand { get; set; }
         public Command MainImageTappedCommand { get; set; }
-        public bool IsFavoriteVisible { get; set; }
         public string Id { get; set; }
 
         public async Task Save()
         {
-            var model = await RecipeViewModel.ToModel(Item);
-            await _dataStore.UpsertAsync(model);
+            var model = RecipeViewModel.ToModel(Item);
+
+            if (Item.Id == 0)
+                await _dataStore.InsertAsync(model);
+            else
+                await _dataStore.UpdateAsync(model);
+
             await GoBackAsync();
         }
 
@@ -44,27 +50,29 @@ namespace SharpCooking.ViewModels
             }
 
             if (!int.TryParse(Id, out int parsedId))
-                await ReportError("Failed to parse input id");
+                await ReportError(Resources.EditItemView_FailedToParse);
 
             Title = Resources.EditRecipe;
 
             var result = await _dataStore.FirstOrDefaultAsync<Recipe>(item => item.Id == parsedId);
 
-            Item = await RecipeViewModel.FromModel(result);
+            Item = RecipeViewModel.FromModel(result);
         }
 
         private async Task PickImage()
         {
-            var actionSheetResult = await DisplayActionSheet("How?", "Cancel", null, "Pick image", "Use Camera");
-            MediaFile result;
-            if(actionSheetResult == "Pick image")
+            var actionSheetResult = await DisplayActionSheetAsync(Resources.EditItemView_PickImageTitle, Resources.EditItemView_PickImagePickImage, 
+                null, Resources.EditItemView_PickImageCancel, Resources.EditItemView_PickImageUseCamera);
+            
+            MediaFile result = null;
+            if (actionSheetResult == Resources.EditItemView_PickImageCancel)
             {
                 result = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
                 {
                     CompressionQuality = 92
                 });
             }
-            else
+            else if(actionSheetResult == Resources.EditItemView_PickImageUseCamera)
             {
                 result = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
                 {
@@ -74,8 +82,12 @@ namespace SharpCooking.ViewModels
                 });
             }
 
-            Item.MainImage = (StreamImageSource)ImageSource.FromStream(() => result.GetStream());
-        }
+            if (result == null)
+                return;
 
+            var path = Path.Combine(FileSystem.AppDataDirectory, Path.GetFileName(result.Path));
+            File.Copy(result.Path, path);
+            Item.MainImagePath = path;
+        }
     }
 }

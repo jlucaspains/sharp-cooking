@@ -7,16 +7,9 @@
              x:Class="SharpCooking.Views.ItemsView"
              xmlns:v="clr-namespace:SharpCooking.Views"
              xmlns:b="clr-namespace:SharpCooking.Behaviors"
-             xmlns:l="clr-namespace:SharpCooking.Localization"
-             xmlns:c="clr-namespace:SharpCooking.Converters"
-             xmlns:c1="clr-namespace:SharpCooking.Controls"
              Title="{Binding Title}"
              x:Name="BrowseItemsPage"
              v:ViewModelLocator.AutoWireViewModel="true">
-    <ContentPage.Resources>
-        <c:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter" />
-    </ContentPage.Resources>
-
     <Shell.SearchHandler>
         <v:RecipeSearchHandler Placeholder="Enter search term"
                                ShowsResults="true"
@@ -28,9 +21,12 @@
                             <ColumnDefinition Width="0.15*" />
                             <ColumnDefinition Width="0.85*" />
                         </Grid.ColumnDefinitions>
-                        <Image Source="{Binding MainImage, Converter={x:StaticResource ByteArrayToImageSourceConverter}}"
-                               Aspect="AspectFill"
-                               HeightRequest="40" />
+                        <Image Aspect="AspectFill"
+                               HeightRequest="40">
+                            <Image.Source>
+                                <FileImageSource File="{Binding MainImagePath}" />
+                            </Image.Source>
+                        </Image>
                         <Label Grid.Column="1"
                                Text="{Binding Title}"
                                FontAttributes="Bold" />
@@ -40,26 +36,28 @@
         </v:RecipeSearchHandler>
     </Shell.SearchHandler>
 
-    <!--<ContentPage.ToolbarItems>
-        <ToolbarItem Text="{x:Static l:Resources.AddRecipe}" Command="{Binding AddItemCommand}">
-            <ToolbarItem.IconImageSource>
-                <FontImageSource
-                    FontFamily="{DynamicResource MaterialFont}"
-                    Glyph="{x:Static v:IconFont.Plus}"/>
-            </ToolbarItem.IconImageSource>
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>-->
-
-    <AbsoluteLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="100" />
+        </Grid.ColumnDefinitions>
         <ListView x:Name="ItemsListView"
-                ItemsSource="{Binding Items}"
-                VerticalOptions="FillAndExpand"
-                HasUnevenRows="true"
-                RefreshCommand="{Binding LoadItemsCommand}"
-                IsPullToRefreshEnabled="true"
-                IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
-                CachingStrategy="RecycleElement"
-                SelectionMode="None">
+                  ItemsSource="{Binding Items}"
+                  VerticalOptions="FillAndExpand"
+                  HasUnevenRows="true"
+                  RefreshCommand="{Binding LoadItemsCommand}"
+                  IsPullToRefreshEnabled="true"
+                  IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                  CachingStrategy="RecycleElement"
+                  SelectionMode="None"
+                  SeparatorVisibility="None"
+                  Grid.RowSpan="2"
+                  Grid.ColumnSpan="2"
+                  BackgroundColor="#F9F9F9">
             <ListView.Behaviors>
                 <b:EventToCommandBehavior                    
                         EventName="ItemTapped"
@@ -70,47 +68,56 @@
                 <DataTemplate>
                     <ViewCell>
                         <Grid Padding="10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="30" />
-                                <RowDefinition Height="30" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="80" />
-                                <ColumnDefinition Width="100" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="40" />
-                            </Grid.ColumnDefinitions>
-                            <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="{Binding MainImage, Converter={x:StaticResource ByteArrayToImageSourceConverter}}"
-                               Aspect="AspectFill"
-                               HeightRequest="40" />
-                            <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Title}" 
-                                LineBreakMode="TailTruncation"
-                                FontSize="18" />
-                            <c1:RatingEditor Grid.Row="1" Grid.Column="1" Rating="{Binding Rating}" IsDisabled="true" />
-                            <Label Grid.Row="1" Grid.Column="2" Text="{Binding TotalTime}" 
-                                LineBreakMode="NoWrap"
-                                FontSize="13" VerticalOptions="Center" Margin="20,0,0,0" />
-                            <Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center">
-                                <Image.Source>
-                                    <FontImageSource
-                                        FontFamily="{DynamicResource MaterialFont}"
-                                        Color="Gray"
-                                        Size="25"
-                                        Glyph="{x:Static v:IconFont.StarOutline}"/>
-                                </Image.Source>
-                            </Image>
+
+                            <Frame HeightRequest="250" HasShadow="True" CornerRadius="15" Padding="0">
+                                <Grid VerticalOptions="Fill" Padding="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="200" />
+                                        <RowDefinition Height="50" />
+                                    </Grid.RowDefinitions>
+                                    <Image Aspect="AspectFill" Grid.Row="0" Grid.Column="0"
+                                           IsVisible="{Binding HasMainImage}">
+                                        <Image.Source>
+                                            <FileImageSource File="{Binding MainImagePath}" />
+                                        </Image.Source>
+                                    </Image>
+                                    <Grid Grid.Row="0" Grid.Column="0"
+                                           IsVisible="{Binding DoesNotHaveMainImage}"
+                                           BackgroundColor="{DynamicResource NavigationSecondary}">
+                                        <Image Aspect="AspectFill"
+                                               IsVisible="{Binding DoesNotHaveMainImage}"
+                                               HorizontalOptions="Center" VerticalOptions="Center">
+                                            <Image.Source>
+                                                <FontImageSource FontFamily="{DynamicResource MaterialFont}"
+                                                Color="White"
+                                                Size="50"
+                                                Glyph="{x:Static v:IconFont.ImageBrokenVariant}"/>
+                                            </Image.Source>
+                                        </Image>
+                                    </Grid>
+                                    
+                                    <Label Grid.Row="1" Text="{Binding Title}" 
+                                        LineBreakMode="TailTruncation"
+                                        Padding="20,5" TextColor="#707070" FontSize="15" />
+                                </Grid>
+
+                            </Frame>
+
+
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         <ImageButton
-            BackgroundColor="#2e7d32"
+            BackgroundColor="{DynamicResource NavigationPrimary}"
             CornerRadius="100"
-            AbsoluteLayout.LayoutFlags="PositionProportional"  
-            AbsoluteLayout.LayoutBounds=".96,.97,57,57"
+            Grid.Column="1"
+            Grid.Row="1"
             Padding="16"
-            Command="{Binding AddItemCommand}">
+            Margin="20"
+            Command="{Binding AddItemCommand}"
+            >
             <ImageButton.Source>
                 <FontImageSource
                     FontFamily="{DynamicResource MaterialFont}"
@@ -118,5 +125,5 @@
                     Glyph="{x:Static v:IconFont.Plus}"/>
             </ImageButton.Source>
         </ImageButton>
-    </AbsoluteLayout>
+    </Grid>
 </ContentPage>

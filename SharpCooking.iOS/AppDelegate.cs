@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿
 using Foundation;
 using UIKit;
 
@@ -24,6 +21,9 @@ namespace SharpCooking.iOS
         {
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
+            //AiForms.Renderers.iOS.SettingsViewInit.Init();
+            XamEffects.iOS.Effects.Init();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

@@ -5,39 +5,42 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="SharpCooking.Views.AboutView"
-             xmlns:v="clr-namespace:SharpCooking.Views"
+             xmlns:v="clr-namespace:SharpCooking.Views" 
+             xmlns:l="clr-namespace:SharpCooking.Localization"
              Title="{Binding Title}"
              v:ViewModelLocator.AutoWireViewModel="true">
-    
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
-            <Color x:Key="Accent">#96d1ff</Color>
-            <Color x:Key="LightTextColor">#999999</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                    <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
-                </ContentView>
-            </StackLayout>
-        </StackLayout>
+        <Grid  BackgroundColor="{DynamicResource NavigationSecondary}" HeightRequest="200">
+            <Image HorizontalOptions="Center" VerticalOptions="Center">
+                <Image.Source>
+                    <FontImageSource
+                    FontFamily="{DynamicResource MaterialFont}"
+                    Size="100"
+                    Glyph="{x:Static v:IconFont.ChefHat}"/>
+                </Image.Source>
+            </Image>
+        </Grid>
         <ScrollView Grid.Row="1">
-            <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
+            <StackLayout Orientation="Vertical" Padding="16,0,16,40" Spacing="10">
+                <Image Aspect="AspectFill" HeightRequest="64">
+                <Image.Source>
+                    <FontImageSource
+                                FontFamily="{DynamicResource MaterialFont}"
+                                Size="10"
+                                Glyph="{x:Static v:IconFont.ChefHat}"/>
+                </Image.Source>
+                </Image>
                 <Label FontSize="22">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="Simple Cooking" FontAttributes="Bold" FontSize="22" />
+                                <Span Text="{x:Static l:Resources.AppName}" FontAttributes="Bold" FontSize="22" />
                                 <Span Text=" " />
-                                <Span Text="1.0" ForegroundColor="{StaticResource LightTextColor}" />
+                                <Span Text="{Binding AppVersion}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
@@ -46,7 +49,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="Your personal cooking app." />
+                                <Span Text="{x:Static l:Resources.AppDescription}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>

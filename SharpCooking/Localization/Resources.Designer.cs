@@ -61,6 +61,15 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string AboutView_Title {
+            get {
+                return ResourceManager.GetString("AboutView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
         public static string AddRecipe {
@@ -79,11 +88,164 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your personal cooking app..
+        /// </summary>
+        public static string AppDescription {
+            get {
+                return ResourceManager.GetString("AppDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sharp Cooking.
+        /// </summary>
+        public static string AppName {
+            get {
+                return ResourceManager.GetString("AppName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string AppShell_About {
+            get {
+                return ResourceManager.GetString("AppShell_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recipes.
+        /// </summary>
+        public static string AppShell_Recipes {
+            get {
+                return ResourceManager.GetString("AppShell_Recipes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string AppShell_Settings {
+            get {
+                return ResourceManager.GetString("AppShell_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Backup.
+        /// </summary>
+        public static string BackupSetupView_Title {
+            get {
+                return ResourceManager.GetString("BackupSetupView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string CancelEditRecipe {
             get {
                 return ResourceManager.GetString("CancelEditRecipe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to parse recipe id.
+        /// </summary>
+        public static string EditItemView_FailedToParse {
+            get {
+                return ResourceManager.GetString("EditItemView_FailedToParse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ingredients.
+        /// </summary>
+        public static string EditItemView_Ingredients {
+            get {
+                return ResourceManager.GetString("EditItemView_Ingredients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instructions.
+        /// </summary>
+        public static string EditItemView_Instructions {
+            get {
+                return ResourceManager.GetString("EditItemView_Instructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notes.
+        /// </summary>
+        public static string EditItemView_Notes {
+            get {
+                return ResourceManager.GetString("EditItemView_Notes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string EditItemView_PickImageCancel {
+            get {
+                return ResourceManager.GetString("EditItemView_PickImageCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pick from library.
+        /// </summary>
+        public static string EditItemView_PickImagePickImage {
+            get {
+                return ResourceManager.GetString("EditItemView_PickImagePickImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Where is your image?.
+        /// </summary>
+        public static string EditItemView_PickImageTitle {
+            get {
+                return ResourceManager.GetString("EditItemView_PickImageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use Camera.
+        /// </summary>
+        public static string EditItemView_PickImageUseCamera {
+            get {
+                return ResourceManager.GetString("EditItemView_PickImageUseCamera", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string EditItemView_Save {
+            get {
+                return ResourceManager.GetString("EditItemView_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Source.
+        /// </summary>
+        public static string EditItemView_Source {
+            get {
+                return ResourceManager.GetString("EditItemView_Source", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string EditItemView_Title {
+            get {
+                return ResourceManager.GetString("EditItemView_Title", resourceCulture);
             }
         }
         
@@ -97,11 +259,137 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        public static string ErrorOk {
+            get {
+                return ResourceManager.GetString("ErrorOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failure.
+        /// </summary>
+        public static string ErrorTitle {
+            get {
+                return ResourceManager.GetString("ErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Favorite.
         /// </summary>
         public static string FavoriteRecipe {
             get {
                 return ResourceManager.GetString("FavoriteRecipe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string ItemDetailView_MoreCancel {
+            get {
+                return ResourceManager.GetString("ItemDetailView_MoreCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string ItemDetailView_MoreDelete {
+            get {
+                return ResourceManager.GetString("ItemDetailView_MoreDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure? This is not reversible..
+        /// </summary>
+        public static string ItemDetailView_MoreDeleteConfirmation {
+            get {
+                return ResourceManager.GetString("ItemDetailView_MoreDeleteConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string ItemDetailView_MoreDeleteNo {
+            get {
+                return ResourceManager.GetString("ItemDetailView_MoreDeleteNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string ItemDetailView_MoreDeleteYes {
+            get {
+                return ResourceManager.GetString("ItemDetailView_MoreDeleteYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Options.
+        /// </summary>
+        public static string ItemDetailView_MoreTitle {
+            get {
+                return ResourceManager.GetString("ItemDetailView_MoreTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string ItemDetailView_MultiplierCancel {
+            get {
+                return ResourceManager.GetString("ItemDetailView_MultiplierCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter decimal value of quantity. E.g. 0.5 or 2.
+        /// </summary>
+        public static string ItemDetailView_MultiplierDescription {
+            get {
+                return ResourceManager.GetString("ItemDetailView_MultiplierDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        public static string ItemDetailView_MultiplierOk {
+            get {
+                return ResourceManager.GetString("ItemDetailView_MultiplierOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multiplier.
+        /// </summary>
+        public static string ItemDetailView_MultiplierTitle {
+            get {
+                return ResourceManager.GetString("ItemDetailView_MultiplierTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notes.
+        /// </summary>
+        public static string ItemDetailView_Notes {
+            get {
+                return ResourceManager.GetString("ItemDetailView_Notes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Share Recipe.
+        /// </summary>
+        public static string ItemDetailView_Share {
+            get {
+                return ResourceManager.GetString("ItemDetailView_Share", resourceCulture);
             }
         }
         
@@ -115,11 +403,101 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Save.
+        ///   Looks up a localized string similar to Backing up to.
         /// </summary>
-        public static string SaveEditRecipe {
+        public static string SettingsView_BackingUpTo {
             get {
-                return ResourceManager.GetString("SaveEditRecipe", resourceCulture);
+                return ResourceManager.GetString("SettingsView_BackingUpTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Backup.
+        /// </summary>
+        public static string SettingsView_Backup {
+            get {
+                return ResourceManager.GetString("SettingsView_Backup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        public static string SettingsView_Help {
+            get {
+                return ResourceManager.GetString("SettingsView_Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact developer.
+        /// </summary>
+        public static string SettingsView_HelpContact {
+            get {
+                return ResourceManager.GetString("SettingsView_HelpContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setup backup.
+        /// </summary>
+        public static string SettingsView_SetupBackup {
+            get {
+                return ResourceManager.GetString("SettingsView_SetupBackup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Steps Interval.
+        /// </summary>
+        public static string SettingsView_StepsInterval {
+            get {
+                return ResourceManager.GetString("SettingsView_StepsInterval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string SettingsView_StepsIntervalCancel {
+            get {
+                return ResourceManager.GetString("SettingsView_StepsIntervalCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How many minutes between not timed steps?.
+        /// </summary>
+        public static string SettingsView_StepsIntervalDescription {
+            get {
+                return ResourceManager.GetString("SettingsView_StepsIntervalDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        public static string SettingsView_StepsIntervalOk {
+            get {
+                return ResourceManager.GetString("SettingsView_StepsIntervalOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step interval.
+        /// </summary>
+        public static string SettingsView_StepsIntervalTitle {
+            get {
+                return ResourceManager.GetString("SettingsView_StepsIntervalTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to minutes when no time information is given.
+        /// </summary>
+        public static string SettingsView_TimeStepsDescriptoin {
+            get {
+                return ResourceManager.GetString("SettingsView_TimeStepsDescriptoin", resourceCulture);
             }
         }
     }

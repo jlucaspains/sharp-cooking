@@ -1,18 +1,26 @@
-﻿using System;
-using System.Windows.Input;
-using Xamarin.Essentials;
-using Xamarin.Forms;
+﻿using SharpCooking.Localization;
+using SharpCooking.Services;
+using System.Threading.Tasks;
 
 namespace SharpCooking.ViewModels
 {
     public class AboutViewModel : BaseViewModel
     {
-        public AboutViewModel()
+        private readonly IEssentials _essentials;
+
+        public AboutViewModel(IEssentials essentials)
         {
-            Title = "About";
-            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://xamarin.com"));
+            Title = Resources.AboutView_Title;
+            _essentials = essentials;
         }
 
-        public ICommand OpenWebCommand { get; }
+        public override Task InitializeAsync()
+        {
+            AppVersion = _essentials.GetVersion();
+
+            return base.InitializeAsync();
+        }
+
+        public string AppVersion { get; set; }
     }
 }

@@ -5,7 +5,7 @@
        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
        mc:Ignorable="d"
        xmlns:v="clr-namespace:SharpCooking.Views"
-       Title="Simple Cooking"
+       xmlns:l="clr-namespace:SharpCooking.Localization"
        x:Class="SharpCooking.AppShell">
 
     <!-- 
@@ -14,6 +14,7 @@
     <Shell.Resources>
         <ResourceDictionary>
             <Color x:Key="NavigationPrimary">#2e7d32</Color>
+            <Color x:Key="NavigationSecondary">#60ad5e</Color>
             <Color x:Key="TabIconColor">White</Color>
             <Style x:Key="BaseStyle" TargetType="Element">
                 <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
@@ -32,7 +33,7 @@
 
     <!-- Your Pages -->
     <TabBar>
-        <Tab Title="Recipes">
+        <Tab Title="{x:Static l:Resources.AppShell_Recipes}">
             <Tab.Icon>
                 <FontImageSource
                     FontFamily="{DynamicResource MaterialFont}"
@@ -42,7 +43,7 @@
             </Tab.Icon>
             <ShellContent Route="recipes" ContentTemplate="{DataTemplate v:ItemsView}" />
         </Tab>
-        <Tab Title="About">
+        <Tab Title="{x:Static l:Resources.AppShell_About}">
             <Tab.Icon>
                 <FontImageSource
                     FontFamily="{DynamicResource MaterialFont}"
@@ -51,6 +52,16 @@
                     Color="{StaticResource TabIconColor}" />
             </Tab.Icon>
             <ShellContent Route="about" ContentTemplate="{DataTemplate v:AboutView}" />
+        </Tab>
+        <Tab Title="{x:Static l:Resources.AppShell_Settings}">
+            <Tab.Icon>
+                <FontImageSource
+                    FontFamily="{DynamicResource MaterialFont}"
+                    Glyph="{x:Static v:IconFont.Cogs}"
+                    Size="44"
+                    Color="{StaticResource TabIconColor}" />
+            </Tab.Icon>
+            <ShellContent Route="settings" ContentTemplate="{DataTemplate v:SettingsView}" />
         </Tab>
     </TabBar>
 </Shell>

@@ -16,11 +16,11 @@ namespace SharpCooking.Data
         Task DeleteAsync<TEntity>(TEntity entity) where TEntity : class, new();
     }
 
-    public class DatStore : IDataStore
+    public class DataStore : IDataStore
     {
         private readonly IConnectionFactory _connectionFactory;
 
-        public DatStore(IConnectionFactory connectionFactory)
+        public DataStore(IConnectionFactory connectionFactory)
         {
             _connectionFactory = connectionFactory;
         }

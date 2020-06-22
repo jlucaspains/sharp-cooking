@@ -1,4 +1,5 @@
-﻿using SharpCooking.Models;
+﻿using SharpCooking.Localization;
+using SharpCooking.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -41,15 +42,24 @@ namespace SharpCooking.ViewModels
             await Shell.Navigation.PopAsync(true);
         }
 
-        protected async Task<string> DisplayActionSheet(string title, string cancel, string destruction = null, params string[] buttons)
+        protected async Task<string> DisplayActionSheetAsync(string title, string cancel, string destruction = null, params string[] buttons)
         {
             return await Shell.DisplayActionSheet(title, cancel, destruction, buttons);
         }
 
+        protected async Task<string> DisplayPromptAsync(string title, string message, string accept, string cancel, string placeholder = null, Keyboard keyboard = null)
+        {
+            return await Shell.DisplayPromptAsync(title, message, accept, cancel, placeholder, keyboard: keyboard);
+        }
+
+        protected async Task<bool> DisplayAlertAsync(string title, string message, string accept, string cancel)
+        {
+            return await Shell.DisplayAlert(title, message, accept, cancel);
+        }
+
         protected async Task ReportError(string message)
         {
-            // TODO: report error to user and log
-            await Shell.DisplayAlert("Failure", message, "Ok");
+            await Shell.DisplayAlert(Resources.ErrorTitle, message, Resources.ErrorOk);
         }
     }
 }

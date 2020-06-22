@@ -7,7 +7,6 @@
              x:Class="SharpCooking.Views.EditItemView"
              xmlns:v="clr-namespace:SharpCooking.Views"
              xmlns:l="clr-namespace:SharpCooking.Localization"
-             xmlns:c="clr-namespace:SharpCooking.Controls"
              xmlns:c1="clr-namespace:SharpCooking.Converters"
              Title="{Binding Title}"
              x:Name="EditItemViewPage"
@@ -18,7 +17,7 @@
     </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="{x:Static l:Resources.SaveEditRecipe}" Command="{Binding SaveCommand}">
+        <ToolbarItem Text="{x:Static l:Resources.EditItemView_Save}" Command="{Binding SaveCommand}">
             <ToolbarItem.IconImageSource>
                 <FontImageSource
                     FontFamily="{DynamicResource MaterialFont}"
@@ -31,11 +30,11 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="15">
-                <Grid HeightRequest="200" BackgroundColor="#60ad5e" Margin="-15,-15,-15,10">
+                <Grid HeightRequest="250" BackgroundColor="{DynamicResource NavigationSecondary}" Margin="-15,-15,-15,0">
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding MainImageTappedCommand}" />
                     </Grid.GestureRecognizers>
-                    <Image IsVisible="{Binding Item.DoesNotHaveMainImage}"
+                    <Image IsVisible="{Binding Item.DoesNotHaveMainImage}" 
                            HorizontalOptions="Center" VerticalOptions="Center">
                         <Image.Source>
                             <FontImageSource
@@ -45,38 +44,23 @@
                                 Glyph="{x:Static v:IconFont.ImagePlus}"/>
                         </Image.Source>
                     </Image>
-                    <Image IsVisible="{Binding Item.HasMainImage}"
-                           Source="{Binding Item.MainImage}" 
-                           HeightRequest="200" />
+                    <Image IsVisible="{Binding Item.HasMainImage}" Aspect="AspectFill"
+                           Source="{Binding Item.MainImagePath}" HeightRequest="200" />
                 </Grid>
-                <Label Text="Title" />
-                <Entry Text="{Binding Item.Title}" />
-                <Label Text="Source" />
-                <Entry Text="{Binding Item.Source}" />
-                <Label Text="Rating" />
-                <c:RatingEditor x:Name="RatingEditor" Rating="{Binding Item.Rating, Mode=TwoWay}" />
-                <Label Text="Yield" />
-                <Entry Text="{Binding Item.Yield}" Keyboard="Numeric" />
-
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <StackLayout Grid.Column="0">
-                        <Label Text="Prep time" />
-                        <Entry Text="{Binding Item.ActiveTime}" Keyboard="Numeric" />
+                <Frame CornerRadius="25" Margin="-15,-27,-15,-30" HasShadow="True">
+                    <StackLayout Margin="0,0,0,10">
+                        <Label Text="{x:Static l:Resources.EditItemView_Title}" />
+                        <Entry Text="{Binding Item.Title}" />
+                        <Label Text="{x:Static l:Resources.EditItemView_Source}" />
+                        <Entry Text="{Binding Item.Source}" />
+                        <Label Text="{x:Static l:Resources.EditItemView_Ingredients}" />
+                        <Editor AutoSize="TextChanges" Text="{Binding Item.Ingredients}" />
+                        <Label Text="{x:Static l:Resources.EditItemView_Instructions}" />
+                        <Editor AutoSize="TextChanges" Text="{Binding Item.Instructions}" />
+                        <Label Text="{x:Static l:Resources.EditItemView_Notes}" />
+                        <Editor AutoSize="TextChanges" Text="{Binding Item.Notes}" />
                     </StackLayout>
-                    <StackLayout Grid.Column="1">
-                        <Label Text="Total time" />
-                        <Entry Text="{Binding Item.TotalTime}" Keyboard="Numeric" />
-                    </StackLayout>
-                </Grid>
-                <Label Text="Ingredients" />
-                <Editor AutoSize="TextChanges" Text="{Binding Item.Ingredients}" />
-
-                <Label Text="Instructions" />
-                <Editor AutoSize="TextChanges" Text="{Binding Item.Instructions}" />
+                </Frame>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
