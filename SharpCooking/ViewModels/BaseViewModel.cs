@@ -1,7 +1,8 @@
-﻿using SharpCooking.Localization;
+﻿using Microsoft.AppCenter.Crashes;
+using SharpCooking.Localization;
 using SharpCooking.Models;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -16,9 +17,15 @@ namespace SharpCooking.ViewModels
 
         public Shell Shell { get; set; } = Shell.Current;
 
+        internal string ViewName { get; set; }
+
         public virtual Task InitializeAsync()
         {
-            return Task.FromResult(0);
+            Microsoft.AppCenter.Analytics.Analytics.TrackEvent("PageView", new Dictionary<string, string> {
+                { "Name", ViewName }
+            });
+
+            return Task.CompletedTask;
         }
 
         public virtual Task TerminateAsync()
@@ -52,14 +59,74 @@ namespace SharpCooking.ViewModels
             return await Shell.DisplayPromptAsync(title, message, accept, cancel, placeholder, keyboard: keyboard);
         }
 
+        protected async Task DisplayAlertAsync(string title, string message, string cancel)
+        {
+            await Shell.DisplayAlert(title, message, cancel);
+        }
+
         protected async Task<bool> DisplayAlertAsync(string title, string message, string accept, string cancel)
         {
             return await Shell.DisplayAlert(title, message, accept, cancel);
         }
 
+        protected Task DisplayToastAsync(string message, int durationInSeconds = 3)
+        {
+            Acr.UserDialogs.UserDialogs.Instance.Toast(new Acr.UserDialogs.ToastConfig(message)
+                .SetDuration(TimeSpan.FromSeconds(durationInSeconds))
+                .SetPosition(Acr.UserDialogs.ToastPosition.Bottom));
+
+            return Task.CompletedTask;
+
+        }
+
+        protected async Task<TimeSpan?> DisplayTimePromptAsync(string title, string accept, string cancel)
+        {
+            var result = await Acr.UserDialogs.UserDialogs.Instance.TimePromptAsync(new Acr.UserDialogs.TimePromptConfig
+            {
+                Title = title,
+                OkText = accept,
+                CancelText = cancel,
+                IsCancellable = true
+            });
+
+            return result.Ok
+                ? (TimeSpan?)result.SelectedTime
+                : null;
+        }
+
         protected async Task ReportError(string message)
         {
             await Shell.DisplayAlert(Resources.ErrorTitle, message, Resources.ErrorOk);
+        }
+
+        protected Task TrackEvent(string name, Dictionary<string, string> properties = null)
+        {
+            Microsoft.AppCenter.Analytics.Analytics.TrackEvent(name, properties);
+
+            return Task.CompletedTask;
+        }
+
+        protected Task TrackEvent(string name, params (string Name, string Value)[] properties)
+        {
+            if(properties == null)
+            {
+                Microsoft.AppCenter.Analytics.Analytics.TrackEvent(name);
+            }
+            else
+            {
+                var props = properties.ToDictionary(item => item.Name, item => item.Value);
+
+                Microsoft.AppCenter.Analytics.Analytics.TrackEvent(name, props);
+            }
+
+            return Task.CompletedTask;
+        }
+
+        protected Task TrackException(Exception ex)
+        {
+            Crashes.TrackError(ex);
+
+            return Task.CompletedTask;
         }
     }
 }

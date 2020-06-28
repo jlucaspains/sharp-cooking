@@ -3,10 +3,11 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using Plugin.CurrentActivity;
+using Acr.UserDialogs;
 
 namespace SharpCooking.Droid
 {
-    [Activity(Label = "SharpCooking", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, 
+    [Activity(Label = "SharpCooking", Icon = "@mipmap/icon", Theme = "@style/MainTheme", 
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
         ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
@@ -24,7 +25,7 @@ namespace SharpCooking.Droid
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
             Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
-            //AiForms.Renderers.Droid.SettingsViewInit.Init();
+            UserDialogs.Init(this);
             XamEffects.Droid.Effects.Init();
 
             LoadApplication(new App());

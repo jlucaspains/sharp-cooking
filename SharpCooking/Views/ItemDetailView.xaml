@@ -60,8 +60,18 @@
                             <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="50" />
                         </Grid.ColumnDefinitions>
-                        <Button BackgroundColor="{DynamicResource NavigationPrimary}" TextColor="White" Grid.Column="3" CornerRadius="100" HeightRequest="50" Command="{Binding ChangeMultiplierCommand}" Text="{Binding Multiplier, StringFormat='{0}x'}">
+                        <Button BackgroundColor="{DynamicResource NavigationPrimary}" TextColor="White" Grid.Column="2" CornerRadius="100" HeightRequest="50" 
+                                Command="{Binding ChangeMultiplierCommand}" Text="{Binding Multiplier, StringFormat='{0}x'}">
                         </Button>
+                        <ImageButton BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="3" CornerRadius="100" HeightRequest="50" 
+                                     Padding="16" Command="{Binding ChangeStartTimeCommand}">
+                            <ImageButton.Source>
+                                <FontImageSource
+                                    Size="10"
+                                    FontFamily="{DynamicResource MaterialFont}"
+                                    Glyph="{x:Static v:IconFont.Clock}"/>
+                            </ImageButton.Source>
+                        </ImageButton>
                         <!--<ImageButton BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="2" CornerRadius="100" HeightRequest="50" Padding="16">
                             <ImageButton.Source>
                                 <FontImageSource

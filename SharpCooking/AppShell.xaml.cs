@@ -19,7 +19,6 @@ namespace SharpCooking
             Routing.RegisterRoute("items/new", typeof(EditItemView));
             Routing.RegisterRoute("about", typeof(AboutView));
             Routing.RegisterRoute("settings", typeof(SettingsView));
-            Routing.RegisterRoute("backup", typeof(BackupSetupView));
         }
     }
 }

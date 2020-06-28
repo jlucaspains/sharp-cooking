@@ -45,20 +45,29 @@
                     </ViewCell>
                     <ViewCell>
                         <Grid>
-                            <Label Margin="15">Language</Label>
-                            <Picker Grid.Column="1" ItemsSource="{Binding Minutes}" />
+                            <Label Margin="15">Culture</Label>
                         </Grid>
                     </ViewCell>
                 </TableSection>
-                <TableSection Title="Others">
+                <TableSection Title="Backup">
                     <ViewCell>
                         <Grid>
-                            <Label Margin="15">Backup</Label>
-                            <Image Grid.Column="1" HorizontalOptions="End">
+                            <Label Margin="15">Create Backup</Label>
+                            <!--<Image Grid.Column="1" HorizontalOptions="End">
                                 <Image.Source>
-                                    <FontImageSource Color="Green" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.ChevronRight}"/>
+                                    <FontImageSource Color="Green" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.BackupRestore}"/>
                                 </Image.Source>
-                            </Image>
+                            </Image>-->
+                        </Grid>
+                    </ViewCell>
+                    <ViewCell>
+                        <Grid>
+                            <Label Margin="15">Restore</Label>
+                            <!--<Image Grid.Column="1" HorizontalOptions="End">
+                                <Image.Source>
+                                    <FontImageSource Color="Green" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.BackupRestore}"/>
+                                </Image.Source>
+                            </Image>-->
                         </Grid>
                     </ViewCell>
                 </TableSection>
@@ -89,6 +98,8 @@
                 <RowDefinition Height="70" />
                 <RowDefinition Height="70" />
                 <RowDefinition Height="70" />
+                <RowDefinition Height="70" />
+                <RowDefinition Height="70" />
             </Grid.RowDefinitions>
             <StackLayout Padding="15" xe:Commands.Tap="{Binding StepIntervalCommand}" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
                 <Image>
@@ -101,18 +112,40 @@
                     <Label FontSize="Small" TextColor="Gray" Text="{Binding DisplayTimeBetweenStepsInterval}"></Label>
                 </StackLayout>
             </StackLayout>
-            <StackLayout Padding="15" xe:Commands.Tap="{Binding SetupBackupCommand}" Grid.Row="1" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
+            <StackLayout Padding="15" xe:Commands.Tap="{Binding ChangeCultureCommand}" Grid.Row="1" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
                 <Image>
                     <Image.Source>
-                        <FontImageSource Color="{DynamicResource NavigationPrimary}" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.BackupRestore}"/>
+                        <FontImageSource Color="{DynamicResource NavigationPrimary}" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.Translate}"/>
+                    </Image.Source>
+                </Image>
+                <StackLayout Margin="10,0,0,0">
+                    <Label FontSize="Medium" TextColor="Black" Text="{x:Static l:Resources.SettingsView_Language}"></Label>
+                    <Label FontSize="Small" TextColor="Gray" Text="{Binding CurrentLanguage}"></Label>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Padding="15" xe:Commands.Tap="{Binding BackupCommand}" Grid.Row="2" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
+                <Image>
+                    <Image.Source>
+                        <FontImageSource Color="{DynamicResource NavigationPrimary}" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.ContentSave}"/>
                     </Image.Source>
                 </Image>
                 <StackLayout Margin="10,0,0,0">
                     <Label FontSize="Medium" TextColor="Black" Text="{x:Static l:Resources.SettingsView_Backup}"></Label>
-                    <Label FontSize="Small" TextColor="Gray" Text="{Binding DisplayBackupOption}"></Label>
+                    <Label FontSize="Small" TextColor="Gray" Text="Export a new backup to file"></Label>
                 </StackLayout>
             </StackLayout>
-            <StackLayout Padding="15" xe:Commands.Tap="{Binding GetHelpCommand}" Grid.Row="2" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
+            <StackLayout Padding="15" xe:Commands.Tap="{Binding RestoreBackupCommand}" Grid.Row="3" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
+                <Image>
+                    <Image.Source>
+                        <FontImageSource Color="{DynamicResource NavigationPrimary}" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.Restore}"/>
+                    </Image.Source>
+                </Image>
+                <StackLayout Margin="10,0,0,0">
+                    <Label FontSize="Medium" TextColor="Black" Text="{x:Static l:Resources.SettingsView_RestoreBackup}"></Label>
+                    <Label FontSize="Small" TextColor="Gray" Text="Restore an existing backup from file"></Label>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Padding="15" xe:Commands.Tap="{Binding GetHelpCommand}" Grid.Row="4" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
                 <Image>
                     <Image.Source>
                         <FontImageSource Color="{DynamicResource NavigationPrimary}" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.Help}"/>
@@ -121,6 +154,17 @@
                 <StackLayout Margin="10,0,0,0">
                     <Label FontSize="Medium" TextColor="Black" Text="{x:Static l:Resources.SettingsView_Help}"></Label>
                     <Label FontSize="Small" TextColor="Gray" Text="{x:Static l:Resources.SettingsView_HelpContact}"></Label>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Padding="15" xe:Commands.Tap="{Binding ViewPrivacyPolicyCommand}" Grid.Row="5" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
+                <Image>
+                    <Image.Source>
+                        <FontImageSource Color="{DynamicResource NavigationPrimary}" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.EyeOff}"/>
+                    </Image.Source>
+                </Image>
+                <StackLayout Margin="10,0,0,0">
+                    <Label FontSize="Medium" TextColor="Black" Text="{x:Static l:Resources.SettingsView_Privacy}"></Label>
+                    <Label FontSize="Small" TextColor="Gray" Text="{x:Static l:Resources.SettingsView_PrivacyPolicy}"></Label>
                 </StackLayout>
             </StackLayout>
         </Grid>

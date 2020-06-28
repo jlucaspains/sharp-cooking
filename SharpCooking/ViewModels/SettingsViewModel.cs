@@ -1,7 +1,15 @@
-﻿using SharpCooking.Localization;
+﻿using Newtonsoft.Json;
+using SharpCooking.Data;
+using SharpCooking.Localization;
+using SharpCooking.Models;
 using SharpCooking.Services;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.IO.Compression;
+using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace SharpCooking.ViewModels
@@ -9,26 +17,38 @@ namespace SharpCooking.ViewModels
     public class SettingsViewModel : BaseViewModel
     {
         private readonly IEssentials _essentials;
+        private readonly IDataStore _store;
+        private readonly IConnectionFactory _connectionFactory;
 
-        public SettingsViewModel(IEssentials essentials)
+        public SettingsViewModel(IEssentials essentials, IDataStore store, IConnectionFactory connectionFactory)
         {
             Title = "Settings";
             StepIntervalCommand = new Command(async () => await AdjustStepInterval());
-            SetupBackupCommand = new Command(async () => await SetupBackup());
+            BackupCommand = new Command(async () => await Backup());
+            RestoreBackupCommand = new Command(async () => await RestoreBackup());
             GetHelpCommand = new Command(async () => await GetHelp());
+            ChangeCultureCommand = new Command(async () => await ChangeCulture());
+            ViewPrivacyPolicyCommand = new Command(async () => await ViewPrivacyPolicy());
 
             _essentials = essentials;
+            _store = store;
+            _connectionFactory = connectionFactory;
         }
 
-        public ICommand StepIntervalCommand { get; }
-        public ICommand SetupBackupCommand { get; }
-        public ICommand GetHelpCommand { get; }
+        public Command StepIntervalCommand { get; }
+        public Command BackupCommand { get; }
+        public Command RestoreBackupCommand { get; }
+        public Command GetHelpCommand { get; }
+        public Command ChangeCultureCommand { get; }
+        public Command ViewPrivacyPolicyCommand { get; }
 
         public int TimeBetweenStepsInterval { get; set; }
         public string DisplayTimeBetweenStepsInterval { get { return $"{TimeBetweenStepsInterval} {Resources.SettingsView_TimeStepsDescriptoin}"; } }
 
         public bool BackupIsSetup { get; set; }
         public string DisplayBackupOption { get { return BackupIsSetup ? $"{Resources.SettingsView_BackingUpTo} dropbox" : Resources.SettingsView_SetupBackup; } }
+
+        public string CurrentLanguage { get; set; }
 
         public override Task InitializeAsync()
         {
@@ -38,29 +58,164 @@ namespace SharpCooking.ViewModels
             if (TimeBetweenStepsInterval == 0)
                 TimeBetweenStepsInterval = AppConstants.DefaultTimeBetweenStepsInterval;
 
+            CurrentLanguage = CultureInfo.CurrentUICulture.DisplayName;
+
             return base.InitializeAsync();
         }
 
-        private async Task AdjustStepInterval()
+        async Task AdjustStepInterval()
         {
-            var result = await DisplayPromptAsync(Resources.SettingsView_StepsIntervalTitle, Resources.SettingsView_StepsIntervalDescription, 
+            var result = await DisplayPromptAsync(Resources.SettingsView_StepsIntervalTitle, Resources.SettingsView_StepsIntervalDescription,
                 Resources.SettingsView_StepsIntervalOk, Resources.SettingsView_StepsIntervalCancel, TimeBetweenStepsInterval.ToString(), Keyboard.Numeric);
 
-            if(int.TryParse(result, out int parsedResult) && parsedResult > 0)
+            if (int.TryParse(result, out int parsedResult) && parsedResult > 0)
             {
                 TimeBetweenStepsInterval = parsedResult;
                 _essentials.SetIntSetting(AppConstants.TimeBetweenStepsInterval, TimeBetweenStepsInterval);
             }
         }
 
-        private async Task SetupBackup()
+        async Task Backup()
         {
-            await GoToAsync("backup");
+            var allRecipes = await _store.AllAsync<Recipe>();
+
+            var recipesJson = JsonConvert.SerializeObject(allRecipes);
+            var recipesFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "SharpBackup_Recipe.json");
+            File.WriteAllText(recipesFile, recipesJson);
+
+            var allFiles = allRecipes.Where(item => !string.IsNullOrEmpty(item.MainImagePath)).Select(item => item.MainImagePath).ToList();
+            allFiles.Add(recipesFile);
+
+            var zipPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), AppConstants.BackupRecipeFileName);
+
+            QuickZip(allFiles.ToArray(), zipPath);
+
+            await _essentials.ShareFile(zipPath, Resources.SettingsView_PickBackupLocation);
         }
 
-        private async Task GetHelp()
+        async Task RestoreBackup()
+        {
+            var result = await _essentials.PickFile(AppConstants.BackupFileMimeTypes);
+
+            if (!result.Success)
+            {
+                await DisplayAlertAsync(Resources.SettingsView_RestoreCancelled, Resources.SettingsView_ResourceCancelledContent, Resources.ErrorOk);
+                return;
+            }
+
+            using (result.data)
+            {
+                using (ZipArchive zip = new ZipArchive(result.data, ZipArchiveMode.Read))
+                {
+                    if (!zip.Entries.Any(item => item.Name == AppConstants.BackupRecipeFileName))
+                    {
+                        await DisplayAlertAsync(Resources.ErrorTitle, Resources.SettingsView_BadBackupFile, Resources.ErrorOk);
+                        return;
+                    }
+
+                    var appFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
+
+                    var entry = zip.GetEntry(AppConstants.BackupRecipeFileName);
+                    var stream = entry.Open();
+                    IEnumerable<Recipe> restoreRecipes = null;
+
+                    try
+                    {
+                        using (StreamReader reader = new StreamReader(stream))
+                            restoreRecipes = JsonConvert.DeserializeObject<IEnumerable<Recipe>>(await reader.ReadToEndAsync());
+                    }
+                    catch
+                    {
+                        await DisplayAlertAsync(Resources.ErrorTitle, Resources.SettingsView_CorruptedBackupFile, Resources.ErrorOk);
+                        return;
+                    }
+
+                    if (restoreRecipes == null || !restoreRecipes.Any())
+                    {
+                        await DisplayAlertAsync(Resources.ErrorTitle, Resources.SettingsView_NoRecipesToRestore, Resources.ErrorOk);
+                        return;
+                    }
+
+                    var originalFiles = Directory.GetFiles(appFolder);
+
+                    foreach (var originalFile in originalFiles)
+                    {
+                        var fileName = Path.GetFileName(originalFile);
+
+                        if (fileName.StartsWith(AppConstants.BackupRestoreFilePrefix))
+                            File.Delete(originalFile);
+                    }
+
+                    // rename existing files
+                    foreach (var originalFile in originalFiles)
+                    {
+                        var fileName = Path.GetFileName(originalFile);
+
+                        if (fileName.StartsWith(AppConstants.BackupRestoreFilePrefix) || fileName.EndsWith(".db3"))
+                            continue;
+                        else
+                            File.Move(originalFile,
+                                originalFile.Replace(originalFile, $"{Path.GetDirectoryName(originalFile)}{Path.DirectorySeparatorChar}{AppConstants.BackupRestoreFilePrefix}_{fileName}"));
+                    }
+
+                    // drop all files in place
+                    zip.ExtractToDirectory(appFolder);
+
+                    //remove old data
+                    var allRecipes = await _store.AllAsync<Recipe>();
+                    foreach (var recipe in allRecipes)
+                        await _store.DeleteAsync(recipe);
+
+                    // add new data
+                    foreach (var recipe in restoreRecipes)
+                    {
+                        recipe.Id = 0;
+                        await _store.InsertAsync(recipe);
+                    }
+
+                    await DisplayToastAsync(Resources.SettingsView_RestoreIsDone);
+                }
+            }
+        }
+
+        async Task GetHelp()
         {
             await _essentials.LaunchUri(AppConstants.SupportUri);
+        }
+
+        async Task ChangeCulture()
+        {
+            await DisplayAlertAsync(Resources.SettingsView_NotSupported, Resources.SettingsView_CannotChangeCulture, Resources.ErrorOk);
+        }
+
+        async Task ViewPrivacyPolicy()
+        {
+            await _essentials.LaunchUri(AppConstants.PrivacyPolicyUrl);
+        }
+
+        bool QuickZip(string[] filesToZip, string destinationZipFullPath)
+        {
+            try
+            {
+                // Delete existing zip file if exists
+                if (File.Exists(destinationZipFullPath))
+                    File.Delete(destinationZipFullPath);
+
+                using (ZipArchive zip = ZipFile.Open(destinationZipFullPath, ZipArchiveMode.Create))
+                {
+                    foreach (var file in filesToZip)
+                    {
+                        zip.CreateEntryFromFile(file, Path.GetFileName(file), CompressionLevel.Optimal);
+                    }
+                }
+
+                return File.Exists(destinationZipFullPath);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Exception: {e.Message}");
+                return false;
+            }
         }
     }
 }

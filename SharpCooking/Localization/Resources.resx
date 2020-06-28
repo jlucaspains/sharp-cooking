@@ -147,6 +147,9 @@
   <data name="CancelEditRecipe" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="DropBoxProviderName" xml:space="preserve">
+    <value>Dropbox</value>
+  </data>
   <data name="EditItemView_FailedToParse" xml:space="preserve">
     <value>Failed to parse recipe id</value>
   </data>
@@ -225,11 +228,26 @@
   <data name="ItemDetailView_Notes" xml:space="preserve">
     <value>Notes</value>
   </data>
+  <data name="ItemDetailView_RecipeDeleted" xml:space="preserve">
+    <value>Recipe deleted</value>
+  </data>
   <data name="ItemDetailView_Share" xml:space="preserve">
     <value>Share Recipe</value>
   </data>
+  <data name="ItemDetailView_StartTimeCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ItemDetailView_StartTimeOk" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="ItemDetailView_StartTimeTitle" xml:space="preserve">
+    <value>Start Time</value>
+  </data>
   <data name="NewRecipe" xml:space="preserve">
     <value>New Recipe</value>
+  </data>
+  <data name="SelectCultureView_Title" xml:space="preserve">
+    <value>Culture</value>
   </data>
   <data name="SettingsView_BackingUpTo" xml:space="preserve">
     <value>Backing up to</value>
@@ -237,11 +255,50 @@
   <data name="SettingsView_Backup" xml:space="preserve">
     <value>Backup</value>
   </data>
+  <data name="SettingsView_BadBackupFile" xml:space="preserve">
+    <value>Humm... That file looks weird. Are you sure it is a Sharp Cooking backup file?</value>
+  </data>
+  <data name="SettingsView_CannotChangeCulture" xml:space="preserve">
+    <value>At this moment we don't support selecting the language here, please change the language in your phone.</value>
+  </data>
+  <data name="SettingsView_CorruptedBackupFile" xml:space="preserve">
+    <value>Oh no! Your backup lookups corrupted and I wasn't able to restore it.</value>
+  </data>
   <data name="SettingsView_Help" xml:space="preserve">
     <value>Help</value>
   </data>
   <data name="SettingsView_HelpContact" xml:space="preserve">
     <value>Contact developer</value>
+  </data>
+  <data name="SettingsView_Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="SettingsView_NoRecipesToRestore" xml:space="preserve">
+    <value>Weird... There are no recipes in this backup.</value>
+  </data>
+  <data name="SettingsView_NotSupported" xml:space="preserve">
+    <value>Not supported</value>
+  </data>
+  <data name="SettingsView_PickBackupLocation" xml:space="preserve">
+    <value>Where should we save your backup data?</value>
+  </data>
+  <data name="SettingsView_Privacy" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="SettingsView_PrivacyPolicy" xml:space="preserve">
+    <value>Review our privacy policy</value>
+  </data>
+  <data name="SettingsView_ResourceCancelledContent" xml:space="preserve">
+    <value>No problem. We can do this later.</value>
+  </data>
+  <data name="SettingsView_RestoreBackup" xml:space="preserve">
+    <value>Restore Backup</value>
+  </data>
+  <data name="SettingsView_RestoreCancelled" xml:space="preserve">
+    <value>Cancelled</value>
+  </data>
+  <data name="SettingsView_RestoreIsDone" xml:space="preserve">
+    <value>Restore is done.</value>
   </data>
   <data name="SettingsView_SetupBackup" xml:space="preserve">
     <value>Setup backup</value>

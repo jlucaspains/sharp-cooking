@@ -39,6 +39,8 @@ namespace SharpCooking.ViewModels
         public override async Task InitializeAsync()
         {
             await Refresh();
+
+            await base.InitializeAsync();
         }
 
         async Task AddItem()
@@ -67,7 +69,7 @@ namespace SharpCooking.ViewModels
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex);
+                await TrackException(ex);
             }
             finally
             {

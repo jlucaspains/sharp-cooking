@@ -1,10 +1,13 @@
-﻿using SQLite;
+﻿using SharpCooking.Models;
+using SQLite;
+using System.Threading.Tasks;
 
 namespace SharpCooking.Data
 {
     public interface IConnectionFactory
     {
         SQLiteAsyncConnection GetConnection();
+        Task MigrateDbToLatestAsync();
     }
 
     public class ConnectionFactory : IConnectionFactory
@@ -21,6 +24,13 @@ namespace SharpCooking.Data
             return new SQLiteAsyncConnection(_databasePath,
                 SQLiteOpenFlags.Create | SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.SharedCache,
                 false);
+        }
+
+        public async Task MigrateDbToLatestAsync()
+        {
+            var connection = GetConnection();
+            await connection.CreateTableAsync<Recipe>();
+            await connection.CreateTableAsync<Uom>();
         }
     }
 }

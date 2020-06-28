@@ -1,4 +1,6 @@
-﻿using System.Runtime.CompilerServices;
+﻿using Plugin.FilePicker;
+using Plugin.FilePicker.Abstractions;
+using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 
@@ -16,6 +18,8 @@ namespace SharpCooking.Services
         void SetBoolSetting(string key, bool value);
         Task<bool> LaunchUri(string uri);
         Task ShareText(string text, string title);
+        Task ShareFile(string filePath, string title);
+        Task<(bool Success, string FileName, Stream data)> PickFile(params string[] fileType);
     }
 
     public class Essentials : IEssentials
@@ -68,6 +72,21 @@ namespace SharpCooking.Services
         public async Task ShareText(string text, string title)
         {
             await Share.RequestAsync(new ShareTextRequest(text, title));
+        }
+
+        public async Task ShareFile(string filePath, string title)
+        {
+            var file = new Xamarin.Essentials.ReadOnlyFile(filePath);
+            await Share.RequestAsync(new ShareFileRequest(title, file));
+        }
+
+        public async Task<(bool Success, string FileName, Stream data)> PickFile(params string[] fileType)
+        {
+            FileData fileData = await CrossFilePicker.Current.PickFile(fileType);
+            if (fileData == null)
+                return (false, null, null); // user canceled file picking
+
+            return (true, fileData.FileName, fileData.GetStream());
         }
     }
 }

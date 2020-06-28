@@ -151,6 +151,15 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dropbox.
+        /// </summary>
+        public static string DropBoxProviderName {
+            get {
+                return ResourceManager.GetString("DropBoxProviderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to parse recipe id.
         /// </summary>
         public static string EditItemView_FailedToParse {
@@ -385,6 +394,15 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recipe deleted.
+        /// </summary>
+        public static string ItemDetailView_RecipeDeleted {
+            get {
+                return ResourceManager.GetString("ItemDetailView_RecipeDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Share Recipe.
         /// </summary>
         public static string ItemDetailView_Share {
@@ -394,11 +412,47 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string ItemDetailView_StartTimeCancel {
+            get {
+                return ResourceManager.GetString("ItemDetailView_StartTimeCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        public static string ItemDetailView_StartTimeOk {
+            get {
+                return ResourceManager.GetString("ItemDetailView_StartTimeOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Time.
+        /// </summary>
+        public static string ItemDetailView_StartTimeTitle {
+            get {
+                return ResourceManager.GetString("ItemDetailView_StartTimeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Recipe.
         /// </summary>
         public static string NewRecipe {
             get {
                 return ResourceManager.GetString("NewRecipe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Culture.
+        /// </summary>
+        public static string SelectCultureView_Title {
+            get {
+                return ResourceManager.GetString("SelectCultureView_Title", resourceCulture);
             }
         }
         
@@ -421,6 +475,33 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Humm... That file looks weird. Are you sure it is a Sharp Cooking backup file?.
+        /// </summary>
+        public static string SettingsView_BadBackupFile {
+            get {
+                return ResourceManager.GetString("SettingsView_BadBackupFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to At this moment we don&apos;t support selecting the language here, please change the language in your phone..
+        /// </summary>
+        public static string SettingsView_CannotChangeCulture {
+            get {
+                return ResourceManager.GetString("SettingsView_CannotChangeCulture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Oh no! Your backup lookups corrupted and I wasn&apos;t able to restore it..
+        /// </summary>
+        public static string SettingsView_CorruptedBackupFile {
+            get {
+                return ResourceManager.GetString("SettingsView_CorruptedBackupFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Help.
         /// </summary>
         public static string SettingsView_Help {
@@ -435,6 +516,96 @@ namespace SharpCooking.Localization {
         public static string SettingsView_HelpContact {
             get {
                 return ResourceManager.GetString("SettingsView_HelpContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string SettingsView_Language {
+            get {
+                return ResourceManager.GetString("SettingsView_Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weird... There are no recipes in this backup..
+        /// </summary>
+        public static string SettingsView_NoRecipesToRestore {
+            get {
+                return ResourceManager.GetString("SettingsView_NoRecipesToRestore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not supported.
+        /// </summary>
+        public static string SettingsView_NotSupported {
+            get {
+                return ResourceManager.GetString("SettingsView_NotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Where should we save your backup data?.
+        /// </summary>
+        public static string SettingsView_PickBackupLocation {
+            get {
+                return ResourceManager.GetString("SettingsView_PickBackupLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Privacy.
+        /// </summary>
+        public static string SettingsView_Privacy {
+            get {
+                return ResourceManager.GetString("SettingsView_Privacy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Review our privacy policy.
+        /// </summary>
+        public static string SettingsView_PrivacyPolicy {
+            get {
+                return ResourceManager.GetString("SettingsView_PrivacyPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No problem. We can do this later..
+        /// </summary>
+        public static string SettingsView_ResourceCancelledContent {
+            get {
+                return ResourceManager.GetString("SettingsView_ResourceCancelledContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restore Backup.
+        /// </summary>
+        public static string SettingsView_RestoreBackup {
+            get {
+                return ResourceManager.GetString("SettingsView_RestoreBackup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancelled.
+        /// </summary>
+        public static string SettingsView_RestoreCancelled {
+            get {
+                return ResourceManager.GetString("SettingsView_RestoreCancelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restore is done..
+        /// </summary>
+        public static string SettingsView_RestoreIsDone {
+            get {
+                return ResourceManager.GetString("SettingsView_RestoreIsDone", resourceCulture);
             }
         }
         

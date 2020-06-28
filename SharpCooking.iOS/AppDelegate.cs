@@ -21,7 +21,6 @@ namespace SharpCooking.iOS
         {
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
-            //AiForms.Renderers.iOS.SettingsViewInit.Init();
             XamEffects.iOS.Effects.Init();
 
             LoadApplication(new App());

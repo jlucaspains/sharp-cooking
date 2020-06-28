@@ -51,6 +51,8 @@ namespace SharpCooking.Views
             {
                 contentPage.Appearing += async (obj, args) => await baseViewModel.InitializeAsync();
                 contentPage.Disappearing += async (obj, args) => await baseViewModel.TerminateAsync();
+
+                baseViewModel.ViewName = view.GetType().Name;
             }
         }
     }

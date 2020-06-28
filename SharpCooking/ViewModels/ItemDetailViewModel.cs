@@ -40,6 +40,7 @@ namespace SharpCooking.ViewModels
         public Command ChangeMultiplierCommand { get; }
         public Command MoreCommand { get; }
         public Command ShareRecipeCommand { get; }
+        public Command ChangeStartTimeCommand { get; }
 
         public ObservableCollection<StepViewModel> Steps { get; set; }
         public decimal Multiplier { get; set; }
@@ -58,23 +59,42 @@ namespace SharpCooking.ViewModels
             ChangeMultiplierCommand = new Command(async () => await ChangeMultiplier());
             MoreCommand = new Command(async () => await ShowMoreOptions());
             ShareRecipeCommand = new Command(async () => await ShareRecipe());
+            ChangeStartTimeCommand = new Command(async () => await ChangeStartTime());
         }
 
         public override async Task InitializeAsync()
         {
-            IsBusy = true;
-
-            if (!int.TryParse(Id, out int parsedId))
+            try
             {
-                await ReportError("Failed to parse input id");
+                IsBusy = true;
+
+                if (!int.TryParse(Id, out int parsedId))
+                {
+                    await ReportError("Failed to parse input id");
+                }
+
+                Item = await _dataStore.FirstOrDefaultAsync<Recipe>(item => item.Id == parsedId);
+
+                PrepareRecipeToDisplay(Item);
+
+                IsBusy = false;
+
+            }
+            catch (Exception ex)
+            {
+                await TrackException(ex);
             }
 
-            Item = await _dataStore.FirstOrDefaultAsync<Recipe>(item => item.Id == parsedId);
-            Title = Item?.Title;
+            await base.InitializeAsync();
+        }
+
+        void PrepareRecipeToDisplay(Recipe recipe, DateTime? proposedStart = null)
+        {
+            Title = recipe?.Title;
             Multiplier = 1;
             StandardStepTimeInterval = _essentials.GetIntSetting(AppConstants.TimeBetweenStepsInterval);
 
-            var start = DateTime.Now;
+            var start = proposedStart ?? DateTime.Now;
 
             Steps = new ObservableCollection<StepViewModel>
             {
@@ -109,8 +129,6 @@ namespace SharpCooking.ViewModels
             }
 
             Steps.Add(new StepViewModel { IsNotLast = false, Title = "Enjoy!", Time = start.ToShortTimeString() });
-
-            IsBusy = false;
         }
 
         async Task GotoEdit()
@@ -129,7 +147,26 @@ namespace SharpCooking.ViewModels
 
                 var regexResult = Regex.Replace(Item.Ingredients, AppConstants.IngredientQuantityRegex, (match) =>
                 {
-                    decimal.TryParse(match.Value, out var parsedMatch);
+                    var fractionGroup = match.Groups["Fraction"];
+                    var regularGroup = match.Groups["Regular"];
+                    decimal parsedMatch = 0;
+
+                    if(fractionGroup.Success)
+                    {
+                        var parts = fractionGroup.Value.Split('/');
+                        decimal.TryParse(parts[0], out var fracNumerator);
+                        decimal.TryParse(parts[1], out var fracDecimal);
+
+                        if (fracNumerator == 0 || fracDecimal == 0)
+                            return "0";
+
+                        parsedMatch = fracNumerator / fracDecimal;
+                    }
+                    else
+                    {
+                        decimal.TryParse(regularGroup.Value, out parsedMatch);
+                    }
+
                     var newIngredientValue = parsedMatch * Multiplier;
                     var whole = decimal.Floor(newIngredientValue);
 
@@ -145,6 +182,8 @@ namespace SharpCooking.ViewModels
                 });
 
                 Steps[0].SubTitle = regexResult;
+
+                await TrackEvent("Multiplier", ("Value", newMultiplier.ToString()));
             }
         }
 
@@ -170,6 +209,8 @@ namespace SharpCooking.ViewModels
             if (confirmationResult)
             {
                 await _dataStore.DeleteAsync(Item);
+                await DisplayToastAsync(Resources.ItemDetailView_RecipeDeleted);
+                await TrackEvent("DeleteRecipe");
                 await GoBackAsync();
             }
         }
@@ -185,6 +226,20 @@ namespace SharpCooking.ViewModels
 {Item.Instructions}";
 
             await _essentials.ShareText(text, Resources.AppName);
+            await TrackEvent("Share");
+        }
+
+        async Task ChangeStartTime()
+        {
+            var result = await DisplayTimePromptAsync(Resources.ItemDetailView_StartTimeTitle, Resources.ItemDetailView_StartTimeOk, Resources.ItemDetailView_StartTimeCancel);
+
+            if (result == null)
+                return;
+
+            var startTime = DateTime.Today.AddMinutes(result.Value.TotalMinutes);
+
+            PrepareRecipeToDisplay(Item, startTime);
+            await TrackEvent("ChangeStartTime");
         }
     }
 }
