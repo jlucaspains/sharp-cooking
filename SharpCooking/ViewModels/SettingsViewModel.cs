@@ -80,13 +80,13 @@ namespace SharpCooking.ViewModels
             var allRecipes = await _store.AllAsync<Recipe>();
 
             var recipesJson = JsonConvert.SerializeObject(allRecipes);
-            var recipesFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "SharpBackup_Recipe.json");
+            var recipesFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), AppConstants.BackupRecipeFileName);
             File.WriteAllText(recipesFile, recipesJson);
 
             var allFiles = allRecipes.Where(item => !string.IsNullOrEmpty(item.MainImagePath)).Select(item => item.MainImagePath).ToList();
             allFiles.Add(recipesFile);
 
-            var zipPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), AppConstants.BackupRecipeFileName);
+            var zipPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), AppConstants.BackupZipFileName);
 
             QuickZip(allFiles.ToArray(), zipPath);
 
