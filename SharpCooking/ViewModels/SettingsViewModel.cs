@@ -80,13 +80,13 @@ namespace SharpCooking.ViewModels
             var allRecipes = await _store.AllAsync<Recipe>();
 
             var recipesJson = JsonConvert.SerializeObject(allRecipes);
-            var recipesFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "SharpBackup_Recipe.json");
+            var recipesFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), AppConstants.BackupRecipeFileName);
             File.WriteAllText(recipesFile, recipesJson);
 
             var allFiles = allRecipes.Where(item => !string.IsNullOrEmpty(item.MainImagePath)).Select(item => item.MainImagePath).ToList();
             allFiles.Add(recipesFile);
 
-            var zipPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), AppConstants.BackupRecipeFileName);
+            var zipPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), AppConstants.BackupZipFileName);
 
             QuickZip(allFiles.ToArray(), zipPath);
 
@@ -113,14 +113,14 @@ namespace SharpCooking.ViewModels
                         return;
                     }
 
-                    var appFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
-
-                    var entry = zip.GetEntry(AppConstants.BackupRecipeFileName);
-                    var stream = entry.Open();
+                    var appFolder = Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
                     IEnumerable<Recipe> restoreRecipes = null;
 
                     try
                     {
+                        var entry = zip.GetEntry(AppConstants.BackupRecipeFileName);
+                        var stream = entry.Open();
+
                         using (StreamReader reader = new StreamReader(stream))
                             restoreRecipes = JsonConvert.DeserializeObject<IEnumerable<Recipe>>(await reader.ReadToEndAsync());
                     }

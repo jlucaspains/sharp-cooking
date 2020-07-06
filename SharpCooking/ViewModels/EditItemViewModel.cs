@@ -89,7 +89,8 @@ namespace SharpCooking.ViewModels
             {
                 result = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
                 {
-                    CompressionQuality = 92
+                    CompressionQuality = 92,
+                    SaveMetaData = false
                 });
             }
             else if (actionSheetResult == Resources.EditItemView_PickImageUseCamera)

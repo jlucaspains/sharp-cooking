@@ -8,17 +8,22 @@ using System.Collections.Generic;
 using SharpCooking.Models;
 using SharpCooking.Data;
 using SharpCooking.Localization;
+using System.Threading;
 
 namespace SharpCooking.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
         private readonly IDataStore _dataStore;
+        private CancellationTokenSource _throttleCts = new CancellationTokenSource();
+
         public ObservableCollection<RecipeViewModel> Items { get; set; }
-        public Command LoadItemsCommand { get; set; }
-        public Command AddItemCommand { get; private set; }
-        public Command ItemTappedCommand { get; private set; }
+        public Command LoadItemsCommand { get; }
+        public Command AddItemCommand { get; }
+        public Command ItemTappedCommand { get; }
+        public Command FilterListCommand { get; }
         public bool IsRefreshing { get; set; }
+        public string SearchValue { get; set; }
 
         public ItemsViewModel(IDataStore dataStore)
         {
@@ -28,6 +33,7 @@ namespace SharpCooking.ViewModels
             LoadItemsCommand = new Command(async () => await Refresh());
             AddItemCommand = new Command(async () => await AddItem());
             ItemTappedCommand = new Command<RecipeViewModel>(async (item) => await GoToItemDetail(item));
+            FilterListCommand = new Command(async () => await DebouncedSearch());
 
             MessagingCenter.Subscribe<EditItemView, Recipe>(this, "AddItem", (obj, item) =>
             {
@@ -60,7 +66,10 @@ namespace SharpCooking.ViewModels
             try
             {
                 Items.Clear();
-                var items = await _dataStore.AllAsync<Recipe>();
+
+                var items = string.IsNullOrEmpty(SearchValue)
+                    ? await _dataStore.AllAsync<Recipe>()
+                    : await _dataStore.QueryAsync<Recipe>(item => item.Title.ToLower().Contains(SearchValue.ToLower()));
 
                 foreach (var item in items)
                     Items.Add(RecipeViewModel.FromModel(item));
@@ -74,6 +83,24 @@ namespace SharpCooking.ViewModels
             finally
             {
                 IsRefreshing = false;
+            }
+        }
+
+        private async Task DebouncedSearch()
+        {
+            try
+            {
+                Interlocked.Exchange(ref _throttleCts, new CancellationTokenSource()).Cancel();
+
+                await Task.Delay(TimeSpan.FromMilliseconds(500), _throttleCts.Token)
+                    .ContinueWith(async task => await Refresh(),
+                        CancellationToken.None,
+                        TaskContinuationOptions.OnlyOnRanToCompletion,
+                        TaskScheduler.FromCurrentSynchronizationContext());
+            }
+            catch
+            {
+                //Ignore any Threading errors
             }
         }
     }

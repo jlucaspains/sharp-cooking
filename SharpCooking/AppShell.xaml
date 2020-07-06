@@ -6,7 +6,8 @@
        mc:Ignorable="d"
        xmlns:v="clr-namespace:SharpCooking.Views"
        xmlns:l="clr-namespace:SharpCooking.Localization"
-       x:Class="SharpCooking.AppShell">
+       x:Class="SharpCooking.AppShell"
+       >
 
     <!-- 
         Styles and Resources 
@@ -38,8 +39,14 @@
                 <FontImageSource
                     FontFamily="{DynamicResource MaterialFont}"
                     Glyph="{x:Static v:IconFont.BookOpenVariant}"
-                    Size="44"
-                    Color="{StaticResource TabIconColor}" />
+                    Color="{StaticResource TabIconColor}">
+                    <FontImageSource.Size>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" Value="24"></On>
+                            <On Platform="Android" Value="44"></On>
+                        </OnPlatform>
+                    </FontImageSource.Size>
+                </FontImageSource>
             </Tab.Icon>
             <ShellContent Route="recipes" ContentTemplate="{DataTemplate v:ItemsView}" />
         </Tab>
@@ -48,8 +55,14 @@
                 <FontImageSource
                     FontFamily="{DynamicResource MaterialFont}"
                     Glyph="{x:Static v:IconFont.InformationOutline}"
-                    Size="44"
-                    Color="{StaticResource TabIconColor}" />
+                    Color="{StaticResource TabIconColor}">
+                    <FontImageSource.Size>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" Value="24"></On>
+                            <On Platform="Android" Value="44"></On>
+                        </OnPlatform>
+                    </FontImageSource.Size>
+                </FontImageSource>
             </Tab.Icon>
             <ShellContent Route="about" ContentTemplate="{DataTemplate v:AboutView}" />
         </Tab>
@@ -58,8 +71,14 @@
                 <FontImageSource
                     FontFamily="{DynamicResource MaterialFont}"
                     Glyph="{x:Static v:IconFont.Cogs}"
-                    Size="44"
-                    Color="{StaticResource TabIconColor}" />
+                    Color="{StaticResource TabIconColor}">
+                    <FontImageSource.Size>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" Value="24"></On>
+                            <On Platform="Android" Value="44"></On>
+                        </OnPlatform>
+                    </FontImageSource.Size>
+                </FontImageSource>
             </Tab.Icon>
             <ShellContent Route="settings" ContentTemplate="{DataTemplate v:SettingsView}" />
         </Tab>
