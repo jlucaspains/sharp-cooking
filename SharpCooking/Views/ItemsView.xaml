@@ -8,12 +8,17 @@
              xmlns:v="clr-namespace:SharpCooking.Views"
              xmlns:b="clr-namespace:SharpCooking.Behaviors"
              Title="{Binding Title}"
-             x:Name="BrowseItemsPage"
              v:ViewModelLocator.AutoWireViewModel="true">
     <Shell.SearchHandler>
         <v:RecipeSearchHandler Placeholder="Enter search term"
                                ShowsResults="true"
-                               SearchBoxVisibility="Collapsible">
+                               IsSearchEnabled="True">
+            <v:RecipeSearchHandler.SearchBoxVisibility>
+                <OnPlatform x:TypeArguments="SearchBoxVisibility">
+                    <On Platform="iOS" Value="Hidden"></On>
+                    <On Platform="Android" Value="Collapsible"></On>
+                </OnPlatform>
+            </v:RecipeSearchHandler.SearchBoxVisibility>
             <v:RecipeSearchHandler.ItemTemplate>
                 <DataTemplate>
                     <Grid Padding="10">
@@ -35,95 +40,94 @@
             </v:RecipeSearchHandler.ItemTemplate>
         </v:RecipeSearchHandler>
     </Shell.SearchHandler>
-
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="100" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="100" />
-        </Grid.ColumnDefinitions>
-        <ListView x:Name="ItemsListView"
-                  ItemsSource="{Binding Items}"
-                  VerticalOptions="FillAndExpand"
-                  HasUnevenRows="true"
-                  RefreshCommand="{Binding LoadItemsCommand}"
-                  IsPullToRefreshEnabled="true"
-                  IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
-                  CachingStrategy="RecycleElement"
-                  SelectionMode="None"
-                  SeparatorVisibility="None"
-                  Grid.RowSpan="2"
-                  Grid.ColumnSpan="2"
-                  BackgroundColor="#F9F9F9">
-            <ListView.Behaviors>
-                <b:EventToCommandBehavior                    
-                        EventName="ItemTapped"
-                        Command="{Binding ItemTappedCommand}"
-                        EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
-            </ListView.Behaviors>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid Padding="10">
-
-                            <Frame HeightRequest="250" HasShadow="True" CornerRadius="15" Padding="0">
-                                <Grid VerticalOptions="Fill" Padding="0">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="200" />
-                                        <RowDefinition Height="50" />
-                                    </Grid.RowDefinitions>
-                                    <Image Aspect="AspectFill" Grid.Row="0" Grid.Column="0"
-                                           IsVisible="{Binding HasMainImage}">
-                                        <Image.Source>
-                                            <FileImageSource File="{Binding MainImagePath}" />
-                                        </Image.Source>
-                                    </Image>
-                                    <Grid Grid.Row="0" Grid.Column="0"
-                                           IsVisible="{Binding DoesNotHaveMainImage}"
-                                           BackgroundColor="{DynamicResource NavigationSecondary}">
-                                        <Image Aspect="AspectFill"
-                                               IsVisible="{Binding DoesNotHaveMainImage}"
-                                               HorizontalOptions="Center" VerticalOptions="Center">
-                                            <Image.Source>
-                                                <FontImageSource FontFamily="{DynamicResource MaterialFont}"
-                                                Color="White"
-                                                Size="50"
-                                                Glyph="{x:Static v:IconFont.ImageBrokenVariant}"/>
-                                            </Image.Source>
-                                        </Image>
-                                    </Grid>
-                                    
-                                    <Label Grid.Row="1" Text="{Binding Title}" 
-                                        LineBreakMode="TailTruncation"
-                                        Padding="20,5" TextColor="#707070" FontSize="15" />
-                                </Grid>
-
-                            </Frame>
-
-
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <ImageButton
-            BackgroundColor="{DynamicResource NavigationPrimary}"
-            CornerRadius="100"
-            Grid.Column="1"
-            Grid.Row="1"
-            Padding="16"
-            Margin="20"
-            Command="{Binding AddItemCommand}"
-            >
-            <ImageButton.Source>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding AddItemCommand}">
+            <ToolbarItem.IconImageSource>
                 <FontImageSource
                     FontFamily="{DynamicResource MaterialFont}"
-                    Size="10"
+                    Size="24"
                     Glyph="{x:Static v:IconFont.Plus}"/>
-            </ImageButton.Source>
-        </ImageButton>
-    </Grid>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <StackLayout>
+            <SearchBar Placeholder="Search items..." 
+                       Text="{Binding SearchValue}">
+                <SearchBar.Behaviors>
+                    <b:EventToCommandBehavior EventName="TextChanged" Command="{Binding FilterListCommand}" />
+                </SearchBar.Behaviors>
+                <SearchBar.IsVisible>
+                    <OnPlatform x:TypeArguments="x:Boolean">
+                        <On Platform="Android" Value="false" />
+                        <On Platform="iOS" Value="true" />
+                    </OnPlatform>
+                </SearchBar.IsVisible>
+            </SearchBar>
+
+            <ListView x:Name="ItemsListView"
+                      ItemsSource="{Binding Items}"
+                      VerticalOptions="FillAndExpand"
+                      HasUnevenRows="true"
+                      RefreshCommand="{Binding LoadItemsCommand}"
+                      IsPullToRefreshEnabled="true"
+                      IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                      CachingStrategy="RecycleElement"
+                      SelectionMode="None"
+                      SeparatorVisibility="None"
+                      Grid.RowSpan="2"
+                      Grid.ColumnSpan="2"
+                      BackgroundColor="#F9F9F9">
+                <ListView.Behaviors>
+                    <b:EventToCommandBehavior                    
+                            EventName="ItemTapped"
+                            Command="{Binding ItemTappedCommand}"
+                            EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+
+                                <Frame HeightRequest="250" HasShadow="true" CornerRadius="15" Padding="0">
+                                    <Grid VerticalOptions="Fill" Padding="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="200" />
+                                            <RowDefinition Height="50" />
+                                        </Grid.RowDefinitions>
+                                        <Image Aspect="AspectFill" Grid.Row="0" Grid.Column="0"
+                                               IsVisible="{Binding HasMainImage}">
+                                            <Image.Source>
+                                                <FileImageSource File="{Binding MainImagePath}" />
+                                            </Image.Source>
+                                        </Image>
+                                        <Grid Grid.Row="0" Grid.Column="0"
+                                               IsVisible="{Binding DoesNotHaveMainImage}"
+                                               BackgroundColor="{DynamicResource NavigationSecondary}">
+                                            <Image Aspect="AspectFill"
+                                                   IsVisible="{Binding DoesNotHaveMainImage}"
+                                                   HorizontalOptions="Center" VerticalOptions="Center">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="{DynamicResource MaterialFont}"
+                                                    Color="White"
+                                                    Size="50"
+                                                    Glyph="{x:Static v:IconFont.ImageBrokenVariant}"/>
+                                                </Image.Source>
+                                            </Image>
+                                        </Grid>
+
+                                        <Label Grid.Row="1" Text="{Binding Title}" 
+                                            LineBreakMode="TailTruncation"
+                                            Padding="20,5" TextColor="#707070" FontSize="15" />
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

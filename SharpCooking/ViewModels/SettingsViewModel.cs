@@ -113,14 +113,14 @@ namespace SharpCooking.ViewModels
                         return;
                     }
 
-                    var appFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
-
-                    var entry = zip.GetEntry(AppConstants.BackupRecipeFileName);
-                    var stream = entry.Open();
+                    var appFolder = Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
                     IEnumerable<Recipe> restoreRecipes = null;
 
                     try
                     {
+                        var entry = zip.GetEntry(AppConstants.BackupRecipeFileName);
+                        var stream = entry.Open();
+
                         using (StreamReader reader = new StreamReader(stream))
                             restoreRecipes = JsonConvert.DeserializeObject<IEnumerable<Recipe>>(await reader.ReadToEndAsync());
                     }

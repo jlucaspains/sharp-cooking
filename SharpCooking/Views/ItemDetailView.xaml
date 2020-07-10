@@ -29,8 +29,10 @@
     </ContentPage.ToolbarItems>
 
     <ScrollView>
-        <StackLayout Padding="15">
-            <Grid Margin="-15,-15,-15,0">
+        <!--<StackLayout Padding="15">-->
+        <StackLayout>
+            <!--<Grid Margin="-15,-15,-15,0">-->
+            <Grid>
                 <Image IsVisible="{Binding HasMainImage}" Aspect="AspectFill" HeightRequest="250">
                     <Image.Source>
                         <FileImageSource File="{Binding Item.MainImagePath}" />
@@ -51,7 +53,8 @@
                 </Grid>
             </Grid>
 
-            <Frame CornerRadius="25" Margin="-15,-27,-15,-30"  HasShadow="True">
+            <!--<Frame CornerRadius="25" Margin="-15,-27,-15,0" HasShadow="True">-->
+            <Frame CornerRadius="25" Margin="0,-27,0,0" HasShadow="True">
                 <StackLayout>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -60,14 +63,27 @@
                             <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="50" />
                         </Grid.ColumnDefinitions>
-                        <Button BackgroundColor="{DynamicResource NavigationPrimary}" TextColor="White" Grid.Column="2" CornerRadius="100" HeightRequest="50" 
+                        <Button BackgroundColor="{DynamicResource NavigationPrimary}" TextColor="White" Grid.Column="2" HeightRequest="50" 
                                 Command="{Binding ChangeMultiplierCommand}" Text="{Binding Multiplier, StringFormat='{0}x'}">
+                            <Button.CornerRadius>
+                                <OnPlatform x:TypeArguments="x:Int32">
+                                    <On Platform="iOS" Value="25" />
+                                    <On Platform="Android" Value="100" />
+                                </OnPlatform>
+                            </Button.CornerRadius>
                         </Button>
-                        <ImageButton BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="3" CornerRadius="100" HeightRequest="50" 
+                        <ImageButton BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="3" HeightRequest="50" 
                                      Padding="16" Command="{Binding ChangeStartTimeCommand}">
+                            <ImageButton.CornerRadius>
+                                <OnPlatform x:TypeArguments="x:Int32">
+                                    <On Platform="iOS" Value="25" />
+                                    <On Platform="Android" Value="100" />
+                                </OnPlatform>
+                            </ImageButton.CornerRadius>
                             <ImageButton.Source>
                                 <FontImageSource
                                     Size="10"
+                                    Color="White"
                                     FontFamily="{DynamicResource MaterialFont}"
                                     Glyph="{x:Static v:IconFont.Clock}"/>
                             </ImageButton.Source>
@@ -149,6 +165,7 @@
                     <Label Text="{Binding Item.Notes}" FontSize="Small" Margin="0,0,0,20" IsVisible="{Binding HasNotes}" />
                 </StackLayout>
             </Frame>
+            <StackLayout BackgroundColor="White" HeightRequest="27" Margin="0,-27,0,0"></StackLayout>
         </StackLayout>
     </ScrollView>
 </ContentPage>

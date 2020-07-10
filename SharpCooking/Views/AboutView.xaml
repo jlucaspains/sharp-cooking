@@ -20,20 +20,13 @@
                     <FontImageSource
                     FontFamily="{DynamicResource MaterialFont}"
                     Size="100"
+                    Color="White"
                     Glyph="{x:Static v:IconFont.ChefHat}"/>
                 </Image.Source>
             </Image>
         </Grid>
-        <ScrollView Grid.Row="1">
+        <ScrollView Grid.Row="1" Margin="0,20,0,0">
             <StackLayout Orientation="Vertical" Padding="16,0,16,40" Spacing="10">
-                <Image Aspect="AspectFill" HeightRequest="64">
-                <Image.Source>
-                    <FontImageSource
-                                FontFamily="{DynamicResource MaterialFont}"
-                                Size="10"
-                                Glyph="{x:Static v:IconFont.ChefHat}"/>
-                </Image.Source>
-                </Image>
                 <Label FontSize="22">
                     <Label.FormattedText>
                         <FormattedString>

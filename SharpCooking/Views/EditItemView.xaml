@@ -27,42 +27,41 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
 
-    <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Padding="15">
-                <Grid HeightRequest="250" BackgroundColor="{DynamicResource NavigationSecondary}" Margin="-15,-15,-15,0">
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding MainImageTappedCommand}" />
-                    </Grid.GestureRecognizers>
-                    <Image IsVisible="{Binding Item.DoesNotHaveMainImage}" 
-                           HorizontalOptions="Center" VerticalOptions="Center">
-                        <Image.Source>
-                            <FontImageSource
-                                FontFamily="{DynamicResource MaterialFont}"
-                                Color="White"
-                                Size="50"
-                                Glyph="{x:Static v:IconFont.ImagePlus}"/>
-                        </Image.Source>
-                    </Image>
-                    <Image IsVisible="{Binding Item.HasMainImage}" Aspect="AspectFill"
-                           Source="{Binding Item.MainImagePath}" HeightRequest="200" />
-                </Grid>
-                <Frame CornerRadius="25" Margin="-15,-27,-15,-30" HasShadow="True">
-                    <StackLayout Margin="0,0,0,10">
-                        <Label Text="{x:Static l:Resources.EditItemView_Title}" />
-                        <Entry Text="{Binding Item.Title}" />
-                        <Label Text="{x:Static l:Resources.EditItemView_Source}" />
-                        <Entry Text="{Binding Item.Source}" />
-                        <Label Text="{x:Static l:Resources.EditItemView_Ingredients}" />
-                        <Editor AutoSize="TextChanges" Text="{Binding Item.Ingredients}" />
-                        <Label Text="{x:Static l:Resources.EditItemView_Instructions}" />
-                        <Editor AutoSize="TextChanges" Text="{Binding Item.Instructions}" />
-                        <Label Text="{x:Static l:Resources.EditItemView_Notes}" />
-                        <Editor AutoSize="TextChanges" Text="{Binding Item.Notes}" />
-                    </StackLayout>
-                </Frame>
-            </StackLayout>
-        </ScrollView>
-    </ContentPage.Content>
+    <ScrollView>
+        <StackLayout>
+            <Grid HeightRequest="250" BackgroundColor="{DynamicResource NavigationSecondary}" Margin="0">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding MainImageTappedCommand}" />
+                </Grid.GestureRecognizers>
+                <Image IsVisible="{Binding Item.DoesNotHaveMainImage}" 
+                        HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image.Source>
+                        <FontImageSource
+                            FontFamily="{DynamicResource MaterialFont}"
+                            Color="White"
+                            Size="50"
+                            Glyph="{x:Static v:IconFont.ImagePlus}"/>
+                    </Image.Source>
+                </Image>
+                <Image IsVisible="{Binding Item.HasMainImage}" Aspect="AspectFill"
+                        Source="{Binding Item.MainImagePath}" HeightRequest="200" />
+            </Grid>
+            <Frame CornerRadius="25" Margin="0,-27,0,0" HasShadow="True">
+                <StackLayout Margin="0,0,0,10">
+                    <Label Text="{x:Static l:Resources.EditItemView_Title}" />
+                    <Entry Text="{Binding Item.Title}" />
+                    <Label Text="{x:Static l:Resources.EditItemView_Source}" />
+                    <Entry Text="{Binding Item.Source}" />
+                    <Label Text="{x:Static l:Resources.EditItemView_Ingredients}" />
+                    <Editor AutoSize="TextChanges" Text="{Binding Item.Ingredients}" />
+                    <Label Text="{x:Static l:Resources.EditItemView_Instructions}" />
+                    <Editor AutoSize="TextChanges" Text="{Binding Item.Instructions}" />
+                    <Label Text="{x:Static l:Resources.EditItemView_Notes}" />
+                    <Editor AutoSize="TextChanges" Text="{Binding Item.Notes}" />
+                </StackLayout>
+            </Frame>
+            <StackLayout BackgroundColor="White" HeightRequest="27" Margin="0,-27,0,0"></StackLayout>
+        </StackLayout>
+    </ScrollView>
 
 </ContentPage>

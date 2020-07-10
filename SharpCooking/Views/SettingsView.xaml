@@ -13,7 +13,7 @@
              v:ViewModelLocator.AutoWireViewModel="true">
 
     <StackLayout>
-        <TableView Intent="Settings" HasUnevenRows="True">
+        <!--<TableView Intent="Settings" HasUnevenRows="True">
             <TableView.IsVisible>
                 <OnPlatform x:TypeArguments="x:Boolean">
                     <On Platform="iOS" Value="true"></On>
@@ -53,21 +53,21 @@
                     <ViewCell>
                         <Grid>
                             <Label Margin="15">Create Backup</Label>
-                            <!--<Image Grid.Column="1" HorizontalOptions="End">
+                            <Image Grid.Column="1" HorizontalOptions="End">
                                 <Image.Source>
                                     <FontImageSource Color="Green" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.BackupRestore}"/>
                                 </Image.Source>
-                            </Image>-->
+                            </Image>
                         </Grid>
                     </ViewCell>
                     <ViewCell>
                         <Grid>
                             <Label Margin="15">Restore</Label>
-                            <!--<Image Grid.Column="1" HorizontalOptions="End">
+                            <Image Grid.Column="1" HorizontalOptions="End">
                                 <Image.Source>
                                     <FontImageSource Color="Green" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.BackupRestore}"/>
                                 </Image.Source>
-                            </Image>-->
+                            </Image>
                         </Grid>
                     </ViewCell>
                 </TableSection>
@@ -84,15 +84,15 @@
                     </ViewCell>
                 </TableSection>
             </TableRoot>
-        </TableView>
+        </TableView>-->
 
         <Grid>
-            <Grid.IsVisible>
+            <!--<Grid.IsVisible>
                 <OnPlatform x:TypeArguments="x:Boolean">
                     <On Platform="iOS" Value="false"></On>
                     <On Platform="Android" Value="true"></On>
                 </OnPlatform>
-            </Grid.IsVisible>
+            </Grid.IsVisible>-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="70" />
                 <RowDefinition Height="70" />

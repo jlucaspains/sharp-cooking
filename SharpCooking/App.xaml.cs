@@ -52,7 +52,6 @@ namespace SharpCooking
             container.Register<IDataStore, DataStore>();
             container.Register<IEssentials, Essentials>();
             container.Register(GetConnectionFactory());
-            container.RegisterMultiple<IBackupProvider>(new[] { typeof(DropBoxBackupProvider) });
         }
 
         private IConnectionFactory GetConnectionFactory()
