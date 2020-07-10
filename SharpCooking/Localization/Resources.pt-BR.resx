@@ -216,4 +216,22 @@
   <data name="SettingsView_RestoreIsDone" xml:space="preserve">
     <value>A restauração de backup foi concluída.</value>
   </data>
+  <data name="ItemDetailView_Ingredients" xml:space="preserve">
+    <value>Ingredientes</value>
+  </data>
+  <data name="ItemDetailView_Step" xml:space="preserve">
+    <value>Passo</value>
+  </data>
+  <data name="SettingsView_ExportBackup" xml:space="preserve">
+    <value>Exportar um novo backup para arquivo</value>
+  </data>
+  <data name="SettingsView_RestoreBackupFromFile" xml:space="preserve">
+    <value>Restaurar um backup existente de arquivo</value>
+  </data>
+  <data name="ItemsView_EnterSearchTerm" xml:space="preserve">
+    <value>Digite o termo de pesquisa</value>
+  </data>
+  <data name="ItemsView_SearchItems" xml:space="preserve">
+    <value>Pesquisar itens...</value>
+  </data>
 </root>

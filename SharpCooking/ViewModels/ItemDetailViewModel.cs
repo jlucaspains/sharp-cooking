@@ -100,7 +100,7 @@ namespace SharpCooking.ViewModels
 
             Steps = new ObservableCollection<StepViewModel>
             {
-                new StepViewModel { IsNotLast = true, Time = start.ToShortTimeString(), Title = "Ingredients", SubTitle = Item.Ingredients },
+                new StepViewModel { IsNotLast = true, Time = start.ToShortTimeString(), Title = Resources.ItemDetailView_Ingredients, SubTitle = Item.Ingredients },
             };
 
             start = start.AddMinutes(StandardStepTimeInterval);
@@ -110,7 +110,7 @@ namespace SharpCooking.ViewModels
 
             foreach ((int i, string item) in instructions)
             {
-                Steps.Add(new StepViewModel { IsNotLast = true, Title = $"Step {i + 1}", SubTitle = item, Time = start.ToShortTimeString() });
+                Steps.Add(new StepViewModel { IsNotLast = true, Title = $"{Resources.ItemDetailView_Step} {i + 1}", SubTitle = item, Time = start.ToShortTimeString() });
 
                 var match = Regex.Match(item, AppConstants.StepTimeIdentifierRegex);
 

@@ -22,7 +22,7 @@ namespace SharpCooking.ViewModels
 
         public SettingsViewModel(IEssentials essentials, IDataStore store, IConnectionFactory connectionFactory)
         {
-            Title = "Settings";
+            Title = Resources.AppShell_Settings;
             StepIntervalCommand = new Command(async () => await AdjustStepInterval());
             BackupCommand = new Command(async () => await Backup());
             RestoreBackupCommand = new Command(async () => await RestoreBackup());

@@ -7,10 +7,11 @@
              x:Class="SharpCooking.Views.ItemsView"
              xmlns:v="clr-namespace:SharpCooking.Views"
              xmlns:b="clr-namespace:SharpCooking.Behaviors"
+             xmlns:l="clr-namespace:SharpCooking.Localization"
              Title="{Binding Title}"
              v:ViewModelLocator.AutoWireViewModel="true">
     <Shell.SearchHandler>
-        <v:RecipeSearchHandler Placeholder="Enter search term"
+        <v:RecipeSearchHandler Placeholder="{x:Static l:Resources.ItemsView_EnterSearchTerm}"
                                ShowsResults="true"
                                IsSearchEnabled="True">
             <v:RecipeSearchHandler.SearchBoxVisibility>
@@ -54,7 +55,7 @@
 
     <ScrollView>
         <StackLayout>
-            <SearchBar Placeholder="Search items..." 
+            <SearchBar Placeholder="{x:Static l:Resources.ItemsView_SearchItems}" 
                        Text="{Binding SearchValue}">
                 <SearchBar.Behaviors>
                     <b:EventToCommandBehavior EventName="TextChanged" Command="{Binding FilterListCommand}" />

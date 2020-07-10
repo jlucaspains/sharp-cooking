@@ -295,6 +295,15 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ingredients.
+        /// </summary>
+        public static string ItemDetailView_Ingredients {
+            get {
+                return ResourceManager.GetString("ItemDetailView_Ingredients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string ItemDetailView_MoreCancel {
@@ -439,6 +448,33 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Step.
+        /// </summary>
+        public static string ItemDetailView_Step {
+            get {
+                return ResourceManager.GetString("ItemDetailView_Step", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter search term.
+        /// </summary>
+        public static string ItemsView_EnterSearchTerm {
+            get {
+                return ResourceManager.GetString("ItemsView_EnterSearchTerm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search items....
+        /// </summary>
+        public static string ItemsView_SearchItems {
+            get {
+                return ResourceManager.GetString("ItemsView_SearchItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Recipe.
         /// </summary>
         public static string NewRecipe {
@@ -498,6 +534,15 @@ namespace SharpCooking.Localization {
         public static string SettingsView_CorruptedBackupFile {
             get {
                 return ResourceManager.GetString("SettingsView_CorruptedBackupFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export a new backup to file.
+        /// </summary>
+        public static string SettingsView_ExportBackup {
+            get {
+                return ResourceManager.GetString("SettingsView_ExportBackup", resourceCulture);
             }
         }
         
@@ -588,6 +633,15 @@ namespace SharpCooking.Localization {
         public static string SettingsView_RestoreBackup {
             get {
                 return ResourceManager.GetString("SettingsView_RestoreBackup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restore an existing backup from file.
+        /// </summary>
+        public static string SettingsView_RestoreBackupFromFile {
+            get {
+                return ResourceManager.GetString("SettingsView_RestoreBackupFromFile", resourceCulture);
             }
         }
         

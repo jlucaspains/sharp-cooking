@@ -5,7 +5,8 @@ using Xamarin.Forms.Platform.Android;
 
 namespace SharpCooking.Droid
 {
-    [Activity(Theme = "@style/SplashTheme", MainLauncher = true, NoHistory = true)]
+    [Activity(Label = "@string/app_name", Theme = "@style/SplashTheme", Icon = "@mipmap/icon", 
+        MainLauncher = true, NoHistory = true)]
     public class SplashActivity : FormsAppCompatActivity
     {
         static readonly string TAG = "X:" + typeof(SplashActivity).Name;

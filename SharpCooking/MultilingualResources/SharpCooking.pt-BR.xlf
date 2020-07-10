@@ -278,6 +278,30 @@
           <source>Restore is done.</source>
           <target state="translated">A restauração de backup foi concluída.</target>
         </trans-unit>
+        <trans-unit id="ItemDetailView_Ingredients" translate="yes" xml:space="preserve">
+          <source>Ingredients</source>
+          <target state="translated">Ingredientes</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_Step" translate="yes" xml:space="preserve">
+          <source>Step</source>
+          <target state="translated">Passo</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_ExportBackup" translate="yes" xml:space="preserve">
+          <source>Export a new backup to file</source>
+          <target state="translated">Exportar um novo backup para arquivo</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_RestoreBackupFromFile" translate="yes" xml:space="preserve">
+          <source>Restore an existing backup from file</source>
+          <target state="translated">Restaurar um backup existente de arquivo</target>
+        </trans-unit>
+        <trans-unit id="ItemsView_EnterSearchTerm" translate="yes" xml:space="preserve">
+          <source>Enter search term</source>
+          <target state="translated">Digite o termo de pesquisa</target>
+        </trans-unit>
+        <trans-unit id="ItemsView_SearchItems" translate="yes" xml:space="preserve">
+          <source>Search items...</source>
+          <target state="translated">Pesquisar itens...</target>
+        </trans-unit>
       </group>
     </body>
   </file>

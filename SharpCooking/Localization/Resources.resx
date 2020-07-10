@@ -195,6 +195,9 @@
   <data name="FavoriteRecipe" xml:space="preserve">
     <value>Favorite</value>
   </data>
+  <data name="ItemDetailView_Ingredients" xml:space="preserve">
+    <value>Ingredients</value>
+  </data>
   <data name="ItemDetailView_MoreCancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
@@ -243,6 +246,15 @@
   <data name="ItemDetailView_StartTimeTitle" xml:space="preserve">
     <value>Start Time</value>
   </data>
+  <data name="ItemDetailView_Step" xml:space="preserve">
+    <value>Step</value>
+  </data>
+  <data name="ItemsView_EnterSearchTerm" xml:space="preserve">
+    <value>Enter search term</value>
+  </data>
+  <data name="ItemsView_SearchItems" xml:space="preserve">
+    <value>Search items...</value>
+  </data>
   <data name="NewRecipe" xml:space="preserve">
     <value>New Recipe</value>
   </data>
@@ -263,6 +275,9 @@
   </data>
   <data name="SettingsView_CorruptedBackupFile" xml:space="preserve">
     <value>Oh no! Your backup lookups corrupted and I wasn't able to restore it.</value>
+  </data>
+  <data name="SettingsView_ExportBackup" xml:space="preserve">
+    <value>Export a new backup to file</value>
   </data>
   <data name="SettingsView_Help" xml:space="preserve">
     <value>Help</value>
@@ -293,6 +308,9 @@
   </data>
   <data name="SettingsView_RestoreBackup" xml:space="preserve">
     <value>Restore Backup</value>
+  </data>
+  <data name="SettingsView_RestoreBackupFromFile" xml:space="preserve">
+    <value>Restore an existing backup from file</value>
   </data>
   <data name="SettingsView_RestoreCancelled" xml:space="preserve">
     <value>Cancelled</value>

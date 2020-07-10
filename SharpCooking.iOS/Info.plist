@@ -41,5 +41,12 @@
 	<string>This app needs access to photo library to pick recipe photos</string>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+  <key>CFBundleLocalizations</key>
+  <array>
+    <string>en</string>
+    <string>pt-BR</string>
+  </array>
 </dict>
 </plist>

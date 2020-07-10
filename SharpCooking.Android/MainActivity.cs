@@ -7,7 +7,7 @@ using Acr.UserDialogs;
 
 namespace SharpCooking.Droid
 {
-    [Activity(Label = "SharpCooking", Icon = "@mipmap/icon", Theme = "@style/MainTheme", 
+    [Activity(Label = "@string/app_name", Icon = "@mipmap/icon", Theme = "@style/MainTheme", 
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
         ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
