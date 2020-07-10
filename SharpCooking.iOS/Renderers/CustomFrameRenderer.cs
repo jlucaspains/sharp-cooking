@@ -3,13 +3,13 @@ using System.ComponentModel;
 using System.Drawing;
 using CoreAnimation;
 using CoreGraphics;
-using SimpleCooking.iOS.Renderers;
+using SharpCooking.iOS.Renderers;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(Frame), typeof(CustomFrameRenderer))]
-namespace SimpleCooking.iOS.Renderers
+namespace SharpCooking.iOS.Renderers
 {
     public class CustomFrameRenderer : VisualElementRenderer<Frame>, ITabStop
 	{

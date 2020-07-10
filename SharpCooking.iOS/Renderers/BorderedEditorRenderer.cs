@@ -1,9 +1,9 @@
-﻿using SimpleCooking.iOS.Renderers;
+﻿using SharpCooking.iOS.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(Editor), typeof(BorderedEditorRenderer))]
-namespace SimpleCooking.iOS.Renderers
+namespace SharpCooking.iOS.Renderers
 {
     public class BorderedEditorRenderer : EditorRenderer
     {

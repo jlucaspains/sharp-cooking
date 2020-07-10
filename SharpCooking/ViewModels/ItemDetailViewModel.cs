@@ -90,9 +90,11 @@ namespace SharpCooking.ViewModels
 
         void PrepareRecipeToDisplay(Recipe recipe, DateTime? proposedStart = null)
         {
+            var configInterval = _essentials.GetIntSetting(AppConstants.TimeBetweenStepsInterval);
+
             Title = recipe?.Title;
             Multiplier = 1;
-            StandardStepTimeInterval = _essentials.GetIntSetting(AppConstants.TimeBetweenStepsInterval);
+            StandardStepTimeInterval = configInterval <= 0 ? 5 : configInterval;
 
             var start = proposedStart ?? DateTime.Now;
 
