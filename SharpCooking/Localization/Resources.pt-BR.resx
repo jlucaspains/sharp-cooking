@@ -234,4 +234,19 @@
   <data name="ItemsView_SearchItems" xml:space="preserve">
     <value>Pesquisar itens...</value>
   </data>
+  <data name="IngredientQuantityRegex" xml:space="preserve">
+    <value>^(?&lt;Fraction&gt;\d+\/\d+)|^(?&lt;Regular&gt;\d+\,{0,1}\d*)</value>
+  </data>
+  <data name="MultiplierQuantityAggregator" xml:space="preserve">
+    <value>e</value>
+  </data>
+  <data name="SettingsView_MultiplierResultFormat" xml:space="preserve">
+    <value>Formato do resultado do multiplicador</value>
+  </data>
+  <data name="SettingsView_MultiplyResultDisplayUseDecimal" xml:space="preserve">
+    <value>Mostrar decimais como 1,5</value>
+  </data>
+  <data name="SettingsView_MultiplyResultDisplayUseFractions" xml:space="preserve">
+    <value>Mostrar frações como 1 e 1/2</value>
+  </data>
 </root>

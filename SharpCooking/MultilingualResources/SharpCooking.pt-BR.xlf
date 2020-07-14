@@ -302,6 +302,26 @@
           <source>Search items...</source>
           <target state="translated">Pesquisar itens...</target>
         </trans-unit>
+        <trans-unit id="IngredientQuantityRegex" translate="yes" xml:space="preserve">
+          <source>^(?<it id="1" pos="open">&lt;Fraction&gt;</it>\d+\/\d+)|^(?<it id="2" pos="open">&lt;Regular&gt;</it>\d+\.{0,1}\d*)</source>
+          <target state="translated">^(?<it id="1" pos="open">&lt;Fraction&gt;</it>\d+\/\d+)|^(?<it id="2" pos="open">&lt;Regular&gt;</it>\d+\,{0,1}\d*)</target>
+        </trans-unit>
+        <trans-unit id="MultiplierQuantityAggregator" translate="yes" xml:space="preserve">
+          <source>and</source>
+          <target state="translated">e</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_MultiplierResultFormat" translate="yes" xml:space="preserve">
+          <source>Multiplier result format</source>
+          <target state="translated">Formato do resultado do multiplicador</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_MultiplyResultDisplayUseDecimal" translate="yes" xml:space="preserve">
+          <source>Display decimals like 1.5</source>
+          <target state="translated">Mostrar decimais como 1,5</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_MultiplyResultDisplayUseFractions" translate="yes" xml:space="preserve">
+          <source>Display fractions like 1 and 1/2</source>
+          <target state="translated">Mostrar frações como 1 e 1/2</target>
+        </trans-unit>
       </group>
     </body>
   </file>

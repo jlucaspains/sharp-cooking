@@ -295,6 +295,15 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ^(?&lt;Fraction&gt;\d+\/\d+)|^(?&lt;Regular&gt;\d+\.{0,1}\d*).
+        /// </summary>
+        public static string IngredientQuantityRegex {
+            get {
+                return ResourceManager.GetString("IngredientQuantityRegex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ingredients.
         /// </summary>
         public static string ItemDetailView_Ingredients {
@@ -475,6 +484,15 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to and.
+        /// </summary>
+        public static string MultiplierQuantityAggregator {
+            get {
+                return ResourceManager.GetString("MultiplierQuantityAggregator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Recipe.
         /// </summary>
         public static string NewRecipe {
@@ -570,6 +588,33 @@ namespace SharpCooking.Localization {
         public static string SettingsView_Language {
             get {
                 return ResourceManager.GetString("SettingsView_Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multiplier result format.
+        /// </summary>
+        public static string SettingsView_MultiplierResultFormat {
+            get {
+                return ResourceManager.GetString("SettingsView_MultiplierResultFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display decimals like 1.5.
+        /// </summary>
+        public static string SettingsView_MultiplyResultDisplayUseDecimal {
+            get {
+                return ResourceManager.GetString("SettingsView_MultiplyResultDisplayUseDecimal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display fractions like 1 and 1/2.
+        /// </summary>
+        public static string SettingsView_MultiplyResultDisplayUseFractions {
+            get {
+                return ResourceManager.GetString("SettingsView_MultiplyResultDisplayUseFractions", resourceCulture);
             }
         }
         

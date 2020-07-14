@@ -195,6 +195,9 @@
   <data name="FavoriteRecipe" xml:space="preserve">
     <value>Favorite</value>
   </data>
+  <data name="IngredientQuantityRegex" xml:space="preserve">
+    <value>^(?&lt;Fraction&gt;\d+\/\d+)|^(?&lt;Regular&gt;\d+\.{0,1}\d*)</value>
+  </data>
   <data name="ItemDetailView_Ingredients" xml:space="preserve">
     <value>Ingredients</value>
   </data>
@@ -255,6 +258,9 @@
   <data name="ItemsView_SearchItems" xml:space="preserve">
     <value>Search items...</value>
   </data>
+  <data name="MultiplierQuantityAggregator" xml:space="preserve">
+    <value>and</value>
+  </data>
   <data name="NewRecipe" xml:space="preserve">
     <value>New Recipe</value>
   </data>
@@ -287,6 +293,15 @@
   </data>
   <data name="SettingsView_Language" xml:space="preserve">
     <value>Language</value>
+  </data>
+  <data name="SettingsView_MultiplierResultFormat" xml:space="preserve">
+    <value>Multiplier result format</value>
+  </data>
+  <data name="SettingsView_MultiplyResultDisplayUseDecimal" xml:space="preserve">
+    <value>Display decimals like 1.5</value>
+  </data>
+  <data name="SettingsView_MultiplyResultDisplayUseFractions" xml:space="preserve">
+    <value>Display fractions like 1 and 1/2</value>
   </data>
   <data name="SettingsView_NoRecipesToRestore" xml:space="preserve">
     <value>Weird... There are no recipes in this backup.</value>

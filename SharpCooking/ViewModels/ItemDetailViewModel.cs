@@ -5,6 +5,7 @@ using SharpCooking.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -140,14 +141,16 @@ namespace SharpCooking.ViewModels
 
         async Task ChangeMultiplier()
         {
+            var useFractions = _essentials.GetBoolSetting(AppConstants.MultiplierResultUseFractions);
+
             var inputMultiplier = await DisplayPromptAsync(Resources.ItemDetailView_MultiplierTitle, Resources.ItemDetailView_MultiplierDescription,
                 Resources.ItemDetailView_MultiplierOk, Resources.ItemDetailView_MultiplierCancel, Multiplier.ToString(), Keyboard.Numeric);
 
-            if (decimal.TryParse(inputMultiplier, out var newMultiplier))
+            if (decimal.TryParse(inputMultiplier, System.Globalization.NumberStyles.Float, CultureInfo.CurrentCulture, out var newMultiplier))
             {
                 Multiplier = newMultiplier;
 
-                var regexResult = Regex.Replace(Item.Ingredients, AppConstants.IngredientQuantityRegex, (match) =>
+                var regexResult = Regex.Replace(Item.Ingredients, Resources.IngredientQuantityRegex, (match) =>
                 {
                     var fractionGroup = match.Groups["Fraction"];
                     var regularGroup = match.Groups["Regular"];
@@ -170,6 +173,10 @@ namespace SharpCooking.ViewModels
                     }
 
                     var newIngredientValue = parsedMatch * Multiplier;
+
+                    if (!useFractions)
+                        return newIngredientValue.ToString("G29");
+
                     var whole = decimal.Floor(newIngredientValue);
 
                     if (whole == newIngredientValue)
@@ -179,9 +186,9 @@ namespace SharpCooking.ViewModels
                     else
                     {
                         (var numerator, var denominator) = Fraction.Get(newIngredientValue - whole);
-                        return whole == 0 ? $"{numerator}/{denominator}" : $"{whole:0} and {numerator}/{denominator}";
+                        return whole == 0 ? $"{numerator}/{denominator}" : $"{whole:0} {Resources.MultiplierQuantityAggregator} {numerator}/{denominator}";
                     }
-                });
+                }, RegexOptions.Multiline);
 
                 Steps[0].SubTitle = regexResult;
 

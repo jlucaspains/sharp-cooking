@@ -3,6 +3,7 @@
     public class AppConstants
     {
         internal const string TimeBetweenStepsInterval = "TimeBetweenStepsInterval";
+        internal const string MultiplierResultUseFractions = "MultiplierResultUseFractions";
         internal const int DefaultTimeBetweenStepsInterval = 5;
         internal const string BackupIsSetup = "BackupIsSetup";
         internal const string StepTimeIdentifierRegex = "(?<Minutes>\\d+)\\s*(minutes|minute|min)|(?<Hours>\\d+)\\s*(hours|hour)|(?<Days>\\d+)\\s*(days|day)";

@@ -29,6 +29,7 @@ namespace SharpCooking.ViewModels
             GetHelpCommand = new Command(async () => await GetHelp());
             ChangeCultureCommand = new Command(async () => await ChangeCulture());
             ViewPrivacyPolicyCommand = new Command(async () => await ViewPrivacyPolicy());
+            MultiplierResultFormatCommand = new Command(() => AdjustMultiplierResultFormat());
 
             _essentials = essentials;
             _store = store;
@@ -41,12 +42,16 @@ namespace SharpCooking.ViewModels
         public Command GetHelpCommand { get; }
         public Command ChangeCultureCommand { get; }
         public Command ViewPrivacyPolicyCommand { get; }
+        public Command MultiplierResultFormatCommand { get; }
 
         public int TimeBetweenStepsInterval { get; set; }
         public string DisplayTimeBetweenStepsInterval { get { return $"{TimeBetweenStepsInterval} {Resources.SettingsView_TimeStepsDescriptoin}"; } }
 
         public bool BackupIsSetup { get; set; }
         public string DisplayBackupOption { get { return BackupIsSetup ? $"{Resources.SettingsView_BackingUpTo} dropbox" : Resources.SettingsView_SetupBackup; } }
+
+        public bool UseFractions { get; set; }
+        public string MultiplierResultDisplay { get { return UseFractions ? Resources.SettingsView_MultiplyResultDisplayUseFractions : Resources.SettingsView_MultiplyResultDisplayUseDecimal; } }
 
         public string CurrentLanguage { get; set; }
 
@@ -191,6 +196,12 @@ namespace SharpCooking.ViewModels
         async Task ViewPrivacyPolicy()
         {
             await _essentials.LaunchUri(AppConstants.PrivacyPolicyUrl);
+        }
+
+        void AdjustMultiplierResultFormat()
+        {
+            UseFractions = !UseFractions;
+            _essentials.SetBoolSetting(AppConstants.MultiplierResultUseFractions, UseFractions);
         }
 
         bool QuickZip(string[] filesToZip, string destinationZipFullPath)
