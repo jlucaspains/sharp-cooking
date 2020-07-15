@@ -198,6 +198,15 @@
   <data name="IngredientQuantityRegex" xml:space="preserve">
     <value>^(?&lt;Fraction&gt;\d+\/\d+)|^(?&lt;Regular&gt;\d+\.{0,1}\d*)</value>
   </data>
+  <data name="ItemDetailView_DayAbbreviation" xml:space="preserve">
+    <value>d</value>
+  </data>
+  <data name="ItemDetailView_Enjoy" xml:space="preserve">
+    <value>Enjoy!</value>
+  </data>
+  <data name="ItemDetailView_FailedToParseInputId" xml:space="preserve">
+    <value>Failed to parse input id</value>
+  </data>
   <data name="ItemDetailView_Ingredients" xml:space="preserve">
     <value>Ingredients</value>
   </data>
@@ -353,5 +362,8 @@
   </data>
   <data name="SettingsView_TimeStepsDescriptoin" xml:space="preserve">
     <value>minutes when no time information is given</value>
+  </data>
+  <data name="StepTimeIdentifierRegex" xml:space="preserve">
+    <value>(?&lt;Minutes&gt;\d+\.{0,1}\d*)\s*(minutes|minute|min)\b|(?&lt;Hours&gt;\d+\.{0,1}\d*)\s*(hours|hour)\b|(?&lt;Days&gt;\d+\.{0,1}\d*)\s*(days|day)\b</value>
   </data>
 </root>

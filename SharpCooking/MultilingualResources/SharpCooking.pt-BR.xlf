@@ -322,6 +322,22 @@
           <source>Display fractions like 1 and 1/2</source>
           <target state="translated">Mostrar frações como 1 e 1/2</target>
         </trans-unit>
+        <trans-unit id="StepTimeIdentifierRegex" translate="yes" xml:space="preserve">
+          <source>(?<it id="1" pos="open">&lt;Minutes&gt;</it>\d+\.{0,1}\d*)\s*(minutes|minute|min)\b|(?<it id="2" pos="open">&lt;Hours&gt;</it>\d+\.{0,1}\d*)\s*(hours|hour)\b|(?<it id="3" pos="open">&lt;Days&gt;</it>\d+\.{0,1}\d*)\s*(days|day)\b</source>
+          <target state="translated">(?<it id="1" pos="open">&lt;Minutes&gt;</it>\d+\.{0,1}\d*)\s*(minutos|minuto|min)\b|(?<it id="2" pos="open">&lt;Hours&gt;</it>\d+\.{0,1}\d*)\s*(horas|hora)\b|(?<it id="3" pos="open">&lt;Days&gt;</it>\d+\.{0,1}\d*)\s*(dias|dia)\b</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_DayAbbreviation" translate="yes" xml:space="preserve">
+          <source>d</source>
+          <target state="translated">d</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_Enjoy" translate="yes" xml:space="preserve">
+          <source>Enjoy!</source>
+          <target state="translated">Bom apetite!</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_FailedToParseInputId" translate="yes" xml:space="preserve">
+          <source>Failed to parse input id</source>
+          <target state="translated">Falha ao analisar o ID da receita</target>
+        </trans-unit>
       </group>
     </body>
   </file>

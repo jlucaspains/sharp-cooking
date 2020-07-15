@@ -304,6 +304,33 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to d.
+        /// </summary>
+        public static string ItemDetailView_DayAbbreviation {
+            get {
+                return ResourceManager.GetString("ItemDetailView_DayAbbreviation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enjoy!.
+        /// </summary>
+        public static string ItemDetailView_Enjoy {
+            get {
+                return ResourceManager.GetString("ItemDetailView_Enjoy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to parse input id.
+        /// </summary>
+        public static string ItemDetailView_FailedToParseInputId {
+            get {
+                return ResourceManager.GetString("ItemDetailView_FailedToParseInputId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ingredients.
         /// </summary>
         public static string ItemDetailView_Ingredients {
@@ -768,6 +795,15 @@ namespace SharpCooking.Localization {
         public static string SettingsView_TimeStepsDescriptoin {
             get {
                 return ResourceManager.GetString("SettingsView_TimeStepsDescriptoin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (?&lt;Minutes&gt;\d+\.{0,1}\d*)\s*(minutes|minute|min)\b|(?&lt;Hours&gt;\d+\.{0,1}\d*)\s*(hours|hour)\b|(?&lt;Days&gt;\d+\.{0,1}\d*)\s*(days|day)\b.
+        /// </summary>
+        public static string StepTimeIdentifierRegex {
+            get {
+                return ResourceManager.GetString("StepTimeIdentifierRegex", resourceCulture);
             }
         }
     }

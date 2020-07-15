@@ -62,7 +62,10 @@ namespace SharpCooking.ViewModels
                 }
 
                 if (!int.TryParse(Id, out int parsedId))
+                {
                     await ReportError(Resources.EditItemView_FailedToParse);
+                    return;
+                }
 
                 Title = Resources.EditRecipe;
 

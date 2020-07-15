@@ -71,7 +71,8 @@ namespace SharpCooking.ViewModels
 
                 if (!int.TryParse(Id, out int parsedId))
                 {
-                    await ReportError("Failed to parse input id");
+                    await ReportError(Resources.ItemDetailView_FailedToParseInputId);
+                    return;
                 }
 
                 Item = await _dataStore.FirstOrDefaultAsync<Recipe>(item => item.Id == parsedId);
@@ -109,11 +110,21 @@ namespace SharpCooking.ViewModels
             var instructions = Item.Instructions?.Split('\n')?.Where(Item => !string.IsNullOrEmpty(Item))?.Select((item, i) => (i, item))
                 ?? new (int i, string item)[] { };
 
+            var previous = start;
+
+            Func<DateTime, DateTime, string> getDisplayTime = (st, pv) =>
+            {
+                var timeDiffInDays = st.DayOfYear - pv.DayOfYear;
+                return timeDiffInDays > 0 ? $"{st.ToShortTimeString()} +{timeDiffInDays}{Resources.ItemDetailView_DayAbbreviation}" : st.ToShortTimeString();
+            };
+
             foreach ((int i, string item) in instructions)
             {
-                Steps.Add(new StepViewModel { IsNotLast = true, Title = $"{Resources.ItemDetailView_Step} {i + 1}", SubTitle = item, Time = start.ToShortTimeString() });
+                Steps.Add(new StepViewModel { IsNotLast = true, Title = $"{Resources.ItemDetailView_Step} {i + 1}", SubTitle = item, Time = getDisplayTime(start, previous) });
 
-                var match = Regex.Match(item, AppConstants.StepTimeIdentifierRegex);
+                previous = start;
+
+                var match = Regex.Match(item, Resources.StepTimeIdentifierRegex);
 
                 if (match?.Success ?? false)
                 {
@@ -123,7 +134,7 @@ namespace SharpCooking.ViewModels
 
                     start = start.AddMinutes(minutes);
                     start = start.AddHours(hours);
-                    start = start.AddMinutes(days);
+                    start = start.AddDays(days);
                 }
                 else
                 {
@@ -131,7 +142,7 @@ namespace SharpCooking.ViewModels
                 }
             }
 
-            Steps.Add(new StepViewModel { IsNotLast = false, Title = "Enjoy!", Time = start.ToShortTimeString() });
+            Steps.Add(new StepViewModel { IsNotLast = false, Title = Resources.ItemDetailView_Enjoy, Time = getDisplayTime(start, previous) });
         }
 
         async Task GotoEdit()
@@ -146,7 +157,7 @@ namespace SharpCooking.ViewModels
             var inputMultiplier = await DisplayPromptAsync(Resources.ItemDetailView_MultiplierTitle, Resources.ItemDetailView_MultiplierDescription,
                 Resources.ItemDetailView_MultiplierOk, Resources.ItemDetailView_MultiplierCancel, Multiplier.ToString(), Keyboard.Numeric);
 
-            if (decimal.TryParse(inputMultiplier, System.Globalization.NumberStyles.Float, CultureInfo.CurrentCulture, out var newMultiplier))
+            if (decimal.TryParse(inputMultiplier, NumberStyles.Float, CultureInfo.CurrentCulture, out var newMultiplier))
             {
                 Multiplier = newMultiplier;
 

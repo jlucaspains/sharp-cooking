@@ -47,9 +47,6 @@ namespace SharpCooking.ViewModels
         public int TimeBetweenStepsInterval { get; set; }
         public string DisplayTimeBetweenStepsInterval { get { return $"{TimeBetweenStepsInterval} {Resources.SettingsView_TimeStepsDescriptoin}"; } }
 
-        public bool BackupIsSetup { get; set; }
-        public string DisplayBackupOption { get { return BackupIsSetup ? $"{Resources.SettingsView_BackingUpTo} dropbox" : Resources.SettingsView_SetupBackup; } }
-
         public bool UseFractions { get; set; }
         public string MultiplierResultDisplay { get { return UseFractions ? Resources.SettingsView_MultiplyResultDisplayUseFractions : Resources.SettingsView_MultiplyResultDisplayUseDecimal; } }
 
@@ -58,7 +55,6 @@ namespace SharpCooking.ViewModels
         public override Task InitializeAsync()
         {
             TimeBetweenStepsInterval = _essentials.GetIntSetting(AppConstants.TimeBetweenStepsInterval);
-            BackupIsSetup = _essentials.GetBoolSetting(AppConstants.BackupIsSetup);
 
             if (TimeBetweenStepsInterval == 0)
                 TimeBetweenStepsInterval = AppConstants.DefaultTimeBetweenStepsInterval;
@@ -84,11 +80,16 @@ namespace SharpCooking.ViewModels
         {
             var allRecipes = await _store.AllAsync<Recipe>();
 
-            var recipesJson = JsonConvert.SerializeObject(allRecipes);
             var recipesFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), AppConstants.BackupRecipeFileName);
+            var allFiles = allRecipes.Where(item => !string.IsNullOrEmpty(item.MainImagePath)).Select(item => item.MainImagePath).ToList();
+
+            // remove the folder path out of the main image path
+            foreach(var item in allRecipes)
+                item.MainImagePath = Path.GetFileName(item.MainImagePath);
+
+            var recipesJson = JsonConvert.SerializeObject(allRecipes);
             File.WriteAllText(recipesFile, recipesJson);
 
-            var allFiles = allRecipes.Where(item => !string.IsNullOrEmpty(item.MainImagePath)).Select(item => item.MainImagePath).ToList();
             allFiles.Add(recipesFile);
 
             var zipPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), AppConstants.BackupZipFileName);
@@ -175,6 +176,7 @@ namespace SharpCooking.ViewModels
                     foreach (var recipe in restoreRecipes)
                     {
                         recipe.Id = 0;
+                        recipe.MainImagePath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), recipe.MainImagePath);
                         await _store.InsertAsync(recipe);
                     }
 
