@@ -9,46 +9,47 @@
              xmlns:l="clr-namespace:SharpCooking.Localization"
              Title="{Binding Title}"
              v:ViewModelLocator.AutoWireViewModel="true">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid  BackgroundColor="{DynamicResource NavigationSecondary}" HeightRequest="200">
-            <Image HorizontalOptions="Center" VerticalOptions="Center">
-                <Image.Source>
-                    <FontImageSource
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid  BackgroundColor="{DynamicResource NavigationSecondary}" HeightRequest="200">
+                <Image HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image.Source>
+                        <FontImageSource
                     FontFamily="{DynamicResource MaterialFont}"
                     Size="100"
                     Color="White"
                     Glyph="{x:Static v:IconFont.ChefHat}"/>
-                </Image.Source>
-            </Image>
+                    </Image.Source>
+                </Image>
+            </Grid>
+            <ScrollView Grid.Row="1" Margin="0,20,0,0">
+                <StackLayout Orientation="Vertical" Padding="16,0,16,40" Spacing="10">
+                    <Label FontSize="22">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="{x:Static l:Resources.AppName}" FontAttributes="Bold" FontSize="22" />
+                                    <Span Text=" " />
+                                    <Span Text="{Binding AppVersion}" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="{x:Static l:Resources.AppDescription}" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+            </ScrollView>
         </Grid>
-        <ScrollView Grid.Row="1" Margin="0,20,0,0">
-            <StackLayout Orientation="Vertical" Padding="16,0,16,40" Spacing="10">
-                <Label FontSize="22">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="{x:Static l:Resources.AppName}" FontAttributes="Bold" FontSize="22" />
-                                <Span Text=" " />
-                                <Span Text="{Binding AppVersion}" />
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Label>
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="{x:Static l:Resources.AppDescription}" />
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-            </StackLayout>
-        </ScrollView>
-    </Grid>
-    
+    </ScrollView>
 </ContentPage>

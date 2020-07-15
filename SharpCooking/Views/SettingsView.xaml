@@ -11,10 +11,11 @@
              Title="{Binding Title}"
              x:Name="BrowseItemsPage"
              v:ViewModelLocator.AutoWireViewModel="true">
-
-    <StackLayout>
+    <ScrollView>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="70" />
+                <RowDefinition Height="70" />
                 <RowDefinition Height="70" />
                 <RowDefinition Height="70" />
                 <RowDefinition Height="70" />
@@ -101,5 +102,5 @@
                 </StackLayout>
             </StackLayout>
         </Grid>
-    </StackLayout>
+    </ScrollView>
 </ContentPage>

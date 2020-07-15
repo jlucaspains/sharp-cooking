@@ -29,9 +29,7 @@
     </ContentPage.ToolbarItems>
 
     <ScrollView>
-        <!--<StackLayout Padding="15">-->
         <StackLayout>
-            <!--<Grid Margin="-15,-15,-15,0">-->
             <Grid>
                 <Image IsVisible="{Binding HasMainImage}" Aspect="AspectFill" HeightRequest="250">
                     <Image.Source>
@@ -53,7 +51,6 @@
                 </Grid>
             </Grid>
 
-            <!--<Frame CornerRadius="25" Margin="-15,-27,-15,0" HasShadow="True">-->
             <Frame CornerRadius="25" Margin="0,-27,0,0" HasShadow="True">
                 <StackLayout>
                     <Grid>
