@@ -59,6 +59,8 @@ namespace SharpCooking.ViewModels
             if (TimeBetweenStepsInterval == 0)
                 TimeBetweenStepsInterval = AppConstants.DefaultTimeBetweenStepsInterval;
 
+            UseFractions = _essentials.GetBoolSetting(AppConstants.MultiplierResultUseFractions);
+
             CurrentLanguage = CultureInfo.CurrentUICulture.DisplayName;
 
             return base.InitializeAsync();
