@@ -43,12 +43,12 @@
 	<string>Light</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
-  <key>CFBundleDevelopmentRegion</key>
-  <string>en</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>en</string>
-		<string>pt</string>
+		<string>pt-BR</string>
 	</array>
 </dict>
 </plist>
