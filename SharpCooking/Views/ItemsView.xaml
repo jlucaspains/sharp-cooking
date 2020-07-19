@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -70,7 +69,25 @@
 
 
     <Grid BackgroundColor="#F9F9F9">
-        <StackLayout Grid.Row="0" Grid.Column="0" IsVisible="{Binding NoDataToShow}" VerticalOptions="Center" Margin="50">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <SearchBar Grid.Row="0" Placeholder="{x:Static l:Resources.ItemsView_SearchItems}" 
+                       Text="{Binding SearchValue}">
+                        <SearchBar.Behaviors>
+                            <b:EventToCommandBehavior EventName="TextChanged" Command="{Binding FilterListCommand}" />
+                        </SearchBar.Behaviors>
+                        <SearchBar.IsVisible>
+                            <OnPlatform x:TypeArguments="x:Boolean">
+                                <On Platform="Android" Value="false" />
+                                <On Platform="iOS" Value="true" />
+                            </OnPlatform>
+                        </SearchBar.IsVisible>
+                    </SearchBar>
+
+        <StackLayout Grid.Row="1" IsVisible="{Binding NoDataToShow}" VerticalOptions="Center" Margin="50">
             <Image Aspect="AspectFill"
                    IsVisible="{Binding DoesNotHaveMainImage}"
                    HorizontalOptions="Center" VerticalOptions="Center">
@@ -84,26 +101,10 @@
             <Label Text="{x:Static l:Resources.ItemsView_NothingToShow}"  HorizontalOptions="Center" VerticalOptions="Center" />
         </StackLayout>
 
-        <CollectionView Grid.Row="0" Grid.Column="0"
+        <CollectionView Grid.Row="1" Grid.Column="0"
                         ItemsSource="{Binding Items}"
                         SelectionMode="None"
                         IsVisible="{Binding DataToShow}">
-            <CollectionView.HeaderTemplate>
-                <DataTemplate>
-                    <SearchBar Placeholder="{x:Static l:Resources.ItemsView_SearchItems}" 
-                       Text="{Binding SearchValue}">
-                        <SearchBar.Behaviors>
-                            <b:EventToCommandBehavior EventName="TextChanged" Command="{Binding FilterListCommand}" />
-                        </SearchBar.Behaviors>
-                        <SearchBar.IsVisible>
-                            <OnPlatform x:TypeArguments="x:Boolean">
-                                <On Platform="Android" Value="false" />
-                                <On Platform="iOS" Value="true" />
-                            </OnPlatform>
-                        </SearchBar.IsVisible>
-                    </SearchBar>
-                </DataTemplate>
-            </CollectionView.HeaderTemplate>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid Padding="10" xe:Commands.Tap="{Binding BindingContext.ItemTappedCommand, Source={x:Reference ItemsViewRoot}}" 
@@ -145,7 +146,4 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
     </Grid>
-
-    <!--</StackLayout>-->
-    <!--</ScrollView>-->
 </ContentPage>
