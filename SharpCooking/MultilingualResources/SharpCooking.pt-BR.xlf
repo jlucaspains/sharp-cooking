@@ -80,7 +80,7 @@
         </trans-unit>
         <trans-unit id="EditItemView_PickImageUseCamera" translate="yes" xml:space="preserve">
           <source>Use Camera</source>
-          <target state="translated">Use Camera</target>
+          <target state="translated">Use a Camera</target>
         </trans-unit>
         <trans-unit id="EditItemView_Save" translate="yes" xml:space="preserve">
           <source>Save</source>
@@ -227,7 +227,7 @@
           <target state="translated">Cancelar</target>
         </trans-unit>
         <trans-unit id="SettingsView_StepsIntervalDescription" translate="yes" xml:space="preserve">
-          <source>How many minutes between not timed steps?</source>
+          <source>How many minutes between not steps without time information?</source>
           <target state="translated">Quantos minutos entre as etapas não cronometradas?</target>
         </trans-unit>
         <trans-unit id="SettingsView_StepsIntervalOk" translate="yes" xml:space="preserve">
@@ -339,8 +339,8 @@
           <target state="translated">Falha ao analisar o ID da receita</target>
         </trans-unit>
         <trans-unit id="ItemsView_NothingToShow" translate="yes" xml:space="preserve">
-          <source>Nothing to show. How about you create some yummy recipes?</source>
-          <target state="translated">Nada para mostrar aqui. Que tal você criar algumas receitas deliciosas?</target>
+          <source>Nothing to show. How about you add some yummy recipes?</source>
+          <target state="translated">Nada para mostrar aqui. Que tal você adicionar algumas receitas deliciosas?</target>
         </trans-unit>
       </group>
     </body>

@@ -67,7 +67,7 @@
     <value>Onde está sua imagem?</value>
   </data>
   <data name="EditItemView_PickImageUseCamera" xml:space="preserve">
-    <value>Use Camera</value>
+    <value>Use a Camera</value>
   </data>
   <data name="EditItemView_Save" xml:space="preserve">
     <value>Salve</value>
@@ -262,6 +262,6 @@
     <value>Falha ao analisar o ID da receita</value>
   </data>
   <data name="ItemsView_NothingToShow" xml:space="preserve">
-    <value>Nada para mostrar aqui. Que tal você criar algumas receitas deliciosas?</value>
+    <value>Nada para mostrar aqui. Que tal você adicionar algumas receitas deliciosas?</value>
   </data>
 </root>

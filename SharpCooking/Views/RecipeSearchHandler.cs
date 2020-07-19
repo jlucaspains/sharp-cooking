@@ -33,7 +33,7 @@ namespace SharpCooking.Views
         {
             base.OnItemSelected(item);
 
-            await (App.Current.MainPage as Xamarin.Forms.Shell).GoToAsync($"items/detail?id={((Recipe)item).Id}");
+            await (App.Current.MainPage as Xamarin.Forms.Shell).GoToAsync($"items/detail?id={((RecipeViewModel)item).Id}");
         }
     }
 }

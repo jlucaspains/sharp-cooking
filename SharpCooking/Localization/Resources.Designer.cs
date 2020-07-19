@@ -502,7 +502,7 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nothing to show. How about you create some yummy recipes?.
+        ///   Looks up a localized string similar to Nothing to show. How about you add some yummy recipes?.
         /// </summary>
         public static string ItemsView_NothingToShow {
             get {
@@ -772,7 +772,7 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to How many minutes between not timed steps?.
+        ///   Looks up a localized string similar to How many minutes between not steps without time information?.
         /// </summary>
         public static string SettingsView_StepsIntervalDescription {
             get {
