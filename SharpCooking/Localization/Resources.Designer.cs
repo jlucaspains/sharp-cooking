@@ -502,6 +502,15 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nothing to show. How about you create some yummy recipes?.
+        /// </summary>
+        public static string ItemsView_NothingToShow {
+            get {
+                return ResourceManager.GetString("ItemsView_NothingToShow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search items....
         /// </summary>
         public static string ItemsView_SearchItems {

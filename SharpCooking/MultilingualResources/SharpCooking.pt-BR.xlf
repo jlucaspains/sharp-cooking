@@ -338,6 +338,10 @@
           <source>Failed to parse input id</source>
           <target state="translated">Falha ao analisar o ID da receita</target>
         </trans-unit>
+        <trans-unit id="ItemsView_NothingToShow" translate="yes" xml:space="preserve">
+          <source>Nothing to show. How about you create some yummy recipes?</source>
+          <target state="translated">Nada para mostrar aqui. Que tal você criar algumas receitas deliciosas?</target>
+        </trans-unit>
       </group>
     </body>
   </file>

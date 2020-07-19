@@ -264,6 +264,9 @@
   <data name="ItemsView_EnterSearchTerm" xml:space="preserve">
     <value>Enter search term</value>
   </data>
+  <data name="ItemsView_NothingToShow" xml:space="preserve">
+    <value>Nothing to show. How about you create some yummy recipes?</value>
+  </data>
   <data name="ItemsView_SearchItems" xml:space="preserve">
     <value>Search items...</value>
   </data>

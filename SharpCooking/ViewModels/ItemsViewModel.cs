@@ -9,6 +9,7 @@ using SharpCooking.Models;
 using SharpCooking.Data;
 using SharpCooking.Localization;
 using System.Threading;
+using System.Linq;
 
 namespace SharpCooking.ViewModels
 {
@@ -23,6 +24,8 @@ namespace SharpCooking.ViewModels
         public Command ItemTappedCommand { get; }
         public Command FilterListCommand { get; }
         public bool IsRefreshing { get; set; }
+        public bool NoDataToShow { get; set; }
+        public bool DataToShow { get { return !NoDataToShow; } }
         public string SearchValue { get; set; }
 
         public ItemsViewModel(IDataStore dataStore)
@@ -71,8 +74,12 @@ namespace SharpCooking.ViewModels
                     ? await _dataStore.AllAsync<Recipe>()
                     : await _dataStore.QueryAsync<Recipe>(item => item.Title.ToLower().Contains(SearchValue.ToLower()));
 
-                foreach (var item in items)
+                var sortedItems = items.OrderBy(item => item.Title).ToList();
+
+                foreach (var item in sortedItems)
                     Items.Add(RecipeViewModel.FromModel(item));
+
+                NoDataToShow = !Items.Any();
 
                 await Task.Delay(200);
             }

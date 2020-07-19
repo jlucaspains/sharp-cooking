@@ -1,6 +1,7 @@
 ﻿using Xamarin.Forms;
 using SharpCooking.Models;
 using SharpCooking.Data;
+using System.Linq;
 
 namespace SharpCooking.Views
 {
@@ -12,18 +13,19 @@ namespace SharpCooking.Views
         {
             _dataStore = TinyIoC.TinyIoCContainer.Current.Resolve<IDataStore>();
         }
-        
+
         protected override async void OnQueryChanged(string oldValue, string newValue)
         {
             //base.OnQueryChanged(oldValue, newValue);
 
             if (string.IsNullOrWhiteSpace(newValue))
             {
-                ItemsSource = new System.Collections.Generic.List<Recipe>();
+                ItemsSource = new System.Collections.Generic.List<RecipeViewModel>();
             }
             else
             {
-                ItemsSource = await _dataStore.QueryAsync<Recipe>(item => item.Title.ToLower().Contains(newValue.ToLower()));
+                var result = await _dataStore.QueryAsync<Recipe>(item => item.Title.ToLower().Contains(newValue.ToLower()));
+                ItemsSource = result.Select(item => RecipeViewModel.FromModel(item)).ToList();
             }
         }
 
