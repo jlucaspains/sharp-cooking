@@ -2,16 +2,17 @@
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using SharpCooking.Data;
-using SharpCooking.Models;
 using SharpCooking.Services;
 using SharpCooking.ViewModels;
 using System.IO;
 using TinyIoC;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 namespace SharpCooking
 {
-    public partial class App : Application
+    public partial class App : Xamarin.Forms.Application
     {
 
         public App()
@@ -19,6 +20,9 @@ namespace SharpCooking
             InitializeComponent();
 
             RegisterContainer();
+
+            Current.On<Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
+
             MainPage = new AppShell();
         }
 
