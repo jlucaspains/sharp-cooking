@@ -109,7 +109,10 @@ namespace SharpCooking.ViewModels
             if (result == null)
                 return;
 
-            var path = Path.Combine(FileSystem.AppDataDirectory, Path.GetFileName(result.Path));
+            var fileName = Path.GetFileName(result.Path);
+            var appFolder = Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
+
+            var path = Path.Combine(appFolder, fileName);
             File.Copy(result.Path, path);
             Item.MainImagePath = path;
         }

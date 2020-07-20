@@ -80,13 +80,14 @@ namespace SharpCooking.ViewModels
 
         async Task Backup()
         {
+            var appFolder = Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
             var allRecipes = await _store.AllAsync<Recipe>();
 
-            var recipesFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), AppConstants.BackupRecipeFileName);
+            var recipesFile = Path.Combine(appFolder, AppConstants.BackupRecipeFileName);
             var allFiles = allRecipes.Where(item => !string.IsNullOrEmpty(item.MainImagePath)).Select(item => item.MainImagePath).ToList();
 
             // remove the folder path out of the main image path
-            foreach(var item in allRecipes)
+            foreach (var item in allRecipes)
                 item.MainImagePath = Path.GetFileName(item.MainImagePath);
 
             var recipesJson = JsonConvert.SerializeObject(allRecipes);
@@ -94,7 +95,7 @@ namespace SharpCooking.ViewModels
 
             allFiles.Add(recipesFile);
 
-            var zipPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), AppConstants.BackupZipFileName);
+            var zipPath = Path.Combine(appFolder, AppConstants.BackupZipFileName);
 
             QuickZip(allFiles.ToArray(), zipPath);
 
@@ -178,7 +179,10 @@ namespace SharpCooking.ViewModels
                     foreach (var recipe in restoreRecipes)
                     {
                         recipe.Id = 0;
-                        recipe.MainImagePath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), recipe.MainImagePath);
+                        recipe.MainImagePath = recipe.MainImagePath == null
+                            ? null
+                            : Path.Combine(appFolder, Path.GetFileName(recipe.MainImagePath));
+
                         await _store.InsertAsync(recipe);
                     }
 

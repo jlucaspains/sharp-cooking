@@ -162,7 +162,7 @@
                     <Label Text="{Binding Item.Notes}" FontSize="Small" Margin="0,0,0,20" IsVisible="{Binding HasNotes}" />
                 </StackLayout>
             </Frame>
-            <StackLayout BackgroundColor="White" HeightRequest="27" Margin="0,-27,0,0"></StackLayout>
+            <Grid BackgroundColor="White" HeightRequest="27" Margin="0,-27,0,0" />
         </StackLayout>
     </ScrollView>
 </ContentPage>
