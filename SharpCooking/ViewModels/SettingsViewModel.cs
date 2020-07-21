@@ -122,7 +122,7 @@ namespace SharpCooking.ViewModels
                         return;
                     }
 
-                    var appFolder = Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
+                    var appFolder = Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
                     IEnumerable<Recipe> restoreRecipes = null;
 
                     try

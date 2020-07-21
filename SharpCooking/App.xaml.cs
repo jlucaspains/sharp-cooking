@@ -4,8 +4,10 @@ using Microsoft.AppCenter.Crashes;
 using SharpCooking.Data;
 using SharpCooking.Services;
 using SharpCooking.ViewModels;
+using System;
 using System.IO;
 using TinyIoC;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
@@ -61,8 +63,15 @@ namespace SharpCooking
         private IConnectionFactory GetConnectionFactory()
         {
             var dbName = "SharpCooking.db3";
-            var path = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData),
-                dbName);
+            string folder;
+
+            if (DeviceInfo.Platform == DevicePlatform.iOS)
+                folder = Environment.GetFolderPath(Environment.SpecialFolder.Resources);
+            else
+                folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            var path = Path.Combine(folder, dbName);
+
             var result = new ConnectionFactory(path);
 
             // call and forget.

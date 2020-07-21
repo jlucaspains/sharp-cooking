@@ -110,7 +110,7 @@ namespace SharpCooking.ViewModels
                 return;
 
             var fileName = Path.GetFileName(result.Path);
-            var appFolder = Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
+            var appFolder = Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
 
             var path = Path.Combine(appFolder, fileName);
             File.Copy(result.Path, path);
