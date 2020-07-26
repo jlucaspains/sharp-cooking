@@ -58,8 +58,6 @@
                     <Editor AutoSize="TextChanges" Text="{Binding Item.Instructions}" />
                     <Label Text="{x:Static l:Resources.EditItemView_Notes}" />
                     <Editor AutoSize="TextChanges" Text="{Binding Item.Notes}" />
-                    <Label Text="ImagePath" />
-                    <Label Text="{Binding Item.MainImagePath}" />
                 </StackLayout>
             </Frame>
             <StackLayout BackgroundColor="White" HeightRequest="27" Margin="0,-27,0,0"></StackLayout>

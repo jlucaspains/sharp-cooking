@@ -1,4 +1,7 @@
-﻿namespace SharpCooking.Models
+﻿using System;
+using System.IO;
+
+namespace SharpCooking.Models
 {
     public class RecipeViewModel : BindableModel
     {
@@ -26,6 +29,13 @@
                 return !string.IsNullOrEmpty(MainImagePath);
             }
         }
+        public void ApplyMainImage(string fileName)
+        {
+            var documentFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var actualFile = Path.GetFileName(fileName);
+
+            this.MainImagePath = Path.Combine(documentFolder, actualFile);
+        }
 
         public static Recipe ToModel(RecipeViewModel viewModel)
         {
@@ -40,13 +50,13 @@
                 Ingredients = viewModel.Ingredients,
                 Instructions = viewModel.Instructions,
                 Notes = viewModel.Notes,
-                MainImagePath = viewModel.MainImagePath
+                MainImagePath = Path.GetFileName(viewModel.MainImagePath)
             };
         }
 
         public static RecipeViewModel FromModel(Recipe model)
         {
-            return new RecipeViewModel
+            var result = new RecipeViewModel
             {
                 Id = model.Id,
                 Title = model.Title,
@@ -56,9 +66,12 @@
                 Source = model.Source,
                 Ingredients = model.Ingredients,
                 Instructions = model.Instructions,
-                Notes = model.Notes,
-                MainImagePath = model.MainImagePath
+                Notes = model.Notes
             };
+
+            result.ApplyMainImage(model.MainImagePath);
+
+            return result;
         }
     }
 }
