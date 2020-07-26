@@ -52,6 +52,8 @@ namespace SharpCooking.ViewModels
 
         public string CurrentLanguage { get; set; }
 
+        public string DocumentsFolder { get; set; }
+
         public override Task InitializeAsync()
         {
             TimeBetweenStepsInterval = _essentials.GetIntSetting(AppConstants.TimeBetweenStepsInterval);
@@ -62,6 +64,8 @@ namespace SharpCooking.ViewModels
             UseFractions = _essentials.GetBoolSetting(AppConstants.MultiplierResultUseFractions);
 
             CurrentLanguage = CultureInfo.CurrentUICulture.DisplayName;
+
+            DocumentsFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
             return base.InitializeAsync();
         }
