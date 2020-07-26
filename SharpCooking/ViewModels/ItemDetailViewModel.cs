@@ -33,7 +33,7 @@ namespace SharpCooking.ViewModels
         private readonly IDataStore _dataStore;
         private readonly IEssentials _essentials;
 
-        public Recipe Item { get; set; }
+        public RecipeViewModel Item { get; set; }
 
         public string Id { get; set; }
 
@@ -75,7 +75,8 @@ namespace SharpCooking.ViewModels
                     return;
                 }
 
-                Item = await _dataStore.FirstOrDefaultAsync<Recipe>(item => item.Id == parsedId);
+                var recipe = await _dataStore.FirstOrDefaultAsync<Recipe>(item => item.Id == parsedId);
+                Item = RecipeViewModel.FromModel(recipe);
 
                 PrepareRecipeToDisplay(Item);
 
@@ -90,7 +91,7 @@ namespace SharpCooking.ViewModels
             await base.InitializeAsync();
         }
 
-        void PrepareRecipeToDisplay(Recipe recipe, DateTime? proposedStart = null)
+        void PrepareRecipeToDisplay(RecipeViewModel recipe, DateTime? proposedStart = null)
         {
             var configInterval = _essentials.GetIntSetting(AppConstants.TimeBetweenStepsInterval);
 
