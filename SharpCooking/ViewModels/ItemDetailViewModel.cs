@@ -34,6 +34,7 @@ namespace SharpCooking.ViewModels
         private readonly IEssentials _essentials;
 
         public RecipeViewModel Item { get; set; }
+        public Recipe Model { get; set; }
 
         public string Id { get; set; }
 
@@ -76,6 +77,7 @@ namespace SharpCooking.ViewModels
                 }
 
                 var recipe = await _dataStore.FirstOrDefaultAsync<Recipe>(item => item.Id == parsedId);
+                Model = recipe;
                 Item = RecipeViewModel.FromModel(recipe);
 
                 PrepareRecipeToDisplay(Item);
@@ -229,7 +231,7 @@ namespace SharpCooking.ViewModels
 
             if (confirmationResult)
             {
-                await _dataStore.DeleteAsync(Item);
+                await _dataStore.DeleteAsync(Model);
                 await DisplayToastAsync(Resources.ItemDetailView_RecipeDeleted);
                 await TrackEvent("DeleteRecipe");
                 await GoBackAsync();
