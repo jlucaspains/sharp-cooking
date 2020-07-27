@@ -50,7 +50,7 @@ namespace SharpCooking.Models
                 Ingredients = viewModel.Ingredients,
                 Instructions = viewModel.Instructions,
                 Notes = viewModel.Notes,
-                MainImagePath = Path.GetFileName(viewModel.MainImagePath)
+                MainImagePath = string.IsNullOrEmpty(viewModel.MainImagePath) ? null : Path.GetFileName(viewModel.MainImagePath)
             };
         }
 
@@ -69,7 +69,8 @@ namespace SharpCooking.Models
                 Notes = model.Notes
             };
 
-            result.ApplyMainImage(model.MainImagePath);
+            if (!string.IsNullOrEmpty(model.MainImagePath))
+                result.ApplyMainImage(model.MainImagePath);
 
             return result;
         }
