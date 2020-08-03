@@ -1,5 +1,4 @@
-﻿
-using Foundation;
+﻿using Foundation;
 using UIKit;
 
 namespace SharpCooking.iOS

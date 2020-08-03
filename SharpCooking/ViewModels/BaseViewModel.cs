@@ -76,7 +76,6 @@ namespace SharpCooking.ViewModels
                 .SetPosition(Acr.UserDialogs.ToastPosition.Bottom));
 
             return Task.CompletedTask;
-
         }
 
         protected async Task<TimeSpan?> DisplayTimePromptAsync(string title, string accept, string cancel)

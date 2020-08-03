@@ -83,7 +83,6 @@ namespace SharpCooking.ViewModels
                 PrepareRecipeToDisplay(Item);
 
                 IsBusy = false;
-
             }
             catch (Exception ex)
             {

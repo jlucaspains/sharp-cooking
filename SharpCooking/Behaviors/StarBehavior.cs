@@ -79,9 +79,7 @@ namespace SharpCooking.Behaviors
 
                 behaviors.Add(behavior);
             }
-
         }
-
 
         public static readonly BindableProperty IsStarredProperty =
             BindableProperty.Create("IsStarred",
@@ -135,7 +133,6 @@ namespace SharpCooking.Behaviors
                     item.Rating = position;
                     count++;
                 }
-
             }
         }
 

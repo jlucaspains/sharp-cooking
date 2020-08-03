@@ -74,7 +74,6 @@ namespace SharpCooking.ViewModels
                 Item = RecipeViewModel.FromModel(result);
 
                 await base.InitializeAsync();
-
             }
             catch (Exception ex)
             {

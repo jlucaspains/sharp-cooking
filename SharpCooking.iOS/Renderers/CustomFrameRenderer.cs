@@ -18,7 +18,6 @@ namespace SharpCooking.iOS.Renderers
 
 		public CustomFrameRenderer()
 		{
-
 		}
 
 		protected override void OnElementChanged(ElementChangedEventArgs<Frame> e)

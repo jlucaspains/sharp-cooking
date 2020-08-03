@@ -16,7 +16,6 @@ namespace SharpCooking
 {
     public partial class App : Xamarin.Forms.Application
     {
-
         public App()
         {
             InitializeComponent();
@@ -79,6 +78,5 @@ namespace SharpCooking
             
             return result;
         }
-
     }
 }
