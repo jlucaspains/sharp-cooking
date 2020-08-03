@@ -30,8 +30,8 @@ namespace SharpCooking
 
         protected override void OnStart()
         {
-            AppCenter.Start("android=aec1d7ce-6dbc-4207-aede-119fe2233238;" +
-                  "ios=cc405e62-53be-4e4f-b9f6-0107416cbad5",
+            AppCenter.Start("android=73def550-8bd6-46cc-8cde-7af4dda4b48e;" +
+                  "ios=5cce9d18-398e-44a8-b793-d6b34fd06d24",
                   typeof(Analytics), typeof(Crashes));
         }
 
