@@ -6,7 +6,9 @@
              mc:Ignorable="d"
              x:Class="SharpCooking.Views.AboutView"
              xmlns:v="clr-namespace:SharpCooking.Views" 
+             xmlns:vm="clr-namespace:SharpCooking.ViewModels" 
              xmlns:l="clr-namespace:SharpCooking.Localization"
+             x:DataType="vm:AboutViewModel"
              Title="{Binding Title}"
              v:ViewModelLocator.AutoWireViewModel="true">
     <ScrollView>
