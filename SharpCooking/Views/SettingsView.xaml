@@ -6,10 +6,12 @@
              mc:Ignorable="d"
              x:Class="SharpCooking.Views.SettingsView"
              xmlns:v="clr-namespace:SharpCooking.Views"
+             xmlns:vm="clr-namespace:SharpCooking.ViewModels"
              xmlns:l="clr-namespace:SharpCooking.Localization"
              xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
              Title="{Binding Title}"
              x:Name="BrowseItemsPage"
+             x:DataType="vm:SettingsViewModel"
              v:ViewModelLocator.AutoWireViewModel="true">
     <ScrollView>
         <Grid>
