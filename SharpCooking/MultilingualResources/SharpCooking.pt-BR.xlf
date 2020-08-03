@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="pt-BR" original="SHARPCOOKING/LOCALIZATION/RESOURCES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6916.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="SHARPCOOKING/LOCALIZATION/RESOURCES.RESX" datatype="resx">
+        <trans-unit id="AboutView_Title" translate="yes" xml:space="preserve">
+          <source>About</source>
+          <target state="translated">Sobre</target>
+        </trans-unit>
+        <trans-unit id="AddRecipe" translate="yes" xml:space="preserve">
+          <source>Add</source>
+          <target state="translated">Adicionar</target>
+        </trans-unit>
+        <trans-unit id="AllRecipes" translate="yes" xml:space="preserve">
+          <source>All Recipes</source>
+          <target state="translated">Todas as receitas</target>
+        </trans-unit>
+        <trans-unit id="AppDescription" translate="yes" xml:space="preserve">
+          <source>Your personal cooking app.</source>
+          <target state="translated">Seu aplicativo de culinária pessoal.</target>
+        </trans-unit>
+        <trans-unit id="AppName" translate="yes" xml:space="preserve">
+          <source>Sharp Cooking</source>
+          <target state="translated">Cozinha Afiada</target>
+        </trans-unit>
+        <trans-unit id="AppShell_About" translate="yes" xml:space="preserve">
+          <source>About</source>
+          <target state="translated">Sobre</target>
+        </trans-unit>
+        <trans-unit id="AppShell_Recipes" translate="yes" xml:space="preserve">
+          <source>Recipes</source>
+          <target state="translated">Receitas</target>
+        </trans-unit>
+        <trans-unit id="AppShell_Settings" translate="yes" xml:space="preserve">
+          <source>Settings</source>
+          <target state="translated">Configurações</target>
+        </trans-unit>
+        <trans-unit id="BackupSetupView_Title" translate="yes" xml:space="preserve">
+          <source>Backup</source>
+          <target state="translated">Backup</target>
+        </trans-unit>
+        <trans-unit id="CancelEditRecipe" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="translated">Cancelar</target>
+        </trans-unit>
+        <trans-unit id="DropBoxProviderName" translate="yes" xml:space="preserve">
+          <source>Dropbox</source>
+          <target state="translated">Dropbox</target>
+        </trans-unit>
+        <trans-unit id="EditItemView_FailedToParse" translate="yes" xml:space="preserve">
+          <source>Failed to parse recipe id</source>
+          <target state="translated">Falha ao analisar o ID da receita</target>
+        </trans-unit>
+        <trans-unit id="EditItemView_Ingredients" translate="yes" xml:space="preserve">
+          <source>Ingredients</source>
+          <target state="translated">Ingredientes</target>
+        </trans-unit>
+        <trans-unit id="EditItemView_Instructions" translate="yes" xml:space="preserve">
+          <source>Instructions</source>
+          <target state="translated">Instruções</target>
+        </trans-unit>
+        <trans-unit id="EditItemView_Notes" translate="yes" xml:space="preserve">
+          <source>Notes</source>
+          <target state="translated">Notas</target>
+        </trans-unit>
+        <trans-unit id="EditItemView_PickImageCancel" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="translated">Cancelar</target>
+        </trans-unit>
+        <trans-unit id="EditItemView_PickImagePickImage" translate="yes" xml:space="preserve">
+          <source>Pick from library</source>
+          <target state="translated">Escolha da biblioteca</target>
+        </trans-unit>
+        <trans-unit id="EditItemView_PickImageTitle" translate="yes" xml:space="preserve">
+          <source>Where is your image?</source>
+          <target state="translated">Onde está sua imagem?</target>
+        </trans-unit>
+        <trans-unit id="EditItemView_PickImageUseCamera" translate="yes" xml:space="preserve">
+          <source>Use Camera</source>
+          <target state="translated">Use a Camera</target>
+        </trans-unit>
+        <trans-unit id="EditItemView_Save" translate="yes" xml:space="preserve">
+          <source>Save</source>
+          <target state="translated">Salve</target>
+        </trans-unit>
+        <trans-unit id="EditItemView_Source" translate="yes" xml:space="preserve">
+          <source>Source</source>
+          <target state="translated">Fonte</target>
+        </trans-unit>
+        <trans-unit id="EditItemView_Title" translate="yes" xml:space="preserve">
+          <source>Title</source>
+          <target state="translated">Título</target>
+        </trans-unit>
+        <trans-unit id="EditRecipe" translate="yes" xml:space="preserve">
+          <source>Edit Recipe</source>
+          <target state="translated">Editar receita</target>
+        </trans-unit>
+        <trans-unit id="ErrorOk" translate="yes" xml:space="preserve">
+          <source>Ok</source>
+          <target state="translated">Ok</target>
+        </trans-unit>
+        <trans-unit id="ErrorTitle" translate="yes" xml:space="preserve">
+          <source>Failure</source>
+          <target state="translated">Falha</target>
+        </trans-unit>
+        <trans-unit id="FavoriteRecipe" translate="yes" xml:space="preserve">
+          <source>Favorite</source>
+          <target state="translated">Favorito</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_MoreCancel" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="translated">Cancelar</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_MoreDelete" translate="yes" xml:space="preserve">
+          <source>Delete</source>
+          <target state="translated">Excluir</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_MoreDeleteConfirmation" translate="yes" xml:space="preserve">
+          <source>Are you sure? This is not reversible.</source>
+          <target state="translated">Você tem certeza? Isto não é reversível.</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_MoreDeleteNo" translate="yes" xml:space="preserve">
+          <source>No</source>
+          <target state="translated">Não</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_MoreDeleteYes" translate="yes" xml:space="preserve">
+          <source>Yes</source>
+          <target state="translated">Sim</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_MoreTitle" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <target state="translated">Opções</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_MultiplierCancel" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="translated">Cancelar</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_MultiplierDescription" translate="yes" xml:space="preserve">
+          <source>Enter decimal value of quantity. E.g. 0.5 or 2</source>
+          <target state="translated">Digite o valor decimal da quantidade. Por exemplo. 0,5 ou 2</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_MultiplierOk" translate="yes" xml:space="preserve">
+          <source>Ok</source>
+          <target state="translated">Ok</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_MultiplierTitle" translate="yes" xml:space="preserve">
+          <source>Multiplier</source>
+          <target state="translated">Multiplicador</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_Notes" translate="yes" xml:space="preserve">
+          <source>Notes</source>
+          <target state="translated">Notas</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_RecipeDeleted" translate="yes" xml:space="preserve">
+          <source>Recipe deleted</source>
+          <target state="translated">Receita excluída</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_Share" translate="yes" xml:space="preserve">
+          <source>Share Recipe</source>
+          <target state="translated">Compartilhar receita</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_StartTimeCancel" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="translated">Cancelar</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_StartTimeOk" translate="yes" xml:space="preserve">
+          <source>Ok</source>
+          <target state="translated">Ok</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_StartTimeTitle" translate="yes" xml:space="preserve">
+          <source>Start Time</source>
+          <target state="translated">Hora de início</target>
+        </trans-unit>
+        <trans-unit id="NewRecipe" translate="yes" xml:space="preserve">
+          <source>New Recipe</source>
+          <target state="translated">Nova receita</target>
+        </trans-unit>
+        <trans-unit id="SelectCultureView_Title" translate="yes" xml:space="preserve">
+          <source>Culture</source>
+          <target state="translated">Cultura</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_BackingUpTo" translate="yes" xml:space="preserve">
+          <source>Backing up to</source>
+          <target state="translated">Fazendo backup em</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_Backup" translate="yes" xml:space="preserve">
+          <source>Backup</source>
+          <target state="translated">Criar Backup</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_Help" translate="yes" xml:space="preserve">
+          <source>Help</source>
+          <target state="translated">Ajuda</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_HelpContact" translate="yes" xml:space="preserve">
+          <source>Contact developer</source>
+          <target state="translated">Entre em contato com o desenvolvedor</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_Language" translate="yes" xml:space="preserve">
+          <source>Language</source>
+          <target state="translated">Língua</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_Privacy" translate="yes" xml:space="preserve">
+          <source>Privacy</source>
+          <target state="translated">Privacidade</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_PrivacyPolicy" translate="yes" xml:space="preserve">
+          <source>Review our privacy policy</source>
+          <target state="translated">Revise nossa política de privacidade</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_RestoreBackup" translate="yes" xml:space="preserve">
+          <source>Restore Backup</source>
+          <target state="translated">Restaurar backup</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_SetupBackup" translate="yes" xml:space="preserve">
+          <source>Setup backup</source>
+          <target state="translated">Configurar backup</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_StepsInterval" translate="yes" xml:space="preserve">
+          <source>Steps Interval</source>
+          <target state="translated">Intervalo de etapas</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_StepsIntervalCancel" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="translated">Cancelar</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_StepsIntervalDescription" translate="yes" xml:space="preserve">
+          <source>How many minutes between not steps without time information?</source>
+          <target state="translated">Quantos minutos entre as etapas não cronometradas?</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_StepsIntervalOk" translate="yes" xml:space="preserve">
+          <source>Ok</source>
+          <target state="translated">Ok</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_StepsIntervalTitle" translate="yes" xml:space="preserve">
+          <source>Step interval</source>
+          <target state="translated">Intervalo de etapas</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_TimeStepsDescriptoin" translate="yes" xml:space="preserve">
+          <source>minutes when no time information is given</source>
+          <target state="translated">minutos quando nenhuma informação de tempo é fornecida</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_BadBackupFile" translate="yes" xml:space="preserve">
+          <source>Humm... That file looks weird. Are you sure it is a Sharp Cooking backup file?</source>
+          <target state="translated">Humm... Esse arquivo parece estranho. Tem certeza de que é um arquivo de backup do Cozinha Afiada?</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_CannotChangeCulture" translate="yes" xml:space="preserve">
+          <source>At this moment we don't support selecting the language here, please change the language in your phone.</source>
+          <target state="translated">No momento, não oferecemos suporte à seleção do idioma aqui. Altere o idioma do seu telefone.</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_CorruptedBackupFile" translate="yes" xml:space="preserve">
+          <source>Oh no! Your backup lookups corrupted and I wasn't able to restore it.</source>
+          <target state="translated">Ah não! Seu backup parece corrompido e não foi possível restaurá-lo.</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_NoRecipesToRestore" translate="yes" xml:space="preserve">
+          <source>Weird... There are no recipes in this backup.</source>
+          <target state="translated">Estranho... Não há receitas neste backup.</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_NotSupported" translate="yes" xml:space="preserve">
+          <source>Not supported</source>
+          <target state="translated" state-qualifier="tm-suggestion">Sem suporte</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_PickBackupLocation" translate="yes" xml:space="preserve">
+          <source>Where should we save your backup data?</source>
+          <target state="translated">Onde devemos salvar seus dados de backup?</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_ResourceCancelledContent" translate="yes" xml:space="preserve">
+          <source>No problem. We can do this later.</source>
+          <target state="translated">Sem problemas. Podemos fazer isso mais tarde.</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_RestoreCancelled" translate="yes" xml:space="preserve">
+          <source>Cancelled</source>
+          <target state="translated" state-qualifier="tm-suggestion">Cancelado</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_RestoreIsDone" translate="yes" xml:space="preserve">
+          <source>Restore is done.</source>
+          <target state="translated">A restauração de backup foi concluída.</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_Ingredients" translate="yes" xml:space="preserve">
+          <source>Ingredients</source>
+          <target state="translated">Ingredientes</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_Step" translate="yes" xml:space="preserve">
+          <source>Step</source>
+          <target state="translated">Passo</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_ExportBackup" translate="yes" xml:space="preserve">
+          <source>Export a new backup to file</source>
+          <target state="translated">Exportar um novo backup para arquivo</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_RestoreBackupFromFile" translate="yes" xml:space="preserve">
+          <source>Restore an existing backup from file</source>
+          <target state="translated">Restaurar um backup existente de arquivo</target>
+        </trans-unit>
+        <trans-unit id="ItemsView_EnterSearchTerm" translate="yes" xml:space="preserve">
+          <source>Enter search term</source>
+          <target state="translated">Digite o termo de pesquisa</target>
+        </trans-unit>
+        <trans-unit id="ItemsView_SearchItems" translate="yes" xml:space="preserve">
+          <source>Search items...</source>
+          <target state="translated">Pesquisar itens...</target>
+        </trans-unit>
+        <trans-unit id="IngredientQuantityRegex" translate="yes" xml:space="preserve">
+          <source>^(?<it id="1" pos="open">&lt;Fraction&gt;</it>\d+\/\d+)|^(?<it id="2" pos="open">&lt;Regular&gt;</it>\d+\.{0,1}\d*)</source>
+          <target state="translated">^(?<it id="1" pos="open">&lt;Fraction&gt;</it>\d+\/\d+)|^(?<it id="2" pos="open">&lt;Regular&gt;</it>\d+\,{0,1}\d*)</target>
+        </trans-unit>
+        <trans-unit id="MultiplierQuantityAggregator" translate="yes" xml:space="preserve">
+          <source>and</source>
+          <target state="translated">e</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_MultiplierResultFormat" translate="yes" xml:space="preserve">
+          <source>Multiplier result format</source>
+          <target state="translated">Formato do resultado do multiplicador</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_MultiplyResultDisplayUseDecimal" translate="yes" xml:space="preserve">
+          <source>Display decimals like 1.5</source>
+          <target state="translated">Mostrar decimais como 1,5</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_MultiplyResultDisplayUseFractions" translate="yes" xml:space="preserve">
+          <source>Display fractions like 1 and 1/2</source>
+          <target state="translated">Mostrar frações como 1 e 1/2</target>
+        </trans-unit>
+        <trans-unit id="StepTimeIdentifierRegex" translate="yes" xml:space="preserve">
+          <source>(?<it id="1" pos="open">&lt;Minutes&gt;</it>\d+\.{0,1}\d*)\s*(minutes|minute|min)\b|(?<it id="2" pos="open">&lt;Hours&gt;</it>\d+\.{0,1}\d*)\s*(hours|hour)\b|(?<it id="3" pos="open">&lt;Days&gt;</it>\d+\.{0,1}\d*)\s*(days|day)\b</source>
+          <target state="translated">(?<it id="1" pos="open">&lt;Minutes&gt;</it>\d+\.{0,1}\d*)\s*(minutos|minuto|min)\b|(?<it id="2" pos="open">&lt;Hours&gt;</it>\d+\.{0,1}\d*)\s*(horas|hora)\b|(?<it id="3" pos="open">&lt;Days&gt;</it>\d+\.{0,1}\d*)\s*(dias|dia)\b</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_DayAbbreviation" translate="yes" xml:space="preserve">
+          <source>d</source>
+          <target state="translated">d</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_Enjoy" translate="yes" xml:space="preserve">
+          <source>Enjoy!</source>
+          <target state="translated">Bom apetite!</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_FailedToParseInputId" translate="yes" xml:space="preserve">
+          <source>Failed to parse input id</source>
+          <target state="translated">Falha ao analisar o ID da receita</target>
+        </trans-unit>
+        <trans-unit id="ItemsView_NothingToShow" translate="yes" xml:space="preserve">
+          <source>Nothing to show. How about you add some yummy recipes?</source>
+          <target state="translated">Nada para mostrar aqui. Que tal você adicionar algumas receitas deliciosas?</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

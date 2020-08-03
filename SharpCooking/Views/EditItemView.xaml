@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SharpCooking.Views.EditItemView"
+             xmlns:v="clr-namespace:SharpCooking.Views"
+             xmlns:l="clr-namespace:SharpCooking.Localization"
+             xmlns:c1="clr-namespace:SharpCooking.Converters"
+             Title="{Binding Title}"
+             x:Name="EditItemViewPage"
+             v:ViewModelLocator.AutoWireViewModel="true"
+             IsBusy="{Binding IsBusy}">
+    <ContentPage.Resources>
+        <c1:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter" />
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{x:Static l:Resources.EditItemView_Save}" Command="{Binding SaveCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="{DynamicResource MaterialFont}"
+                    Size="24"
+                    Glyph="{x:Static v:IconFont.ContentSave}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <StackLayout>
+            <Grid HeightRequest="250" BackgroundColor="{DynamicResource NavigationSecondary}" Margin="0">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding MainImageTappedCommand}" />
+                </Grid.GestureRecognizers>
+                <Image IsVisible="{Binding Item.DoesNotHaveMainImage}" 
+                        HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image.Source>
+                        <FontImageSource
+                            FontFamily="{DynamicResource MaterialFont}"
+                            Color="White"
+                            Size="50"
+                            Glyph="{x:Static v:IconFont.ImagePlus}"/>
+                    </Image.Source>
+                </Image>
+                <Image IsVisible="{Binding Item.HasMainImage}" Aspect="AspectFill"
+                        Source="{Binding Item.MainImagePath}" HeightRequest="200" />
+            </Grid>
+            <Frame CornerRadius="25" Margin="0,-27,0,0" HasShadow="True">
+                <StackLayout Margin="0,0,0,10">
+                    <Label Text="{x:Static l:Resources.EditItemView_Title}" />
+                    <Entry Text="{Binding Item.Title}" />
+                    <Label Text="{x:Static l:Resources.EditItemView_Source}" />
+                    <Entry Text="{Binding Item.Source}" />
+                    <Label Text="{x:Static l:Resources.EditItemView_Ingredients}" />
+                    <Editor AutoSize="TextChanges" Text="{Binding Item.Ingredients}" />
+                    <Label Text="{x:Static l:Resources.EditItemView_Instructions}" />
+                    <Editor AutoSize="TextChanges" Text="{Binding Item.Instructions}" />
+                    <Label Text="{x:Static l:Resources.EditItemView_Notes}" />
+                    <Editor AutoSize="TextChanges" Text="{Binding Item.Notes}" />
+                </StackLayout>
+            </Frame>
+            <StackLayout BackgroundColor="White" HeightRequest="27" Margin="0,-27,0,0"></StackLayout>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutView_Title" xml:space="preserve">
+    <value>Sobre</value>
+  </data>
+  <data name="AddRecipe" xml:space="preserve">
+    <value>Adicionar</value>
+  </data>
+  <data name="AllRecipes" xml:space="preserve">
+    <value>Todas as receitas</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>Seu aplicativo de culinária pessoal.</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>Cozinha Afiada</value>
+  </data>
+  <data name="AppShell_About" xml:space="preserve">
+    <value>Sobre</value>
+  </data>
+  <data name="AppShell_Recipes" xml:space="preserve">
+    <value>Receitas</value>
+  </data>
+  <data name="AppShell_Settings" xml:space="preserve">
+    <value>Configurações</value>
+  </data>
+  <data name="BackupSetupView_Title" xml:space="preserve">
+    <value>Backup</value>
+  </data>
+  <data name="CancelEditRecipe" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="DropBoxProviderName" xml:space="preserve">
+    <value>Dropbox</value>
+  </data>
+  <data name="EditItemView_FailedToParse" xml:space="preserve">
+    <value>Falha ao analisar o ID da receita</value>
+  </data>
+  <data name="EditItemView_Ingredients" xml:space="preserve">
+    <value>Ingredientes</value>
+  </data>
+  <data name="EditItemView_Instructions" xml:space="preserve">
+    <value>Instruções</value>
+  </data>
+  <data name="EditItemView_Notes" xml:space="preserve">
+    <value>Notas</value>
+  </data>
+  <data name="EditItemView_PickImageCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="EditItemView_PickImagePickImage" xml:space="preserve">
+    <value>Escolha da biblioteca</value>
+  </data>
+  <data name="EditItemView_PickImageTitle" xml:space="preserve">
+    <value>Onde está sua imagem?</value>
+  </data>
+  <data name="EditItemView_PickImageUseCamera" xml:space="preserve">
+    <value>Use a Camera</value>
+  </data>
+  <data name="EditItemView_Save" xml:space="preserve">
+    <value>Salve</value>
+  </data>
+  <data name="EditItemView_Source" xml:space="preserve">
+    <value>Fonte</value>
+  </data>
+  <data name="EditItemView_Title" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="EditRecipe" xml:space="preserve">
+    <value>Editar receita</value>
+  </data>
+  <data name="ErrorOk" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Falha</value>
+  </data>
+  <data name="FavoriteRecipe" xml:space="preserve">
+    <value>Favorito</value>
+  </data>
+  <data name="ItemDetailView_MoreCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="ItemDetailView_MoreDelete" xml:space="preserve">
+    <value>Excluir</value>
+  </data>
+  <data name="ItemDetailView_MoreDeleteConfirmation" xml:space="preserve">
+    <value>Você tem certeza? Isto não é reversível.</value>
+  </data>
+  <data name="ItemDetailView_MoreDeleteNo" xml:space="preserve">
+    <value>Não</value>
+  </data>
+  <data name="ItemDetailView_MoreDeleteYes" xml:space="preserve">
+    <value>Sim</value>
+  </data>
+  <data name="ItemDetailView_MoreTitle" xml:space="preserve">
+    <value>Opções</value>
+  </data>
+  <data name="ItemDetailView_MultiplierCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="ItemDetailView_MultiplierDescription" xml:space="preserve">
+    <value>Digite o valor decimal da quantidade. Por exemplo. 0,5 ou 2</value>
+  </data>
+  <data name="ItemDetailView_MultiplierOk" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="ItemDetailView_MultiplierTitle" xml:space="preserve">
+    <value>Multiplicador</value>
+  </data>
+  <data name="ItemDetailView_Notes" xml:space="preserve">
+    <value>Notas</value>
+  </data>
+  <data name="ItemDetailView_RecipeDeleted" xml:space="preserve">
+    <value>Receita excluída</value>
+  </data>
+  <data name="ItemDetailView_Share" xml:space="preserve">
+    <value>Compartilhar receita</value>
+  </data>
+  <data name="ItemDetailView_StartTimeCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="ItemDetailView_StartTimeOk" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="ItemDetailView_StartTimeTitle" xml:space="preserve">
+    <value>Hora de início</value>
+  </data>
+  <data name="NewRecipe" xml:space="preserve">
+    <value>Nova receita</value>
+  </data>
+  <data name="SelectCultureView_Title" xml:space="preserve">
+    <value>Cultura</value>
+  </data>
+  <data name="SettingsView_BackingUpTo" xml:space="preserve">
+    <value>Fazendo backup em</value>
+  </data>
+  <data name="SettingsView_Backup" xml:space="preserve">
+    <value>Criar Backup</value>
+  </data>
+  <data name="SettingsView_Help" xml:space="preserve">
+    <value>Ajuda</value>
+  </data>
+  <data name="SettingsView_HelpContact" xml:space="preserve">
+    <value>Entre em contato com o desenvolvedor</value>
+  </data>
+  <data name="SettingsView_Language" xml:space="preserve">
+    <value>Língua</value>
+  </data>
+  <data name="SettingsView_Privacy" xml:space="preserve">
+    <value>Privacidade</value>
+  </data>
+  <data name="SettingsView_PrivacyPolicy" xml:space="preserve">
+    <value>Revise nossa política de privacidade</value>
+  </data>
+  <data name="SettingsView_RestoreBackup" xml:space="preserve">
+    <value>Restaurar backup</value>
+  </data>
+  <data name="SettingsView_SetupBackup" xml:space="preserve">
+    <value>Configurar backup</value>
+  </data>
+  <data name="SettingsView_StepsInterval" xml:space="preserve">
+    <value>Intervalo de etapas</value>
+  </data>
+  <data name="SettingsView_StepsIntervalCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="SettingsView_StepsIntervalDescription" xml:space="preserve">
+    <value>Quantos minutos entre as etapas não cronometradas?</value>
+  </data>
+  <data name="SettingsView_StepsIntervalOk" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="SettingsView_StepsIntervalTitle" xml:space="preserve">
+    <value>Intervalo de etapas</value>
+  </data>
+  <data name="SettingsView_TimeStepsDescriptoin" xml:space="preserve">
+    <value>minutos quando nenhuma informação de tempo é fornecida</value>
+  </data>
+  <data name="SettingsView_BadBackupFile" xml:space="preserve">
+    <value>Humm... Esse arquivo parece estranho. Tem certeza de que é um arquivo de backup do Cozinha Afiada?</value>
+  </data>
+  <data name="SettingsView_CannotChangeCulture" xml:space="preserve">
+    <value>No momento, não oferecemos suporte à seleção do idioma aqui. Altere o idioma do seu telefone.</value>
+  </data>
+  <data name="SettingsView_CorruptedBackupFile" xml:space="preserve">
+    <value>Ah não! Seu backup parece corrompido e não foi possível restaurá-lo.</value>
+  </data>
+  <data name="SettingsView_NoRecipesToRestore" xml:space="preserve">
+    <value>Estranho... Não há receitas neste backup.</value>
+  </data>
+  <data name="SettingsView_NotSupported" xml:space="preserve">
+    <value>Sem suporte</value>
+  </data>
+  <data name="SettingsView_PickBackupLocation" xml:space="preserve">
+    <value>Onde devemos salvar seus dados de backup?</value>
+  </data>
+  <data name="SettingsView_ResourceCancelledContent" xml:space="preserve">
+    <value>Sem problemas. Podemos fazer isso mais tarde.</value>
+  </data>
+  <data name="SettingsView_RestoreCancelled" xml:space="preserve">
+    <value>Cancelado</value>
+  </data>
+  <data name="SettingsView_RestoreIsDone" xml:space="preserve">
+    <value>A restauração de backup foi concluída.</value>
+  </data>
+  <data name="ItemDetailView_Ingredients" xml:space="preserve">
+    <value>Ingredientes</value>
+  </data>
+  <data name="ItemDetailView_Step" xml:space="preserve">
+    <value>Passo</value>
+  </data>
+  <data name="SettingsView_ExportBackup" xml:space="preserve">
+    <value>Exportar um novo backup para arquivo</value>
+  </data>
+  <data name="SettingsView_RestoreBackupFromFile" xml:space="preserve">
+    <value>Restaurar um backup existente de arquivo</value>
+  </data>
+  <data name="ItemsView_EnterSearchTerm" xml:space="preserve">
+    <value>Digite o termo de pesquisa</value>
+  </data>
+  <data name="ItemsView_SearchItems" xml:space="preserve">
+    <value>Pesquisar itens...</value>
+  </data>
+  <data name="IngredientQuantityRegex" xml:space="preserve">
+    <value>^(?&lt;Fraction&gt;\d+\/\d+)|^(?&lt;Regular&gt;\d+\,{0,1}\d*)</value>
+  </data>
+  <data name="MultiplierQuantityAggregator" xml:space="preserve">
+    <value>e</value>
+  </data>
+  <data name="SettingsView_MultiplierResultFormat" xml:space="preserve">
+    <value>Formato do resultado do multiplicador</value>
+  </data>
+  <data name="SettingsView_MultiplyResultDisplayUseDecimal" xml:space="preserve">
+    <value>Mostrar decimais como 1,5</value>
+  </data>
+  <data name="SettingsView_MultiplyResultDisplayUseFractions" xml:space="preserve">
+    <value>Mostrar frações como 1 e 1/2</value>
+  </data>
+  <data name="StepTimeIdentifierRegex" xml:space="preserve">
+    <value>(?&lt;Minutes&gt;\d+\.{0,1}\d*)\s*(minutos|minuto|min)\b|(?&lt;Hours&gt;\d+\.{0,1}\d*)\s*(horas|hora)\b|(?&lt;Days&gt;\d+\.{0,1}\d*)\s*(dias|dia)\b</value>
+  </data>
+  <data name="ItemDetailView_DayAbbreviation" xml:space="preserve">
+    <value>d</value>
+  </data>
+  <data name="ItemDetailView_Enjoy" xml:space="preserve">
+    <value>Bom apetite!</value>
+  </data>
+  <data name="ItemDetailView_FailedToParseInputId" xml:space="preserve">
+    <value>Falha ao analisar o ID da receita</value>
+  </data>
+  <data name="ItemsView_NothingToShow" xml:space="preserve">
+    <value>Nada para mostrar aqui. Que tal você adicionar algumas receitas deliciosas?</value>
+  </data>
+</root>

@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:v="clr-namespace:SharpCooking.Views"
+             mc:Ignorable="d"
+             x:Name="RatingEditorRoot"
+             x:Class="SharpCooking.Controls.RatingEditor">
+    <ContentView.Content>
+        <StackLayout Orientation="Horizontal" HeightRequest="70">
+            <Grid>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" />
+                </Grid.GestureRecognizers>
+                <Image x:Name="starBlankOne">
+                    <Image.Source>
+                        <FontImageSource
+                                FontFamily="{DynamicResource MaterialFont}"
+                                Size="30"
+                                Color="SlateGray"
+                                Glyph="{x:Static v:IconFont.StarOutline}"/>
+                    </Image.Source>
+                </Image>
+
+                <Image x:Name="starSelectedOne">
+                    <Image.Source>
+                        <FontImageSource
+                                FontFamily="{DynamicResource MaterialFont}"
+                                Size="30"
+                                Color="SlateGray"
+                                Glyph="{x:Static v:IconFont.Star}"/>
+                    </Image.Source>
+                </Image>
+            </Grid>
+            <Grid>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2" />
+                </Grid.GestureRecognizers>
+                <Image x:Name="starBlankTwo">
+                    <Image.Source>
+                        <FontImageSource
+                                FontFamily="{DynamicResource MaterialFont}"
+                                Size="30"
+                                Color="SlateGray"
+                                Glyph="{x:Static v:IconFont.StarOutline}"/>
+                    </Image.Source>
+                </Image>
+
+                <Image x:Name="starSelectedTwo">
+                    <Image.Source>
+                        <FontImageSource
+                                FontFamily="{DynamicResource MaterialFont}"
+                                Size="30"
+                                Color="SlateGray"
+                                Glyph="{x:Static v:IconFont.Star}"/>
+                    </Image.Source>
+                </Image>
+            </Grid>
+            <Grid>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3" />
+                </Grid.GestureRecognizers>
+                <Image x:Name="starBlankThree">
+                    <Image.Source>
+                        <FontImageSource
+                                FontFamily="{DynamicResource MaterialFont}"
+                                Size="30"
+                                Color="SlateGray"
+                                Glyph="{x:Static v:IconFont.StarOutline}"/>
+                    </Image.Source>
+                </Image>
+
+                <Image x:Name="starSelectedThree">
+                    <Image.Source>
+                        <FontImageSource
+                                FontFamily="{DynamicResource MaterialFont}"
+                                Size="30"
+                                Color="SlateGray"
+                                Glyph="{x:Static v:IconFont.Star}"/>
+                    </Image.Source>
+                </Image>
+            </Grid>
+            <Grid>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4" />
+                </Grid.GestureRecognizers>
+                <Image x:Name="starBlankFour">
+                    <Image.Source>
+                        <FontImageSource
+                                FontFamily="{DynamicResource MaterialFont}"
+                                Size="30"
+                                Color="SlateGray"
+                                Glyph="{x:Static v:IconFont.StarOutline}"/>
+                    </Image.Source>
+                </Image>
+
+                <Image x:Name="starSelectedFour">
+                    <Image.Source>
+                        <FontImageSource
+                                FontFamily="{DynamicResource MaterialFont}"
+                                Size="30"
+                                Color="SlateGray"
+                                Glyph="{x:Static v:IconFont.Star}"/>
+                    </Image.Source>
+                </Image>
+            </Grid>
+            <Grid>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_5" />
+                </Grid.GestureRecognizers>
+                <Image x:Name="starBlankFive">
+                    <Image.Source>
+                        <FontImageSource
+                                FontFamily="{DynamicResource MaterialFont}"
+                                Size="30"
+                                Color="SlateGray"
+                                Glyph="{x:Static v:IconFont.StarOutline}"/>
+                    </Image.Source>
+                </Image>
+
+                <Image x:Name="starSelectedFive">
+                    <Image.Source>
+                        <FontImageSource
+                                FontFamily="{DynamicResource MaterialFont}"
+                                Size="30"
+                                Color="SlateGray"
+                                Glyph="{x:Static v:IconFont.Star}"/>
+                    </Image.Source>
+                </Image>
+            </Grid>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

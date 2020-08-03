@@ -1,0 +1,149 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SharpCooking.Views.ItemsView"
+             xmlns:v="clr-namespace:SharpCooking.Views"
+             xmlns:b="clr-namespace:SharpCooking.Behaviors"
+             xmlns:l="clr-namespace:SharpCooking.Localization"
+             xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
+             Title="{Binding Title}"
+             x:Name="ItemsViewRoot"
+             v:ViewModelLocator.AutoWireViewModel="true">
+    <Shell.SearchHandler>
+        <v:RecipeSearchHandler Placeholder="{x:Static l:Resources.ItemsView_EnterSearchTerm}"
+                               ShowsResults="true"
+                               IsSearchEnabled="True">
+            <v:RecipeSearchHandler.SearchBoxVisibility>
+                <OnPlatform x:TypeArguments="SearchBoxVisibility">
+                    <On Platform="iOS" Value="Hidden"></On>
+                    <On Platform="Android" Value="Collapsible"></On>
+                </OnPlatform>
+            </v:RecipeSearchHandler.SearchBoxVisibility>
+            <v:RecipeSearchHandler.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.15*" />
+                            <ColumnDefinition Width="0.85*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" 
+                                IsVisible="{Binding DoesNotHaveMainImage}"
+                                Aspect="AspectFill"
+                                HeightRequest="40">
+                            <Image.Source>
+                                <FontImageSource FontFamily="{DynamicResource MaterialFont}"
+                                                Color="{DynamicResource NavigationSecondary}"
+                                                Size="10"
+                                                Glyph="{x:Static v:IconFont.ImageBrokenVariant}"/>
+                            </Image.Source>
+                        </Image>
+                        <Image Grid.Column="0"
+                               Aspect="AspectFill"
+                               IsVisible="{Binding HasMainImage}"
+                               HeightRequest="40">
+                            <Image.Source>
+                                <FileImageSource File="{Binding MainImagePath}" />
+                            </Image.Source>
+                        </Image>
+                        <Label Grid.Column="1"
+                               Text="{Binding Title}"
+                               FontAttributes="Bold" />
+                    </Grid>
+                </DataTemplate>
+            </v:RecipeSearchHandler.ItemTemplate>
+        </v:RecipeSearchHandler>
+    </Shell.SearchHandler>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding AddItemCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="{DynamicResource MaterialFont}"
+                    Size="24"
+                    Glyph="{x:Static v:IconFont.Plus}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+
+    <Grid BackgroundColor="#F9F9F9">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <SearchBar Grid.Row="0" Placeholder="{x:Static l:Resources.ItemsView_SearchItems}" 
+                       Text="{Binding SearchValue}">
+                        <SearchBar.Behaviors>
+                            <b:EventToCommandBehavior EventName="TextChanged" Command="{Binding FilterListCommand}" />
+                        </SearchBar.Behaviors>
+                        <SearchBar.IsVisible>
+                            <OnPlatform x:TypeArguments="x:Boolean">
+                                <On Platform="Android" Value="false" />
+                                <On Platform="iOS" Value="true" />
+                            </OnPlatform>
+                        </SearchBar.IsVisible>
+                    </SearchBar>
+
+        <StackLayout Grid.Row="1" IsVisible="{Binding NoDataToShow}" VerticalOptions="Center" Margin="50">
+            <Image Aspect="AspectFill"
+                   IsVisible="{Binding DoesNotHaveMainImage}"
+                   HorizontalOptions="Center" VerticalOptions="Center">
+                <Image.Source>
+                    <FontImageSource FontFamily="{DynamicResource MaterialFont}"
+                                     Size="50"
+                                     Color="#D0D0D0"
+                                     Glyph="{x:Static v:IconFont.Cookie}"/>
+                </Image.Source>
+            </Image>
+            <Label Text="{x:Static l:Resources.ItemsView_NothingToShow}"  HorizontalOptions="Center" VerticalOptions="Center" />
+        </StackLayout>
+
+        <CollectionView Grid.Row="1" Grid.Column="0"
+                        ItemsSource="{Binding Items}"
+                        SelectionMode="None"
+                        IsVisible="{Binding DataToShow}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10" xe:Commands.Tap="{Binding BindingContext.ItemTappedCommand, Source={x:Reference ItemsViewRoot}}" 
+                      xe:Commands.TapParameter="{Binding .}">
+                        <Frame HeightRequest="250" HasShadow="true" CornerRadius="15" Padding="0">
+                            <Grid VerticalOptions="Fill" Padding="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="200" />
+                                    <RowDefinition Height="50" />
+                                </Grid.RowDefinitions>
+                                <Image Aspect="AspectFill" Grid.Row="0" Grid.Column="0"
+                                               IsVisible="{Binding HasMainImage}">
+                                    <Image.Source>
+                                        <FileImageSource File="{Binding MainImagePath}" />
+                                    </Image.Source>
+                                </Image>
+                                <Grid Grid.Row="0" Grid.Column="0"
+                                               IsVisible="{Binding DoesNotHaveMainImage}"
+                                               BackgroundColor="{DynamicResource NavigationSecondary}">
+                                    <Image Aspect="AspectFill"
+                                                   IsVisible="{Binding DoesNotHaveMainImage}"
+                                                   HorizontalOptions="Center" VerticalOptions="Center">
+                                        <Image.Source>
+                                            <FontImageSource FontFamily="{DynamicResource MaterialFont}"
+                                                    Color="White"
+                                                    Size="50"
+                                                    Glyph="{x:Static v:IconFont.ImageBrokenVariant}"/>
+                                        </Image.Source>
+                                    </Image>
+                                </Grid>
+
+                                <Label Grid.Row="1" Text="{Binding Title}" 
+                                            LineBreakMode="TailTruncation"
+                                            Padding="20,5" TextColor="#707070" FontSize="15" />
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
