@@ -6,9 +6,11 @@
              mc:Ignorable="d"
              x:Class="SharpCooking.Views.ItemDetailView"
              xmlns:v="clr-namespace:SharpCooking.Views"
+             xmlns:vm="clr-namespace:SharpCooking.ViewModels"
              xmlns:l="clr-namespace:SharpCooking.Localization"
              Title="{Binding Title}"
-             v:ViewModelLocator.AutoWireViewModel="true">
+             v:ViewModelLocator.AutoWireViewModel="true"
+             x:DataType="vm:ItemDetailViewModel">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="{x:Static l:Resources.EditRecipe}" Command="{Binding EditCommand}">
             <ToolbarItem.IconImageSource>
@@ -108,7 +110,7 @@
                          HorizontalOptions="Center"
                          BindableLayout.ItemsSource="{Binding Steps}">
                         <BindableLayout.ItemTemplate>
-                            <DataTemplate>
+                            <DataTemplate x:DataType="vm:StepViewModel">
                                 <Grid ColumnSpacing="0" RowSpacing="0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="80" />

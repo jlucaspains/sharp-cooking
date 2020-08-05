@@ -80,16 +80,19 @@ namespace SharpCooking.ViewModels
 
         async Task Backup()
         {
-            var appFolder = Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
+            var appFolder = Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
             var allRecipes = await _store.AllAsync<Recipe>();
 
-            var recipesFile = Path.Combine(appFolder, AppConstants.BackupRecipeFileName);
-            var allFiles = allRecipes.Where(item => !string.IsNullOrEmpty(item.MainImagePath)).Select(item => item.MainImagePath).ToList();
+            var allFiles = allRecipes.Where(item => !string.IsNullOrEmpty(item.MainImagePath))
+                .Select(item => item.MainImagePath)
+                .Select(item => Path.Combine(appFolder, item))
+                .ToList();
 
             // remove the folder path out of the main image path
             foreach (var item in allRecipes)
                 item.MainImagePath = Path.GetFileName(item.MainImagePath);
 
+            var recipesFile = Path.Combine(appFolder, AppConstants.BackupRecipeFileName);
             var recipesJson = JsonConvert.SerializeObject(allRecipes);
             File.WriteAllText(recipesFile, recipesJson);
 

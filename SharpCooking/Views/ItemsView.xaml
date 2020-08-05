@@ -7,10 +7,13 @@
              xmlns:v="clr-namespace:SharpCooking.Views"
              xmlns:b="clr-namespace:SharpCooking.Behaviors"
              xmlns:l="clr-namespace:SharpCooking.Localization"
+             xmlns:m="clr-namespace:SharpCooking.Models"
+             xmlns:vm="clr-namespace:SharpCooking.ViewModels"
              xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
              Title="{Binding Title}"
              x:Name="ItemsViewRoot"
-             v:ViewModelLocator.AutoWireViewModel="true">
+             v:ViewModelLocator.AutoWireViewModel="true"
+             x:DataType="vm:ItemsViewModel">
     <Shell.SearchHandler>
         <v:RecipeSearchHandler Placeholder="{x:Static l:Resources.ItemsView_EnterSearchTerm}"
                                ShowsResults="true"
@@ -22,7 +25,7 @@
                 </OnPlatform>
             </v:RecipeSearchHandler.SearchBoxVisibility>
             <v:RecipeSearchHandler.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="m:RecipeViewModel">
                     <Grid Padding="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="0.15*" />
@@ -89,7 +92,6 @@
 
         <StackLayout Grid.Row="1" IsVisible="{Binding NoDataToShow}" VerticalOptions="Center" Margin="50">
             <Image Aspect="AspectFill"
-                   IsVisible="{Binding DoesNotHaveMainImage}"
                    HorizontalOptions="Center" VerticalOptions="Center">
                 <Image.Source>
                     <FontImageSource FontFamily="{DynamicResource MaterialFont}"
@@ -106,7 +108,7 @@
                         SelectionMode="None"
                         IsVisible="{Binding DataToShow}">
             <CollectionView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="m:RecipeViewModel">
                     <Grid Padding="10" xe:Commands.Tap="{Binding BindingContext.ItemTappedCommand, Source={x:Reference ItemsViewRoot}}" 
                       xe:Commands.TapParameter="{Binding .}">
                         <Frame HeightRequest="250" HasShadow="true" CornerRadius="15" Padding="0">

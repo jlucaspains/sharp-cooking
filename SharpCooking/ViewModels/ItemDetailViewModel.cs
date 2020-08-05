@@ -163,6 +163,9 @@ namespace SharpCooking.ViewModels
             {
                 Multiplier = newMultiplier;
 
+                if (string.IsNullOrEmpty(Item.Ingredients))
+                    return;
+
                 var regexResult = Regex.Replace(Item.Ingredients, Resources.IngredientQuantityRegex, (match) =>
                 {
                     var fractionGroup = match.Groups["Fraction"];
