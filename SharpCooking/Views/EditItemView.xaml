@@ -6,10 +6,12 @@
              mc:Ignorable="d"
              x:Class="SharpCooking.Views.EditItemView"
              xmlns:v="clr-namespace:SharpCooking.Views"
+             xmlns:vm="clr-namespace:SharpCooking.ViewModels"
              xmlns:l="clr-namespace:SharpCooking.Localization"
              xmlns:c1="clr-namespace:SharpCooking.Converters"
              Title="{Binding Title}"
              x:Name="EditItemViewPage"
+             x:DataType="vm:EditItemViewModel"
              v:ViewModelLocator.AutoWireViewModel="true"
              IsBusy="{Binding IsBusy}">
     <ContentPage.Resources>
