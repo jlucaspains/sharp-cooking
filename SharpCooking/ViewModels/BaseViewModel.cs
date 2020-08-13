@@ -93,6 +93,12 @@ namespace SharpCooking.ViewModels
                 : null;
         }
 
+        protected IDisposable DisplayLoading(string title)
+        {
+            var config = new Acr.UserDialogs.ProgressDialogConfig().SetTitle(title).SetIsDeterministic(false).SetAutoShow(true);
+            return Acr.UserDialogs.UserDialogs.Instance.Progress(config);
+        }
+
         protected async Task ReportError(string message)
         {
             await Shell.DisplayAlert(Resources.ErrorTitle, message, Resources.ErrorOk);

@@ -150,8 +150,29 @@
   <data name="DropBoxProviderName" xml:space="preserve">
     <value>Dropbox</value>
   </data>
+  <data name="EditItemView_AddressWrong" xml:space="preserve">
+    <value>This address doesn't look right...</value>
+  </data>
+  <data name="EditItemView_CopyUrl" xml:space="preserve">
+    <value>Please copy and paste the recipe address from your browser</value>
+  </data>
+  <data name="EditItemView_DownloadingRecipe" xml:space="preserve">
+    <value>Downloading recipe...</value>
+  </data>
   <data name="EditItemView_FailedToParse" xml:space="preserve">
     <value>Failed to parse recipe id</value>
+  </data>
+  <data name="EditItemView_ImportCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="EditItemView_ImportFailed" xml:space="preserve">
+    <value>The import failed. Please try again.</value>
+  </data>
+  <data name="EditItemView_ImportOk" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="EditItemView_ImportRecipe" xml:space="preserve">
+    <value>Import Recipe</value>
   </data>
   <data name="EditItemView_Ingredients" xml:space="preserve">
     <value>Ingredients</value>
@@ -177,11 +198,17 @@
   <data name="EditItemView_Save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="EditItemView_SomethingWrong" xml:space="preserve">
+    <value>Something wrong</value>
+  </data>
   <data name="EditItemView_Source" xml:space="preserve">
     <value>Source</value>
   </data>
   <data name="EditItemView_Title" xml:space="preserve">
     <value>Title</value>
+  </data>
+  <data name="EditItemView_UnknownError" xml:space="preserve">
+    <value>The operation failed. Please try again.</value>
   </data>
   <data name="EditRecipe" xml:space="preserve">
     <value>Edit Recipe</value>
@@ -294,6 +321,9 @@
   <data name="SettingsView_CorruptedBackupFile" xml:space="preserve">
     <value>Oh no! Your backup lookups corrupted and I wasn't able to restore it.</value>
   </data>
+  <data name="SettingsView_CreatingBackup" xml:space="preserve">
+    <value>Creating backup...</value>
+  </data>
   <data name="SettingsView_ExportBackup" xml:space="preserve">
     <value>Export a new backup to file</value>
   </data>
@@ -344,6 +374,9 @@
   </data>
   <data name="SettingsView_RestoreIsDone" xml:space="preserve">
     <value>Restore is done.</value>
+  </data>
+  <data name="SettingsView_RestoringBackup" xml:space="preserve">
+    <value>Restoring backup...</value>
   </data>
   <data name="SettingsView_SetupBackup" xml:space="preserve">
     <value>Setup backup</value>

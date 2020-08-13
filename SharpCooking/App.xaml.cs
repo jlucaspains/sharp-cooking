@@ -2,6 +2,7 @@
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using SharpCooking.Data;
+using SharpCooking.Models;
 using SharpCooking.Services;
 using SharpCooking.ViewModels;
 using System;
@@ -56,6 +57,7 @@ namespace SharpCooking
             // Services - by default, TinyIoC will register interface registrations as singletons.
             container.Register<IDataStore, DataStore>();
             container.Register<IEssentials, Essentials>();
+            container.Register<IFileHelper, FileHelper>();
             container.Register(GetConnectionFactory());
         }
 

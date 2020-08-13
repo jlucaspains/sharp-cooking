@@ -342,6 +342,50 @@
           <source>Nothing to show. How about you add some yummy recipes?</source>
           <target state="translated">Nada para mostrar aqui. Que tal você adicionar algumas receitas deliciosas?</target>
         </trans-unit>
+        <trans-unit id="EditItemView_AddressWrong" translate="yes" xml:space="preserve">
+          <source>This address doesn't look right...</source>
+          <target state="translated">Este endereço não parece certo...</target>
+        </trans-unit>
+        <trans-unit id="EditItemView_CopyUrl" translate="yes" xml:space="preserve">
+          <source>Please copy and paste the recipe address from your browser</source>
+          <target state="translated">Copie e cole o endereço da receita do seu navegador</target>
+        </trans-unit>
+        <trans-unit id="EditItemView_ImportCancel" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="translated">Cancelar</target>
+        </trans-unit>
+        <trans-unit id="EditItemView_ImportOk" translate="yes" xml:space="preserve">
+          <source>Ok</source>
+          <target state="new">Ok</target>
+        </trans-unit>
+        <trans-unit id="EditItemView_ImportRecipe" translate="yes" xml:space="preserve">
+          <source>Import Recipe</source>
+          <target state="translated">Importar Receita</target>
+        </trans-unit>
+        <trans-unit id="EditItemView_SomethingWrong" translate="yes" xml:space="preserve">
+          <source>Something wrong</source>
+          <target state="translated">Algo errado</target>
+        </trans-unit>
+        <trans-unit id="EditItemView_DownloadingRecipe" translate="yes" xml:space="preserve">
+          <source>Downloading recipe...</source>
+          <target state="translated">Baixando receita...</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_CreatingBackup" translate="yes" xml:space="preserve">
+          <source>Creating backup...</source>
+          <target state="translated">Criando backup...</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_RestoringBackup" translate="yes" xml:space="preserve">
+          <source>Restoring backup...</source>
+          <target state="translated">Restaurando backup...</target>
+        </trans-unit>
+        <trans-unit id="EditItemView_ImportFailed" translate="yes" xml:space="preserve">
+          <source>The import failed. Please try again.</source>
+          <target state="new">The import failed. Please try again.</target>
+        </trans-unit>
+        <trans-unit id="EditItemView_UnknownError" translate="yes" xml:space="preserve">
+          <source>The operation failed. Please try again.</source>
+          <target state="new">The operation failed. Please try again.</target>
+        </trans-unit>
       </group>
     </body>
   </file>

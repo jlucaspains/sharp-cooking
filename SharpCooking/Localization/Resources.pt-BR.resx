@@ -264,4 +264,28 @@
   <data name="ItemsView_NothingToShow" xml:space="preserve">
     <value>Nada para mostrar aqui. Que tal você adicionar algumas receitas deliciosas?</value>
   </data>
+  <data name="EditItemView_AddressWrong" xml:space="preserve">
+    <value>Este endereço não parece certo...</value>
+  </data>
+  <data name="EditItemView_CopyUrl" xml:space="preserve">
+    <value>Copie e cole o endereço da receita do seu navegador</value>
+  </data>
+  <data name="EditItemView_ImportCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="EditItemView_ImportRecipe" xml:space="preserve">
+    <value>Importar Receita</value>
+  </data>
+  <data name="EditItemView_SomethingWrong" xml:space="preserve">
+    <value>Algo errado</value>
+  </data>
+  <data name="EditItemView_DownloadingRecipe" xml:space="preserve">
+    <value>Baixando receita...</value>
+  </data>
+  <data name="SettingsView_CreatingBackup" xml:space="preserve">
+    <value>Criando backup...</value>
+  </data>
+  <data name="SettingsView_RestoringBackup" xml:space="preserve">
+    <value>Restaurando backup...</value>
+  </data>
 </root>

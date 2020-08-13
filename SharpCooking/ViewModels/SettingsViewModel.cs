@@ -19,8 +19,9 @@ namespace SharpCooking.ViewModels
         private readonly IEssentials _essentials;
         private readonly IDataStore _store;
         private readonly IConnectionFactory _connectionFactory;
+        private readonly IFileHelper _fileHelper;
 
-        public SettingsViewModel(IEssentials essentials, IDataStore store, IConnectionFactory connectionFactory)
+        public SettingsViewModel(IEssentials essentials, IDataStore store, IConnectionFactory connectionFactory, IFileHelper fileHelper)
         {
             Title = Resources.AppShell_Settings;
             StepIntervalCommand = new Command(async () => await AdjustStepInterval());
@@ -34,6 +35,7 @@ namespace SharpCooking.ViewModels
             _essentials = essentials;
             _store = store;
             _connectionFactory = connectionFactory;
+            _fileHelper = fileHelper;
         }
 
         public Command StepIntervalCommand { get; }
@@ -80,117 +82,134 @@ namespace SharpCooking.ViewModels
 
         async Task Backup()
         {
-            var appFolder = Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
-            var allRecipes = await _store.AllAsync<Recipe>();
+            try
+            {
+                using (DisplayLoading(Resources.SettingsView_CreatingBackup))
+                {
+                    var allRecipes = await _store.AllAsync<Recipe>();
 
-            var allFiles = allRecipes.Where(item => !string.IsNullOrEmpty(item.MainImagePath))
-                .Select(item => item.MainImagePath)
-                .Select(item => Path.Combine(appFolder, item))
-                .ToList();
+                    var allFiles = allRecipes.Where(item => !string.IsNullOrEmpty(item.MainImagePath))
+                        .Select(item => Path.Combine(_fileHelper.GetFilePath(item.MainImagePath)))
+                        .ToList();
 
-            // remove the folder path out of the main image path
-            foreach (var item in allRecipes)
-                item.MainImagePath = Path.GetFileName(item.MainImagePath);
+                    // remove the folder path out of the main image path
+                    foreach (var item in allRecipes)
+                        item.MainImagePath = Path.GetFileName(item.MainImagePath);
 
-            var recipesFile = Path.Combine(appFolder, AppConstants.BackupRecipeFileName);
-            var recipesJson = JsonConvert.SerializeObject(allRecipes);
-            File.WriteAllText(recipesFile, recipesJson);
+                    var recipesFile = _fileHelper.GetFilePath(AppConstants.BackupRecipeFileName);
+                    var recipesJson = JsonConvert.SerializeObject(allRecipes);
+                    await _fileHelper.WriteTextAsync(AppConstants.BackupRecipeFileName, recipesJson);
 
-            allFiles.Add(recipesFile);
+                    allFiles.Add(recipesFile);
 
-            var zipPath = Path.Combine(appFolder, AppConstants.BackupZipFileName);
+                    var zipPath = _fileHelper.GetFilePath(AppConstants.BackupZipFileName);
 
-            QuickZip(allFiles.ToArray(), zipPath);
+                    await QuickZip(allFiles.ToArray(), zipPath);
 
-            await _essentials.ShareFile(zipPath, Resources.SettingsView_PickBackupLocation);
+                    await _essentials.ShareFile(zipPath, Resources.SettingsView_PickBackupLocation);
+                }
+            }
+            catch (Exception ex)
+            {
+                await TrackException(ex);
+            }
         }
 
         async Task RestoreBackup()
         {
-            var result = await _essentials.PickFile(AppConstants.BackupFileMimeTypes);
-
-            if (!result.Success)
+            try
             {
-                await DisplayAlertAsync(Resources.SettingsView_RestoreCancelled, Resources.SettingsView_ResourceCancelledContent, Resources.ErrorOk);
-                return;
-            }
+                var result = await _essentials.PickFile(AppConstants.BackupFileMimeTypes);
 
-            using (result.data)
-            {
-                using (ZipArchive zip = new ZipArchive(result.data, ZipArchiveMode.Read))
+                if (!result.Success)
                 {
-                    if (!zip.Entries.Any(item => item.Name == AppConstants.BackupRecipeFileName))
-                    {
-                        await DisplayAlertAsync(Resources.ErrorTitle, Resources.SettingsView_BadBackupFile, Resources.ErrorOk);
-                        return;
-                    }
-
-                    var appFolder = Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
-                    IEnumerable<Recipe> restoreRecipes = null;
-
-                    try
-                    {
-                        var entry = zip.GetEntry(AppConstants.BackupRecipeFileName);
-                        var stream = entry.Open();
-
-                        using (StreamReader reader = new StreamReader(stream))
-                            restoreRecipes = JsonConvert.DeserializeObject<IEnumerable<Recipe>>(await reader.ReadToEndAsync());
-                    }
-                    catch
-                    {
-                        await DisplayAlertAsync(Resources.ErrorTitle, Resources.SettingsView_CorruptedBackupFile, Resources.ErrorOk);
-                        return;
-                    }
-
-                    if (restoreRecipes == null || !restoreRecipes.Any())
-                    {
-                        await DisplayAlertAsync(Resources.ErrorTitle, Resources.SettingsView_NoRecipesToRestore, Resources.ErrorOk);
-                        return;
-                    }
-
-                    var originalFiles = Directory.GetFiles(appFolder);
-
-                    foreach (var originalFile in originalFiles)
-                    {
-                        var fileName = Path.GetFileName(originalFile);
-
-                        if (fileName.StartsWith(AppConstants.BackupRestoreFilePrefix))
-                            File.Delete(originalFile);
-                    }
-
-                    // rename existing files
-                    foreach (var originalFile in originalFiles)
-                    {
-                        var fileName = Path.GetFileName(originalFile);
-
-                        if (fileName.StartsWith(AppConstants.BackupRestoreFilePrefix) || fileName.EndsWith(".db3"))
-                            continue;
-                        else
-                            File.Move(originalFile,
-                                originalFile.Replace(originalFile, $"{Path.GetDirectoryName(originalFile)}{Path.DirectorySeparatorChar}{AppConstants.BackupRestoreFilePrefix}_{fileName}"));
-                    }
-
-                    // drop all files in place
-                    zip.ExtractToDirectory(appFolder);
-
-                    //remove old data
-                    var allRecipes = await _store.AllAsync<Recipe>();
-                    foreach (var recipe in allRecipes)
-                        await _store.DeleteAsync(recipe);
-
-                    // add new data
-                    foreach (var recipe in restoreRecipes)
-                    {
-                        recipe.Id = 0;
-                        recipe.MainImagePath = recipe.MainImagePath == null
-                            ? null
-                            : Path.Combine(appFolder, Path.GetFileName(recipe.MainImagePath));
-
-                        await _store.InsertAsync(recipe);
-                    }
-
-                    await DisplayToastAsync(Resources.SettingsView_RestoreIsDone);
+                    await DisplayAlertAsync(Resources.SettingsView_RestoreCancelled, Resources.SettingsView_ResourceCancelledContent, Resources.ErrorOk);
+                    return;
                 }
+
+                using (DisplayLoading(Resources.SettingsView_RestoringBackup))
+                {
+                    using (result.data)
+                    {
+                        using (ZipArchive zip = new ZipArchive(result.data, ZipArchiveMode.Read))
+                        {
+                            if (!zip.Entries.Any(item => item.Name == AppConstants.BackupRecipeFileName))
+                            {
+                                await DisplayAlertAsync(Resources.ErrorTitle, Resources.SettingsView_BadBackupFile, Resources.ErrorOk);
+                                return;
+                            }
+
+                            var appFolder = Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+                            IEnumerable<Recipe> restoreRecipes = null;
+
+                            try
+                            {
+                                var entry = zip.GetEntry(AppConstants.BackupRecipeFileName);
+                                var stream = entry.Open();
+
+                                using (StreamReader reader = new StreamReader(stream))
+                                    restoreRecipes = JsonConvert.DeserializeObject<IEnumerable<Recipe>>(await reader.ReadToEndAsync());
+                            }
+                            catch
+                            {
+                                await DisplayAlertAsync(Resources.ErrorTitle, Resources.SettingsView_CorruptedBackupFile, Resources.ErrorOk);
+                                return;
+                            }
+
+                            if (restoreRecipes == null || !restoreRecipes.Any())
+                            {
+                                await DisplayAlertAsync(Resources.ErrorTitle, Resources.SettingsView_NoRecipesToRestore, Resources.ErrorOk);
+                                return;
+                            }
+
+                            var originalFiles = await _fileHelper.GetAllAsync();
+
+                            foreach (var originalFile in originalFiles)
+                            {
+                                var fileName = Path.GetFileName(originalFile);
+
+                                if (fileName.StartsWith(AppConstants.BackupRestoreFilePrefix))
+                                    await _fileHelper.DeleteAsync(fileName);
+                            }
+
+                            // rename existing files
+                            foreach (var originalFile in originalFiles)
+                            {
+                                var fileName = Path.GetFileName(originalFile);
+
+                                if (fileName.StartsWith(AppConstants.BackupRestoreFilePrefix) || fileName.EndsWith(".db3"))
+                                    continue;
+                                else
+                                    await _fileHelper.MoveAsync(originalFile, $"{AppConstants.BackupRestoreFilePrefix}_{fileName}");
+                            }
+
+                            // drop all files in place
+                            zip.ExtractToDirectory(appFolder);
+
+                            //remove old data
+                            var allRecipes = await _store.AllAsync<Recipe>();
+                            foreach (var recipe in allRecipes)
+                                await _store.DeleteAsync(recipe);
+
+                            // add new data
+                            foreach (var recipe in restoreRecipes)
+                            {
+                                recipe.Id = 0;
+                                recipe.MainImagePath = recipe.MainImagePath == null
+                                    ? null
+                                    : Path.GetFileName(recipe.MainImagePath);
+
+                                await _store.InsertAsync(recipe);
+                            }
+
+                            await DisplayToastAsync(Resources.SettingsView_RestoreIsDone);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await TrackException(ex);
             }
         }
 
@@ -215,27 +234,30 @@ namespace SharpCooking.ViewModels
             _essentials.SetBoolSetting(AppConstants.MultiplierResultUseFractions, UseFractions);
         }
 
-        bool QuickZip(string[] filesToZip, string destinationZipFullPath)
+        async Task<bool> QuickZip(string[] filesToZip, string destinationZipFullPath)
         {
             try
             {
                 // Delete existing zip file if exists
-                if (File.Exists(destinationZipFullPath))
-                    File.Delete(destinationZipFullPath);
+                if (await _fileHelper.ExistsAsync(destinationZipFullPath))
+                    await _fileHelper.DeleteAsync(destinationZipFullPath);
 
-                using (ZipArchive zip = ZipFile.Open(destinationZipFullPath, ZipArchiveMode.Create))
+                await Task.Run(() =>
                 {
-                    foreach (var file in filesToZip)
+                    using (ZipArchive zip = ZipFile.Open(destinationZipFullPath, ZipArchiveMode.Create))
                     {
-                        zip.CreateEntryFromFile(file, Path.GetFileName(file), CompressionLevel.Optimal);
+                        foreach (var file in filesToZip)
+                        {
+                            zip.CreateEntryFromFile(file, Path.GetFileName(file), CompressionLevel.Optimal);
+                        }
                     }
-                }
+                });
 
-                return File.Exists(destinationZipFullPath);
+
+                return await _fileHelper.ExistsAsync(destinationZipFullPath);
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Exception: {e.Message}");
                 return false;
             }
         }
