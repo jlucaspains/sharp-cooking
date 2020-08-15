@@ -41,7 +41,7 @@ namespace SharpCooking.Services
             {
                 using (var sourceFile = File.OpenRead(sourceFilePath))
                 {
-                    await destinationFile.CopyToAsync(sourceFile);
+                    await sourceFile.CopyToAsync(destinationFile);
                 }
             }
         }

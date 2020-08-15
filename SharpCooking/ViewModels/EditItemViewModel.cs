@@ -109,7 +109,7 @@ namespace SharpCooking.ViewModels
                     result = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
                     {
                         CompressionQuality = 92,
-                        SaveMetaData = false
+                        SaveMetaData = false                        
                     });
                 }
                 else if (actionSheetResult == Resources.EditItemView_PickImageUseCamera)
@@ -118,7 +118,9 @@ namespace SharpCooking.ViewModels
                     {
                         CompressionQuality = 92,
                         PhotoSize = PhotoSize.Medium,
-                        AllowCropping = true
+                        AllowCropping = true,
+                        RotateImage = false,
+                        SaveToAlbum = true
                     });
                 }
 
