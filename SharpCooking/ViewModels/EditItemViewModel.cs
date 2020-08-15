@@ -318,7 +318,7 @@ namespace SharpCooking.ViewModels
                 var remoteConfigVersion = await TryGetRemoteImportConfigVersion(client);
                 string config = null;
 
-                if (!localConfigVersion.Equals(remoteConfigVersion, StringComparison.OrdinalIgnoreCase))
+                if (!localConfigVersion.Equals(remoteConfigVersion, StringComparison.OrdinalIgnoreCase) || !await _fileHelper.ExistsAsync(configFileName))
                 {
                     config = await TryDownloadImportConfigFile(configFileName, client);
                     _essentials.SetStringSetting(AppConstants.RecipeDownloadConfigVersionSetting, remoteConfigVersion);

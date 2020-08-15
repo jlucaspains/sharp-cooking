@@ -253,7 +253,6 @@ namespace SharpCooking.ViewModels
                     }
                 });
 
-
                 return await _fileHelper.ExistsAsync(destinationZipFullPath);
             }
             catch (Exception e)
