@@ -25,6 +25,8 @@ namespace SharpCooking
 
             Current.On<Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
 
+            VersionTracking.Track();
+
             MainPage = new AppShell();
         }
 
@@ -58,6 +60,7 @@ namespace SharpCooking
             container.Register<IDataStore, DataStore>();
             container.Register<IEssentials, Essentials>();
             container.Register<IFileHelper, FileHelper>();
+            container.Register<IHttpService, HttpService>();
             container.Register(GetConnectionFactory());
         }
 

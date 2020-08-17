@@ -14,6 +14,7 @@ namespace SharpCooking.Services
         void SetStringSetting(string key, string value);
         void SetIntSetting(string key, int value);
         void SetBoolSetting(string key, bool value);
+        bool IsFirstLaunchForCurrentBuild();
         Task<bool> LaunchUri(string uri);
         Task ShareText(string text, string title);
         Task ShareFile(string filePath, string title);

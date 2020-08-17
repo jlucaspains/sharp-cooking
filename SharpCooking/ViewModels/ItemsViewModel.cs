@@ -10,13 +10,16 @@ using SharpCooking.Data;
 using SharpCooking.Localization;
 using System.Threading;
 using System.Linq;
+using SharpCooking.Services;
 
 namespace SharpCooking.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
         private readonly IDataStore _dataStore;
+        private readonly IEssentials _essentials;
         private CancellationTokenSource _throttleCts = new CancellationTokenSource();
+        private bool _releaseNotesShown;
 
         public ObservableCollection<RecipeViewModel> Items { get; set; }
         public Command LoadItemsCommand { get; }
@@ -28,9 +31,10 @@ namespace SharpCooking.ViewModels
         public bool DataToShow { get { return !NoDataToShow; } }
         public string SearchValue { get; set; }
 
-        public ItemsViewModel(IDataStore dataStore)
+        public ItemsViewModel(IDataStore dataStore, IEssentials essentials)
         {
             _dataStore = dataStore;
+            _essentials = essentials;
             Title = Resources.AllRecipes;
             Items = new ObservableCollection<RecipeViewModel>();
             LoadItemsCommand = new Command(async () => await Refresh());
@@ -48,6 +52,16 @@ namespace SharpCooking.ViewModels
         public override async Task InitializeAsync()
         {
             await Refresh();
+
+            if (!_releaseNotesShown && _essentials.IsFirstLaunchForCurrentBuild())
+            {
+                _releaseNotesShown = true;
+                var viewReleaseNotes = await DisplayAlertAsync($"{Resources.ItemsView_WelcomeToVersion} {_essentials.GetVersion()}", 
+                    Resources.ItemsView_ViewReleaseNotes, Resources.ItemsView_Yes, Resources.ItemsView_No);
+
+                if (viewReleaseNotes)
+                    await GoToAsync("about");
+            }
 
             await base.InitializeAsync();
         }

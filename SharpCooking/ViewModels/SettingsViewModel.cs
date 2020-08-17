@@ -255,8 +255,9 @@ namespace SharpCooking.ViewModels
 
                 return await _fileHelper.ExistsAsync(destinationZipFullPath);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
+                await TrackException(ex);
                 return false;
             }
         }

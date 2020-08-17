@@ -11,6 +11,8 @@
             <On Platform="iOS" Value="Material Design Icons" />
             <On Platform="Android" Value="materialdesignicons-webfont.ttf#Material Design Icons" />
         </OnPlatform>
+        <Color x:Key="NavigationPrimary">#2e7d32</Color>
+        <Color x:Key="NavigationSecondary">#60ad5e</Color>
         <c:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter" />
     </Application.Resources>
 </Application>

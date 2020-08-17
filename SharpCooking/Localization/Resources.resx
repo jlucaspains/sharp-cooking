@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutView_KnownIssues" xml:space="preserve">
+    <value>Known Issues</value>
+  </data>
+  <data name="AboutView_LoadingReleaseNotes" xml:space="preserve">
+    <value>Loading release notes...</value>
+  </data>
   <data name="AboutView_Title" xml:space="preserve">
     <value>About</value>
+  </data>
+  <data name="AboutView_WhatsNew" xml:space="preserve">
+    <value>What's new</value>
   </data>
   <data name="AddRecipe" xml:space="preserve">
     <value>Add</value>
@@ -291,17 +300,32 @@
   <data name="ItemsView_EnterSearchTerm" xml:space="preserve">
     <value>Enter search term</value>
   </data>
+  <data name="ItemsView_No" xml:space="preserve">
+    <value>No</value>
+  </data>
   <data name="ItemsView_NothingToShow" xml:space="preserve">
     <value>Nothing to show. How about you add some yummy recipes?</value>
   </data>
   <data name="ItemsView_SearchItems" xml:space="preserve">
     <value>Search items...</value>
   </data>
+  <data name="ItemsView_ViewReleaseNotes" xml:space="preserve">
+    <value>Would you like to see the release notes?</value>
+  </data>
+  <data name="ItemsView_WelcomeToVersion" xml:space="preserve">
+    <value>Welcome to version</value>
+  </data>
+  <data name="ItemsView_Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
   <data name="MultiplierQuantityAggregator" xml:space="preserve">
     <value>and</value>
   </data>
   <data name="NewRecipe" xml:space="preserve">
     <value>New Recipe</value>
+  </data>
+  <data name="ReleaseNotesView_Title" xml:space="preserve">
+    <value>Release Notes</value>
   </data>
   <data name="SelectCultureView_Title" xml:space="preserve">
     <value>Culture</value>

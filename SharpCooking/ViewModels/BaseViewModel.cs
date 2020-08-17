@@ -44,6 +44,21 @@ namespace SharpCooking.ViewModels
             await Shell.GoToAsync(route, true);
         }
 
+        protected async Task ShowModalAsync(string route, Dictionary<string, object> parameters = null)
+        {
+            if (parameters != null)
+            {
+                var parsedParameters = parameters.Select(item => $"{item.Key}={item.Value}");
+                route = $"{route}?{string.Join("&", parsedParameters)}";
+            }
+
+            var page = Routing.GetOrCreateContent(route) as Page;
+
+            if (page is null) return;
+
+            await Shell.Navigation.PushModalAsync(page);
+        }
+
         protected async Task GoBackAsync()
         {
             await Shell.Navigation.PopAsync(true);
@@ -113,7 +128,7 @@ namespace SharpCooking.ViewModels
 
         protected Task TrackEvent(string name, params (string Name, string Value)[] properties)
         {
-            if(properties == null)
+            if (properties == null)
             {
                 Microsoft.AppCenter.Analytics.Analytics.TrackEvent(name);
             }

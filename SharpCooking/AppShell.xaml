@@ -14,8 +14,6 @@
     -->
     <Shell.Resources>
         <ResourceDictionary>
-            <Color x:Key="NavigationPrimary">#2e7d32</Color>
-            <Color x:Key="NavigationSecondary">#60ad5e</Color>
             <Color x:Key="TabIconColor">White</Color>
             <Style x:Key="BaseStyle" TargetType="Element">
                 <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />

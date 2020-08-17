@@ -356,7 +356,7 @@
         </trans-unit>
         <trans-unit id="EditItemView_ImportOk" translate="yes" xml:space="preserve">
           <source>Ok</source>
-          <target state="new">Ok</target>
+          <target state="translated">Ok</target>
         </trans-unit>
         <trans-unit id="EditItemView_ImportRecipe" translate="yes" xml:space="preserve">
           <source>Import Recipe</source>
@@ -380,11 +380,43 @@
         </trans-unit>
         <trans-unit id="EditItemView_ImportFailed" translate="yes" xml:space="preserve">
           <source>The import failed. Please try again.</source>
-          <target state="new">The import failed. Please try again.</target>
+          <target state="translated">A importação falhou. Por favor, tente novamente.</target>
         </trans-unit>
         <trans-unit id="EditItemView_UnknownError" translate="yes" xml:space="preserve">
           <source>The operation failed. Please try again.</source>
-          <target state="new">The operation failed. Please try again.</target>
+          <target state="translated">A operação falhou. Por favor, tente novamente.</target>
+        </trans-unit>
+        <trans-unit id="ReleaseNotesView_Title" translate="yes" xml:space="preserve">
+          <source>Release Notes</source>
+          <target state="translated">Notas de versão</target>
+        </trans-unit>
+        <trans-unit id="ItemsView_No" translate="yes" xml:space="preserve">
+          <source>No</source>
+          <target state="translated">Não</target>
+        </trans-unit>
+        <trans-unit id="ItemsView_ViewReleaseNotes" translate="yes" xml:space="preserve">
+          <source>Would you like to see the release notes?</source>
+          <target state="translated">Você gostaria de ver as notas da versão?</target>
+        </trans-unit>
+        <trans-unit id="ItemsView_WelcomeToVersion" translate="yes" xml:space="preserve">
+          <source>Welcome to version</source>
+          <target state="translated">Bem vindo a versão</target>
+        </trans-unit>
+        <trans-unit id="ItemsView_Yes" translate="yes" xml:space="preserve">
+          <source>Yes</source>
+          <target state="translated">Sim</target>
+        </trans-unit>
+        <trans-unit id="AboutView_KnownIssues" translate="yes" xml:space="preserve">
+          <source>Known Issues</source>
+          <target state="translated">Problemas Conhecidos</target>
+        </trans-unit>
+        <trans-unit id="AboutView_LoadingReleaseNotes" translate="yes" xml:space="preserve">
+          <source>Loading release notes...</source>
+          <target state="translated">Carregando notas de versão...</target>
+        </trans-unit>
+        <trans-unit id="AboutView_WhatsNew" translate="yes" xml:space="preserve">
+          <source>What's new</source>
+          <target state="translated">Funcionalidades novas</target>
         </trans-unit>
       </group>
     </body>
