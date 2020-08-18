@@ -190,7 +190,7 @@ namespace SharpCooking.ViewModels
                             Ingredients = string.Join("\r\n", ingredients),
                             Instructions = string.Join("\r\n\r\n", steps),
                             Source = hostName,
-                            MainImagePath = _fileHelper.GetFilePath(imageName),
+                            MainImagePath = !string.IsNullOrEmpty(imageName) ? _fileHelper.GetFilePath(imageName) : null,
                             Notes = $"{Resources.EditItemView_Source}: {uri}"
                         };
                     }
@@ -267,8 +267,9 @@ namespace SharpCooking.ViewModels
                             await _fileHelper.WriteStreamAsync(fileName, imageContent);
                         }
                     }
-                    catch
+                    catch(Exception ex)
                     {
+                        await TrackException(ex);
                         continue;
                     }
                 }
