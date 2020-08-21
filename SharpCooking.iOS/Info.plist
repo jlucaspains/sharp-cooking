@@ -50,5 +50,7 @@
 		<string>en</string>
 		<string>pt-BR</string>
 	</array>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>This app needs access to photo library to add photos taken for a recipe</string>
 </dict>
 </plist>
