@@ -95,7 +95,7 @@ namespace SharpCooking.ViewModels
 
             start = start.AddMinutes(StandardStepTimeInterval);
             
-            var instructions = Item.Instructions?.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries)?.Where(Item => !string.IsNullOrEmpty(Item))?.Select((item, i) => (i, item))
+            var instructions = Item.Instructions?.Split(new string[] { "\r\n", "\n\r", "\n" }, StringSplitOptions.RemoveEmptyEntries)?.Where(Item => !string.IsNullOrEmpty(Item))?.Select((item, i) => (i, item))
                 ?? new (int i, string item)[] { };
 
             var previous = start;
