@@ -13,20 +13,6 @@ using Xamarin.Forms;
 
 namespace SharpCooking.ViewModels
 {
-    public class StepViewModel : BindableModel
-    {
-        public string Time { get; set; }
-        public string Title { get; set; }
-        public string SubTitle { get; set; }
-        public bool IsNotLast { get; set; }
-    }
-
-    public class NoteViewModel : BindableModel
-    {
-        public int Number { get; set; }
-        public string Content { get; set; }
-    }
-
     [QueryProperty("Id", "id")]
     public class ItemDetailViewModel : BaseViewModel
     {
@@ -108,8 +94,8 @@ namespace SharpCooking.ViewModels
             };
 
             start = start.AddMinutes(StandardStepTimeInterval);
-
-            var instructions = Item.Instructions?.Split('\n')?.Where(Item => !string.IsNullOrEmpty(Item))?.Select((item, i) => (i, item))
+            
+            var instructions = Item.Instructions?.Split(new string[] { "\r\n", "\n\r", "\n" }, StringSplitOptions.RemoveEmptyEntries)?.Where(Item => !string.IsNullOrEmpty(Item))?.Select((item, i) => (i, item))
                 ?? new (int i, string item)[] { };
 
             var previous = start;

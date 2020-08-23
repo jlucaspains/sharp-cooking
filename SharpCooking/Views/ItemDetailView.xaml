@@ -25,7 +25,7 @@
                 <FontImageSource
                     FontFamily="{DynamicResource MaterialFont}"
                     Size="24"
-                    Glyph="{x:Static v:IconFont.DotsHorizontal}"/>
+                    Glyph="{x:Static v:IconFont.DotsVertical}"/>
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
     </ContentPage.ToolbarItems>

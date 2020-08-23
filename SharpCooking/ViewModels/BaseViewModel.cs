@@ -44,6 +44,21 @@ namespace SharpCooking.ViewModels
             await Shell.GoToAsync(route, true);
         }
 
+        protected async Task ShowModalAsync(string route, Dictionary<string, object> parameters = null)
+        {
+            if (parameters != null)
+            {
+                var parsedParameters = parameters.Select(item => $"{item.Key}={item.Value}");
+                route = $"{route}?{string.Join("&", parsedParameters)}";
+            }
+
+            var page = Routing.GetOrCreateContent(route) as Page;
+
+            if (page is null) return;
+
+            await Shell.Navigation.PushModalAsync(page);
+        }
+
         protected async Task GoBackAsync()
         {
             await Shell.Navigation.PopAsync(true);
@@ -93,6 +108,12 @@ namespace SharpCooking.ViewModels
                 : null;
         }
 
+        protected IDisposable DisplayLoading(string title)
+        {
+            var config = new Acr.UserDialogs.ProgressDialogConfig().SetTitle(title).SetIsDeterministic(false).SetAutoShow(true);
+            return Acr.UserDialogs.UserDialogs.Instance.Progress(config);
+        }
+
         protected async Task ReportError(string message)
         {
             await Shell.DisplayAlert(Resources.ErrorTitle, message, Resources.ErrorOk);
@@ -107,7 +128,7 @@ namespace SharpCooking.ViewModels
 
         protected Task TrackEvent(string name, params (string Name, string Value)[] properties)
         {
-            if(properties == null)
+            if (properties == null)
             {
                 Microsoft.AppCenter.Analytics.Analytics.TrackEvent(name);
             }

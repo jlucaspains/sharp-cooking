@@ -28,30 +28,67 @@
                     </Image.Source>
                 </Image>
             </Grid>
-            <ScrollView Grid.Row="1" Margin="0,20,0,0">
-                <StackLayout Orientation="Vertical" Padding="16,0,16,40" Spacing="10">
-                    <Label FontSize="22">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="{x:Static l:Resources.AppName}" FontAttributes="Bold" FontSize="22" />
-                                    <Span Text=" " />
-                                    <Span Text="{Binding AppVersion}" />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <Label>
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="{x:Static l:Resources.AppDescription}" />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
+            <StackLayout Grid.Row="1" Orientation="Vertical" Padding="16,20,16,40" Spacing="10">
+                <Label FontSize="22">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="{x:Static l:Resources.AppName}" FontAttributes="Bold" FontSize="22" />
+                                <Span Text=" " />
+                                <Span Text="{Binding AppVersion}" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="{x:Static l:Resources.AppDescription}" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Text="{x:Static l:Resources.AboutView_LoadingReleaseNotes}" IsVisible="{Binding IsBusy}" />
+                <Label Text="{x:Static l:Resources.AboutView_WhatsNew}" FontAttributes="Bold" FontSize="16" IsVisible="{Binding ShowNewInVersion}" />
+                <StackLayout BindableLayout.ItemsSource="{Binding NewInVersion}" IsVisible="{Binding ShowNewInVersion}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <StackLayout Orientation="Horizontal">
+                                <Image HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Image.Source>
+                                        <FontImageSource
+                                                FontFamily="{DynamicResource MaterialFont}"
+                                                Size="Small"
+                                                Color="Black"
+                                                Glyph="{x:Static v:IconFont.CircleMedium}"/>
+                                    </Image.Source>
+                                </Image>
+                                <Label Text="{Binding .}" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
                 </StackLayout>
-            </ScrollView>
+                <Label Text="{x:Static l:Resources.AboutView_KnownIssues}" FontAttributes="Bold" FontSize="16" IsVisible="{Binding ShowKnownIssues}" />
+                <StackLayout BindableLayout.ItemsSource="{Binding KnownIssues}" IsVisible="{Binding ShowKnownIssues}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <StackLayout Orientation="Horizontal">
+                                <Image HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Image.Source>
+                                        <FontImageSource
+                                                FontFamily="{DynamicResource MaterialFont}"
+                                                Size="Small"
+                                                Color="Black"
+                                                Glyph="{x:Static v:IconFont.CircleMedium}"/>
+                                    </Image.Source>
+                                </Image>
+                                <Label Text="{Binding .}" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </StackLayout>
         </Grid>
     </ScrollView>
 </ContentPage>

@@ -61,11 +61,38 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Known Issues.
+        /// </summary>
+        public static string AboutView_KnownIssues {
+            get {
+                return ResourceManager.GetString("AboutView_KnownIssues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading release notes....
+        /// </summary>
+        public static string AboutView_LoadingReleaseNotes {
+            get {
+                return ResourceManager.GetString("AboutView_LoadingReleaseNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
         public static string AboutView_Title {
             get {
                 return ResourceManager.GetString("AboutView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What&apos;s new.
+        /// </summary>
+        public static string AboutView_WhatsNew {
+            get {
+                return ResourceManager.GetString("AboutView_WhatsNew", resourceCulture);
             }
         }
         
@@ -160,11 +187,74 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This address doesn&apos;t look right....
+        /// </summary>
+        public static string EditItemView_AddressWrong {
+            get {
+                return ResourceManager.GetString("EditItemView_AddressWrong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please copy and paste the recipe address from your browser.
+        /// </summary>
+        public static string EditItemView_CopyUrl {
+            get {
+                return ResourceManager.GetString("EditItemView_CopyUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downloading recipe....
+        /// </summary>
+        public static string EditItemView_DownloadingRecipe {
+            get {
+                return ResourceManager.GetString("EditItemView_DownloadingRecipe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to parse recipe id.
         /// </summary>
         public static string EditItemView_FailedToParse {
             get {
                 return ResourceManager.GetString("EditItemView_FailedToParse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string EditItemView_ImportCancel {
+            get {
+                return ResourceManager.GetString("EditItemView_ImportCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The import failed. Please try again..
+        /// </summary>
+        public static string EditItemView_ImportFailed {
+            get {
+                return ResourceManager.GetString("EditItemView_ImportFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        public static string EditItemView_ImportOk {
+            get {
+                return ResourceManager.GetString("EditItemView_ImportOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import Recipe.
+        /// </summary>
+        public static string EditItemView_ImportRecipe {
+            get {
+                return ResourceManager.GetString("EditItemView_ImportRecipe", resourceCulture);
             }
         }
         
@@ -241,6 +331,15 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Something wrong.
+        /// </summary>
+        public static string EditItemView_SomethingWrong {
+            get {
+                return ResourceManager.GetString("EditItemView_SomethingWrong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Source.
         /// </summary>
         public static string EditItemView_Source {
@@ -255,6 +354,15 @@ namespace SharpCooking.Localization {
         public static string EditItemView_Title {
             get {
                 return ResourceManager.GetString("EditItemView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The operation failed. Please try again..
+        /// </summary>
+        public static string EditItemView_UnknownError {
+            get {
+                return ResourceManager.GetString("EditItemView_UnknownError", resourceCulture);
             }
         }
         
@@ -502,6 +610,15 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string ItemsView_No {
+            get {
+                return ResourceManager.GetString("ItemsView_No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nothing to show. How about you add some yummy recipes?.
         /// </summary>
         public static string ItemsView_NothingToShow {
@@ -520,6 +637,33 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Would you like to see the release notes?.
+        /// </summary>
+        public static string ItemsView_ViewReleaseNotes {
+            get {
+                return ResourceManager.GetString("ItemsView_ViewReleaseNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome to version.
+        /// </summary>
+        public static string ItemsView_WelcomeToVersion {
+            get {
+                return ResourceManager.GetString("ItemsView_WelcomeToVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string ItemsView_Yes {
+            get {
+                return ResourceManager.GetString("ItemsView_Yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to and.
         /// </summary>
         public static string MultiplierQuantityAggregator {
@@ -534,6 +678,15 @@ namespace SharpCooking.Localization {
         public static string NewRecipe {
             get {
                 return ResourceManager.GetString("NewRecipe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Release Notes.
+        /// </summary>
+        public static string ReleaseNotesView_Title {
+            get {
+                return ResourceManager.GetString("ReleaseNotesView_Title", resourceCulture);
             }
         }
         
@@ -588,6 +741,15 @@ namespace SharpCooking.Localization {
         public static string SettingsView_CorruptedBackupFile {
             get {
                 return ResourceManager.GetString("SettingsView_CorruptedBackupFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating backup....
+        /// </summary>
+        public static string SettingsView_CreatingBackup {
+            get {
+                return ResourceManager.GetString("SettingsView_CreatingBackup", resourceCulture);
             }
         }
         
@@ -741,6 +903,15 @@ namespace SharpCooking.Localization {
         public static string SettingsView_RestoreIsDone {
             get {
                 return ResourceManager.GetString("SettingsView_RestoreIsDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restoring backup....
+        /// </summary>
+        public static string SettingsView_RestoringBackup {
+            get {
+                return ResourceManager.GetString("SettingsView_RestoringBackup", resourceCulture);
             }
         }
         

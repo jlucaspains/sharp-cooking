@@ -27,6 +27,22 @@
                     Glyph="{x:Static v:IconFont.ContentSave}"/>
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
+        <ToolbarItem Text="Import" Command="{Binding ImportCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="{DynamicResource MaterialFont}"
+                    Size="24"
+                    Glyph="{x:Static v:IconFont.SearchWeb}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <!--<ToolbarItem Text="More" Command="{Binding MoreCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="{DynamicResource MaterialFont}"
+                    Size="24"
+                    Glyph="{x:Static v:IconFont.DotsVertical}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>-->
     </ContentPage.ToolbarItems>
 
     <ScrollView>

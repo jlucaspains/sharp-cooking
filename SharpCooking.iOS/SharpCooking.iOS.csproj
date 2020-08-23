@@ -137,7 +137,7 @@
       <Version>4.7.0.1142</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Plugin.FilePicker">
-      <Version>2.1.41</Version>
+      <Version>2.1.44-beta</Version>
     </PackageReference>
     <PackageReference Include="XamEffects">
       <Version>1.6.3</Version>
