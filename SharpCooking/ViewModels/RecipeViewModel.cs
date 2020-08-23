@@ -39,6 +39,8 @@ namespace SharpCooking.Models
 
         public static Recipe ToModel(RecipeViewModel viewModel)
         {
+            if (viewModel == null) throw new ArgumentNullException(nameof(viewModel));
+
             return new Recipe
             {
                 Id = viewModel.Id,
@@ -56,6 +58,8 @@ namespace SharpCooking.Models
 
         public static RecipeViewModel FromModel(Recipe model)
         {
+            if (model == null) throw new ArgumentNullException(nameof(model));
+
             var result = new RecipeViewModel
             {
                 Id = model.Id,

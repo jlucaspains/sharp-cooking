@@ -9,8 +9,6 @@ namespace SharpCooking.Droid
         MainLauncher = true, NoHistory = true)]
     public class SplashActivity : FormsAppCompatActivity
     {
-        static readonly string TAG = "X:" + typeof(SplashActivity).Name;
-
         public override void OnCreate(Bundle savedInstanceState, PersistableBundle persistentState)
         {
             base.OnCreate(savedInstanceState, persistentState);
@@ -20,7 +18,9 @@ namespace SharpCooking.Droid
         protected override void OnResume()
         {
             base.OnResume();
+#pragma warning disable CA2000 // Dispose objects before losing scope
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
+#pragma warning restore CA2000 // Dispose objects before losing scope
         }
 
         // Prevent the back button from canceling the startup process

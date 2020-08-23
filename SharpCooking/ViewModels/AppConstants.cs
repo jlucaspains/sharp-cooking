@@ -1,6 +1,6 @@
 ﻿namespace SharpCooking.ViewModels
 {
-    public class AppConstants
+    public static class AppConstants
     {
         internal const string TimeBetweenStepsInterval = "TimeBetweenStepsInterval";
         internal const string MultiplierResultUseFractions = "MultiplierResultUseFractions";

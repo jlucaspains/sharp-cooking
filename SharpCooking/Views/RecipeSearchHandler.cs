@@ -1,6 +1,8 @@
-﻿using SharpCooking.Data;
+﻿using PropertyChanged;
+using SharpCooking.Data;
 using SharpCooking.Models;
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,7 +10,8 @@ using Xamarin.Forms;
 
 namespace SharpCooking.Views
 {
-    public class RecipeSearchHandler : SearchHandler
+    [SuppressPropertyChangedWarnings]
+    public sealed class RecipeSearchHandler : SearchHandler, IDisposable
     {
         private readonly IDataStore _dataStore;
         private CancellationTokenSource _throttleCts = new CancellationTokenSource();
@@ -49,16 +52,23 @@ namespace SharpCooking.Views
             }
             else
             {
-                var result = await _dataStore.QueryAsync<Recipe>(item => item.Title.ToLower().Contains(search.ToLower()));
+                var result = await _dataStore.QueryAsync<Recipe>(item => item.Title.ToLower(CultureInfo.CurrentCulture).Contains(search.ToLower(CultureInfo.CurrentCulture)));
                 ItemsSource = result.Select(item => RecipeViewModel.FromModel(item)).ToList();
             }
         }
 
         protected override async void OnItemSelected(object item)
         {
+            if(item == null) throw new ArgumentNullException(nameof(item));
+
             base.OnItemSelected(item);
 
             await (App.Current.MainPage as Xamarin.Forms.Shell).GoToAsync($"items/detail?id={((RecipeViewModel)item).Id}");
+        }
+
+        public void Dispose()
+        {
+            _throttleCts.Dispose();
         }
     }
 }

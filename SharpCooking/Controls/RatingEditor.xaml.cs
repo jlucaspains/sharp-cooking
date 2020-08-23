@@ -15,7 +15,7 @@ namespace SharpCooking.Controls
         public Command TapGestureCommand { get; private set; }
 
         public static readonly BindableProperty RatingProperty =
-           BindableProperty.Create("Rating",
+           BindableProperty.Create(nameof(Rating),
                                    typeof(int),
                                    typeof(RatingEditor),
                                    default(int),
@@ -28,7 +28,7 @@ namespace SharpCooking.Controls
         }
 
         public static readonly BindableProperty IsDisabledProperty =
-           BindableProperty.Create("IsDisabled",
+           BindableProperty.Create(nameof(IsDisabled),
                                    typeof(bool),
                                    typeof(RatingEditor),
                                    default(bool));

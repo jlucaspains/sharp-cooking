@@ -1,27 +1,27 @@
-﻿using System;
+﻿using SharpCooking.Data;
+using SharpCooking.Localization;
+using SharpCooking.Models;
+using SharpCooking.Services;
+using SharpCooking.Views;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
+using System.Globalization;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using SharpCooking.Views;
-using System.Collections.Generic;
-using SharpCooking.Models;
-using SharpCooking.Data;
-using SharpCooking.Localization;
-using System.Threading;
-using System.Linq;
-using SharpCooking.Services;
 
 namespace SharpCooking.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public sealed class ItemsViewModel : BaseViewModel, IDisposable
     {
         private readonly IDataStore _dataStore;
         private readonly IEssentials _essentials;
         private CancellationTokenSource _throttleCts = new CancellationTokenSource();
         private bool _releaseNotesShown;
 
-        public ObservableCollection<RecipeViewModel> Items { get; set; }
+        public ObservableCollection<RecipeViewModel> Items { get; } = new ObservableCollection<RecipeViewModel>();
         public Command LoadItemsCommand { get; }
         public Command AddItemCommand { get; }
         public Command ItemTappedCommand { get; }
@@ -36,7 +36,6 @@ namespace SharpCooking.ViewModels
             _dataStore = dataStore;
             _essentials = essentials;
             Title = Resources.AllRecipes;
-            Items = new ObservableCollection<RecipeViewModel>();
             LoadItemsCommand = new Command(async () => await Refresh());
             AddItemCommand = new Command(async () => await AddItem());
             ItemTappedCommand = new Command<RecipeViewModel>(async (item) => await GoToItemDetail(item));
@@ -86,7 +85,7 @@ namespace SharpCooking.ViewModels
 
                 var items = string.IsNullOrEmpty(SearchValue)
                     ? await _dataStore.AllAsync<Recipe>()
-                    : await _dataStore.QueryAsync<Recipe>(item => item.Title.ToLower().Contains(SearchValue.ToLower()));
+                    : await _dataStore.QueryAsync<Recipe>(item => item.Title.ToLower(CultureInfo.CurrentCulture).Contains(SearchValue.ToLower(CultureInfo.CurrentCulture)));
 
                 var sortedItems = items.OrderBy(item => item.Title).ToList();
 
@@ -123,6 +122,11 @@ namespace SharpCooking.ViewModels
             {
                 //Ignore any Threading errors
             }
+        }
+
+        public void Dispose()
+        {
+            _throttleCts.Dispose();
         }
     }
 }

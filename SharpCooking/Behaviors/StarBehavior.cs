@@ -12,7 +12,7 @@ namespace SharpCooking.Behaviors
         static Dictionary<string, List<StarBehavior>> starGroups = new Dictionary<string, List<StarBehavior>>();
 
         public static readonly BindableProperty GroupNameProperty =
-            BindableProperty.Create("GroupName",
+            BindableProperty.Create(nameof(GroupName),
                                     typeof(string),
                                     typeof(StarBehavior),
                                     null,
@@ -25,7 +25,7 @@ namespace SharpCooking.Behaviors
         }
 
         public static readonly BindableProperty RatingProperty =
-           BindableProperty.Create("Rating",
+           BindableProperty.Create(nameof(Rating),
                                    typeof(int),
                                    typeof(StarBehavior), 
                                    default(int));
@@ -82,7 +82,7 @@ namespace SharpCooking.Behaviors
         }
 
         public static readonly BindableProperty IsStarredProperty =
-            BindableProperty.Create("IsStarred",
+            BindableProperty.Create(nameof(IsStarred),
                                     typeof(bool),
                                     typeof(StarBehavior),
                                     false,
@@ -138,6 +138,8 @@ namespace SharpCooking.Behaviors
 
         protected override void OnAttachedTo(View view)
         {
+            if (view == null) throw new ArgumentNullException(nameof(view));
+
             tapRecognizer = new TapGestureRecognizer();
             tapRecognizer.Tapped += OnTapRecognizerTapped;
             view.GestureRecognizers.Add(tapRecognizer);
@@ -145,6 +147,8 @@ namespace SharpCooking.Behaviors
 
         protected override void OnDetachingFrom(View view)
         {
+            if (view == null) throw new ArgumentNullException(nameof(view));
+            
             view.GestureRecognizers.Remove(tapRecognizer);
             tapRecognizer.Tapped -= OnTapRecognizerTapped;
             tapRecognizer = null;

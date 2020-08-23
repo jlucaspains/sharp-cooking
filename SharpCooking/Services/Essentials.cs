@@ -1,12 +1,15 @@
 ﻿using Plugin.FilePicker;
 using Plugin.FilePicker.Abstractions;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 
 namespace SharpCooking.Services
 {
+#pragma warning disable CA1724
     public class Essentials : IEssentials
+#pragma warning restore CA1724
     {
         public string GetVersion()
         {
@@ -40,7 +43,7 @@ namespace SharpCooking.Services
 
         public async Task<bool> LaunchUri(string uri)
         {
-            return await Launcher.TryOpenAsync(uri);
+            return await Launcher.TryOpenAsync(new Uri(uri));
         }
 
         public int GetIntSetting(string key)

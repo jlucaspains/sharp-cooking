@@ -14,9 +14,6 @@
              x:DataType="vm:EditItemViewModel"
              v:ViewModelLocator.AutoWireViewModel="true"
              IsBusy="{Binding IsBusy}">
-    <ContentPage.Resources>
-        <c1:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter" />
-    </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="{x:Static l:Resources.EditItemView_Save}" Command="{Binding SaveCommand}">

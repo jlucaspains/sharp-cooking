@@ -26,6 +26,9 @@ namespace SharpCooking.Services
 
         public async Task WriteStreamAsync(string filename, Stream stream)
         {
+            if (stream == null) throw new ArgumentNullException(nameof(stream));
+            if (string.IsNullOrEmpty(filename)) throw new ArgumentNullException(nameof(filename));
+
             string filepath = GetFilePath(filename);
             using (var file = File.Create(filepath))
             {
@@ -36,6 +39,9 @@ namespace SharpCooking.Services
 
         public async Task CopyAsync(string sourceFilePath, string destinationFileName)
         {
+            if (string.IsNullOrEmpty(sourceFilePath)) throw new ArgumentNullException(nameof(sourceFilePath));
+            if (string.IsNullOrEmpty(destinationFileName)) throw new ArgumentNullException(nameof(destinationFileName));
+
             string destinationFilePath = GetFilePath(destinationFileName);
             using (var destinationFile = File.Create(destinationFilePath))
             {

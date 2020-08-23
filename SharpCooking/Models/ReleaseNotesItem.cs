@@ -7,7 +7,7 @@ namespace SharpCooking.Models
     public class ReleaseNotesItem
     {
         public string Version { get; set; }
-        public string[] New { get; set; }
-        public string[] KnownIssues { get; set; }
+        public IEnumerable<string> New { get; set; }
+        public IEnumerable<string> KnownIssues { get; set; }
     }
 }

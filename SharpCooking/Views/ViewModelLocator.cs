@@ -17,11 +17,15 @@ namespace SharpCooking.Views
 
         public static bool GetAutoWireViewModel(BindableObject bindable)
         {
+            if (bindable == null) throw new ArgumentNullException(nameof(bindable));
+
             return (bool)bindable.GetValue(ViewModelLocator.AutoWireViewModelProperty);
         }
 
         public static void SetAutoWireViewModel(BindableObject bindable, bool value)
         {
+            if (bindable == null) throw new ArgumentNullException(nameof(bindable));
+
             bindable.SetValue(ViewModelLocator.AutoWireViewModelProperty, value);
         }
         
