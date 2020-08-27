@@ -118,7 +118,6 @@ namespace SharpCooking.ViewModels
                     {
                         CompressionQuality = 92,
                         PhotoSize = PhotoSize.Medium,
-                        AllowCropping = true,
                         RotateImage = false,
                         SaveToAlbum = true
                     });
