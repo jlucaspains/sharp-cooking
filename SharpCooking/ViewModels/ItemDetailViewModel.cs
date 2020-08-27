@@ -30,7 +30,7 @@ namespace SharpCooking.ViewModels
         public Command ShareRecipeCommand { get; }
         public Command ChangeStartTimeCommand { get; }
 
-        public ObservableCollection<StepViewModel> Steps { get; set; }
+        public ObservableCollection<StepViewModel> Steps { get; } = new ObservableCollection<StepViewModel>();
         public decimal Multiplier { get; set; }
         public string MultiplierDisplay { get; set; }
         public int StandardStepTimeInterval { get; set; }
@@ -88,15 +88,13 @@ namespace SharpCooking.ViewModels
 
             var start = proposedStart ?? DateTime.Now;
 
-            Steps = new ObservableCollection<StepViewModel>
-            {
-                new StepViewModel { IsNotLast = true, Time = start.ToShortTimeString(), Title = Resources.ItemDetailView_Ingredients, SubTitle = Item.Ingredients },
-            };
+            Steps.Clear();
+            Steps.Add(new StepViewModel { IsNotLast = true, Time = start.ToShortTimeString(), Title = Resources.ItemDetailView_Ingredients, SubTitle = Item.Ingredients });
 
             start = start.AddMinutes(StandardStepTimeInterval);
-            
+
             var instructions = Item.Instructions?.Split(new string[] { "\r\n", "\n\r", "\n" }, StringSplitOptions.RemoveEmptyEntries)?.Where(Item => !string.IsNullOrEmpty(Item))?.Select((item, i) => (i, item))
-                ?? new (int i, string item)[] { };
+                ?? Array.Empty<(int i, string item)>();
 
             var previous = start;
 
@@ -116,13 +114,16 @@ namespace SharpCooking.ViewModels
 
                 if (match?.Success ?? false)
                 {
-                    int.TryParse(match.Groups["Minutes"]?.Value, out var minutes);
-                    int.TryParse(match.Groups["Hours"]?.Value, out var hours);
-                    int.TryParse(match.Groups["Days"]?.Value, out var days);
+                    var minutesResult = int.TryParse(match.Groups["Minutes"]?.Value, out var minutes);
+                    var hoursResult = int.TryParse(match.Groups["Hours"]?.Value, out var hours);
+                    var daysResult = int.TryParse(match.Groups["Days"]?.Value, out var days);
 
-                    start = start.AddMinutes(minutes);
-                    start = start.AddHours(hours);
-                    start = start.AddDays(days);
+                    if (minutesResult || hoursResult || daysResult)
+                    {
+                        start = start.AddMinutes(minutes);
+                        start = start.AddHours(hours);
+                        start = start.AddDays(days);
+                    }
                 }
                 else
                 {
@@ -143,7 +144,7 @@ namespace SharpCooking.ViewModels
             var useFractions = _essentials.GetBoolSetting(AppConstants.MultiplierResultUseFractions);
 
             var inputMultiplier = await DisplayPromptAsync(Resources.ItemDetailView_MultiplierTitle, Resources.ItemDetailView_MultiplierDescription,
-                Resources.ItemDetailView_MultiplierOk, Resources.ItemDetailView_MultiplierCancel, Multiplier.ToString(), Keyboard.Numeric);
+                Resources.ItemDetailView_MultiplierOk, Resources.ItemDetailView_MultiplierCancel, Multiplier.ToString(CultureInfo.CurrentCulture), Keyboard.Numeric);
 
             if (decimal.TryParse(inputMultiplier, NumberStyles.Float, CultureInfo.CurrentCulture, out var newMultiplier))
             {
@@ -158,32 +159,35 @@ namespace SharpCooking.ViewModels
                     var regularGroup = match.Groups["Regular"];
                     decimal parsedMatch = 0;
 
-                    if(fractionGroup.Success)
+                    if (fractionGroup.Success)
                     {
                         var parts = fractionGroup.Value.Split('/');
-                        decimal.TryParse(parts[0], out var fracNumerator);
-                        decimal.TryParse(parts[1], out var fracDecimal);
+                        var numeratorResult = decimal.TryParse(parts[0], out var fracNumerator);
+                        var fracResult = decimal.TryParse(parts[1], out var fracDecimal);
 
-                        if (fracNumerator == 0 || fracDecimal == 0)
+                        if (!numeratorResult || !fracResult)
                             return "0";
 
                         parsedMatch = fracNumerator / fracDecimal;
                     }
                     else
                     {
-                        decimal.TryParse(regularGroup.Value, out parsedMatch);
+                        var parseResult = decimal.TryParse(regularGroup.Value, out parsedMatch);
+
+                        if (!parseResult)
+                            return "0";
                     }
 
                     var newIngredientValue = parsedMatch * Multiplier;
 
                     if (!useFractions)
-                        return newIngredientValue.ToString("G29");
+                        return newIngredientValue.ToString("G29", CultureInfo.CurrentCulture);
 
                     var whole = decimal.Floor(newIngredientValue);
 
                     if (whole == newIngredientValue)
                     {
-                        return newIngredientValue.ToString("0");
+                        return newIngredientValue.ToString("0", CultureInfo.CurrentCulture);
                     }
                     else
                     {
@@ -194,7 +198,7 @@ namespace SharpCooking.ViewModels
 
                 Steps[0].SubTitle = regexResult;
 
-                await TrackEvent("Multiplier", ("Value", newMultiplier.ToString()));
+                await TrackEvent("Multiplier", ("Value", newMultiplier.ToString(CultureInfo.CurrentCulture)));
             }
         }
 

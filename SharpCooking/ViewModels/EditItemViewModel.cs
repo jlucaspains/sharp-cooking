@@ -292,7 +292,7 @@ namespace SharpCooking.ViewModels
                     return Task.FromResult(result);
             }
 
-            return Task.FromResult((IEnumerable<string>)new string[] { });
+            return Task.FromResult((IEnumerable<string>)Array.Empty<string>());
         }
 
         private Task<IEnumerable<string>> TryGetSteps(HtmlDocument htmlDoc, RecipeDownloadConfig config)
@@ -306,12 +306,12 @@ namespace SharpCooking.ViewModels
                     return Task.FromResult(result);
             }
 
-            return Task.FromResult((IEnumerable<string>)new string[] { });
+            return Task.FromResult((IEnumerable<string>)Array.Empty<string>());
         }
 
         private async Task<RecipeDownloadConfig[]> TryGetImportConfig(string configFileName, HttpClient client)
         {
-            var defaultResult = new RecipeDownloadConfig[] { };
+            var defaultResult = Array.Empty<RecipeDownloadConfig>();
 
             try
             {

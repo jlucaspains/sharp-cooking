@@ -10,7 +10,7 @@ namespace SharpCooking.Converters
         {
             var eventArgs = value as ItemTappedEventArgs;
             if (eventArgs == null)
-                throw new ArgumentException("Expected TappedEventArgs as value", "value");
+                throw new ArgumentException("Expected TappedEventArgs as value", nameof(value));
 
             return eventArgs.Item;
         }

@@ -11,26 +11,26 @@ namespace SharpCooking.Behaviors
     public class EventToCommandBehavior : BindableBehavior<View>
     {
         public static BindableProperty EventNameProperty =
-            BindableProperty.CreateAttached("EventName", typeof(string), typeof(EventToCommandBehavior), null,
+            BindableProperty.CreateAttached(nameof(EventName), typeof(string), typeof(EventToCommandBehavior), null,
                 BindingMode.OneWay);
 
         public static BindableProperty CommandProperty =
-            BindableProperty.CreateAttached("Command", typeof(ICommand), typeof(EventToCommandBehavior), null,
+            BindableProperty.CreateAttached(nameof(Command), typeof(ICommand), typeof(EventToCommandBehavior), null,
                 BindingMode.OneWay);
 
         public static BindableProperty CommandParameterProperty =
-            BindableProperty.CreateAttached("CommandParameter", typeof(object), typeof(EventToCommandBehavior), null,
+            BindableProperty.CreateAttached(nameof(CommandParameter), typeof(object), typeof(EventToCommandBehavior), null,
                 BindingMode.OneWay);
 
         public static BindableProperty EventArgsConverterProperty =
-            BindableProperty.CreateAttached("EventArgsConverter", typeof(IValueConverter), typeof(EventToCommandBehavior), null,
+            BindableProperty.CreateAttached(nameof(EventArgsConverter), typeof(IValueConverter), typeof(EventToCommandBehavior), null,
                 BindingMode.OneWay);
 
         public static BindableProperty EventArgsConverterParameterProperty =
-            BindableProperty.CreateAttached("EventArgsConverterParameter", typeof(object), typeof(EventToCommandBehavior), null,
+            BindableProperty.CreateAttached(nameof(EventArgsConverterParameter), typeof(object), typeof(EventToCommandBehavior), null,
                 BindingMode.OneWay);
 
-        protected Delegate _handler;
+        private Delegate _handler;
         private EventInfo _eventInfo;
 
         public string EventName
@@ -72,7 +72,7 @@ namespace SharpCooking.Behaviors
             {
                 _eventInfo = events.FirstOrDefault(e => e.Name == EventName);
                 if (_eventInfo == null)
-                    throw new ArgumentException(String.Format("EventToCommand: Can't find any event named '{0}' on attached type", EventName));
+                    throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, "EventToCommand: Can't find any event named '{0}' on attached type", EventName));
 
                 AddEventHandler(_eventInfo, AssociatedObject, OnFired);
             }

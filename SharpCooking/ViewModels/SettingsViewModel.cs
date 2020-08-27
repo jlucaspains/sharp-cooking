@@ -71,7 +71,7 @@ namespace SharpCooking.ViewModels
         async Task AdjustStepInterval()
         {
             var result = await DisplayPromptAsync(Resources.SettingsView_StepsIntervalTitle, Resources.SettingsView_StepsIntervalDescription,
-                Resources.SettingsView_StepsIntervalOk, Resources.SettingsView_StepsIntervalCancel, TimeBetweenStepsInterval.ToString(), Keyboard.Numeric);
+                Resources.SettingsView_StepsIntervalOk, Resources.SettingsView_StepsIntervalCancel, TimeBetweenStepsInterval.ToString(CultureInfo.CurrentCulture), Keyboard.Numeric);
 
             if (int.TryParse(result, out int parsedResult) && parsedResult > 0)
             {
@@ -168,7 +168,7 @@ namespace SharpCooking.ViewModels
                             {
                                 var fileName = Path.GetFileName(originalFile);
 
-                                if (fileName.StartsWith(AppConstants.BackupRestoreFilePrefix))
+                                if (fileName.StartsWith(AppConstants.BackupRestoreFilePrefix, StringComparison.OrdinalIgnoreCase))
                                     await _fileHelper.DeleteAsync(fileName);
                             }
 
@@ -177,7 +177,7 @@ namespace SharpCooking.ViewModels
                             {
                                 var fileName = Path.GetFileName(originalFile);
 
-                                if (fileName.StartsWith(AppConstants.BackupRestoreFilePrefix) || fileName.EndsWith(".db3"))
+                                if (fileName.StartsWith(AppConstants.BackupRestoreFilePrefix, StringComparison.OrdinalIgnoreCase) || fileName.EndsWith(".db3", StringComparison.OrdinalIgnoreCase))
                                     continue;
                                 else
                                     await _fileHelper.MoveAsync(originalFile, $"{AppConstants.BackupRestoreFilePrefix}_{fileName}");

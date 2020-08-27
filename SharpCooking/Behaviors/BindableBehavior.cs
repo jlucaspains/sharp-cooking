@@ -10,6 +10,8 @@ namespace SharpCooking.Behaviors
 
         protected override void OnAttachedTo(T visualElement)
         {
+            if (visualElement == null) throw new ArgumentNullException(nameof(visualElement));
+            
             base.OnAttachedTo(visualElement);
 
             AssociatedObject = visualElement;
@@ -28,6 +30,8 @@ namespace SharpCooking.Behaviors
 
         protected override void OnDetachingFrom(T view)
         {
+            if (view == null) throw new ArgumentNullException(nameof(view));
+            
             view.BindingContextChanged -= OnBindingContextChanged;
         }
 

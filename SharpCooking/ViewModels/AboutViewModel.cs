@@ -2,6 +2,7 @@
 using SharpCooking.Models;
 using SharpCooking.Services;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -31,12 +32,12 @@ namespace SharpCooking.ViewModels
             {
                 IsBusy = true;
 
-                var url = string.Format(AppConstants.ReleaseNotesConfigUrl, CultureInfo.CurrentUICulture.Name.Replace("-", ""));
+                var url = string.Format(CultureInfo.CurrentCulture, AppConstants.ReleaseNotesConfigUrl, CultureInfo.CurrentUICulture.Name.Replace("-", ""));
                 var result = await _httpService.GetAsync<ReleaseNotesItem[]>(url);
                 var thisVersion = result?.FirstOrDefault(item => item.Version == AppVersion);
 
-                NewInVersion = thisVersion?.New ?? new string[] { };
-                KnownIssues = thisVersion?.KnownIssues ?? new string[] { };
+                NewInVersion = thisVersion?.New ?? Array.Empty<string>();
+                KnownIssues = thisVersion?.KnownIssues ?? Array.Empty<string>();
                 IsReleaseNotesLoaded = true;
             }
             catch (Exception ex)
@@ -52,10 +53,10 @@ namespace SharpCooking.ViewModels
         }
 
         public string AppVersion { get; set; }
-        public string[] NewInVersion { get; set; } = new string[] { };
-        public bool ShowNewInVersion => NewInVersion.Length > 0;
-        public string[] KnownIssues { get; set; } = new string[] { };
-        public bool ShowKnownIssues => KnownIssues.Length > 0;
+        public IEnumerable<string> NewInVersion { get; set; } = Array.Empty<string>();
+        public bool ShowNewInVersion => NewInVersion.Any();
+        public IEnumerable<string> KnownIssues { get; set; } = Array.Empty<string>();
+        public bool ShowKnownIssues => KnownIssues.Any();
         public bool IsReleaseNotesLoaded { get; set; }
     }
 }
