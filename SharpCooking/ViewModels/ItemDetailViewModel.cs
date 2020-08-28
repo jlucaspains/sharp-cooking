@@ -175,7 +175,7 @@ namespace SharpCooking.ViewModels
                         if (!numeratorResult || !fracResult || !wholeResult)
                             return first;
 
-                        parsedMatch = firstNumber + fracNumerator / fracDecimal;
+                        parsedMatch = firstNumber + (fracNumerator / fracDecimal);
                     }
                     else if (fractionGroup.Success)
                     {
