@@ -155,11 +155,29 @@ namespace SharpCooking.ViewModels
 
                 var regexResult = Regex.Replace(Item.Ingredients, Resources.IngredientQuantityRegex, (match) =>
                 {
+                    var compositeFractionGroup = match.Groups["CompositeFraction"];
                     var fractionGroup = match.Groups["Fraction"];
                     var regularGroup = match.Groups["Regular"];
                     decimal parsedMatch = 0;
 
-                    if (fractionGroup.Success)
+                    if (compositeFractionGroup.Success)
+                    {
+                        var parts = compositeFractionGroup.Value.Split(' ');
+                        var first = parts[0];
+                        var second = parts[1];
+
+                        var fractionParts = second.Split('/');
+
+                        var wholeResult = decimal.TryParse(first, out var firstNumber);
+                        var numeratorResult = decimal.TryParse(fractionParts[0], out var fracNumerator);
+                        var fracResult = decimal.TryParse(fractionParts[1], out var fracDecimal);
+
+                        if (!numeratorResult || !fracResult || !wholeResult)
+                            return first;
+
+                        parsedMatch = firstNumber + fracNumerator / fracDecimal;
+                    }
+                    else if (fractionGroup.Success)
                     {
                         var parts = fractionGroup.Value.Split('/');
                         var numeratorResult = decimal.TryParse(parts[0], out var fracNumerator);
@@ -192,7 +210,7 @@ namespace SharpCooking.ViewModels
                     else
                     {
                         (var numerator, var denominator) = Fraction.Get(newIngredientValue - whole);
-                        return whole == 0 ? $"{numerator}/{denominator}" : $"{whole:0} {Resources.MultiplierQuantityAggregator} {numerator}/{denominator}";
+                        return whole == 0 ? $"{numerator}/{denominator}" : $"{whole:0} {numerator}/{denominator}";
                     }
                 }, RegexOptions.Multiline);
 

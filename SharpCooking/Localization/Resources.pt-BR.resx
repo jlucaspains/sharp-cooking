@@ -235,7 +235,7 @@
     <value>Pesquisar itens...</value>
   </data>
   <data name="IngredientQuantityRegex" xml:space="preserve">
-    <value>^(?&lt;Fraction&gt;\d+\/\d+)|^(?&lt;Regular&gt;\d+\,{0,1}\d*)</value>
+    <value>^(?&lt;CompositeFraction&gt;\d+ \d+\/\d+)|(?&lt;Fraction&gt;\d+\/\d+)|^(?&lt;Regular&gt;\d+\,{0,1}\d*)</value>
   </data>
   <data name="MultiplierQuantityAggregator" xml:space="preserve">
     <value>e</value>
@@ -247,7 +247,7 @@
     <value>Mostrar decimais como 1,5</value>
   </data>
   <data name="SettingsView_MultiplyResultDisplayUseFractions" xml:space="preserve">
-    <value>Mostrar frações como 1 e 1/2</value>
+    <value>Mostrar frações como 1 1/2</value>
   </data>
   <data name="StepTimeIdentifierRegex" xml:space="preserve">
     <value>(?&lt;Minutes&gt;\d+\.{0,1}\d*)\s*(minutos|minuto|min)\b|(?&lt;Hours&gt;\d+\.{0,1}\d*)\s*(horas|hora)\b|(?&lt;Days&gt;\d+\.{0,1}\d*)\s*(dias|dia)\b</value>

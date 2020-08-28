@@ -232,7 +232,7 @@
     <value>Favorite</value>
   </data>
   <data name="IngredientQuantityRegex" xml:space="preserve">
-    <value>^(?&lt;Fraction&gt;\d+\/\d+)|^(?&lt;Regular&gt;\d+\.{0,1}\d*)</value>
+    <value>^(?&lt;CompositeFraction&gt;\d+ \d+\/\d+)|(?&lt;Fraction&gt;\d+\/\d+)|^(?&lt;Regular&gt;\d+\.{0,1}\d*)</value>
   </data>
   <data name="ItemDetailView_DayAbbreviation" xml:space="preserve">
     <value>d</value>
@@ -367,7 +367,7 @@
     <value>Display decimals like 1.5</value>
   </data>
   <data name="SettingsView_MultiplyResultDisplayUseFractions" xml:space="preserve">
-    <value>Display fractions like 1 and 1/2</value>
+    <value>Display fractions like 1 1/2</value>
   </data>
   <data name="SettingsView_NoRecipesToRestore" xml:space="preserve">
     <value>Weird... There are no recipes in this backup.</value>

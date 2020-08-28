@@ -403,7 +403,7 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ^(?&lt;Fraction&gt;\d+\/\d+)|^(?&lt;Regular&gt;\d+\.{0,1}\d*).
+        ///   Looks up a localized string similar to ^(?&lt;CompositeFraction&gt;\d+ \d+\/\d+)|(?&lt;Fraction&gt;\d+\/\d+)|^(?&lt;Regular&gt;\d+\.{0,1}\d*).
         /// </summary>
         public static string IngredientQuantityRegex {
             get {
@@ -808,7 +808,7 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Display fractions like 1 and 1/2.
+        ///   Looks up a localized string similar to Display fractions like 1 1/2.
         /// </summary>
         public static string SettingsView_MultiplyResultDisplayUseFractions {
             get {
