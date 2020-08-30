@@ -89,7 +89,7 @@ namespace SharpCooking.ViewModels
                     var allRecipes = await _store.AllAsync<Recipe>();
 
                     var allFiles = allRecipes.Where(item => !string.IsNullOrEmpty(item.MainImagePath))
-                        .Select(item => Path.Combine(_fileHelper.GetFilePath(item.MainImagePath)))
+                        .Select(item => _fileHelper.GetFilePath(item.MainImagePath))
                         .ToList();
 
                     // remove the folder path out of the main image path
