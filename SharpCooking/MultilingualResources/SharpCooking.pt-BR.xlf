@@ -303,8 +303,8 @@
           <target state="translated">Pesquisar itens...</target>
         </trans-unit>
         <trans-unit id="IngredientQuantityRegex" translate="yes" xml:space="preserve">
-          <source>^(?<it id="1" pos="open">&lt;Fraction&gt;</it>\d+\/\d+)|^(?<it id="2" pos="open">&lt;Regular&gt;</it>\d+\.{0,1}\d*)</source>
-          <target state="translated">^(?<it id="1" pos="open">&lt;Fraction&gt;</it>\d+\/\d+)|^(?<it id="2" pos="open">&lt;Regular&gt;</it>\d+\,{0,1}\d*)</target>
+          <source>^(?<it id="1" pos="open">&lt;CompositeFraction&gt;</it>\d+ \d+\/\d+)|(?<it id="2" pos="open">&lt;Fraction&gt;</it>\d+\/\d+)|^(?<it id="3" pos="open">&lt;Regular&gt;</it>\d+\.{0,1}\d*)</source>
+          <target state="translated">^(?<it id="1" pos="open">&lt;CompositeFraction&gt;</it>\d+ \d+\/\d+)|(?<it id="2" pos="open">&lt;Fraction&gt;</it>\d+\/\d+)|^(?<it id="3" pos="open">&lt;Regular&gt;</it>\d+\,{0,1}\d*)</target>
         </trans-unit>
         <trans-unit id="MultiplierQuantityAggregator" translate="yes" xml:space="preserve">
           <source>and</source>
@@ -319,8 +319,8 @@
           <target state="translated">Mostrar decimais como 1,5</target>
         </trans-unit>
         <trans-unit id="SettingsView_MultiplyResultDisplayUseFractions" translate="yes" xml:space="preserve">
-          <source>Display fractions like 1 and 1/2</source>
-          <target state="translated">Mostrar frações como 1 e 1/2</target>
+          <source>Display fractions like 1 1/2</source>
+          <target state="translated">Mostrar frações como 1 1/2</target>
         </trans-unit>
         <trans-unit id="StepTimeIdentifierRegex" translate="yes" xml:space="preserve">
           <source>(?<it id="1" pos="open">&lt;Minutes&gt;</it>\d+\.{0,1}\d*)\s*(minutes|minute|min)\b|(?<it id="2" pos="open">&lt;Hours&gt;</it>\d+\.{0,1}\d*)\s*(hours|hour)\b|(?<it id="3" pos="open">&lt;Days&gt;</it>\d+\.{0,1}\d*)\s*(days|day)\b</source>

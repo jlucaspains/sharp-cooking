@@ -92,7 +92,8 @@ namespace SharpCooking.Services
 
         public string GetFilePath(string filename)
         {
-            return Path.Combine(GetDocsFolder(), filename);
+            var actualFileName =  Path.GetFileName(filename);
+            return Path.Combine(GetDocsFolder(), actualFileName);
         }
     }
 }
