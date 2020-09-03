@@ -83,9 +83,11 @@ namespace SharpCooking.ViewModels
             {
                 Items.Clear();
 
+#pragma warning disable CA1304 // Specify CultureInfo
                 var items = string.IsNullOrEmpty(SearchValue)
                     ? await _dataStore.AllAsync<Recipe>()
-                    : await _dataStore.QueryAsync<Recipe>(item => item.Title.ToLower(CultureInfo.CurrentCulture).Contains(SearchValue.ToLower(CultureInfo.CurrentCulture)));
+                    : await _dataStore.QueryAsync<Recipe>(item => item.Title.ToLower().Contains(SearchValue.ToLower()));
+#pragma warning restore CA1304 // Specify CultureInfo
 
                 var sortedItems = items.OrderBy(item => item.Title).ToList();
 
