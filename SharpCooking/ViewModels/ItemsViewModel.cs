@@ -76,7 +76,6 @@ namespace SharpCooking.ViewModels
                     await GoToAsync("about");
             }
 
-
             await base.InitializeAsync();
         }
 
@@ -109,7 +108,6 @@ namespace SharpCooking.ViewModels
                                 await _dataStore.InsertAsync(recipe);
                             }
                         }
-
                     }
                 }
 
