@@ -19,6 +19,9 @@
     <None Remove="MultilingualResources\SharpCooking.pt-BR.xlf" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="InitialRecipes.zip" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Acr.UserDialogs" Version="7.1.0.446" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.24" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.3.0" />
