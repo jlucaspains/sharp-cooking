@@ -18,5 +18,6 @@ namespace SharpCooking.Models
         public string Ingredients { get; set; }
         public string Instructions { get; set; }
         public string Notes { get; set; }
+        public decimal Multiplier { get; set; }
     }
 }
