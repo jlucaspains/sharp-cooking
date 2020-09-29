@@ -156,6 +156,9 @@
   <data name="CancelEditRecipe" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="CreditsTitle" xml:space="preserve">
+    <value>Credits</value>
+  </data>
   <data name="DropBoxProviderName" xml:space="preserve">
     <value>Dropbox</value>
   </data>
@@ -347,6 +350,12 @@
   </data>
   <data name="SettingsView_CreatingBackup" xml:space="preserve">
     <value>Creating backup...</value>
+  </data>
+  <data name="SettingsView_Credits" xml:space="preserve">
+    <value>Open Source Credits</value>
+  </data>
+  <data name="SettingsView_CreditsDetail" xml:space="preserve">
+    <value>View open source projects used by Sharp Cooking</value>
   </data>
   <data name="SettingsView_ExportBackup" xml:space="preserve">
     <value>Export a new backup to file</value>

@@ -18,5 +18,6 @@
         internal const string RecipeDownloadConfigVersionUrl = "https://raw.githubusercontent.com/jlucaspains/sharp-cooking-pages/master/assets/config/recipedownloadversion.txt";
         internal const string RecipeDownloadConfigUrl = "https://raw.githubusercontent.com/jlucaspains/sharp-cooking-pages/master/assets/config/recipedownload.json";
         internal const string ReleaseNotesConfigUrl = "https://raw.githubusercontent.com/jlucaspains/sharp-cooking-pages/master/_data/releasenotes_{0}.json";
+        internal const string CreditsDownloadUrl = "https://raw.githubusercontent.com/jlucaspains/sharp-cooking-pages/master/_data/credits.json";
     }
 }

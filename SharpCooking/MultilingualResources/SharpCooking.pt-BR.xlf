@@ -418,6 +418,18 @@
           <source>What's new</source>
           <target state="translated">Funcionalidades novas</target>
         </trans-unit>
+        <trans-unit id="CreditsTitle" translate="yes" xml:space="preserve">
+          <source>Credits</source>
+          <target state="new">Credits</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_Credits" translate="yes" xml:space="preserve">
+          <source>Open Source Credits</source>
+          <target state="new">Open Source Credits</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_CreditsDetail" translate="yes" xml:space="preserve">
+          <source>View open source projects used by Sharp Cooking</source>
+          <target state="new">View open source projects used by Sharp Cooking</target>
+        </trans-unit>
       </group>
     </body>
   </file>

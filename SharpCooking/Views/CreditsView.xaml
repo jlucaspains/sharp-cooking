@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SharpCooking.Views.CreditsView"
+             xmlns:v="clr-namespace:SharpCooking.Views"
+             xmlns:vm="clr-namespace:SharpCooking.ViewModels"
+             xmlns:m="clr-namespace:SharpCooking.Models"
+             xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
+             Title="{Binding Title}"
+             x:DataType="vm:CreditsViewModel"
+             x:Name="CreditsViewRoot"
+             v:ViewModelLocator.AutoWireViewModel="true">
+    <ScrollView>
+        <StackLayout BindableLayout.ItemsSource="{Binding Items}">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate x:DataType="m:CreditsItemModel">
+                    <StackLayout Padding="15" xe:Commands.Tap="{Binding BindingContext.ItemTappedCommand, Source={x:Reference CreditsViewRoot}}" xe:Commands.TapParameter="{Binding .}" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
+                        <Label FontSize="Medium" TextColor="Black" Text="{Binding Title}"></Label>
+                        <Label FontSize="Small" TextColor="Gray" Text="{Binding ShortDescription}"></Label>
+                        <StackLayout Orientation="Horizontal">
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource Color="{DynamicResource NavigationPrimary}" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.File}"/>
+                                </Image.Source>
+                            </Image>
+                            <Label FontSize="Small" TextColor="Gray" Text="{Binding License}"></Label>
+                        </StackLayout>
+                    </StackLayout>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

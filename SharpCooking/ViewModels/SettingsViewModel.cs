@@ -31,6 +31,7 @@ namespace SharpCooking.ViewModels
             ChangeCultureCommand = new Command(async () => await ChangeCulture());
             ViewPrivacyPolicyCommand = new Command(async () => await ViewPrivacyPolicy());
             MultiplierResultFormatCommand = new Command(() => AdjustMultiplierResultFormat());
+            ViewCreditsCommand = new Command(async () => await ViewCredits());
 
             _essentials = essentials;
             _store = store;
@@ -45,6 +46,7 @@ namespace SharpCooking.ViewModels
         public Command ChangeCultureCommand { get; }
         public Command ViewPrivacyPolicyCommand { get; }
         public Command MultiplierResultFormatCommand { get; }
+        public Command ViewCreditsCommand { get; }
 
         public int TimeBetweenStepsInterval { get; set; }
         public string DisplayTimeBetweenStepsInterval { get { return $"{TimeBetweenStepsInterval} {Resources.SettingsView_TimeStepsDescriptoin}"; } }
@@ -226,6 +228,11 @@ namespace SharpCooking.ViewModels
         async Task ViewPrivacyPolicy()
         {
             await _essentials.LaunchUri(AppConstants.PrivacyPolicyUrl);
+        }
+
+        async Task ViewCredits()
+        {
+            await GoToAsync("credits");
         }
 
         void AdjustMultiplierResultFormat()
