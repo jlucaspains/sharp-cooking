@@ -2,14 +2,12 @@
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using SharpCooking.Data;
-using SharpCooking.Models;
 using SharpCooking.Services;
 using SharpCooking.ViewModels;
 using System;
 using System.IO;
 using TinyIoC;
 using Xamarin.Essentials;
-using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
@@ -48,7 +46,7 @@ namespace SharpCooking
         private void RegisterContainer()
         {
             var container = TinyIoCContainer.Current;
-            
+
             // View models - by default, TinyIoC will register concrete classes as multi-instance.
             container.Register<AboutViewModel>();
             container.Register<ItemsViewModel>();
@@ -81,7 +79,7 @@ namespace SharpCooking
 
             // call and forget.
             _ = result.MigrateDbToLatestAsync();
-            
+
             return result;
         }
     }

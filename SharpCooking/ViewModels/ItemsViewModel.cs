@@ -1,4 +1,5 @@
-﻿using SharpCooking.Data;
+﻿using Newtonsoft.Json;
+using SharpCooking.Data;
 using SharpCooking.Localization;
 using SharpCooking.Models;
 using SharpCooking.Services;
@@ -7,7 +8,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -18,8 +22,10 @@ namespace SharpCooking.ViewModels
     {
         private readonly IDataStore _dataStore;
         private readonly IEssentials _essentials;
+        private readonly IFileHelper _fileHelper;
         private CancellationTokenSource _throttleCts = new CancellationTokenSource();
         private bool _releaseNotesShown;
+        private bool _initialRecipesAdded;
 
         public ObservableCollection<RecipeViewModel> Items { get; } = new ObservableCollection<RecipeViewModel>();
         public Command LoadItemsCommand { get; }
@@ -31,10 +37,11 @@ namespace SharpCooking.ViewModels
         public bool DataToShow { get { return !NoDataToShow; } }
         public string SearchValue { get; set; }
 
-        public ItemsViewModel(IDataStore dataStore, IEssentials essentials)
+        public ItemsViewModel(IDataStore dataStore, IFileHelper fileHelper, IEssentials essentials)
         {
             _dataStore = dataStore;
             _essentials = essentials;
+            _fileHelper = fileHelper;
             Title = Resources.AllRecipes;
             LoadItemsCommand = new Command(async () => await Refresh());
             AddItemCommand = new Command(async () => await AddItem());
@@ -43,14 +50,21 @@ namespace SharpCooking.ViewModels
 
             MessagingCenter.Subscribe<EditItemView, Recipe>(this, "AddItem", (obj, item) =>
             {
-                var newItem = item as Recipe;
+                var newItem = item;
                 Items.Add(RecipeViewModel.FromModel(newItem));
             });
         }
 
         public override async Task InitializeAsync()
         {
+            IsRefreshing = true;
+
+            if (!Items.Any() && !_initialRecipesAdded && _essentials.IsFirstLaunchEver())
+                await CreateFirstRecipe();
+
             await Refresh();
+
+            IsRefreshing = false;
 
             if (!_releaseNotesShown && _essentials.IsFirstLaunchForCurrentBuild())
             {
@@ -63,6 +77,46 @@ namespace SharpCooking.ViewModels
             }
 
             await base.InitializeAsync();
+        }
+
+        private async Task CreateFirstRecipe()
+        {
+            try
+            {
+                var assembly = IntrospectionExtensions.GetTypeInfo(typeof(App)).Assembly;
+                using (Stream stream = assembly.GetManifestResourceStream("SharpCooking.InitialRecipes.zip"))
+                {
+                    using (ZipArchive zip = new ZipArchive(stream, ZipArchiveMode.Read))
+                    {
+                        zip.ExtractToDirectory(_fileHelper.GetDocsFolder());
+
+                        var entry = zip.GetEntry(AppConstants.BackupRecipeFileName);
+                        var recipeFile = entry.Open();
+
+                        using (StreamReader reader = new StreamReader(recipeFile))
+                        {
+                            var restoreRecipes = JsonConvert.DeserializeObject<IEnumerable<Recipe>>(await reader.ReadToEndAsync());
+
+                            // add new data
+                            foreach (var recipe in restoreRecipes)
+                            {
+                                recipe.Id = 0;
+                                recipe.MainImagePath = recipe.MainImagePath == null
+                                    ? null
+                                    : Path.GetFileName(recipe.MainImagePath);
+
+                                await _dataStore.InsertAsync(recipe);
+                            }
+                        }
+                    }
+                }
+
+                _initialRecipesAdded = true;
+            }
+            catch
+            {
+                return;
+            }
         }
 
         async Task AddItem()
