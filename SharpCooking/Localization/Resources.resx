@@ -159,6 +159,9 @@
   <data name="CreditsTitle" xml:space="preserve">
     <value>Credits</value>
   </data>
+  <data name="CreditsView_Thanks" xml:space="preserve">
+    <value>The Sharp Cooking team thanks the following amazing projects:</value>
+  </data>
   <data name="DropBoxProviderName" xml:space="preserve">
     <value>Dropbox</value>
   </data>

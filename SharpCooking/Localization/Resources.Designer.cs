@@ -187,6 +187,15 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Sharp Cooking team thanks the following amazing projects:.
+        /// </summary>
+        public static string CreditsView_Thanks {
+            get {
+                return ResourceManager.GetString("CreditsView_Thanks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dropbox.
         /// </summary>
         public static string DropBoxProviderName {

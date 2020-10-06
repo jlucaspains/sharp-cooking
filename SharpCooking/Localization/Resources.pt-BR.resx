@@ -321,4 +321,16 @@
   <data name="AboutView_WhatsNew" xml:space="preserve">
     <value>Funcionalidades novas</value>
   </data>
+  <data name="CreditsTitle" xml:space="preserve">
+    <value>Créditos</value>
+  </data>
+  <data name="SettingsView_Credits" xml:space="preserve">
+    <value>Créditos Open Source</value>
+  </data>
+  <data name="SettingsView_CreditsDetail" xml:space="preserve">
+    <value>Veja os projetos Open Source usados pela Sharp Cooking</value>
+  </data>
+  <data name="CreditsView_Thanks" xml:space="preserve">
+    <value>A equipe da Cozinha Afiada agradece os seguintes projetos:</value>
+  </data>
 </root>

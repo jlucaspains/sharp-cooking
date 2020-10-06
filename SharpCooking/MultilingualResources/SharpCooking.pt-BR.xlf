@@ -420,15 +420,19 @@
         </trans-unit>
         <trans-unit id="CreditsTitle" translate="yes" xml:space="preserve">
           <source>Credits</source>
-          <target state="new">Credits</target>
+          <target state="translated">Créditos</target>
         </trans-unit>
         <trans-unit id="SettingsView_Credits" translate="yes" xml:space="preserve">
           <source>Open Source Credits</source>
-          <target state="new">Open Source Credits</target>
+          <target state="translated">Créditos Open Source</target>
         </trans-unit>
         <trans-unit id="SettingsView_CreditsDetail" translate="yes" xml:space="preserve">
           <source>View open source projects used by Sharp Cooking</source>
-          <target state="new">View open source projects used by Sharp Cooking</target>
+          <target state="translated">Veja os projetos Open Source usados pela Sharp Cooking</target>
+        </trans-unit>
+        <trans-unit id="CreditsView_Thanks" translate="yes" xml:space="preserve">
+          <source>The Sharp Cooking team thanks the following amazing projects:</source>
+          <target state="translated">A equipe da Cozinha Afiada agradece os seguintes projetos:</target>
         </trans-unit>
       </group>
     </body>
