@@ -149,7 +149,7 @@ dotnet_diagnostic.CA1055.severity = suggestion
 dotnet_style_object_initializer = true:suggestion
 
 # CA1062: Validate arguments of public methods
-dotnet_diagnostic.CA1062.severity = error
+dotnet_diagnostic.CA1062.severity = warning
 
 # CA1051: Do not declare visible instance fields
 dotnet_diagnostic.CA1051.severity = error
@@ -157,7 +157,7 @@ dotnet_diagnostic.CA1051.severity = error
 # CS1998: Async method lacks 'await' operators and will run synchronously
 dotnet_diagnostic.CS1998.severity = error
 
-# CS0169: The field 'ReceivingDeliveryTotalsViewModel._receivingService' is never used
+# CS0169: The field 'field' is never used
 dotnet_diagnostic.CS0169.severity = error
 
 # CS0168: Variable is declared but never used
