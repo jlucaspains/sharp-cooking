@@ -246,6 +246,9 @@ namespace SharpCooking.ViewModels
 
                 string fileName = null;
 
+                // Since we cannot download the image over plain http, we try and convert it to https
+                image = image.Replace("http://", "https://");
+
                 using (var httpClient = new HttpClient())
                 {
                     try

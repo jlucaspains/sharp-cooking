@@ -75,7 +75,6 @@
                     <Editor AutoSize="TextChanges" Text="{Binding Item.Notes}" />
                 </StackLayout>
             </Frame>
-            <StackLayout BackgroundColor="White" HeightRequest="27" Margin="0,-27,0,0"></StackLayout>
         </StackLayout>
     </ScrollView>
 
