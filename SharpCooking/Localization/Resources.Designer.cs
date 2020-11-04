@@ -178,6 +178,24 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Credits.
+        /// </summary>
+        public static string CreditsTitle {
+            get {
+                return ResourceManager.GetString("CreditsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Sharp Cooking team thanks the following amazing projects:.
+        /// </summary>
+        public static string CreditsView_Thanks {
+            get {
+                return ResourceManager.GetString("CreditsView_Thanks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dropbox.
         /// </summary>
         public static string DropBoxProviderName {
@@ -750,6 +768,24 @@ namespace SharpCooking.Localization {
         public static string SettingsView_CreatingBackup {
             get {
                 return ResourceManager.GetString("SettingsView_CreatingBackup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Source Credits.
+        /// </summary>
+        public static string SettingsView_Credits {
+            get {
+                return ResourceManager.GetString("SettingsView_Credits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View open source projects used by Sharp Cooking.
+        /// </summary>
+        public static string SettingsView_CreditsDetail {
+            get {
+                return ResourceManager.GetString("SettingsView_CreditsDetail", resourceCulture);
             }
         }
         

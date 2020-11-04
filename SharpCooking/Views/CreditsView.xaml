@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SharpCooking.Views.CreditsView"
+             xmlns:l="clr-namespace:SharpCooking.Localization"
+             xmlns:v="clr-namespace:SharpCooking.Views"
+             xmlns:vm="clr-namespace:SharpCooking.ViewModels"
+             xmlns:m="clr-namespace:SharpCooking.Models"
+             xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
+             Title="{Binding Title}"
+             x:DataType="vm:CreditsViewModel"
+             x:Name="CreditsViewRoot"
+             v:ViewModelLocator.AutoWireViewModel="true">
+    <ScrollView>
+        <StackLayout>
+            <Label Padding="15" Text="{x:Static l:Resources.CreditsView_Thanks}" />
+            <StackLayout BindableLayout.ItemsSource="{Binding Items}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="m:CreditsItemModel">
+                        <StackLayout Padding="15" xe:Commands.Tap="{Binding BindingContext.ItemTappedCommand, Source={x:Reference CreditsViewRoot}}" xe:Commands.TapParameter="{Binding .}" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
+                            <Label FontSize="Medium" TextColor="Black" Text="{Binding Title}"></Label>
+                            <Label FontSize="Small" TextColor="Gray" Text="{Binding ShortDescription}"></Label>
+                            <Label FontSize="Small" TextColor="Gray" Text="{Binding License}"></Label>
+
+                        </StackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

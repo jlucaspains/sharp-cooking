@@ -61,6 +61,11 @@ namespace SharpCooking.Services
             return VersionTracking.IsFirstLaunchForCurrentBuild;
         }
 
+        public bool IsFirstLaunchEver()
+        {
+            return VersionTracking.IsFirstLaunchEver;
+        }
+
         public async Task ShareText(string text, string title)
         {
             await Share.RequestAsync(new ShareTextRequest(text, title));

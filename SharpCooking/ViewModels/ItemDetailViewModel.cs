@@ -66,7 +66,11 @@ namespace SharpCooking.ViewModels
                 Model = recipe;
                 Item = RecipeViewModel.FromModel(recipe);
 
+                Multiplier = recipe.Multiplier == 0 ? 1 : recipe.Multiplier;
                 PrepareRecipeToDisplay(Item);
+
+                if (Multiplier != 1)
+                    await ChangeMultiplier(recipe.Multiplier);
 
                 IsBusy = false;
             }
@@ -83,7 +87,6 @@ namespace SharpCooking.ViewModels
             var configInterval = _essentials.GetIntSetting(AppConstants.TimeBetweenStepsInterval);
 
             Title = recipe?.Title;
-            Multiplier = 1;
             StandardStepTimeInterval = configInterval <= 0 ? 5 : configInterval;
 
             var start = proposedStart ?? DateTime.Now;
@@ -141,83 +144,91 @@ namespace SharpCooking.ViewModels
 
         async Task ChangeMultiplier()
         {
-            var useFractions = _essentials.GetBoolSetting(AppConstants.MultiplierResultUseFractions);
 
             var inputMultiplier = await DisplayPromptAsync(Resources.ItemDetailView_MultiplierTitle, Resources.ItemDetailView_MultiplierDescription,
                 Resources.ItemDetailView_MultiplierOk, Resources.ItemDetailView_MultiplierCancel, Multiplier.ToString(CultureInfo.CurrentCulture), Keyboard.Numeric);
 
             if (decimal.TryParse(inputMultiplier, NumberStyles.Float, CultureInfo.CurrentCulture, out var newMultiplier))
             {
-                Multiplier = newMultiplier;
-
-                if (string.IsNullOrEmpty(Item.Ingredients))
-                    return;
-
-                var regexResult = Regex.Replace(Item.Ingredients, Resources.IngredientQuantityRegex, (match) =>
-                {
-                    var compositeFractionGroup = match.Groups["CompositeFraction"];
-                    var fractionGroup = match.Groups["Fraction"];
-                    var regularGroup = match.Groups["Regular"];
-                    decimal parsedMatch = 0;
-
-                    if (compositeFractionGroup.Success)
-                    {
-                        var parts = compositeFractionGroup.Value.Split(' ');
-                        var first = parts[0];
-                        var second = parts[1];
-
-                        var fractionParts = second.Split('/');
-
-                        var wholeResult = decimal.TryParse(first, out var firstNumber);
-                        var numeratorResult = decimal.TryParse(fractionParts[0], out var fracNumerator);
-                        var fracResult = decimal.TryParse(fractionParts[1], out var fracDecimal);
-
-                        if (!numeratorResult || !fracResult || !wholeResult)
-                            return first;
-
-                        parsedMatch = firstNumber + (fracNumerator / fracDecimal);
-                    }
-                    else if (fractionGroup.Success)
-                    {
-                        var parts = fractionGroup.Value.Split('/');
-                        var numeratorResult = decimal.TryParse(parts[0], out var fracNumerator);
-                        var fracResult = decimal.TryParse(parts[1], out var fracDecimal);
-
-                        if (!numeratorResult || !fracResult)
-                            return "0";
-
-                        parsedMatch = fracNumerator / fracDecimal;
-                    }
-                    else
-                    {
-                        var parseResult = decimal.TryParse(regularGroup.Value, out parsedMatch);
-
-                        if (!parseResult)
-                            return "0";
-                    }
-
-                    var newIngredientValue = parsedMatch * Multiplier;
-
-                    if (!useFractions)
-                        return newIngredientValue.ToString("G29", CultureInfo.CurrentCulture);
-
-                    var whole = decimal.Floor(newIngredientValue);
-
-                    if (whole == newIngredientValue)
-                    {
-                        return newIngredientValue.ToString("0", CultureInfo.CurrentCulture);
-                    }
-                    else
-                    {
-                        (var numerator, var denominator) = Fraction.Get(newIngredientValue - whole);
-                        return whole == 0 ? $"{numerator}/{denominator}" : $"{whole:0} {numerator}/{denominator}";
-                    }
-                }, RegexOptions.Multiline);
-
-                Steps[0].SubTitle = regexResult;
-
-                await TrackEvent("Multiplier", ("Value", newMultiplier.ToString(CultureInfo.CurrentCulture)));
+                await ChangeMultiplier(newMultiplier);
+                Model.Multiplier = newMultiplier;
+                await _dataStore.UpdateAsync(Model);
             }
+        }
+
+        async Task ChangeMultiplier(decimal newMultiplier)
+        {
+            var useFractions = _essentials.GetBoolSetting(AppConstants.MultiplierResultUseFractions);
+
+            Multiplier = newMultiplier;
+
+            if (string.IsNullOrEmpty(Item.Ingredients))
+                return;
+
+            var regexResult = Regex.Replace(Item.Ingredients, Resources.IngredientQuantityRegex, (match) =>
+            {
+                var compositeFractionGroup = match.Groups["CompositeFraction"];
+                var fractionGroup = match.Groups["Fraction"];
+                var regularGroup = match.Groups["Regular"];
+                decimal parsedMatch = 0;
+
+                if (compositeFractionGroup.Success)
+                {
+                    var parts = compositeFractionGroup.Value.Split(' ');
+                    var first = parts[0];
+                    var second = parts[1];
+
+                    var fractionParts = second.Split('/');
+
+                    var wholeResult = decimal.TryParse(first, out var firstNumber);
+                    var numeratorResult = decimal.TryParse(fractionParts[0], out var fracNumerator);
+                    var fracResult = decimal.TryParse(fractionParts[1], out var fracDecimal);
+
+                    if (!numeratorResult || !fracResult || !wholeResult)
+                        return first;
+
+                    parsedMatch = firstNumber + (fracNumerator / fracDecimal);
+                }
+                else if (fractionGroup.Success)
+                {
+                    var parts = fractionGroup.Value.Split('/');
+                    var numeratorResult = decimal.TryParse(parts[0], out var fracNumerator);
+                    var fracResult = decimal.TryParse(parts[1], out var fracDecimal);
+
+                    if (!numeratorResult || !fracResult)
+                        return "0";
+
+                    parsedMatch = fracNumerator / fracDecimal;
+                }
+                else
+                {
+                    var parseResult = decimal.TryParse(regularGroup.Value, out parsedMatch);
+
+                    if (!parseResult)
+                        return "0";
+                }
+
+                var newIngredientValue = parsedMatch * Multiplier;
+
+                if (!useFractions)
+                    return newIngredientValue.ToString("G29", CultureInfo.CurrentCulture);
+
+                var whole = decimal.Floor(newIngredientValue);
+
+                if (whole == newIngredientValue)
+                {
+                    return newIngredientValue.ToString("0", CultureInfo.CurrentCulture);
+                }
+                else
+                {
+                    (var numerator, var denominator) = Fraction.Get(newIngredientValue - whole);
+                    return whole == 0 ? $"{numerator}/{denominator}" : $"{whole:0} {numerator}/{denominator}";
+                }
+            }, RegexOptions.Multiline);
+
+            Steps[0].SubTitle = regexResult;
+
+            await TrackEvent("Multiplier", ("Value", newMultiplier.ToString(CultureInfo.CurrentCulture)));
         }
 
         async Task ShowMoreOptions()

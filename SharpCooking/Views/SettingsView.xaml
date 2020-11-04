@@ -25,6 +25,7 @@
                 <RowDefinition Height="70" />
                 <RowDefinition Height="70" />
                 <RowDefinition Height="70" />
+                <RowDefinition Height="70" />
             </Grid.RowDefinitions>
             <StackLayout Padding="15" xe:Commands.Tap="{Binding StepIntervalCommand}" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
                 <Image>
@@ -101,6 +102,17 @@
                 <StackLayout Margin="10,0,0,0">
                     <Label FontSize="Medium" TextColor="Black" Text="{x:Static l:Resources.SettingsView_Privacy}"></Label>
                     <Label FontSize="Small" TextColor="Gray" Text="{x:Static l:Resources.SettingsView_PrivacyPolicy}"></Label>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Padding="15" xe:Commands.Tap="{Binding ViewCreditsCommand}" Grid.Row="7" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
+                <Image>
+                    <Image.Source>
+                        <FontImageSource Color="{DynamicResource NavigationPrimary}" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.OpenSourceInitiative}"/>
+                    </Image.Source>
+                </Image>
+                <StackLayout Margin="10,0,0,0">
+                    <Label FontSize="Medium" TextColor="Black" Text="{x:Static l:Resources.SettingsView_Credits}"></Label>
+                    <Label FontSize="Small" TextColor="Gray" Text="{x:Static l:Resources.SettingsView_CreditsDetail}"></Label>
                 </StackLayout>
             </StackLayout>
         </Grid>
