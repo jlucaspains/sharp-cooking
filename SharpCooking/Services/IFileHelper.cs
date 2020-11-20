@@ -10,6 +10,7 @@ namespace SharpCooking.Services
         Task<IEnumerable<string>> GetAllAsync();
         Task WriteTextAsync(string filename, string text);
         Task WriteStreamAsync(string filename, Stream stream);
+        Stream ReadStream(string filename);
         Task CopyAsync(string sourceFilePath, string destinationFileName);
         Task MoveAsync(string sourceFilePath, string destinationFileName);
         Task<string> ReadTextAsync(string filename);

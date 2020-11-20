@@ -60,6 +60,7 @@ namespace SharpCooking
             container.Register<IEssentials, Essentials>();
             container.Register<IFileHelper, FileHelper>();
             container.Register<IHttpService, HttpService>();
+            container.Register<IRecipePackager, RecipePackager>();
             container.Register(GetConnectionFactory());
         }
 

@@ -159,8 +159,8 @@
           <target state="translated">Receita excluída</target>
         </trans-unit>
         <trans-unit id="ItemDetailView_Share" translate="yes" xml:space="preserve">
-          <source>Share Recipe</source>
-          <target state="translated">Compartilhar receita</target>
+          <source>Share Recipe Text</source>
+          <target state="translated">Compartilhar receita em texto</target>
         </trans-unit>
         <trans-unit id="ItemDetailView_StartTimeCancel" translate="yes" xml:space="preserve">
           <source>Cancel</source>
@@ -433,6 +433,10 @@
         <trans-unit id="CreditsView_Thanks" translate="yes" xml:space="preserve">
           <source>The Sharp Cooking team thanks the following amazing projects:</source>
           <target state="translated">A equipe da Cozinha Afiada agradece os seguintes projetos:</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_ShareFile" translate="yes" xml:space="preserve">
+          <source>Share Recipe as file</source>
+          <target state="translated">Compartilhar como arquivo</target>
         </trans-unit>
       </group>
     </body>

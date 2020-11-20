@@ -574,11 +574,20 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Share Recipe.
+        ///   Looks up a localized string similar to Share Recipe Text.
         /// </summary>
         public static string ItemDetailView_Share {
             get {
                 return ResourceManager.GetString("ItemDetailView_Share", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Share Recipe as file.
+        /// </summary>
+        public static string ItemDetailView_ShareFile {
+            get {
+                return ResourceManager.GetString("ItemDetailView_ShareFile", resourceCulture);
             }
         }
         

@@ -289,7 +289,10 @@
     <value>Recipe deleted</value>
   </data>
   <data name="ItemDetailView_Share" xml:space="preserve">
-    <value>Share Recipe</value>
+    <value>Share Recipe Text</value>
+  </data>
+  <data name="ItemDetailView_ShareFile" xml:space="preserve">
+    <value>Share Recipe as file</value>
   </data>
   <data name="ItemDetailView_StartTimeCancel" xml:space="preserve">
     <value>Cancel</value>

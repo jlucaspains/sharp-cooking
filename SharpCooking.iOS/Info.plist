@@ -52,7 +52,18 @@
 	</array>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>This app needs access to photo library to add photos taken for a recipe</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>This app needs access to your location so it can show appropriate announcements</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app needs access to your location so it can show appropriate announcements</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>zip</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.pkware.zip-archive</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

@@ -127,7 +127,7 @@
     <value>Receita excluída</value>
   </data>
   <data name="ItemDetailView_Share" xml:space="preserve">
-    <value>Compartilhar receita</value>
+    <value>Compartilhar receita em texto</value>
   </data>
   <data name="ItemDetailView_StartTimeCancel" xml:space="preserve">
     <value>Cancelar</value>
@@ -332,5 +332,8 @@
   </data>
   <data name="CreditsView_Thanks" xml:space="preserve">
     <value>A equipe da Cozinha Afiada agradece os seguintes projetos:</value>
+  </data>
+  <data name="ItemDetailView_ShareFile" xml:space="preserve">
+    <value>Compartilhar como arquivo</value>
   </data>
 </root>

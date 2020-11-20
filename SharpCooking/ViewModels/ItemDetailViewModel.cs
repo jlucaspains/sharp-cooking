@@ -1,4 +1,5 @@
-﻿using SharpCooking.Data;
+﻿using Newtonsoft.Json;
+using SharpCooking.Data;
 using SharpCooking.Localization;
 using SharpCooking.Models;
 using SharpCooking.Services;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -18,6 +20,7 @@ namespace SharpCooking.ViewModels
     {
         private readonly IDataStore _dataStore;
         private readonly IEssentials _essentials;
+        private readonly IRecipePackager _recipePackager;
 
         public RecipeViewModel Item { get; set; }
         public Recipe Model { get; set; }
@@ -38,15 +41,15 @@ namespace SharpCooking.ViewModels
         public bool DoesNotHaveMainImage { get { return string.IsNullOrEmpty(Item?.MainImagePath); } }
         public bool HasMainImage { get { return !string.IsNullOrEmpty(Item?.MainImagePath); } }
 
-        public ItemDetailViewModel(IDataStore dataStore, IEssentials essentials)
+        public ItemDetailViewModel(IDataStore dataStore, IEssentials essentials, IRecipePackager recipePackager)
         {
             _dataStore = dataStore;
             _essentials = essentials;
-
+            _recipePackager = recipePackager;
             EditCommand = new Command(async () => await GotoEdit());
             ChangeMultiplierCommand = new Command(async () => await ChangeMultiplier());
             MoreCommand = new Command(async () => await ShowMoreOptions());
-            ShareRecipeCommand = new Command(async () => await ShareRecipe());
+            ShareRecipeCommand = new Command(async () => await ShareRecipeText());
             ChangeStartTimeCommand = new Command(async () => await ChangeStartTime());
         }
 
@@ -235,14 +238,16 @@ namespace SharpCooking.ViewModels
         {
             var selectedOption = Device.RuntimePlatform == Device.Android
                                ? await DisplayActionSheetAsync(Resources.ItemDetailView_MoreTitle, Resources.ItemDetailView_MoreCancel, null,
-                                    Resources.ItemDetailView_Share, Resources.ItemDetailView_MoreDelete)
+                                    Resources.ItemDetailView_Share, Resources.ItemDetailView_ShareFile, Resources.ItemDetailView_MoreDelete)
                                : await DisplayActionSheetAsync(Resources.ItemDetailView_MoreTitle, Resources.ItemDetailView_MoreCancel,
-                                    Resources.ItemDetailView_MoreDelete, Resources.ItemDetailView_Share);
+                                    Resources.ItemDetailView_MoreDelete, Resources.ItemDetailView_Share, Resources.ItemDetailView_ShareFile);
 
             if (selectedOption == Resources.ItemDetailView_MoreDelete)
                 await DeleteRecipe();
             else if (selectedOption == Resources.ItemDetailView_Share)
-                await ShareRecipe();
+                await ShareRecipeText();
+            else if (selectedOption == Resources.ItemDetailView_ShareFile)
+                await ShareRecipeFile();
         }
 
         async Task DeleteRecipe()
@@ -259,7 +264,7 @@ namespace SharpCooking.ViewModels
             }
         }
 
-        async Task ShareRecipe()
+        async Task ShareRecipeText()
         {
             var text = $@"{Item.Title}
 
@@ -271,6 +276,23 @@ namespace SharpCooking.ViewModels
 
             await _essentials.ShareText(text, Resources.AppName);
             await TrackEvent("Share");
+        }
+
+        async Task ShareRecipeFile()
+        {
+            try
+            {
+                using (DisplayLoading(Resources.SettingsView_CreatingBackup))
+                {
+                    var packagePath = await _recipePackager.PackageRecipes(new[] { Model });
+                    await _essentials.ShareFile(packagePath, Resources.AppName);
+                    await TrackEvent("ShareFile");
+                }
+            }
+            catch (Exception ex)
+            {
+                await TrackException(ex);
+            }
         }
 
         async Task ChangeStartTime()

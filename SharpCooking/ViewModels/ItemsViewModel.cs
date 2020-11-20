@@ -21,11 +21,10 @@ namespace SharpCooking.ViewModels
     public sealed class ItemsViewModel : BaseViewModel, IDisposable
     {
         private readonly IDataStore _dataStore;
+        private readonly IRecipePackager _recipePackager;
         private readonly IEssentials _essentials;
-        private readonly IFileHelper _fileHelper;
         private CancellationTokenSource _throttleCts = new CancellationTokenSource();
         private bool _releaseNotesShown;
-        private bool _initialRecipesAdded;
 
         public ObservableCollection<RecipeViewModel> Items { get; } = new ObservableCollection<RecipeViewModel>();
         public Command LoadItemsCommand { get; }
@@ -37,11 +36,11 @@ namespace SharpCooking.ViewModels
         public bool DataToShow { get { return !NoDataToShow; } }
         public string SearchValue { get; set; }
 
-        public ItemsViewModel(IDataStore dataStore, IFileHelper fileHelper, IEssentials essentials)
+        public ItemsViewModel(IDataStore dataStore, IRecipePackager recipePackager, IEssentials essentials)
         {
             _dataStore = dataStore;
+            _recipePackager = recipePackager;
             _essentials = essentials;
-            _fileHelper = fileHelper;
             Title = Resources.AllRecipes;
             LoadItemsCommand = new Command(async () => await Refresh());
             AddItemCommand = new Command(async () => await AddItem());
@@ -57,23 +56,42 @@ namespace SharpCooking.ViewModels
 
         public override async Task InitializeAsync()
         {
-            IsRefreshing = true;
-
-            if (!Items.Any() && !_initialRecipesAdded && _essentials.IsFirstLaunchEver())
-                await CreateFirstRecipe();
-
-            await Refresh();
-
-            IsRefreshing = false;
-
-            if (!_releaseNotesShown && _essentials.IsFirstLaunchForCurrentBuild())
+            try
             {
-                _releaseNotesShown = true;
-                var viewReleaseNotes = await DisplayAlertAsync($"{Resources.ItemsView_WelcomeToVersion} {_essentials.GetVersion()}", 
-                    Resources.ItemsView_ViewReleaseNotes, Resources.ItemsView_Yes, Resources.ItemsView_No);
 
-                if (viewReleaseNotes)
-                    await GoToAsync("about");
+                if (await _recipePackager.IsProcessingShare())
+                {
+                    var result = await _recipePackager.ImportShareFile();
+
+                    if (!result.Succeded)
+                        await DisplayAlertAsync("Failed", result.Error, Resources.ErrorOk);
+                    else
+                        await DisplayToastAsync("Imported recipe successfully");
+                }
+
+                IsRefreshing = true;
+
+                if (!Items.Any() && _essentials.IsFirstLaunchEver())
+                    await CreateFirstRecipe();
+
+                await Refresh();
+
+                IsRefreshing = false;
+
+                if (!_releaseNotesShown && _essentials.IsFirstLaunchForCurrentBuild())
+                {
+                    _releaseNotesShown = true;
+                    var viewReleaseNotes = await DisplayAlertAsync($"{Resources.ItemsView_WelcomeToVersion} {_essentials.GetVersion()}",
+                        Resources.ItemsView_ViewReleaseNotes, Resources.ItemsView_Yes, Resources.ItemsView_No);
+
+                    if (viewReleaseNotes)
+                        await GoToAsync("about");
+                }
+            }
+            catch (Exception ex)
+            {
+                await TrackException(ex);
+                await DisplayAlertAsync(Resources.ErrorTitle, Resources.EditItemView_UnknownError, Resources.ErrorOk);
             }
 
             await base.InitializeAsync();
@@ -81,42 +99,7 @@ namespace SharpCooking.ViewModels
 
         private async Task CreateFirstRecipe()
         {
-            try
-            {
-                var assembly = IntrospectionExtensions.GetTypeInfo(typeof(App)).Assembly;
-                using (Stream stream = assembly.GetManifestResourceStream("SharpCooking.InitialRecipes.zip"))
-                {
-                    using (ZipArchive zip = new ZipArchive(stream, ZipArchiveMode.Read))
-                    {
-                        zip.ExtractToDirectory(_fileHelper.GetDocsFolder());
-
-                        var entry = zip.GetEntry(AppConstants.BackupRecipeFileName);
-                        var recipeFile = entry.Open();
-
-                        using (StreamReader reader = new StreamReader(recipeFile))
-                        {
-                            var restoreRecipes = JsonConvert.DeserializeObject<IEnumerable<Recipe>>(await reader.ReadToEndAsync());
-
-                            // add new data
-                            foreach (var recipe in restoreRecipes)
-                            {
-                                recipe.Id = 0;
-                                recipe.MainImagePath = recipe.MainImagePath == null
-                                    ? null
-                                    : Path.GetFileName(recipe.MainImagePath);
-
-                                await _dataStore.InsertAsync(recipe);
-                            }
-                        }
-                    }
-                }
-
-                _initialRecipesAdded = true;
-            }
-            catch
-            {
-                return;
-            }
+            await _recipePackager.CreateDefaultRecipe();
         }
 
         async Task AddItem()
