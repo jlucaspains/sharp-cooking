@@ -336,4 +336,25 @@
   <data name="ItemDetailView_ShareFile" xml:space="preserve">
     <value>Compartilhar como arquivo</value>
   </data>
+  <data name="ImportView_Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="ImportView_Confirm" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="ImportView_ShortDescription" xml:space="preserve">
+    <value>Este arquivo contém as seguintes receitas, deseja adicioná-las ao seu livro de receitas?</value>
+  </data>
+  <data name="ImportView_Title" xml:space="preserve">
+    <value>Importar</value>
+  </data>
+  <data name="ImportView_FailedToImport" xml:space="preserve">
+    <value>Falha ao importar receitas. Por favor, tente novamente.</value>
+  </data>
+  <data name="ImportView_ImportCancelled" xml:space="preserve">
+    <value>Importação cancelada</value>
+  </data>
+  <data name="ImportView_ImportSuccessful" xml:space="preserve">
+    <value>Importação com sucesso</value>
+  </data>
 </root>

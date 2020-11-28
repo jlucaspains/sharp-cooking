@@ -5,6 +5,7 @@ using Android.OS;
 using Plugin.CurrentActivity;
 using Acr.UserDialogs;
 using Android.Content;
+using SharpCooking.Services;
 
 namespace SharpCooking.Droid
 {
@@ -54,6 +55,8 @@ namespace SharpCooking.Droid
             zipStream.CopyTo(memStream);
 
             System.IO.File.WriteAllBytes(filePath, memStream.ToArray());
+
+            Xamarin.Forms.Shell.Current.GoToAsync("import");
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

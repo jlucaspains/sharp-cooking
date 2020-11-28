@@ -46,29 +46,12 @@ namespace SharpCooking.ViewModels
             AddItemCommand = new Command(async () => await AddItem());
             ItemTappedCommand = new Command<RecipeViewModel>(async (item) => await GoToItemDetail(item));
             FilterListCommand = new Command(async () => await DebouncedSearch());
-
-            MessagingCenter.Subscribe<EditItemView, Recipe>(this, "AddItem", (obj, item) =>
-            {
-                var newItem = item;
-                Items.Add(RecipeViewModel.FromModel(newItem));
-            });
         }
 
         public override async Task InitializeAsync()
         {
             try
             {
-
-                if (await _recipePackager.IsProcessingShare())
-                {
-                    var result = await _recipePackager.ImportShareFile();
-
-                    if (!result.Succeded)
-                        await DisplayAlertAsync("Failed", result.Error, Resources.ErrorOk);
-                    else
-                        await DisplayToastAsync("Imported recipe successfully");
-                }
-
                 IsRefreshing = true;
 
                 if (!Items.Any() && _essentials.IsFirstLaunchEver())

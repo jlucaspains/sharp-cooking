@@ -438,6 +438,34 @@
           <source>Share Recipe as file</source>
           <target state="translated">Compartilhar como arquivo</target>
         </trans-unit>
+        <trans-unit id="ImportView_Cancel" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="translated" state-qualifier="tm-suggestion">Cancelar</target>
+        </trans-unit>
+        <trans-unit id="ImportView_Confirm" translate="yes" xml:space="preserve">
+          <source>Confirm</source>
+          <target state="translated" state-qualifier="tm-suggestion">Confirmar</target>
+        </trans-unit>
+        <trans-unit id="ImportView_ShortDescription" translate="yes" xml:space="preserve">
+          <source>This file contain the following recipes, do you want to add them to your recipe book?</source>
+          <target state="translated">Este arquivo contém as seguintes receitas, deseja adicioná-las ao seu livro de receitas?</target>
+        </trans-unit>
+        <trans-unit id="ImportView_Title" translate="yes" xml:space="preserve">
+          <source>Import</source>
+          <target state="translated" state-qualifier="tm-suggestion">Importar</target>
+        </trans-unit>
+        <trans-unit id="ImportView_FailedToImport" translate="yes" xml:space="preserve">
+          <source>Failed to import recipes. Please try again.</source>
+          <target state="translated">Falha ao importar receitas. Por favor, tente novamente.</target>
+        </trans-unit>
+        <trans-unit id="ImportView_ImportCancelled" translate="yes" xml:space="preserve">
+          <source>Import cancelled</source>
+          <target state="translated" state-qualifier="tm-suggestion">Importação cancelada</target>
+        </trans-unit>
+        <trans-unit id="ImportView_ImportSuccessful" translate="yes" xml:space="preserve">
+          <source>Import successful</source>
+          <target state="translated">Importação com sucesso</target>
+        </trans-unit>
       </group>
     </body>
   </file>

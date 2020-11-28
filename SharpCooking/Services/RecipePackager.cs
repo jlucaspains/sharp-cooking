@@ -17,8 +17,9 @@ namespace SharpCooking.Services
     {
         Task<string> PackageRecipes(IEnumerable<Recipe> recipes);
         Task<(bool Succeeded, string Error)> RestoreRecipePackage(Stream data, bool replaceAll);
-        Task<bool> IsProcessingShare();
-        Task<(bool Succeded, string Error)> ImportShareFile();
+        Task<(IEnumerable<Recipe> Recipes, string Error)> GetShareDetail(string filePath = "import.zip");
+        Task<(bool Succeded, string Error)> ImportShareFile(string filePath = "import.zip");
+        Task CleanupShareFile(string filePath = "import.zip");
         Task CreateDefaultRecipe();
     }
 
@@ -33,18 +34,39 @@ namespace SharpCooking.Services
             _store = dataStore;
         }
 
-        public async Task<bool> IsProcessingShare()
+        public async Task<(IEnumerable<Recipe> Recipes, string Error)> GetShareDetail(string filePath = "import.zip")
         {
-            return await _fileHelper.ExistsAsync("import.zip");
+            using var stream = _fileHelper.ReadStream(filePath);
+
+            using (ZipArchive zip = new ZipArchive(stream, ZipArchiveMode.Read))
+            {
+                if (!zip.Entries.Any(item => item.Name == AppConstants.BackupRecipeFileName))
+                    return (null, Resources.SettingsView_BadBackupFile);
+
+                try
+                {
+                    var entry = zip.GetEntry(AppConstants.BackupRecipeFileName);
+                    var jsonStream = entry.Open();
+
+                    using StreamReader reader = new StreamReader(jsonStream);
+                    var restoreRecipes = JsonConvert.DeserializeObject<IEnumerable<Recipe>>(await reader.ReadToEndAsync());
+
+                    return (restoreRecipes, null);
+                }
+                catch
+                {
+                    return (null, Resources.SettingsView_CorruptedBackupFile);
+                }
+            }
         }
 
-        public async Task<(bool Succeded, string Error)> ImportShareFile()
+        public async Task<(bool Succeded, string Error)> ImportShareFile(string filePath = "import.zip")
         {
-            using var stream = _fileHelper.ReadStream("import.zip");
+            using var stream = _fileHelper.ReadStream(filePath);
 
             var result = await RestoreRecipePackage(stream, false);
 
-            await _fileHelper.DeleteAsync("import.zip");
+            await CleanupShareFile(filePath);
 
             return result;
         }
@@ -172,6 +194,11 @@ namespace SharpCooking.Services
 
                 return (true, null);
             }
+        }
+
+        public async Task CleanupShareFile(string filePath = "import.zip")
+        {
+            await _fileHelper.DeleteAsync(filePath);
         }
 
         async Task<bool> QuickZip(string[] filesToZip, string destinationZipFullPath)

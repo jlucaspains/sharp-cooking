@@ -1,4 +1,6 @@
-﻿using Foundation;
+﻿using System.IO;
+using Foundation;
+using SharpCooking.Services;
 using UIKit;
 
 namespace SharpCooking.iOS
@@ -26,6 +28,20 @@ namespace SharpCooking.iOS
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+
+        public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
+        {
+            if (url == null) return false;
+
+            var docsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+            var filePath = System.IO.Path.Combine(docsPath, "import.zip");
+
+            File.Copy(url.Path, filePath, true);
+
+            Xamarin.Forms.Shell.Current.GoToAsync("import");
+
+            return true;
         }
     }
 }

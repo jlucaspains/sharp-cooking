@@ -421,6 +421,69 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string ImportView_Cancel {
+            get {
+                return ResourceManager.GetString("ImportView_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        public static string ImportView_Confirm {
+            get {
+                return ResourceManager.GetString("ImportView_Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to import recipes. Please try again..
+        /// </summary>
+        public static string ImportView_FailedToImport {
+            get {
+                return ResourceManager.GetString("ImportView_FailedToImport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import cancelled.
+        /// </summary>
+        public static string ImportView_ImportCancelled {
+            get {
+                return ResourceManager.GetString("ImportView_ImportCancelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import successful.
+        /// </summary>
+        public static string ImportView_ImportSuccessful {
+            get {
+                return ResourceManager.GetString("ImportView_ImportSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This file contain the following recipes, do you want to add them to your recipe book?.
+        /// </summary>
+        public static string ImportView_ShortDescription {
+            get {
+                return ResourceManager.GetString("ImportView_ShortDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import.
+        /// </summary>
+        public static string ImportView_Title {
+            get {
+                return ResourceManager.GetString("ImportView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ^(?&lt;CompositeFraction&gt;\d+ \d+\/\d+)|(?&lt;Fraction&gt;\d+\/\d+)|^(?&lt;Regular&gt;\d+\.{0,1}\d*).
         /// </summary>
         public static string IngredientQuantityRegex {
