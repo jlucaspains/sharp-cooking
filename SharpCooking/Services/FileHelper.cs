@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -22,6 +21,14 @@ namespace SharpCooking.Services
             {
                 await writer.WriteAsync(text);
             }
+        }
+
+        public Stream ReadStream(string filename)
+        {
+            if (string.IsNullOrEmpty(filename)) throw new ArgumentNullException(nameof(filename));
+
+            string filepath = GetFilePath(filename);
+            return File.OpenRead(filepath);
         }
 
         public async Task WriteStreamAsync(string filename, Stream stream)

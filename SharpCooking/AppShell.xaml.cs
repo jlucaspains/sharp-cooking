@@ -20,6 +20,7 @@ namespace SharpCooking
             Routing.RegisterRoute("about", typeof(AboutView));
             Routing.RegisterRoute("settings", typeof(SettingsView));
             Routing.RegisterRoute("credits", typeof(CreditsView));
+            Routing.RegisterRoute("import", typeof(ImportView));
         }
     }
 }

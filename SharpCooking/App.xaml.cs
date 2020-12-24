@@ -54,12 +54,14 @@ namespace SharpCooking
             container.Register<SettingsViewModel>();
             container.Register<EditItemViewModel>();
             container.Register<CreditsViewModel>();
+            container.Register<ImportViewModel>();
 
             // Services - by default, TinyIoC will register interface registrations as singletons.
             container.Register<IDataStore, DataStore>();
             container.Register<IEssentials, Essentials>();
             container.Register<IFileHelper, FileHelper>();
             container.Register<IHttpService, HttpService>();
+            container.Register<IRecipePackager, RecipePackager>();
             container.Register(GetConnectionFactory());
         }
 

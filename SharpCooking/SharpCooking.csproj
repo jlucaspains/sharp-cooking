@@ -1,81 +1,85 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup Label="MultilingualAppToolkit">
-    <MultilingualAppToolkitVersion>4.0</MultilingualAppToolkitVersion>
-    <MultilingualFallbackLanguage>en-US</MultilingualFallbackLanguage>
-    <TranslationReport Condition="'$(Configuration)' == 'Release'">true</TranslationReport>
-    <SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
-  </PropertyGroup>
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
-    <NeutralLanguage>en-US</NeutralLanguage>
-  </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets" Label="MultilingualAppToolkit" Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\v$(MultilingualAppToolkitVersion)\Microsoft.Multilingual.ResxResources.targets')" />
-  <Target Name="MATPrerequisite" BeforeTargets="PrepareForBuild" Condition="!Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets')" Label="MultilingualAppToolkit">
-    <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
-  </Target>
-  <ItemGroup>
-    <None Remove="MultilingualResources\SharpCooking.pt-BR.xlf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="InitialRecipes.zip" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.446" />
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.24" />
-    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.3.0" />
-    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.3.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="PropertyChanged.Fody" Version="3.2.8" />
-    <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
-    <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
-    <PackageReference Include="Xamarin.Forms" Version="4.7.0.1142" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
-    <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.44-beta" />
-    <PackageReference Include="XamEffects" Version="1.6.3" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-  </ItemGroup>
-  <ItemGroup>
-    <XliffResource Include="MultilingualResources\SharpCooking.pt-BR.xlf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Localization\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Views\AboutView.xaml.cs">
-      <DependentUpon>AboutView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\ItemDetailView.xaml.cs">
-      <DependentUpon>ItemDetailView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\CreditsView.xaml.cs">
-      <DependentUpon>CreditsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\SettingsView.xaml.cs">
-      <DependentUpon>SettingsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\ItemsView.xaml.cs">
-      <DependentUpon>ItemsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\EditItemView.xaml.cs">
-      <DependentUpon>EditItemView.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Controls\RatingEditor.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Localization\Resources.resx">
-      <DependentUpon>%(Filename)</DependentUpon>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
+    <PropertyGroup Label="MultilingualAppToolkit">
+        <MultilingualAppToolkitVersion>4.0</MultilingualAppToolkitVersion>
+        <MultilingualFallbackLanguage>en-US</MultilingualFallbackLanguage>
+        <TranslationReport Condition="'$(Configuration)' == 'Release'">true</TranslationReport>
+        <SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
+        <LangVersion>8</LangVersion>
+    </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+        <NeutralLanguage>en-US</NeutralLanguage>
+    </PropertyGroup>
+    <Import Project="$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets" Label="MultilingualAppToolkit" Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\v$(MultilingualAppToolkitVersion)\Microsoft.Multilingual.ResxResources.targets')" />
+    <Target Name="MATPrerequisite" BeforeTargets="PrepareForBuild" Condition="!Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets')" Label="MultilingualAppToolkit">
+        <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
+    </Target>
+    <ItemGroup>
+        <None Remove="MultilingualResources\SharpCooking.pt-BR.xlf" />
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="InitialRecipes.zip" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Acr.UserDialogs" Version="7.1.0.466" />
+        <PackageReference Include="HtmlAgilityPack" Version="1.11.28" />
+        <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.4.3" />
+        <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.4.3" />
+        <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.1">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="PropertyChanged.Fody" Version="3.3.1" />
+        <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
+        <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+        <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
+        <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
+        <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+        <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.44-beta" />
+        <PackageReference Include="XamEffects" Version="1.6.3" />
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    </ItemGroup>
+    <ItemGroup>
+        <XliffResource Include="MultilingualResources\SharpCooking.pt-BR.xlf" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Update="Localization\Resources.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Views\AboutView.xaml.cs">
+            <DependentUpon>AboutView.xaml</DependentUpon>
+        </Compile>
+        <Compile Update="Views\ImportView.xaml.cs">
+          <DependentUpon>ImportView.xaml</DependentUpon>
+        </Compile>
+        <Compile Update="Views\ItemDetailView.xaml.cs">
+            <DependentUpon>ItemDetailView.xaml</DependentUpon>
+        </Compile>
+        <Compile Update="Views\CreditsView.xaml.cs">
+            <DependentUpon>CreditsView.xaml</DependentUpon>
+        </Compile>
+        <Compile Update="Views\SettingsView.xaml.cs">
+            <DependentUpon>SettingsView.xaml</DependentUpon>
+        </Compile>
+        <Compile Update="Views\ItemsView.xaml.cs">
+            <DependentUpon>ItemsView.xaml</DependentUpon>
+        </Compile>
+        <Compile Update="Views\EditItemView.xaml.cs">
+            <DependentUpon>EditItemView.xaml</DependentUpon>
+        </Compile>
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Update="Controls\RatingEditor.xaml">
+            <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Localization\Resources.resx">
+            <DependentUpon>%(Filename)</DependentUpon>
+            <Generator>PublicResXFileCodeGenerator</Generator>
+            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+    </ItemGroup>
 </Project>

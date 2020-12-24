@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SharpCooking.Views.ImportView"
+             xmlns:v="clr-namespace:SharpCooking.Views"
+             xmlns:vm="clr-namespace:SharpCooking.ViewModels"
+             xmlns:l="clr-namespace:SharpCooking.Localization"
+             xmlns:m="clr-namespace:SharpCooking.Models"
+             Title="{Binding Title}"
+             v:ViewModelLocator.AutoWireViewModel="true"
+             x:DataType="vm:ImportViewModel">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{x:Static l:Resources.ImportView_Confirm}" Command="{Binding ConfirmCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="{DynamicResource MaterialFont}"
+                    Size="24"
+                    Glyph="{x:Static v:IconFont.Check}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem Text="{x:Static l:Resources.ImportView_Cancel}" Command="{Binding CancelCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="{DynamicResource MaterialFont}"
+                    Size="24"
+                    Glyph="{x:Static v:IconFont.Cancel}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Padding="15">
+        <Label Text="{x:Static l:Resources.ImportView_ShortDescription}" />
+        <CollectionView ItemsSource="{Binding ImportDetails}" Margin="0,10,0,0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:Recipe">
+                    <StackLayout>
+                        <Label Text="{Binding Title}" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

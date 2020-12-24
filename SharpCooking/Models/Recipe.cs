@@ -19,5 +19,10 @@ namespace SharpCooking.Models
         public string Instructions { get; set; }
         public string Notes { get; set; }
         public decimal Multiplier { get; set; }
+
+        public Recipe Clone()
+        {
+            return (Recipe)MemberwiseClone();
+        }
     }
 }
