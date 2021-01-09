@@ -655,6 +655,15 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Source.
+        /// </summary>
+        public static string ItemDetailView_Source {
+            get {
+                return ResourceManager.GetString("ItemDetailView_Source", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string ItemDetailView_StartTimeCancel {

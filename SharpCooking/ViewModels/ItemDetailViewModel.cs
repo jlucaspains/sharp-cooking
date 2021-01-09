@@ -38,6 +38,7 @@ namespace SharpCooking.ViewModels
         public string MultiplierDisplay { get; set; }
         public int StandardStepTimeInterval { get; set; }
         public bool HasNotes { get { return !string.IsNullOrEmpty(Item?.Notes); } }
+        public bool HasSource { get { return !string.IsNullOrEmpty(Item?.Source); } }
         public bool DoesNotHaveMainImage { get { return string.IsNullOrEmpty(Item?.MainImagePath); } }
         public bool HasMainImage { get { return !string.IsNullOrEmpty(Item?.MainImagePath); } }
 

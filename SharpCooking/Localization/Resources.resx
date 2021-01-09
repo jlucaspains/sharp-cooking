@@ -315,6 +315,9 @@
   <data name="ItemDetailView_ShareFile" xml:space="preserve">
     <value>Share Recipe as file</value>
   </data>
+  <data name="ItemDetailView_Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
   <data name="ItemDetailView_StartTimeCancel" xml:space="preserve">
     <value>Cancel</value>
   </data>

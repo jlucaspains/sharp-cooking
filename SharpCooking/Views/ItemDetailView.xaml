@@ -160,6 +160,8 @@
                         </BindableLayout.ItemTemplate>
                     </StackLayout>
 
+                    <Label Text="{x:Static l:Resources.ItemDetailView_Source}" FontSize="Medium" IsVisible="{Binding HasSource}" />
+                    <Label Text="{Binding Item.Source}" FontSize="Small" Margin="0,0,0,20" IsVisible="{Binding HasSource}" />
                     <Label Text="{x:Static l:Resources.ItemDetailView_Notes}" FontSize="Medium" IsVisible="{Binding HasNotes}" />
                     <Label Text="{Binding Item.Notes}" FontSize="Small" Margin="0,0,0,20" IsVisible="{Binding HasNotes}" />
                 </StackLayout>
