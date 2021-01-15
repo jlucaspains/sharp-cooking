@@ -42,6 +42,7 @@ namespace SharpCooking.ViewModels
         public Command MainImageTappedCommand { get; set; }
         public Command ImportCommand { get; }
         public string Id { get; set; }
+        public bool IsNew { get { return string.IsNullOrEmpty(Id); } }
 
         public async Task Save()
         {

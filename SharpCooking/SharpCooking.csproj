@@ -53,6 +53,9 @@
         <Compile Update="Views\AboutView.xaml.cs">
             <DependentUpon>AboutView.xaml</DependentUpon>
         </Compile>
+        <Compile Update="Views\SortItemsView.xaml.cs">
+          <DependentUpon>SortItemsView.xaml</DependentUpon>
+        </Compile>
         <Compile Update="Views\ImportView.xaml.cs">
           <DependentUpon>ImportView.xaml</DependentUpon>
         </Compile>
