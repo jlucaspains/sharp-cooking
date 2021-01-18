@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SharpCooking.Views.SortItemsView"
+             xmlns:v="clr-namespace:SharpCooking.Views"
+             xmlns:vm="clr-namespace:SharpCooking.ViewModels"
+             xmlns:l="clr-namespace:SharpCooking.Localization"
+             xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
+             Title="{Binding Title}"
+             v:ViewModelLocator.AutoWireViewModel="true"
+             x:DataType="vm:SortItemsViewModel"
+             Shell.TabBarIsVisible="true">
+    <StackLayout>
+        <StackLayout Padding="15">
+            <Label Text="Sort by" Margin="0,20,0,0"/>
+            <StackLayout Padding="15" xe:Commands.Tap="{Binding SelectSortModeCommand}"
+                         xe:Commands.TapParameter="Title"
+                         xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
+                <Label FontSize="Medium" Text="{x:Static l:Resources.SortItemsView_Title}"></Label>
+                <Label FontSize="Small" TextColor="Gray" Text="{x:Static l:Resources.SortItemsView_TitleDescription}"></Label>
+            </StackLayout>
+            <StackLayout Padding="15" xe:Commands.Tap="{Binding SelectSortModeCommand}"
+                         xe:Commands.TapParameter="Recent"
+                         xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
+                <Label FontSize="Medium" Text="{x:Static l:Resources.SortItemsView_Recent}"></Label>
+                <Label FontSize="Small" TextColor="Gray" Text="{x:Static l:Resources.SortItemsView_RecentDescription}"></Label>
+            </StackLayout>
+            <StackLayout Padding="15" xe:Commands.Tap="{Binding SelectSortModeCommand}"
+                         xe:Commands.TapParameter="Rating"
+                         xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
+                <Label FontSize="Medium" Text="{x:Static l:Resources.SortItemsView_Rating}"></Label>
+                <Label FontSize="Small" TextColor="Gray" Text="{x:Static l:Resources.SortItemsView_RatingDescription}"></Label>
+            </StackLayout>
+            <!--<StackLayout Padding="15" xe:Commands.Tap="{Binding SelectSortModeCommand}"
+                         xe:Commands.TapParameter="LastCooked"
+                         xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
+                <Label FontSize="Medium" Text="Last cooked"></Label>
+                <Label FontSize="Small" TextColor="Gray" Text="Sorts chronologically by last time cooked"></Label>
+            </StackLayout>-->
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

@@ -210,6 +210,9 @@
   <data name="EditItemView_PickImageUseCamera" xml:space="preserve">
     <value>Use Camera</value>
   </data>
+  <data name="EditItemView_Rating" xml:space="preserve">
+    <value>Rating</value>
+  </data>
   <data name="EditItemView_Save" xml:space="preserve">
     <value>Save</value>
   </data>
@@ -461,6 +464,27 @@
   </data>
   <data name="SettingsView_TimeStepsDescriptoin" xml:space="preserve">
     <value>minutes when no time information is given</value>
+  </data>
+  <data name="SortItemsView_Rating" xml:space="preserve">
+    <value>Rating</value>
+  </data>
+  <data name="SortItemsView_RatingDescription" xml:space="preserve">
+    <value>Shows highest ratings first</value>
+  </data>
+  <data name="SortItemsView_Recent" xml:space="preserve">
+    <value>Recent</value>
+  </data>
+  <data name="SortItemsView_RecentDescription" xml:space="preserve">
+    <value>Shows the recently opened recipes first</value>
+  </data>
+  <data name="SortItemsView_Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="SortItemsView_TitleDescription" xml:space="preserve">
+    <value>Sorts alphabetically by title. This is the default sort.</value>
+  </data>
+  <data name="SortItems_Title" xml:space="preserve">
+    <value>Sort</value>
   </data>
   <data name="StepTimeIdentifierRegex" xml:space="preserve">
     <value>(?&lt;Minutes&gt;\d+\.{0,1}\d*)\s*(minutes|minute|min)\b|(?&lt;Hours&gt;\d+\.{0,1}\d*)\s*(hours|hour)\b|(?&lt;Days&gt;\d+\.{0,1}\d*)\s*(days|day)\b</value>

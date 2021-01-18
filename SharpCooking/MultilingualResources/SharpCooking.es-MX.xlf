@@ -8,47 +8,47 @@
       <group id="SHARPCOOKING/LOCALIZATION/RESOURCES.RESX" datatype="resx">
         <trans-unit id="AboutView_KnownIssues" translate="yes" xml:space="preserve">
           <source>Known Issues</source>
-          <target state="new">Known Issues</target>
+          <target state="translated">Problemas conocidos</target>
         </trans-unit>
         <trans-unit id="AboutView_LoadingReleaseNotes" translate="yes" xml:space="preserve">
           <source>Loading release notes...</source>
-          <target state="new">Loading release notes...</target>
+          <target state="translated">Cargando notas de la versión...</target>
         </trans-unit>
         <trans-unit id="AboutView_Title" translate="yes" xml:space="preserve">
           <source>About</source>
-          <target state="needs-review-translation" state-qualifier="tm-suggestion">Acerca de</target>
+          <target state="translated">Sobre</target>
         </trans-unit>
         <trans-unit id="AboutView_WhatsNew" translate="yes" xml:space="preserve">
           <source>What's new</source>
-          <target state="needs-review-translation" state-qualifier="tm-suggestion">Novedad</target>
+          <target state="translated">Qué hay de nuevo</target>
         </trans-unit>
         <trans-unit id="AddRecipe" translate="yes" xml:space="preserve">
           <source>Add</source>
-          <target state="needs-review-translation" state-qualifier="tm-suggestion">Sumar</target>
+          <target state="translated">Agregar</target>
         </trans-unit>
         <trans-unit id="AllRecipes" translate="yes" xml:space="preserve">
           <source>All Recipes</source>
-          <target state="new">All Recipes</target>
+          <target state="translated">Todas las recetas</target>
         </trans-unit>
         <trans-unit id="AppDescription" translate="yes" xml:space="preserve">
           <source>Your personal cooking app.</source>
-          <target state="new">Your personal cooking app.</target>
+          <target state="translated">Tu aplicación de cocina personal.</target>
         </trans-unit>
         <trans-unit id="AppName" translate="yes" xml:space="preserve">
           <source>Sharp Cooking</source>
-          <target state="new">Sharp Cooking</target>
+          <target state="translated">Cocina afilada</target>
         </trans-unit>
         <trans-unit id="AppShell_About" translate="yes" xml:space="preserve">
           <source>About</source>
-          <target state="needs-review-translation" state-qualifier="tm-suggestion">Acerca de</target>
+          <target state="translated">Sobre</target>
         </trans-unit>
         <trans-unit id="AppShell_Recipes" translate="yes" xml:space="preserve">
           <source>Recipes</source>
-          <target state="needs-review-translation" state-qualifier="tm-suggestion">Recetas</target>
+          <target state="translated" state-qualifier="tm-suggestion">Recetas</target>
         </trans-unit>
         <trans-unit id="AppShell_Settings" translate="yes" xml:space="preserve">
           <source>Settings</source>
-          <target state="needs-review-translation" state-qualifier="tm-suggestion">configuración</target>
+          <target state="translated">Configuración</target>
         </trans-unit>
         <trans-unit id="BackupSetupView_Title" translate="yes" xml:space="preserve">
           <source>Backup</source>
@@ -469,6 +469,38 @@
         <trans-unit id="ItemDetailView_Source" translate="yes" xml:space="preserve">
           <source>Source</source>
           <target state="new">Source</target>
+        </trans-unit>
+        <trans-unit id="SortItems_Title" translate="yes" xml:space="preserve">
+          <source>Sort</source>
+          <target state="new">Sort</target>
+        </trans-unit>
+        <trans-unit id="EditItemView_Rating" translate="yes" xml:space="preserve">
+          <source>Rating</source>
+          <target state="new">Rating</target>
+        </trans-unit>
+        <trans-unit id="SortItemsView_Rating" translate="yes" xml:space="preserve">
+          <source>Rating</source>
+          <target state="new">Rating</target>
+        </trans-unit>
+        <trans-unit id="SortItemsView_RatingDescription" translate="yes" xml:space="preserve">
+          <source>Shows highest ratings first</source>
+          <target state="new">Shows highest ratings first</target>
+        </trans-unit>
+        <trans-unit id="SortItemsView_Recent" translate="yes" xml:space="preserve">
+          <source>Recent</source>
+          <target state="new">Recent</target>
+        </trans-unit>
+        <trans-unit id="SortItemsView_RecentDescription" translate="yes" xml:space="preserve">
+          <source>Shows the recently opened recipes first</source>
+          <target state="new">Shows the recently opened recipes first</target>
+        </trans-unit>
+        <trans-unit id="SortItemsView_Title" translate="yes" xml:space="preserve">
+          <source>Title</source>
+          <target state="new">Title</target>
+        </trans-unit>
+        <trans-unit id="SortItemsView_TitleDescription" translate="yes" xml:space="preserve">
+          <source>Sorts alphabetically by title. This is the default sort.</source>
+          <target state="new">Sorts alphabetically by title. This is the default sort.</target>
         </trans-unit>
       </group>
     </body>

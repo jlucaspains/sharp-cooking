@@ -468,7 +468,39 @@
         </trans-unit>
         <trans-unit id="ItemDetailView_Source" translate="yes" xml:space="preserve">
           <source>Source</source>
-          <target state="new">Source</target>
+          <target state="translated">Fonte</target>
+        </trans-unit>
+        <trans-unit id="SortItems_Title" translate="yes" xml:space="preserve">
+          <source>Sort</source>
+          <target state="translated">Ordenar</target>
+        </trans-unit>
+        <trans-unit id="EditItemView_Rating" translate="yes" xml:space="preserve">
+          <source>Rating</source>
+          <target state="translated">Avaliação</target>
+        </trans-unit>
+        <trans-unit id="SortItemsView_Rating" translate="yes" xml:space="preserve">
+          <source>Rating</source>
+          <target state="translated">Avaliação</target>
+        </trans-unit>
+        <trans-unit id="SortItemsView_RatingDescription" translate="yes" xml:space="preserve">
+          <source>Shows highest ratings first</source>
+          <target state="translated">Mostra receitas com maior avaliação primeiro</target>
+        </trans-unit>
+        <trans-unit id="SortItemsView_Recent" translate="yes" xml:space="preserve">
+          <source>Recent</source>
+          <target state="translated">Recente</target>
+        </trans-unit>
+        <trans-unit id="SortItemsView_RecentDescription" translate="yes" xml:space="preserve">
+          <source>Shows the recently opened recipes first</source>
+          <target state="translated">Mostra receitas criadas recentement primeiro</target>
+        </trans-unit>
+        <trans-unit id="SortItemsView_Title" translate="yes" xml:space="preserve">
+          <source>Title</source>
+          <target state="translated">Título</target>
+        </trans-unit>
+        <trans-unit id="SortItemsView_TitleDescription" translate="yes" xml:space="preserve">
+          <source>Sorts alphabetically by title. This is the default sort.</source>
+          <target state="translated">Classifica em ordem alfabética por título. Esta é a classificação padrão.</target>
         </trans-unit>
       </group>
     </body>

@@ -8,6 +8,7 @@ namespace SharpCooking.Models
         public IEnumerable<string> TitleXPath { get; set; }
         public IEnumerable<string> ImageXPath { get; set; }
         public string ImageAttribute { get; set; }
+        public string ImageRegex { get; set; }
         public IEnumerable<string> IngredientsXPath { get; set; }
         public IEnumerable<string> PreparationXPath { get; set; }
     }

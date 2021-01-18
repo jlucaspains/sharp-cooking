@@ -68,6 +68,14 @@
                     Glyph="{x:Static v:IconFont.Plus}"/>
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
+        <ToolbarItem Command="{Binding SortCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="{DynamicResource MaterialFont}"
+                    Size="24"
+                    Glyph="{x:Static v:IconFont.Sort}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
 
 
@@ -76,19 +84,19 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        
+
         <SearchBar Grid.Row="0" Placeholder="{x:Static l:Resources.ItemsView_SearchItems}" 
                        Text="{Binding SearchValue}">
-                        <SearchBar.Behaviors>
-                            <b:EventToCommandBehavior EventName="TextChanged" Command="{Binding FilterListCommand}" />
-                        </SearchBar.Behaviors>
-                        <SearchBar.IsVisible>
-                            <OnPlatform x:TypeArguments="x:Boolean">
-                                <On Platform="Android" Value="false" />
-                                <On Platform="iOS" Value="true" />
-                            </OnPlatform>
-                        </SearchBar.IsVisible>
-                    </SearchBar>
+            <SearchBar.Behaviors>
+                <b:EventToCommandBehavior EventName="TextChanged" Command="{Binding FilterListCommand}" />
+            </SearchBar.Behaviors>
+            <SearchBar.IsVisible>
+                <OnPlatform x:TypeArguments="x:Boolean">
+                    <On Platform="Android" Value="false" />
+                    <On Platform="iOS" Value="true" />
+                </OnPlatform>
+            </SearchBar.IsVisible>
+        </SearchBar>
 
         <StackLayout Grid.Row="1" IsVisible="{Binding NoDataToShow}" VerticalOptions="Center" Margin="50">
             <Image Aspect="AspectFill"
@@ -111,11 +119,11 @@
                 <DataTemplate x:DataType="m:RecipeViewModel">
                     <Grid Padding="10" xe:Commands.Tap="{Binding BindingContext.ItemTappedCommand, Source={x:Reference ItemsViewRoot}}" 
                       xe:Commands.TapParameter="{Binding .}">
-                        <Frame HeightRequest="250" HasShadow="true" CornerRadius="15" Padding="0">
+                        <Frame HeightRequest="230" HasShadow="true" CornerRadius="15" Padding="0">
                             <Grid VerticalOptions="Fill" Padding="0">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="200" />
-                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="190" />
+                                    <RowDefinition Height="30" />
                                 </Grid.RowDefinitions>
                                 <Image Aspect="AspectFill" Grid.Row="0" Grid.Column="0"
                                                IsVisible="{Binding HasMainImage}">
@@ -138,9 +146,28 @@
                                     </Image>
                                 </Grid>
 
-                                <Label Grid.Row="1" Text="{Binding Title}" 
-                                            LineBreakMode="TailTruncation"
-                                            Padding="20,5" TextColor="#707070" FontSize="15" />
+                                <Grid Grid.Row="1" Padding="20,5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding Title}" 
+                                           LineBreakMode="TailTruncation"
+                                           TextColor="#707070" FontSize="15" />
+                                    <StackLayout Grid.Column="1"  Orientation="Horizontal" IsVisible="{Binding HasRating}" VerticalOptions="Center">
+                                        <Label Text="{Binding Rating, StringFormat='{0:F0}'}" TextColor="#707070" FontSize="15"></Label>
+                                        <Image Margin="-5,0,0,0">
+                                            <Image.Source>
+                                                <FontImageSource
+                                                    FontFamily="{DynamicResource MaterialFont}"
+                                                    Color="#707070"
+                                                        Size="15"
+                                                    Glyph="{x:Static v:IconFont.Star}"/>
+                                            </Image.Source>
+                                        </Image>
+                                    </StackLayout>
+
+                                </Grid>
                             </Grid>
                         </Frame>
                     </Grid>

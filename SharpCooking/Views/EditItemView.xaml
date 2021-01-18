@@ -66,6 +66,8 @@
                 <StackLayout Margin="0,0,0,10">
                     <Label Text="{x:Static l:Resources.EditItemView_Title}" />
                     <Entry Text="{Binding Item.Title}" />
+                    <Label Text="{x:Static l:Resources.EditItemView_Rating}" />
+                    <controls:RatingEditor Rating="{Binding Item.Rating, Mode=TwoWay}" />
                     <Label Text="{x:Static l:Resources.EditItemView_Source}" />
                     <Entry Text="{Binding Item.Source}" />
                     <Label Text="{x:Static l:Resources.EditItemView_Ingredients}" />
