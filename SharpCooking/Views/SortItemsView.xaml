@@ -11,8 +11,7 @@
              xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
              Title="{Binding Title}"
              v:ViewModelLocator.AutoWireViewModel="true"
-             x:DataType="vm:SortItemsViewModel"
-             Shell.TabBarIsVisible="true">
+             x:DataType="vm:SortItemsViewModel">
     <StackLayout>
         <StackLayout Padding="15">
             <Label Text="Sort by" Margin="0,20,0,0"/>

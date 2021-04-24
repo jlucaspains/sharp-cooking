@@ -19,6 +19,8 @@ namespace SharpCooking.Services
         Task<bool> LaunchUri(string uri);
         Task ShareText(string text, string title);
         Task ShareFile(string filePath, string title);
+        bool GetKeepScreenOn();
+        void KeepScreenOn(bool state);
         Task<(bool Success, string FileName, Stream data)> PickFile(params string[] fileType);
     }
 }

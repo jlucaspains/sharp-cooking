@@ -14,5 +14,20 @@
         <Color x:Key="NavigationPrimary">#2e7d32</Color>
         <Color x:Key="NavigationSecondary">#60ad5e</Color>
         <c:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter" />
+        <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+            <Setter Property="Background" Value="{AppThemeBinding Dark=#1e1e1e, Light=White}" />
+        </Style>
+        <Style TargetType="Frame">
+            <Setter Property="Background" Value="{AppThemeBinding Dark=#1e1e1e, Light=White}" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{AppThemeBinding Dark=White, Light=Black}" />
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="{AppThemeBinding Dark=White, Light=Black}" />
+        </Style>
+        <Style TargetType="Editor">
+            <Setter Property="TextColor" Value="{AppThemeBinding Dark=White, Light=Black}" />
+        </Style>
     </Application.Resources>
 </Application>

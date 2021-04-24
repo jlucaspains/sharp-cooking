@@ -50,8 +50,8 @@ namespace SharpCooking.iOS.Renderers
 			Layer.CornerRadius = cornerRadius;
 			Layer.MasksToBounds = Layer.CornerRadius > 0;
 
-			if (Element.BackgroundColor == Xamarin.Forms.Color.Default)
-				Layer.BackgroundColor = UIColor.White.CGColor;
+            if (Element.BackgroundColor == Xamarin.Forms.Color.Default)
+				Layer.BackgroundColor = UIColor.SystemBackgroundColor.CGColor;
 			else
 				Layer.BackgroundColor = Element.BackgroundColor.ToCGColor();
 

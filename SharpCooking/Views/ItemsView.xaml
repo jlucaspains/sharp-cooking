@@ -51,7 +51,7 @@
                             </Image.Source>
                         </Image>
                         <Label Grid.Column="1"
-                               Text="{Binding Title}"
+                               Text="{Binding Title}" 
                                FontAttributes="Bold" />
                     </Grid>
                 </DataTemplate>
@@ -79,14 +79,14 @@
     </ContentPage.ToolbarItems>
 
 
-    <Grid BackgroundColor="#F9F9F9">
+    <Grid BackgroundColor="{AppThemeBinding Dark=#1e1e1e, Light=White}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <SearchBar Grid.Row="0" Placeholder="{x:Static l:Resources.ItemsView_SearchItems}" 
-                       Text="{Binding SearchValue}">
+                       Text="{Binding SearchValue}" Background="{AppThemeBinding Dark=#1e1e1e, Light=White}">
             <SearchBar.Behaviors>
                 <b:EventToCommandBehavior EventName="TextChanged" Command="{Binding FilterListCommand}" />
             </SearchBar.Behaviors>
@@ -120,7 +120,7 @@
                     <Grid Padding="10" xe:Commands.Tap="{Binding BindingContext.ItemTappedCommand, Source={x:Reference ItemsViewRoot}}" 
                       xe:Commands.TapParameter="{Binding .}">
                         <Frame HeightRequest="230" HasShadow="true" CornerRadius="15" Padding="0">
-                            <Grid VerticalOptions="Fill" Padding="0">
+                            <Grid VerticalOptions="Fill" Padding="0" BackgroundColor="{AppThemeBinding Dark=#333337, Light=White}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="190" />
                                     <RowDefinition Height="30" />
@@ -153,14 +153,14 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Text="{Binding Title}" 
                                            LineBreakMode="TailTruncation"
-                                           TextColor="#707070" FontSize="15" />
+                                           TextColor="{AppThemeBinding Dark=White, Light=#707070}" FontSize="15" />
                                     <StackLayout Grid.Column="1"  Orientation="Horizontal" IsVisible="{Binding HasRating}" VerticalOptions="Center">
-                                        <Label Text="{Binding Rating, StringFormat='{0:F0}'}" TextColor="#707070" FontSize="15"></Label>
+                                        <Label Text="{Binding Rating, StringFormat='{0:F0}'}" TextColor="{AppThemeBinding Dark=White, Light=#707070}" FontSize="15"></Label>
                                         <Image Margin="-5,0,0,0">
                                             <Image.Source>
                                                 <FontImageSource
                                                     FontFamily="{DynamicResource MaterialFont}"
-                                                    Color="#707070"
+                                                    Color="{AppThemeBinding Dark=White, Light=#707070}"
                                                         Size="15"
                                                     Glyph="{x:Static v:IconFont.Star}"/>
                                             </Image.Source>

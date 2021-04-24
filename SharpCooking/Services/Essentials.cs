@@ -77,6 +77,16 @@ namespace SharpCooking.Services
             await Share.RequestAsync(new ShareFileRequest(title, file));
         }
 
+        public void KeepScreenOn(bool state)
+        {
+            DeviceDisplay.KeepScreenOn = state;
+        }
+
+        public bool GetKeepScreenOn()
+        {
+            return DeviceDisplay.KeepScreenOn;
+        }
+
         public async Task<(bool Success, string FileName, Stream data)> PickFile(params string[] fileType)
         {
             FileData fileData = await CrossFilePicker.Current.PickFile(fileType);

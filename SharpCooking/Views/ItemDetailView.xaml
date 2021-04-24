@@ -62,8 +62,10 @@
                             <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="50" />
                             <!--<ColumnDefinition Width="50" />-->
                         </Grid.ColumnDefinitions>
+
                         <Frame Grid.Column="1" BackgroundColor="{DynamicResource NavigationPrimary}"
                                IsVisible="{Binding Item.HasRating}" Padding="16" HasShadow="false">
                             <Frame.CornerRadius>
@@ -85,7 +87,23 @@
                                 </Image>
                             </StackLayout>
                         </Frame>
-                        <Button BackgroundColor="{DynamicResource NavigationPrimary}" TextColor="White" Grid.Column="2" HeightRequest="50" 
+                        <ImageButton BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="2" HeightRequest="50" 
+                                     Padding="16" Command="{Binding ToggleKeepScreenOnCommand}">
+                            <ImageButton.CornerRadius>
+                                <OnPlatform x:TypeArguments="x:Int32">
+                                    <On Platform="iOS" Value="25" />
+                                    <On Platform="Android" Value="100" />
+                                </OnPlatform>
+                            </ImageButton.CornerRadius>
+                            <ImageButton.Source>
+                                <FontImageSource
+                                    Size="10"
+                                    Color="White"
+                                    FontFamily="{DynamicResource MaterialFont}"
+                                    Glyph="{Binding ToggleScreenIcon}"/>
+                            </ImageButton.Source>
+                        </ImageButton>
+                        <Button BackgroundColor="{DynamicResource NavigationPrimary}" TextColor="White" Grid.Column="3" HeightRequest="50" 
                                 Command="{Binding ChangeMultiplierCommand}" Text="{Binding Multiplier, StringFormat='{0}x'}">
                             <Button.CornerRadius>
                                 <OnPlatform x:TypeArguments="x:Int32">
@@ -94,7 +112,7 @@
                                 </OnPlatform>
                             </Button.CornerRadius>
                         </Button>
-                        <ImageButton BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="3" HeightRequest="50" 
+                        <ImageButton BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="4" HeightRequest="50" 
                                      Padding="16" Command="{Binding ChangeStartTimeCommand}">
                             <ImageButton.CornerRadius>
                                 <OnPlatform x:TypeArguments="x:Int32">
@@ -196,7 +214,7 @@
                     <Label Text="{Binding Item.Notes}" FontSize="Small" Margin="0,0,0,20" IsVisible="{Binding HasNotes}" />
                 </StackLayout>
             </Frame>
-            <Grid BackgroundColor="White" HeightRequest="27" Margin="0,-27,0,0" />
+            <Grid BackgroundColor="{AppThemeBinding Dark=#1e1e1e, Light=White}" HeightRequest="27" Margin="0,-27,0,0" />
         </StackLayout>
     </ScrollView>
 </ContentPage>

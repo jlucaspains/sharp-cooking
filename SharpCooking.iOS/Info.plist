@@ -39,8 +39,6 @@
 	<string>This app needs access to the camera to take recipe photos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app needs access to photo library to pick recipe photos</string>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.5</string>
 	<key>CFBundleDevelopmentRegion</key>
