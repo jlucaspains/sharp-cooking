@@ -55,6 +55,8 @@ namespace SharpCooking.ViewModels
                 else
                     await _dataStore.UpdateAsync(model);
 
+                MessagingCenter.Send<EditItemViewModel>(this, "RecipeChanged");
+
                 await TrackEvent("SaveRecipe", ("Type", Item.Id == 0 ? "new" : "edit"));
 
                 await GoBackAsync();

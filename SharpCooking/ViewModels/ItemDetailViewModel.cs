@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Xamarin.DateTimePopups;
 using Xamarin.Forms;
 
 namespace SharpCooking.ViewModels
@@ -44,7 +45,7 @@ namespace SharpCooking.ViewModels
         public bool DoesNotHaveMainImage { get { return string.IsNullOrEmpty(Item?.MainImagePath); } }
         public bool HasMainImage { get { return !string.IsNullOrEmpty(Item?.MainImagePath); } }
         public bool KeepScreenOn { get; set; }
-        public string ToggleScreenIcon { get { return KeepScreenOn ? IconFont.SleepOff : IconFont.Sleep; } }
+        public string ToggleScreenIcon { get { return KeepScreenOn ? IconFont.Cellphone : IconFont.CellphoneLock; } }
 
         public ItemDetailViewModel(IDataStore dataStore, IEssentials essentials, IRecipePackager recipePackager)
         {
@@ -56,7 +57,7 @@ namespace SharpCooking.ViewModels
             MoreCommand = new Command(async () => await ShowMoreOptions());
             ShareRecipeCommand = new Command(async () => await ShareRecipeText());
             ChangeStartTimeCommand = new Command(async () => await ChangeStartTime());
-            ToggleKeepScreenOnCommand = new Command(() => ToggleKeepScreenOn());
+            ToggleKeepScreenOnCommand = new Command(async () => await ToggleKeepScreenOn());
         }
 
         public override async Task InitializeAsync()
@@ -311,7 +312,7 @@ namespace SharpCooking.ViewModels
 
         async Task ChangeStartTime()
         {
-            var result = await DisplayTimePromptAsync(Resources.ItemDetailView_StartTimeTitle, Resources.ItemDetailView_StartTimeOk, Resources.ItemDetailView_StartTimeCancel);
+            TimeSpan? result = await DateTimePopups.PickTimeAsync();
 
             if (result == null)
                 return;
@@ -322,10 +323,15 @@ namespace SharpCooking.ViewModels
             await TrackEvent("ChangeStartTime");
         }
 
-        void ToggleKeepScreenOn()
+        async Task ToggleKeepScreenOn()
         {
             KeepScreenOn = !KeepScreenOn;
             _essentials.KeepScreenOn(KeepScreenOn);
+
+            if (KeepScreenOn)
+                await this.DisplayToastAsync(Resources.ItemDetailView_ToggleScreenOn);
+            else
+                await this.DisplayToastAsync(Resources.ItemDetailView_ToggleScreenOff);
         }
     }
 }

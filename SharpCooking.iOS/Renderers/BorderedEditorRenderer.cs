@@ -1,4 +1,5 @@
 ﻿using SharpCooking.iOS.Renderers;
+using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
@@ -14,7 +15,7 @@ namespace SharpCooking.iOS.Renderers
             if (Control != null)
             {
                 Control.Layer.CornerRadius = 5;
-                Control.Layer.BorderColor = Xamarin.Forms.Color.FromHex("D0D0D0").ToCGColor();
+                Control.Layer.BorderColor = UIColor.Clear.CGColor;
                 Control.Layer.BorderWidth = 1;
             }
         }

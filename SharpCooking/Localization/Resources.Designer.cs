@@ -709,6 +709,24 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disabled keep screen on.
+        /// </summary>
+        public static string ItemDetailView_ToggleScreenOff {
+            get {
+                return ResourceManager.GetString("ItemDetailView_ToggleScreenOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabled keep screen on.
+        /// </summary>
+        public static string ItemDetailView_ToggleScreenOn {
+            get {
+                return ResourceManager.GetString("ItemDetailView_ToggleScreenOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter search term.
         /// </summary>
         public static string ItemsView_EnterSearchTerm {
@@ -1114,6 +1132,15 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sort By.
+        /// </summary>
+        public static string SortItemsView_HeaderTitle {
+            get {
+                return ResourceManager.GetString("SortItemsView_HeaderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rating.
         /// </summary>
         public static string SortItemsView_Rating {
@@ -1141,7 +1168,7 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Shows the recently opened recipes first.
+        ///   Looks up a localized string similar to Shows the recently created or imported recipes first.
         /// </summary>
         public static string SortItemsView_RecentDescription {
             get {

@@ -48,10 +48,16 @@ namespace SharpCooking.ViewModels
             ItemTappedCommand = new Command<RecipeViewModel>(async (item) => await GoToItemDetail(item));
             FilterListCommand = new Command(async () => await DebouncedSearch());
             SortCommand = new Command(async () => await Sort());
+
+            MessagingCenter.Subscribe<EditItemViewModel>(this, "RecipeChanged", async (item) => await Refresh());
+            MessagingCenter.Subscribe<SortItemsViewModel>(this, "SortChanged", async (item) => await Refresh());
         }
 
         public override async Task InitializeAsync()
         {
+            if (Items.Any())
+                return; // Already loaded once
+
             try
             {
                 IsRefreshing = true;

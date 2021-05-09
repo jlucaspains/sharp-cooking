@@ -23,6 +23,7 @@ namespace SharpCooking.ViewModels
         async Task ApplySort(string type)
         {
             _essentials.SetStringSetting("ItemsSortMode", type);
+            MessagingCenter.Send<SortItemsViewModel>(this, "SortChanged");
             await GoBackAsync();
         }
     }

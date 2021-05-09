@@ -9,7 +9,7 @@ namespace SharpCooking.Models
         public string Title { get; set; }
         public string Categories { get; set; }
         public bool IsFavorite { get; set; }
-        public int Rating { get; set; }
+        public int Rating { get; set; } = 3;
         public bool HasRating { get { return Rating > 0; } }
         public string Source { get; set; }
         public string Ingredients { get; set; }

@@ -96,21 +96,6 @@ namespace SharpCooking.ViewModels
             return Task.CompletedTask;
         }
 
-        protected async Task<TimeSpan?> DisplayTimePromptAsync(string title, string accept, string cancel)
-        {
-            var result = await Acr.UserDialogs.UserDialogs.Instance.TimePromptAsync(new Acr.UserDialogs.TimePromptConfig
-            {
-                Title = title,
-                OkText = accept,
-                CancelText = cancel,
-                IsCancellable = true
-            });
-
-            return result.Ok
-                ? (TimeSpan?)result.SelectedTime
-                : null;
-        }
-
         protected IDisposable DisplayLoading(string title)
         {
             var config = new Acr.UserDialogs.ProgressDialogConfig().SetTitle(title).SetIsDeterministic(false).SetAutoShow(true);

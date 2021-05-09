@@ -384,4 +384,13 @@
   <data name="SortItemsView_TitleDescription" xml:space="preserve">
     <value>Classifica em ordem alfabética por título. Esta é a classificação padrão.</value>
   </data>
+  <data name="SortItemsView_HeaderTitle" xml:space="preserve">
+    <value>Ordernar Por</value>
+  </data>
+  <data name="ItemDetailView_ToggleScreenOff" xml:space="preserve">
+    <value>Ativado bloqueio automático de tela</value>
+  </data>
+  <data name="ItemDetailView_ToggleScreenOn" xml:space="preserve">
+    <value>Desativado bloqueio automático de tela</value>
+  </data>
 </root>

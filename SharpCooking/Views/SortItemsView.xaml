@@ -14,7 +14,7 @@
              x:DataType="vm:SortItemsViewModel">
     <StackLayout>
         <StackLayout Padding="15">
-            <Label Text="Sort by" Margin="0,20,0,0"/>
+            <Label Text="{x:Static l:Resources.SortItemsView_HeaderTitle}" Margin="0,20,0,0"/>
             <StackLayout Padding="15" xe:Commands.Tap="{Binding SelectSortModeCommand}"
                          xe:Commands.TapParameter="Title"
                          xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">

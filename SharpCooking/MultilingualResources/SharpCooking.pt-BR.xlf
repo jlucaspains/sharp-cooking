@@ -491,8 +491,9 @@
           <target state="translated">Recente</target>
         </trans-unit>
         <trans-unit id="SortItemsView_RecentDescription" translate="yes" xml:space="preserve">
-          <source>Shows the recently opened recipes first</source>
-          <target state="translated">Mostra receitas criadas recentement primeiro</target>
+          <source>Shows the recently created or imported recipes first</source>
+          <target state="needs-review-translation">Mostra receitas criadas recentement primeiro</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="SortItemsView_Title" translate="yes" xml:space="preserve">
           <source>Title</source>
@@ -501,6 +502,18 @@
         <trans-unit id="SortItemsView_TitleDescription" translate="yes" xml:space="preserve">
           <source>Sorts alphabetically by title. This is the default sort.</source>
           <target state="translated">Classifica em ordem alfabética por título. Esta é a classificação padrão.</target>
+        </trans-unit>
+        <trans-unit id="SortItemsView_HeaderTitle" translate="yes" xml:space="preserve">
+          <source>Sort By</source>
+          <target state="translated">Ordernar Por</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_ToggleScreenOff" translate="yes" xml:space="preserve">
+          <source>Disabled keep screen on</source>
+          <target state="translated">Ativado bloqueio automático de tela</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_ToggleScreenOn" translate="yes" xml:space="preserve">
+          <source>Enabled keep screen on</source>
+          <target state="translated">Desativado bloqueio automático de tela</target>
         </trans-unit>
       </group>
     </body>

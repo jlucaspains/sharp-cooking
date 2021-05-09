@@ -491,8 +491,8 @@
           <target state="new">Recent</target>
         </trans-unit>
         <trans-unit id="SortItemsView_RecentDescription" translate="yes" xml:space="preserve">
-          <source>Shows the recently opened recipes first</source>
-          <target state="new">Shows the recently opened recipes first</target>
+          <source>Shows the recently created or imported recipes first</source>
+          <target state="new">Shows the recently created or imported recipes first</target>
         </trans-unit>
         <trans-unit id="SortItemsView_Title" translate="yes" xml:space="preserve">
           <source>Title</source>
@@ -501,6 +501,18 @@
         <trans-unit id="SortItemsView_TitleDescription" translate="yes" xml:space="preserve">
           <source>Sorts alphabetically by title. This is the default sort.</source>
           <target state="new">Sorts alphabetically by title. This is the default sort.</target>
+        </trans-unit>
+        <trans-unit id="SortItemsView_HeaderTitle" translate="yes" xml:space="preserve">
+          <source>Sort By</source>
+          <target state="new">Sort By</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_ToggleScreenOff" translate="yes" xml:space="preserve">
+          <source>Disabled keep screen on</source>
+          <target state="new">Disabled keep screen on</target>
+        </trans-unit>
+        <trans-unit id="ItemDetailView_ToggleScreenOn" translate="yes" xml:space="preserve">
+          <source>Enabled keep screen on</source>
+          <target state="new">Enabled keep screen on</target>
         </trans-unit>
       </group>
     </body>
