@@ -492,8 +492,7 @@
         </trans-unit>
         <trans-unit id="SortItemsView_RecentDescription" translate="yes" xml:space="preserve">
           <source>Shows the recently created or imported recipes first</source>
-          <target state="needs-review-translation">Mostra receitas criadas recentement primeiro</target>
-          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+          <target state="translated">Mostra receitas criadas recentemente primeiro</target>
         </trans-unit>
         <trans-unit id="SortItemsView_Title" translate="yes" xml:space="preserve">
           <source>Title</source>

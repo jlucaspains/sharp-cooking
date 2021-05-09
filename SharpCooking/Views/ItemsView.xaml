@@ -51,7 +51,8 @@
                             </Image.Source>
                         </Image>
                         <Label Grid.Column="1"
-                               Text="{Binding Title}" 
+                               Text="{Binding Title}"
+                               TextColor="Black"
                                FontAttributes="Bold" />
                     </Grid>
                 </DataTemplate>

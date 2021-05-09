@@ -6,7 +6,9 @@ using Xamarin.Forms.Platform.iOS;
 [assembly: ExportRenderer(typeof(Editor), typeof(BorderedEditorRenderer))]
 namespace SharpCooking.iOS.Renderers
 {
+#pragma warning disable CA1010 // Generic interface should also be implemented
     public class BorderedEditorRenderer : EditorRenderer
+#pragma warning restore CA1010 // Generic interface should also be implemented
     {
         protected override void OnElementChanged(ElementChangedEventArgs<Editor> e)
         {
