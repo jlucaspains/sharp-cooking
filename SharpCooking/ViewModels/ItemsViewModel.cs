@@ -50,6 +50,7 @@ namespace SharpCooking.ViewModels
             SortCommand = new Command(async () => await Sort());
 
             MessagingCenter.Subscribe<EditItemViewModel>(this, "RecipeChanged", async (item) => await Refresh());
+            MessagingCenter.Subscribe<ItemDetailViewModel>(this, "RecipeDeleted", async (item) => await Refresh());
             MessagingCenter.Subscribe<SortItemsViewModel>(this, "SortChanged", async (item) => await Refresh());
         }
 

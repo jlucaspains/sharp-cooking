@@ -275,6 +275,7 @@ namespace SharpCooking.ViewModels
                 await _dataStore.DeleteAsync(Model);
                 await DisplayToastAsync(Resources.ItemDetailView_RecipeDeleted);
                 await TrackEvent("DeleteRecipe");
+                MessagingCenter.Send<ItemDetailViewModel>(this, "RecipeDeleted");
                 await GoBackAsync();
             }
         }

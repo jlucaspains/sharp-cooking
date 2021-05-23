@@ -17,8 +17,12 @@ namespace SharpCooking.iOS.Renderers
             if (Control != null)
             {
                 Control.Layer.CornerRadius = 5;
-                Control.Layer.BorderColor = UIColor.Clear.CGColor;
                 Control.Layer.BorderWidth = 1;
+
+                if (Xamarin.Forms.Application.Current.RequestedTheme == OSAppTheme.Dark)
+                    Control.Layer.BorderColor = UIColor.Clear.CGColor;
+                else
+                    Control.Layer.BorderColor = Color.FromHex("D0D0D0").ToCGColor();
             }
         }
     }
