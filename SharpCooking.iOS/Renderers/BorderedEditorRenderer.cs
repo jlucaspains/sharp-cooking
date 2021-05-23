@@ -22,7 +22,7 @@ namespace SharpCooking.iOS.Renderers
                 if (Xamarin.Forms.Application.Current.RequestedTheme == OSAppTheme.Dark)
                     Control.Layer.BorderColor = UIColor.Clear.CGColor;
                 else
-                    Control.Layer.BorderColor = Color.FromHex("D0D0D0").ToCGColor();
+                    Control.Layer.BorderColor = Color.FromHex("F0F0F0").ToCGColor();
             }
         }
     }
