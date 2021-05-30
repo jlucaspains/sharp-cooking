@@ -357,4 +357,40 @@
   <data name="ImportView_ImportSuccessful" xml:space="preserve">
     <value>Importação com sucesso</value>
   </data>
+  <data name="ItemDetailView_Source" xml:space="preserve">
+    <value>Fonte</value>
+  </data>
+  <data name="SortItems_Title" xml:space="preserve">
+    <value>Ordenar</value>
+  </data>
+  <data name="EditItemView_Rating" xml:space="preserve">
+    <value>Avaliação</value>
+  </data>
+  <data name="SortItemsView_Rating" xml:space="preserve">
+    <value>Avaliação</value>
+  </data>
+  <data name="SortItemsView_RatingDescription" xml:space="preserve">
+    <value>Mostra receitas com maior avaliação primeiro</value>
+  </data>
+  <data name="SortItemsView_Recent" xml:space="preserve">
+    <value>Recente</value>
+  </data>
+  <data name="SortItemsView_RecentDescription" xml:space="preserve">
+    <value>Mostra receitas criadas recentemente primeiro</value>
+  </data>
+  <data name="SortItemsView_Title" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="SortItemsView_TitleDescription" xml:space="preserve">
+    <value>Classifica em ordem alfabética por título. Esta é a classificação padrão.</value>
+  </data>
+  <data name="SortItemsView_HeaderTitle" xml:space="preserve">
+    <value>Ordernar Por</value>
+  </data>
+  <data name="ItemDetailView_ToggleScreenOff" xml:space="preserve">
+    <value>Ativado bloqueio automático de tela</value>
+  </data>
+  <data name="ItemDetailView_ToggleScreenOn" xml:space="preserve">
+    <value>Desativado bloqueio automático de tela</value>
+  </data>
 </root>

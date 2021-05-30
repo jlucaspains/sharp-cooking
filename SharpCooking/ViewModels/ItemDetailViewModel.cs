@@ -3,6 +3,7 @@ using SharpCooking.Data;
 using SharpCooking.Localization;
 using SharpCooking.Models;
 using SharpCooking.Services;
+using SharpCooking.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Xamarin.DateTimePopups;
 using Xamarin.Forms;
 
 namespace SharpCooking.ViewModels
@@ -32,14 +34,18 @@ namespace SharpCooking.ViewModels
         public Command MoreCommand { get; }
         public Command ShareRecipeCommand { get; }
         public Command ChangeStartTimeCommand { get; }
+        public Command ToggleKeepScreenOnCommand { get; }
 
         public ObservableCollection<StepViewModel> Steps { get; } = new ObservableCollection<StepViewModel>();
         public decimal Multiplier { get; set; }
         public string MultiplierDisplay { get; set; }
         public int StandardStepTimeInterval { get; set; }
         public bool HasNotes { get { return !string.IsNullOrEmpty(Item?.Notes); } }
+        public bool HasSource { get { return !string.IsNullOrEmpty(Item?.Source); } }
         public bool DoesNotHaveMainImage { get { return string.IsNullOrEmpty(Item?.MainImagePath); } }
         public bool HasMainImage { get { return !string.IsNullOrEmpty(Item?.MainImagePath); } }
+        public bool KeepScreenOn { get; set; }
+        public string ToggleScreenIcon { get { return KeepScreenOn ? IconFont.Cellphone : IconFont.CellphoneLock; } }
 
         public ItemDetailViewModel(IDataStore dataStore, IEssentials essentials, IRecipePackager recipePackager)
         {
@@ -51,6 +57,7 @@ namespace SharpCooking.ViewModels
             MoreCommand = new Command(async () => await ShowMoreOptions());
             ShareRecipeCommand = new Command(async () => await ShareRecipeText());
             ChangeStartTimeCommand = new Command(async () => await ChangeStartTime());
+            ToggleKeepScreenOnCommand = new Command(async () => await ToggleKeepScreenOn());
         }
 
         public override async Task InitializeAsync()
@@ -58,6 +65,7 @@ namespace SharpCooking.ViewModels
             try
             {
                 IsBusy = true;
+                KeepScreenOn = _essentials.GetKeepScreenOn();
 
                 if (!int.TryParse(Id, out int parsedId))
                 {
@@ -83,6 +91,13 @@ namespace SharpCooking.ViewModels
             }
 
             await base.InitializeAsync();
+        }
+
+        public override Task TerminateAsync()
+        {
+            _essentials.KeepScreenOn(false);
+
+            return Task.CompletedTask;
         }
 
         void PrepareRecipeToDisplay(RecipeViewModel recipe, DateTime? proposedStart = null)
@@ -260,6 +275,7 @@ namespace SharpCooking.ViewModels
                 await _dataStore.DeleteAsync(Model);
                 await DisplayToastAsync(Resources.ItemDetailView_RecipeDeleted);
                 await TrackEvent("DeleteRecipe");
+                MessagingCenter.Send<ItemDetailViewModel>(this, "RecipeDeleted");
                 await GoBackAsync();
             }
         }
@@ -297,7 +313,7 @@ namespace SharpCooking.ViewModels
 
         async Task ChangeStartTime()
         {
-            var result = await DisplayTimePromptAsync(Resources.ItemDetailView_StartTimeTitle, Resources.ItemDetailView_StartTimeOk, Resources.ItemDetailView_StartTimeCancel);
+            TimeSpan? result = await DateTimePopups.PickTimeAsync();
 
             if (result == null)
                 return;
@@ -306,6 +322,17 @@ namespace SharpCooking.ViewModels
 
             PrepareRecipeToDisplay(Item, startTime);
             await TrackEvent("ChangeStartTime");
+        }
+
+        async Task ToggleKeepScreenOn()
+        {
+            KeepScreenOn = !KeepScreenOn;
+            _essentials.KeepScreenOn(KeepScreenOn);
+
+            if (KeepScreenOn)
+                await this.DisplayToastAsync(Resources.ItemDetailView_ToggleScreenOn);
+            else
+                await this.DisplayToastAsync(Resources.ItemDetailView_ToggleScreenOff);
         }
     }
 }

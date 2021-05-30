@@ -9,6 +9,7 @@
              xmlns:vm="clr-namespace:SharpCooking.ViewModels"
              xmlns:l="clr-namespace:SharpCooking.Localization"
              xmlns:c1="clr-namespace:SharpCooking.Converters"
+             xmlns:controls="clr-namespace:SharpCooking.Controls"
              Title="{Binding Title}"
              x:Name="EditItemViewPage"
              x:DataType="vm:EditItemViewModel"
@@ -24,14 +25,14 @@
                     Glyph="{x:Static v:IconFont.ContentSave}"/>
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
-        <ToolbarItem Text="Import" Command="{Binding ImportCommand}">
+        <controls:BindableToolbarItem Text="Import" IsVisible="{Binding IsNew}" Command="{Binding ImportCommand}">
             <ToolbarItem.IconImageSource>
                 <FontImageSource
                     FontFamily="{DynamicResource MaterialFont}"
                     Size="24"
                     Glyph="{x:Static v:IconFont.SearchWeb}"/>
             </ToolbarItem.IconImageSource>
-        </ToolbarItem>
+        </controls:BindableToolbarItem>
         <!--<ToolbarItem Text="More" Command="{Binding MoreCommand}">
             <ToolbarItem.IconImageSource>
                 <FontImageSource
@@ -65,6 +66,8 @@
                 <StackLayout Margin="0,0,0,10">
                     <Label Text="{x:Static l:Resources.EditItemView_Title}" />
                     <Entry Text="{Binding Item.Title}" />
+                    <Label Text="{x:Static l:Resources.EditItemView_Rating}" />
+                    <controls:RatingEditor Rating="{Binding Item.Rating, Mode=TwoWay}" />
                     <Label Text="{x:Static l:Resources.EditItemView_Source}" />
                     <Entry Text="{Binding Item.Source}" />
                     <Label Text="{x:Static l:Resources.EditItemView_Ingredients}" />

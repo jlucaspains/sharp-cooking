@@ -42,6 +42,7 @@ namespace SharpCooking.ViewModels
         public Command MainImageTappedCommand { get; set; }
         public Command ImportCommand { get; }
         public string Id { get; set; }
+        public bool IsNew { get { return string.IsNullOrEmpty(Id); } }
 
         public async Task Save()
         {
@@ -53,6 +54,8 @@ namespace SharpCooking.ViewModels
                     await _dataStore.InsertAsync(model);
                 else
                     await _dataStore.UpdateAsync(model);
+
+                MessagingCenter.Send<EditItemViewModel>(this, "RecipeChanged");
 
                 await TrackEvent("SaveRecipe", ("Type", Item.Id == 0 ? "new" : "edit"));
 
@@ -239,7 +242,20 @@ namespace SharpCooking.ViewModels
             foreach (var imageXPath in config.ImageXPath)
             {
                 var imageNode = htmlDoc.DocumentNode.SelectSingleNode(imageXPath);
-                var image = imageNode?.GetAttributeValue<string>(config.ImageAttribute, null);
+                string image = string.Empty;
+
+                if (!string.IsNullOrEmpty(config.ImageAttribute))
+                    image = imageNode?.GetAttributeValue<string>(config.ImageAttribute, null);
+                else
+                    image = imageNode.InnerText;
+
+                if (!string.IsNullOrEmpty(config.ImageRegex))
+                {
+                    var match = Regex.Match(image, config.ImageRegex);
+
+                    if (match.Success && match.Groups.Count >= 2)
+                        image = match.Groups[1].Value;
+                }
 
                 if (string.IsNullOrEmpty(image))
                     continue;

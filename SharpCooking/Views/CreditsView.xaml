@@ -21,7 +21,7 @@
                 <BindableLayout.ItemTemplate>
                     <DataTemplate x:DataType="m:CreditsItemModel">
                         <StackLayout Padding="15" xe:Commands.Tap="{Binding BindingContext.ItemTappedCommand, Source={x:Reference CreditsViewRoot}}" xe:Commands.TapParameter="{Binding .}" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
-                            <Label FontSize="Medium" TextColor="Black" Text="{Binding Title}"></Label>
+                            <Label FontSize="Medium" Text="{Binding Title}"></Label>
                             <Label FontSize="Small" TextColor="Gray" Text="{Binding ShortDescription}"></Label>
                             <Label FontSize="Small" TextColor="Gray" Text="{Binding License}"></Label>
 

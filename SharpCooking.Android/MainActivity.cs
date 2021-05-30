@@ -30,9 +30,9 @@ namespace SharpCooking.Droid
             Xamarin.Forms.Forms.SetFlags("IndicatorView_Experimental");
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             UserDialogs.Init(this);
+            Xamarin.DateTimePopups.Platform.Init(this, savedInstanceState);
             XamEffects.Droid.Effects.Init();
 
             LoadApplication(new App());

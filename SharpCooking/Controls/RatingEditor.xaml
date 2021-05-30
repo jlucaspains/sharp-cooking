@@ -8,7 +8,7 @@
              x:Name="RatingEditorRoot"
              x:Class="SharpCooking.Controls.RatingEditor">
     <ContentView.Content>
-        <StackLayout Orientation="Horizontal" HeightRequest="70">
+        <StackLayout Orientation="Horizontal">
             <Grid>
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" />

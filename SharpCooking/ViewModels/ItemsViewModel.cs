@@ -31,6 +31,7 @@ namespace SharpCooking.ViewModels
         public Command AddItemCommand { get; }
         public Command ItemTappedCommand { get; }
         public Command FilterListCommand { get; }
+        public Command SortCommand { get; }
         public bool IsRefreshing { get; set; }
         public bool NoDataToShow { get; set; }
         public bool DataToShow { get { return !NoDataToShow; } }
@@ -46,10 +47,18 @@ namespace SharpCooking.ViewModels
             AddItemCommand = new Command(async () => await AddItem());
             ItemTappedCommand = new Command<RecipeViewModel>(async (item) => await GoToItemDetail(item));
             FilterListCommand = new Command(async () => await DebouncedSearch());
+            SortCommand = new Command(async () => await Sort());
+
+            MessagingCenter.Subscribe<EditItemViewModel>(this, "RecipeChanged", async (item) => await Refresh());
+            MessagingCenter.Subscribe<ItemDetailViewModel>(this, "RecipeDeleted", async (item) => await Refresh());
+            MessagingCenter.Subscribe<SortItemsViewModel>(this, "SortChanged", async (item) => await Refresh());
         }
 
         public override async Task InitializeAsync()
         {
+            if (Items.Any())
+                return; // Already loaded once
+
             try
             {
                 IsRefreshing = true;
@@ -109,7 +118,16 @@ namespace SharpCooking.ViewModels
                     : await _dataStore.QueryAsync<Recipe>(item => item.Title.ToLower().Contains(SearchValue.ToLower()));
 #pragma warning restore CA1304 // Specify CultureInfo
 
-                var sortedItems = items.OrderBy(item => item.Title).ToList();
+                IEnumerable<Recipe> sortedItems;
+
+                var results = _essentials.GetStringSetting("ItemsSortMode") switch
+                {
+                    "Recent" => items.OrderByDescending(item => item.Id),
+                    "Rating" => items.OrderByDescending(item => item.Rating),
+                    _ => items.OrderBy(item => item.Title)
+                };
+
+                sortedItems = results.ToList();
 
                 foreach (var item in sortedItems)
                     Items.Add(RecipeViewModel.FromModel(item));
@@ -128,7 +146,7 @@ namespace SharpCooking.ViewModels
             }
         }
 
-        private async Task DebouncedSearch()
+        async Task DebouncedSearch()
         {
             try
             {
@@ -144,6 +162,11 @@ namespace SharpCooking.ViewModels
             {
                 //Ignore any Threading errors
             }
+        }
+
+        async Task Sort()
+        {
+            await ShowModalAsync("sortItems");
         }
 
         public void Dispose()

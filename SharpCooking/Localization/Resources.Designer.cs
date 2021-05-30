@@ -340,6 +340,15 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rating.
+        /// </summary>
+        public static string EditItemView_Rating {
+            get {
+                return ResourceManager.GetString("EditItemView_Rating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string EditItemView_Save {
@@ -655,6 +664,15 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Source.
+        /// </summary>
+        public static string ItemDetailView_Source {
+            get {
+                return ResourceManager.GetString("ItemDetailView_Source", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string ItemDetailView_StartTimeCancel {
@@ -687,6 +705,24 @@ namespace SharpCooking.Localization {
         public static string ItemDetailView_Step {
             get {
                 return ResourceManager.GetString("ItemDetailView_Step", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disabled keep screen on.
+        /// </summary>
+        public static string ItemDetailView_ToggleScreenOff {
+            get {
+                return ResourceManager.GetString("ItemDetailView_ToggleScreenOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabled keep screen on.
+        /// </summary>
+        public static string ItemDetailView_ToggleScreenOn {
+            get {
+                return ResourceManager.GetString("ItemDetailView_ToggleScreenOn", resourceCulture);
             }
         }
         
@@ -1083,6 +1119,78 @@ namespace SharpCooking.Localization {
         public static string SettingsView_TimeStepsDescriptoin {
             get {
                 return ResourceManager.GetString("SettingsView_TimeStepsDescriptoin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sort.
+        /// </summary>
+        public static string SortItems_Title {
+            get {
+                return ResourceManager.GetString("SortItems_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sort By.
+        /// </summary>
+        public static string SortItemsView_HeaderTitle {
+            get {
+                return ResourceManager.GetString("SortItemsView_HeaderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rating.
+        /// </summary>
+        public static string SortItemsView_Rating {
+            get {
+                return ResourceManager.GetString("SortItemsView_Rating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shows highest ratings first.
+        /// </summary>
+        public static string SortItemsView_RatingDescription {
+            get {
+                return ResourceManager.GetString("SortItemsView_RatingDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recent.
+        /// </summary>
+        public static string SortItemsView_Recent {
+            get {
+                return ResourceManager.GetString("SortItemsView_Recent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shows the recently created or imported recipes first.
+        /// </summary>
+        public static string SortItemsView_RecentDescription {
+            get {
+                return ResourceManager.GetString("SortItemsView_RecentDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string SortItemsView_Title {
+            get {
+                return ResourceManager.GetString("SortItemsView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorts alphabetically by title. This is the default sort..
+        /// </summary>
+        public static string SortItemsView_TitleDescription {
+            get {
+                return ResourceManager.GetString("SortItemsView_TitleDescription", resourceCulture);
             }
         }
         

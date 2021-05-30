@@ -23,23 +23,24 @@
         <EmbeddedResource Include="InitialRecipes.zip" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Acr.UserDialogs" Version="7.1.0.466" />
-        <PackageReference Include="HtmlAgilityPack" Version="1.11.28" />
-        <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.4.3" />
-        <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.4.3" />
-        <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.1">
+        <PackageReference Include="Acr.UserDialogs" Version="7.1.0.483" />
+        <PackageReference Include="HtmlAgilityPack" Version="1.11.33" />
+        <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.2.0" />
+        <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.2.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.2">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="PropertyChanged.Fody" Version="3.3.1" />
+        <PackageReference Include="PropertyChanged.Fody" Version="3.3.3" />
         <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
-        <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+        <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
         <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
-        <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
-        <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+        <PackageReference Include="Xamarin.DateTimePopups" Version="1.0.0.2" />
+        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+        <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
         <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.44-beta" />
         <PackageReference Include="XamEffects" Version="1.6.3" />
-        <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     </ItemGroup>
     <ItemGroup>
         <XliffResource Include="MultilingualResources\SharpCooking.pt-BR.xlf" />
@@ -52,6 +53,9 @@
         </Compile>
         <Compile Update="Views\AboutView.xaml.cs">
             <DependentUpon>AboutView.xaml</DependentUpon>
+        </Compile>
+        <Compile Update="Views\SortItemsView.xaml.cs">
+          <DependentUpon>SortItemsView.xaml</DependentUpon>
         </Compile>
         <Compile Update="Views\ImportView.xaml.cs">
           <DependentUpon>ImportView.xaml</DependentUpon>

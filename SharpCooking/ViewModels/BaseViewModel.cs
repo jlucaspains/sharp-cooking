@@ -61,7 +61,10 @@ namespace SharpCooking.ViewModels
 
         protected async Task GoBackAsync()
         {
-            await Shell.Navigation.PopAsync(true);
+            if (Shell.Navigation.ModalStack.Count > 0)
+                await Shell.GoToAsync("..", true);
+            else
+                await Shell.Navigation.PopAsync(true);
         }
 
         protected async Task<string> DisplayActionSheetAsync(string title, string cancel, string destruction = null, params string[] buttons)
@@ -91,21 +94,6 @@ namespace SharpCooking.ViewModels
                 .SetPosition(Acr.UserDialogs.ToastPosition.Bottom));
 
             return Task.CompletedTask;
-        }
-
-        protected async Task<TimeSpan?> DisplayTimePromptAsync(string title, string accept, string cancel)
-        {
-            var result = await Acr.UserDialogs.UserDialogs.Instance.TimePromptAsync(new Acr.UserDialogs.TimePromptConfig
-            {
-                Title = title,
-                OkText = accept,
-                CancelText = cancel,
-                IsCancellable = true
-            });
-
-            return result.Ok
-                ? (TimeSpan?)result.SelectedTime
-                : null;
         }
 
         protected IDisposable DisplayLoading(string title)

@@ -46,20 +46,30 @@ namespace SharpCooking.Views
 
         private async Task Refresh(string search)
         {
-            if (string.IsNullOrWhiteSpace(search))
+            try
             {
-                ItemsSource = new System.Collections.Generic.List<RecipeViewModel>();
+                if (string.IsNullOrWhiteSpace(search))
+                {
+                    ItemsSource = new System.Collections.Generic.List<RecipeViewModel>();
+                }
+                else
+                {
+#pragma warning disable CA1304 // Specify CultureInfo
+                    var result = await _dataStore.QueryAsync<Recipe>(item => item.Title.ToLower().Contains(search.ToLower()));
+#pragma warning restore CA1304 // Specify CultureInfo
+                    ItemsSource = result.Select(item => RecipeViewModel.FromModel(item)).ToList();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                var result = await _dataStore.QueryAsync<Recipe>(item => item.Title.ToLower(CultureInfo.CurrentCulture).Contains(search.ToLower(CultureInfo.CurrentCulture)));
-                ItemsSource = result.Select(item => RecipeViewModel.FromModel(item)).ToList();
+                var text = ex.ToString();
+                // tod something
             }
         }
 
         protected override async void OnItemSelected(object item)
         {
-            if(item == null) throw new ArgumentNullException(nameof(item));
+            if (item == null) throw new ArgumentNullException(nameof(item));
 
             base.OnItemSelected(item);
 
