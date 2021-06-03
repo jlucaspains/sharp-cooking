@@ -63,22 +63,15 @@ namespace SharpCooking.ViewModels
             {
                 IsRefreshing = true;
 
-                if (!Items.Any() && _essentials.IsFirstLaunchEver())
-                    await CreateFirstRecipe();
+                await CreateFirstRecipe();
+
+                await RequestReview();
 
                 await Refresh();
 
                 IsRefreshing = false;
 
-                if (!_releaseNotesShown && _essentials.IsFirstLaunchForCurrentBuild())
-                {
-                    _releaseNotesShown = true;
-                    var viewReleaseNotes = await DisplayAlertAsync($"{Resources.ItemsView_WelcomeToVersion} {_essentials.GetVersion()}",
-                        Resources.ItemsView_ViewReleaseNotes, Resources.ItemsView_Yes, Resources.ItemsView_No);
-
-                    if (viewReleaseNotes)
-                        await GoToAsync("about");
-                }
+                await ShowReleaseNotes();
             }
             catch (Exception ex)
             {
@@ -89,9 +82,28 @@ namespace SharpCooking.ViewModels
             await base.InitializeAsync();
         }
 
-        private async Task CreateFirstRecipe()
+        public void Dispose()
         {
-            await _recipePackager.CreateDefaultRecipe();
+            _throttleCts.Dispose();
+        }
+
+        async Task CreateFirstRecipe()
+        {
+            if (!Items.Any() && _essentials.IsFirstLaunchEver())
+                await _recipePackager.CreateDefaultRecipe();
+        }
+
+        async Task ShowReleaseNotes()
+        {
+            if (!_releaseNotesShown && _essentials.IsFirstLaunchForCurrentBuild())
+            {
+                _releaseNotesShown = true;
+                var viewReleaseNotes = await DisplayAlertAsync($"{Resources.ItemsView_WelcomeToVersion} {_essentials.GetVersion()}",
+                    Resources.ItemsView_ViewReleaseNotes, Resources.ItemsView_Yes, Resources.ItemsView_No);
+
+                if (viewReleaseNotes)
+                    await GoToAsync("about");
+            }
         }
 
         async Task AddItem()
@@ -169,9 +181,23 @@ namespace SharpCooking.ViewModels
             await ShowModalAsync("sortItems");
         }
 
-        public void Dispose()
+        async Task RequestReview()
         {
-            _throttleCts.Dispose();
+            var lastReviewRequest = _essentials.GetStringSetting("LastReviewRequest");
+            var nextReview = DateTime.Today.AddDays(15).ToString("yyyyMMdd", CultureInfo.InvariantCulture);
+
+            if (lastReviewRequest == null)
+            {
+                _essentials.SetStringSetting("LastReviewRequest", nextReview);
+                return;
+            }
+
+            var today = DateTime.Today.ToString("yyyyMMdd", CultureInfo.InvariantCulture);
+            if (string.Compare(lastReviewRequest, today, StringComparison.InvariantCultureIgnoreCase) <= 0)
+            {
+                _essentials.SetStringSetting("LastReviewRequest", nextReview);
+                await _essentials.RequestReview();
+            }
         }
     }
 }

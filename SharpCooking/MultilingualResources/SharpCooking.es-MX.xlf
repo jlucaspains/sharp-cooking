@@ -514,6 +514,14 @@
           <source>Enabled keep screen on</source>
           <target state="new">Enabled keep screen on</target>
         </trans-unit>
+        <trans-unit id="SettingsView_Review" translate="yes" xml:space="preserve">
+          <source>Review</source>
+          <target state="new">Review</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_ReviewDetail" translate="yes" xml:space="preserve">
+          <source>Help the developers by reviewing the app</source>
+          <target state="new">Help the developers by reviewing the app</target>
+        </trans-unit>
       </group>
     </body>
   </file>

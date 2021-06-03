@@ -1,5 +1,6 @@
 ﻿using Plugin.FilePicker;
 using Plugin.FilePicker.Abstractions;
+using Plugin.StoreReview;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -85,6 +86,25 @@ namespace SharpCooking.Services
         public bool GetKeepScreenOn()
         {
             return DeviceDisplay.KeepScreenOn;
+        }
+
+        public async Task RequestReview()
+        {
+#if DEBUG
+            var test = true;
+#else
+            var test = false;
+#endif
+
+            await CrossStoreReview.Current.RequestReview(test);
+        }
+
+        public void OpenStoreListing()
+        {
+            var appId = DeviceInfo.Platform == DevicePlatform.Android
+                      ? "com.lpains.sharpcooking"
+                      : "1522623942";
+            CrossStoreReview.Current.OpenStoreReviewPage(appId);
         }
 
         public async Task<(bool Success, string FileName, Stream data)> PickFile(params string[] fileType)

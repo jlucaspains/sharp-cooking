@@ -22,5 +22,7 @@ namespace SharpCooking.Services
         bool GetKeepScreenOn();
         void KeepScreenOn(bool state);
         Task<(bool Success, string FileName, Stream data)> PickFile(params string[] fileType);
+        public Task RequestReview();
+        public void OpenStoreListing();
     }
 }

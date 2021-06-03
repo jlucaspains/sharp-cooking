@@ -1060,6 +1060,24 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Review.
+        /// </summary>
+        public static string SettingsView_Review {
+            get {
+                return ResourceManager.GetString("SettingsView_Review", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help the developers by reviewing the app.
+        /// </summary>
+        public static string SettingsView_ReviewDetail {
+            get {
+                return ResourceManager.GetString("SettingsView_ReviewDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Setup backup.
         /// </summary>
         public static string SettingsView_SetupBackup {

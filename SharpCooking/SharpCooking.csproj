@@ -31,6 +31,7 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Plugin.StoreReview" Version="3.1.0" />
         <PackageReference Include="PropertyChanged.Fody" Version="3.3.3" />
         <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
         <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />

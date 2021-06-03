@@ -450,6 +450,12 @@
   <data name="SettingsView_RestoringBackup" xml:space="preserve">
     <value>Restoring backup...</value>
   </data>
+  <data name="SettingsView_Review" xml:space="preserve">
+    <value>Review</value>
+  </data>
+  <data name="SettingsView_ReviewDetail" xml:space="preserve">
+    <value>Help the developers by reviewing the app</value>
+  </data>
   <data name="SettingsView_SetupBackup" xml:space="preserve">
     <value>Setup backup</value>
   </data>

@@ -393,4 +393,10 @@
   <data name="ItemDetailView_ToggleScreenOn" xml:space="preserve">
     <value>Desativado bloqueio automático de tela</value>
   </data>
+  <data name="SettingsView_Review" xml:space="preserve">
+    <value>Resenha</value>
+  </data>
+  <data name="SettingsView_ReviewDetail" xml:space="preserve">
+    <value>Escreva uma resenha e ajude os desenvolvedores</value>
+  </data>
 </root>

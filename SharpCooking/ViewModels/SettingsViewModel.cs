@@ -33,6 +33,7 @@ namespace SharpCooking.ViewModels
             ViewPrivacyPolicyCommand = new Command(async () => await ViewPrivacyPolicy());
             MultiplierResultFormatCommand = new Command(() => AdjustMultiplierResultFormat());
             ViewCreditsCommand = new Command(async () => await ViewCredits());
+            ReviewCommand = new Command(Review);
 
             _essentials = essentials;
             _store = store;
@@ -49,6 +50,7 @@ namespace SharpCooking.ViewModels
         public Command ViewPrivacyPolicyCommand { get; }
         public Command MultiplierResultFormatCommand { get; }
         public Command ViewCreditsCommand { get; }
+        public Command ReviewCommand { get; }
 
         public int TimeBetweenStepsInterval { get; set; }
         public string DisplayTimeBetweenStepsInterval { get { return $"{TimeBetweenStepsInterval} {Resources.SettingsView_TimeStepsDescriptoin}"; } }
@@ -186,6 +188,11 @@ namespace SharpCooking.ViewModels
                 await TrackException(ex);
                 return false;
             }
+        }
+
+        void Review()
+        {
+            _essentials.OpenStoreListing();
         }
     }
 }
