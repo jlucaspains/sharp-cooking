@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SharpCooking.Views.CookModeView"
+             xmlns:v="clr-namespace:SharpCooking.Views"
+             xmlns:vm="clr-namespace:SharpCooking.ViewModels"
+             xmlns:l="clr-namespace:SharpCooking.Localization"
+             xmlns:m="clr-namespace:SharpCooking.Models"
+             Title="{Binding Title}"
+             v:ViewModelLocator.AutoWireViewModel="true"
+             x:DataType="vm:CookModeViewModel">
+    <StackLayout Padding="15">
+        <Label Text="Cook it!" />
+    </StackLayout>
+</ContentPage>

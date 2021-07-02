@@ -6,6 +6,8 @@ using Plugin.CurrentActivity;
 using Acr.UserDialogs;
 using Android.Content;
 using SharpCooking.Services;
+using TinyIoC;
+using SharpCooking.Droid.Services;
 
 namespace SharpCooking.Droid
 {
@@ -36,8 +38,15 @@ namespace SharpCooking.Droid
             XamEffects.Droid.Effects.Init();
 
             LoadApplication(new App());
-
+            RegisterContainer();
             SaveImportFile();
+        }
+
+        private void RegisterContainer()
+        {
+            var container = TinyIoCContainer.Current;
+
+            container.Register<ISpeechRecognizer, SpeechRecognizerImpl>();
         }
 
         private void SaveImportFile()

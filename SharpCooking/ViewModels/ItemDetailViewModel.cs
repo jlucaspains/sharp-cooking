@@ -7,6 +7,7 @@ using SharpCooking.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace SharpCooking.ViewModels
         private readonly IDataStore _dataStore;
         private readonly IEssentials _essentials;
         private readonly IRecipePackager _recipePackager;
+        private readonly ISpeechRecognizer _speechRecognizer;
 
         public RecipeViewModel Item { get; set; }
         public Recipe Model { get; set; }
@@ -35,6 +37,7 @@ namespace SharpCooking.ViewModels
         public Command ShareRecipeCommand { get; }
         public Command ChangeStartTimeCommand { get; }
         public Command ToggleKeepScreenOnCommand { get; }
+        public Command ActivateCookingModeCommand { get; }
 
         public ObservableCollection<StepViewModel> Steps { get; } = new ObservableCollection<StepViewModel>();
         public decimal Multiplier { get; set; }
@@ -47,17 +50,20 @@ namespace SharpCooking.ViewModels
         public bool KeepScreenOn { get; set; }
         public string ToggleScreenIcon { get { return KeepScreenOn ? IconFont.Cellphone : IconFont.CellphoneLock; } }
 
-        public ItemDetailViewModel(IDataStore dataStore, IEssentials essentials, IRecipePackager recipePackager)
+        public ItemDetailViewModel(IDataStore dataStore, IEssentials essentials, IRecipePackager recipePackager, ISpeechRecognizer speechRecognizer)
         {
             _dataStore = dataStore;
             _essentials = essentials;
             _recipePackager = recipePackager;
+            _speechRecognizer = speechRecognizer;
+
             EditCommand = new Command(async () => await GotoEdit());
             ChangeMultiplierCommand = new Command(async () => await ChangeMultiplier());
             MoreCommand = new Command(async () => await ShowMoreOptions());
             ShareRecipeCommand = new Command(async () => await ShareRecipeText());
             ChangeStartTimeCommand = new Command(async () => await ChangeStartTime());
             ToggleKeepScreenOnCommand = new Command(async () => await ToggleKeepScreenOn());
+            ActivateCookingModeCommand = new Command(async () => await ActivateCookingMode());
         }
 
         public override async Task InitializeAsync()
@@ -333,6 +339,15 @@ namespace SharpCooking.ViewModels
                 await this.DisplayToastAsync(Resources.ItemDetailView_ToggleScreenOn);
             else
                 await this.DisplayToastAsync(Resources.ItemDetailView_ToggleScreenOff);
+        }
+
+        async Task ActivateCookingMode()
+        {
+            await GoToAsync("items/cook", new Dictionary<string, object> { { "id", Item.Id } });
+
+            //Action<bool, string> action = (bool success, string term) => Debug.WriteLine($"Success: {success}; Spoken: {term}");
+            //await _speechRecognizer.RequestAccess();
+            //var disposer = _speechRecognizer.ContinuousDictation(action);
         }
     }
 }
