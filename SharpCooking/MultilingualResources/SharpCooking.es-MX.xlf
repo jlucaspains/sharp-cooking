@@ -522,6 +522,14 @@
           <source>Help the developers by reviewing the app</source>
           <target state="new">Help the developers by reviewing the app</target>
         </trans-unit>
+        <trans-unit id="CookModeView_MicrophoneToggle" translate="yes" xml:space="preserve">
+          <source>Toggle Microphone on/off</source>
+          <target state="new">Toggle Microphone on/off</target>
+        </trans-unit>
+        <trans-unit id="CookModeView_NarrationToggle" translate="yes" xml:space="preserve">
+          <source>Toggle Narration on/off</source>
+          <target state="new">Toggle Narration on/off</target>
+        </trans-unit>
       </group>
     </body>
   </file>

@@ -93,12 +93,26 @@ namespace SharpCooking.Droid.Services
                     callback(true, newPart);
                 }
             };
+            listener.FinalResults = sentence =>
+            {
+                lock (syncLock)
+                {
+                    sentence = sentence.Trim();
+                    if (currentIndex > sentence.Length)
+                        currentIndex = 0;
+
+                    var newPart = sentence.Substring(currentIndex);
+                    currentIndex = sentence.Length;
+                    callback(true, newPart);
+                }
+            };
 
             listener.EndOfSpeech = () =>
             {
                 lock (syncLock)
                 {
                     currentIndex = 0;
+                    speechRecognizer.StopListening();
                     speechRecognizer.Destroy();
 
                     speechRecognizer = SpeechRecognizer.CreateSpeechRecognizer(context);
@@ -112,12 +126,14 @@ namespace SharpCooking.Droid.Services
                 {
                     case SpeechRecognizerError.Client:
                     case SpeechRecognizerError.RecognizerBusy:
+                    case SpeechRecognizerError.NoMatch:
                     case SpeechRecognizerError.SpeechTimeout:
                         lock (syncLock)
                         {
                             if (stop)
                                 return;
 
+                            speechRecognizer.StopListening();
                             speechRecognizer.Destroy();
 
                             speechRecognizer = SpeechRecognizer.CreateSpeechRecognizer(context);

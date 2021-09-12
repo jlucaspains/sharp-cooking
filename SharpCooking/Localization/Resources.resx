@@ -156,6 +156,60 @@
   <data name="CancelEditRecipe" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="CookModelView_MoreCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CookModelView_MoreTitle" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="CookModeView_DisableMicrophone" xml:space="preserve">
+    <value>Disable Microphone</value>
+  </data>
+  <data name="CookModeView_DisableNarration" xml:space="preserve">
+    <value>Disable Narration</value>
+  </data>
+  <data name="CookModeView_EnableMicrophone" xml:space="preserve">
+    <value>Enable Microphone</value>
+  </data>
+  <data name="CookModeView_EnableNarration" xml:space="preserve">
+    <value>Enable Narration</value>
+  </data>
+  <data name="CookModeView_Ingredient" xml:space="preserve">
+    <value>Ingredient</value>
+  </data>
+  <data name="CookModeView_Ingredients" xml:space="preserve">
+    <value>Ingredients</value>
+  </data>
+  <data name="CookModeView_MicrophoneToggle" xml:space="preserve">
+    <value>Toggle Microphone on/off</value>
+  </data>
+  <data name="CookModeView_NarrationToggle" xml:space="preserve">
+    <value>Toggle Narration on/off</value>
+  </data>
+  <data name="CookModeView_Next" xml:space="preserve">
+    <value>next</value>
+  </data>
+  <data name="CookModeView_Previous" xml:space="preserve">
+    <value>previous</value>
+  </data>
+  <data name="CookModeView_StartTimer" xml:space="preserve">
+    <value>start timer</value>
+  </data>
+  <data name="CookModeView_Step" xml:space="preserve">
+    <value>Step</value>
+  </data>
+  <data name="CookModeView_StepByStep" xml:space="preserve">
+    <value>Step-by-step</value>
+  </data>
+  <data name="CookModeView_Stop" xml:space="preserve">
+    <value>stop</value>
+  </data>
+  <data name="CookModeView_StopTimer" xml:space="preserve">
+    <value>stop timer</value>
+  </data>
+  <data name="CookModeView_Title" xml:space="preserve">
+    <value>Cook mode</value>
+  </data>
   <data name="CreditsTitle" xml:space="preserve">
     <value>Credits</value>
   </data>

@@ -1,9 +1,10 @@
-﻿using Plugin.FilePicker;
+﻿using System;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
+using Plugin.FilePicker;
 using Plugin.FilePicker.Abstractions;
 using Plugin.StoreReview;
-using System;
-using System.IO;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 
 namespace SharpCooking.Services
@@ -114,6 +115,11 @@ namespace SharpCooking.Services
                 return (false, null, null); // user canceled file picking
 
             return (true, fileData.FileName, fileData.GetStream());
+        }
+
+        public async Task SpeakAsync(string speech, CancellationToken cancellationToken = default)
+        {
+            await TextToSpeech.SpeakAsync(speech, cancellationToken);
         }
     }
 }

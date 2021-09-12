@@ -178,6 +178,168 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string CookModelView_MoreCancel {
+            get {
+                return ResourceManager.GetString("CookModelView_MoreCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Options.
+        /// </summary>
+        public static string CookModelView_MoreTitle {
+            get {
+                return ResourceManager.GetString("CookModelView_MoreTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disable Microphone.
+        /// </summary>
+        public static string CookModeView_DisableMicrophone {
+            get {
+                return ResourceManager.GetString("CookModeView_DisableMicrophone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disable Narration.
+        /// </summary>
+        public static string CookModeView_DisableNarration {
+            get {
+                return ResourceManager.GetString("CookModeView_DisableNarration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable Microphone.
+        /// </summary>
+        public static string CookModeView_EnableMicrophone {
+            get {
+                return ResourceManager.GetString("CookModeView_EnableMicrophone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable Narration.
+        /// </summary>
+        public static string CookModeView_EnableNarration {
+            get {
+                return ResourceManager.GetString("CookModeView_EnableNarration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ingredient.
+        /// </summary>
+        public static string CookModeView_Ingredient {
+            get {
+                return ResourceManager.GetString("CookModeView_Ingredient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ingredients.
+        /// </summary>
+        public static string CookModeView_Ingredients {
+            get {
+                return ResourceManager.GetString("CookModeView_Ingredients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle Microphone on/off.
+        /// </summary>
+        public static string CookModeView_MicrophoneToggle {
+            get {
+                return ResourceManager.GetString("CookModeView_MicrophoneToggle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle Narration on/off.
+        /// </summary>
+        public static string CookModeView_NarrationToggle {
+            get {
+                return ResourceManager.GetString("CookModeView_NarrationToggle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to next.
+        /// </summary>
+        public static string CookModeView_Next {
+            get {
+                return ResourceManager.GetString("CookModeView_Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to previous.
+        /// </summary>
+        public static string CookModeView_Previous {
+            get {
+                return ResourceManager.GetString("CookModeView_Previous", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to start timer.
+        /// </summary>
+        public static string CookModeView_StartTimer {
+            get {
+                return ResourceManager.GetString("CookModeView_StartTimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step.
+        /// </summary>
+        public static string CookModeView_Step {
+            get {
+                return ResourceManager.GetString("CookModeView_Step", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step-by-step.
+        /// </summary>
+        public static string CookModeView_StepByStep {
+            get {
+                return ResourceManager.GetString("CookModeView_StepByStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to stop.
+        /// </summary>
+        public static string CookModeView_Stop {
+            get {
+                return ResourceManager.GetString("CookModeView_Stop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to stop timer.
+        /// </summary>
+        public static string CookModeView_StopTimer {
+            get {
+                return ResourceManager.GetString("CookModeView_StopTimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cook mode.
+        /// </summary>
+        public static string CookModeView_Title {
+            get {
+                return ResourceManager.GetString("CookModeView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Credits.
         /// </summary>
         public static string CreditsTitle {

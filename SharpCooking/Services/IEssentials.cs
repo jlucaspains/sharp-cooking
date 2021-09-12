@@ -1,5 +1,5 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SharpCooking.Services
@@ -24,5 +24,6 @@ namespace SharpCooking.Services
         Task<(bool Success, string FileName, Stream data)> PickFile(params string[] fileType);
         public Task RequestReview();
         public void OpenStoreListing();
+        Task SpeakAsync(string speech, CancellationToken cancellationToken = default);
     }
 }

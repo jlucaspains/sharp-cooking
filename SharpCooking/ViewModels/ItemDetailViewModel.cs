@@ -137,25 +137,12 @@ namespace SharpCooking.ViewModels
 
                 previous = start;
 
-                var match = Regex.Match(item, Resources.StepTimeIdentifierRegex);
+                var timeSpan = Helpers.GetImpliedTimeFromString(item, Resources.StepTimeIdentifierRegex);
 
-                if (match?.Success ?? false)
-                {
-                    var minutesResult = int.TryParse(match.Groups["Minutes"]?.Value, out var minutes);
-                    var hoursResult = int.TryParse(match.Groups["Hours"]?.Value, out var hours);
-                    var daysResult = int.TryParse(match.Groups["Days"]?.Value, out var days);
+                if (timeSpan == TimeSpan.Zero)
+                    timeSpan = TimeSpan.FromMinutes(StandardStepTimeInterval);
 
-                    if (minutesResult || hoursResult || daysResult)
-                    {
-                        start = start.AddMinutes(minutes);
-                        start = start.AddHours(hours);
-                        start = start.AddDays(days);
-                    }
-                }
-                else
-                {
-                    start = start.AddMinutes(StandardStepTimeInterval);
-                }
+                start += timeSpan;
             }
 
             Steps.Add(new StepViewModel { IsNotLast = false, Title = Resources.ItemDetailView_Enjoy, Time = getDisplayTime(start, previous) });
@@ -189,68 +176,7 @@ namespace SharpCooking.ViewModels
             if (string.IsNullOrEmpty(Item.Ingredients))
                 return;
 
-            var regexResult = Regex.Replace(Item.Ingredients, Resources.IngredientQuantityRegex, (match) =>
-            {
-                var compositeFractionGroup = match.Groups["CompositeFraction"];
-                var fractionGroup = match.Groups["Fraction"];
-                var regularGroup = match.Groups["Regular"];
-                decimal parsedMatch = 0;
-
-                if (compositeFractionGroup.Success)
-                {
-                    var parts = compositeFractionGroup.Value.Split(' ');
-                    var first = parts[0];
-                    var second = parts[1];
-
-                    var fractionParts = second.Split('/');
-
-                    var wholeResult = decimal.TryParse(first, out var firstNumber);
-                    var numeratorResult = decimal.TryParse(fractionParts[0], out var fracNumerator);
-                    var fracResult = decimal.TryParse(fractionParts[1], out var fracDecimal);
-
-                    if (!numeratorResult || !fracResult || !wholeResult)
-                        return first;
-
-                    parsedMatch = firstNumber + (fracNumerator / fracDecimal);
-                }
-                else if (fractionGroup.Success)
-                {
-                    var parts = fractionGroup.Value.Split('/');
-                    var numeratorResult = decimal.TryParse(parts[0], out var fracNumerator);
-                    var fracResult = decimal.TryParse(parts[1], out var fracDecimal);
-
-                    if (!numeratorResult || !fracResult)
-                        return "0";
-
-                    parsedMatch = fracNumerator / fracDecimal;
-                }
-                else
-                {
-                    var parseResult = decimal.TryParse(regularGroup.Value, out parsedMatch);
-
-                    if (!parseResult)
-                        return "0";
-                }
-
-                var newIngredientValue = parsedMatch * Multiplier;
-
-                if (!useFractions)
-                    return newIngredientValue.ToString("G29", CultureInfo.CurrentCulture);
-
-                var whole = decimal.Floor(newIngredientValue);
-
-                if (whole == newIngredientValue)
-                {
-                    return newIngredientValue.ToString("0", CultureInfo.CurrentCulture);
-                }
-                else
-                {
-                    (var numerator, var denominator) = Fraction.Get(newIngredientValue - whole);
-                    return whole == 0 ? $"{numerator}/{denominator}" : $"{whole:0} {numerator}/{denominator}";
-                }
-            }, RegexOptions.Multiline);
-
-            Steps[0].SubTitle = regexResult;
+            Steps[0].SubTitle = Helpers.ApplyMultiplier(Item.Ingredients, Multiplier, useFractions, Resources.IngredientQuantityRegex); ;
 
             await TrackEvent("Multiplier", ("Value", newMultiplier.ToString(CultureInfo.CurrentCulture)));
         }

@@ -72,7 +72,7 @@ namespace SharpCooking.Droid.Services
         }
 
 
-        void SendResults(Bundle bundle, Action<string>? action)
+        void SendResults(Bundle bundle, Action<string> action)
         {
             var matches = bundle.GetStringArrayList(SpeechRecognizer.ResultsRecognition);
             if (matches == null || matches.Count == 0)
