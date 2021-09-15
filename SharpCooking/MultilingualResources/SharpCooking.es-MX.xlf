@@ -530,6 +530,70 @@
           <source>Toggle Narration on/off</source>
           <target state="new">Toggle Narration on/off</target>
         </trans-unit>
+        <trans-unit id="CookModelView_MoreCancel" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="new">Cancel</target>
+        </trans-unit>
+        <trans-unit id="CookModelView_MoreTitle" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <target state="new">Options</target>
+        </trans-unit>
+        <trans-unit id="CookModeView_DisableMicrophone" translate="yes" xml:space="preserve">
+          <source>Disable Microphone</source>
+          <target state="new">Disable Microphone</target>
+        </trans-unit>
+        <trans-unit id="CookModeView_DisableNarration" translate="yes" xml:space="preserve">
+          <source>Disable Narration</source>
+          <target state="new">Disable Narration</target>
+        </trans-unit>
+        <trans-unit id="CookModeView_EnableMicrophone" translate="yes" xml:space="preserve">
+          <source>Enable Microphone</source>
+          <target state="new">Enable Microphone</target>
+        </trans-unit>
+        <trans-unit id="CookModeView_EnableNarration" translate="yes" xml:space="preserve">
+          <source>Enable Narration</source>
+          <target state="new">Enable Narration</target>
+        </trans-unit>
+        <trans-unit id="CookModeView_Ingredient" translate="yes" xml:space="preserve">
+          <source>Ingredient</source>
+          <target state="new">Ingredient</target>
+        </trans-unit>
+        <trans-unit id="CookModeView_Ingredients" translate="yes" xml:space="preserve">
+          <source>Ingredients</source>
+          <target state="new">Ingredients</target>
+        </trans-unit>
+        <trans-unit id="CookModeView_Next" translate="yes" xml:space="preserve">
+          <source>next</source>
+          <target state="new">next</target>
+        </trans-unit>
+        <trans-unit id="CookModeView_Previous" translate="yes" xml:space="preserve">
+          <source>previous</source>
+          <target state="new">previous</target>
+        </trans-unit>
+        <trans-unit id="CookModeView_StartTimer" translate="yes" xml:space="preserve">
+          <source>start timer</source>
+          <target state="new">start timer</target>
+        </trans-unit>
+        <trans-unit id="CookModeView_Step" translate="yes" xml:space="preserve">
+          <source>Step</source>
+          <target state="new">Step</target>
+        </trans-unit>
+        <trans-unit id="CookModeView_StepByStep" translate="yes" xml:space="preserve">
+          <source>Step-by-step</source>
+          <target state="new">Step-by-step</target>
+        </trans-unit>
+        <trans-unit id="CookModeView_Stop" translate="yes" xml:space="preserve">
+          <source>stop</source>
+          <target state="new">stop</target>
+        </trans-unit>
+        <trans-unit id="CookModeView_StopTimer" translate="yes" xml:space="preserve">
+          <source>stop timer</source>
+          <target state="new">stop timer</target>
+        </trans-unit>
+        <trans-unit id="CookModeView_Title" translate="yes" xml:space="preserve">
+          <source>Cook mode</source>
+          <target state="new">Cook mode</target>
+        </trans-unit>
       </group>
     </body>
   </file>

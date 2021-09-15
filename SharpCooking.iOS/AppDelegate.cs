@@ -53,6 +53,5 @@ namespace SharpCooking.iOS
 
             container.Register<ISpeechRecognizer, SpeechRecognizerImpl>();
         }
-
     }
 }

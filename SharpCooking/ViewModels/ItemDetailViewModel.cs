@@ -176,7 +176,7 @@ namespace SharpCooking.ViewModels
             if (string.IsNullOrEmpty(Item.Ingredients))
                 return;
 
-            Steps[0].SubTitle = Helpers.ApplyMultiplier(Item.Ingredients, Multiplier, useFractions, Resources.IngredientQuantityRegex); ;
+            Steps[0].SubTitle = Helpers.ApplyMultiplier(Item.Ingredients, Multiplier, useFractions, Resources.IngredientQuantityRegex);
 
             await TrackEvent("Multiplier", ("Value", newMultiplier.ToString(CultureInfo.CurrentCulture)));
         }

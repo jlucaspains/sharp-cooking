@@ -16,16 +16,13 @@ namespace SharpCooking.Droid.Services
         public Action<string> PartialResults { get; set; }
         public Action<float> RmsChanged { get; set; }
 
-
         public void OnBeginningOfSpeech()
         {
             Debug.WriteLine("Beginning of Speech");
             StartOfSpeech?.Invoke();
         }
 
-
         public void OnBufferReceived(byte[] buffer) => Debug.WriteLine("Buffer Received");
-
 
         public void OnEndOfSpeech()
         {
@@ -33,16 +30,13 @@ namespace SharpCooking.Droid.Services
             EndOfSpeech?.Invoke();
         }
 
-
         public void OnError(SpeechRecognizerError error)
         {
             Debug.WriteLine("Error: " + error);
             Error?.Invoke(error);
         }
 
-
         public void OnEvent(int eventType, Bundle @params) => Debug.WriteLine("OnEvent: " + eventType);
-
 
         public void OnReadyForSpeech(Bundle @params)
         {
@@ -50,13 +44,11 @@ namespace SharpCooking.Droid.Services
             ReadyForSpeech?.Invoke();
         }
 
-
         public void OnPartialResults(Bundle bundle)
         {
             Debug.WriteLine("OnPartialResults");
             SendResults(bundle, PartialResults);
         }
-
 
         public void OnResults(Bundle bundle)
         {
@@ -64,13 +56,11 @@ namespace SharpCooking.Droid.Services
             SendResults(bundle, FinalResults);
         }
 
-
         public void OnRmsChanged(float rmsdB)
         {
             Debug.WriteLine("RMS Changed: " + rmsdB);
             RmsChanged?.Invoke(rmsdB);
         }
-
 
         void SendResults(Bundle bundle, Action<string> action)
         {
