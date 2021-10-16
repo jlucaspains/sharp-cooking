@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using SharpCooking.Data;
 using SharpCooking.Localization;
@@ -17,6 +18,7 @@ namespace SharpCooking.ViewModels
         private readonly IEssentials _essentials;
         private readonly ISpeechRecognizer _speechRecognizer;
         private Action _speechRecognizerDisposer;
+        private CancellationTokenSource _cancellationTokenSource;
 
         //public RecipeViewModel Item { get; set; }
         public Recipe Model { get; set; }
@@ -165,8 +167,17 @@ namespace SharpCooking.ViewModels
             if (Position < 0 || string.IsNullOrEmpty(Steps.ElementAt(Position)?.SubTitle))
                 return;
 
+            if (_cancellationTokenSource != null)
+            {
+                _cancellationTokenSource.Cancel();
+                _cancellationTokenSource.Dispose();
+            }
+
             if (!IsNarrationDisabled)
-                await _essentials.SpeakAsync(Steps.ElementAt(Position).SubTitle);
+            {
+                _cancellationTokenSource = new CancellationTokenSource();
+                await _essentials.SpeakAsync(Steps.ElementAt(Position).SubTitle, _cancellationTokenSource.Token);
+            }
 
             if (!IsMicrophoneDisabled)
                 _speechRecognizerDisposer = _speechRecognizer.ContinuousDictation(async (success, term) => await ProcessDictation(success, term));

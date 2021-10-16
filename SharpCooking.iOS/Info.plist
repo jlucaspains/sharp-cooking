@@ -50,8 +50,6 @@
 	</array>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>This app needs access to photo library to add photos taken for a recipe</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app needs access to your location so it can show appropriate announcements</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -67,5 +65,9 @@
 	<string>Alternate</string>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<false/>
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>This app needs access to speech recognition so the cook mode can take voice commands</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>This app needs access to microphone so the cook mode can take voice commands</string>
 </dict>
 </plist>

@@ -594,6 +594,18 @@
           <source>Cook mode</source>
           <target state="new">Cook mode</target>
         </trans-unit>
+        <trans-unit id="PreviewFeaturesTitle" translate="yes" xml:space="preserve">
+          <source>Preview Features</source>
+          <target state="new">Preview Features</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_PreviewFeatures" translate="yes" xml:space="preserve">
+          <source>Preview Features</source>
+          <target state="new">Preview Features</target>
+        </trans-unit>
+        <trans-unit id="SettingsView_PreviewFeaturesDetail" translate="yes" xml:space="preserve">
+          <source>Enable/disable preview features</source>
+          <target state="new">Enable/disable preview features</target>
+        </trans-unit>
       </group>
     </body>
   </file>

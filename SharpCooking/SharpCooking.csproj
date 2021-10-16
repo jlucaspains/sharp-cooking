@@ -58,6 +58,9 @@
         <Compile Update="Views\CookModeView.xaml.cs">
           <DependentUpon>CookModeView.xaml</DependentUpon>
         </Compile>
+        <Compile Update="Views\PreviewFeaturesView.xaml.cs">
+          <DependentUpon>PreviewFeaturesView.xaml</DependentUpon>
+        </Compile>
         <Compile Update="Views\SortItemsView.xaml.cs">
           <DependentUpon>SortItemsView.xaml</DependentUpon>
         </Compile>

@@ -420,6 +420,9 @@
   <data name="NewRecipe" xml:space="preserve">
     <value>New Recipe</value>
   </data>
+  <data name="PreviewFeaturesTitle" xml:space="preserve">
+    <value>Preview Features</value>
+  </data>
   <data name="ReleaseNotesView_Title" xml:space="preserve">
     <value>Release Notes</value>
   </data>
@@ -479,6 +482,12 @@
   </data>
   <data name="SettingsView_PickBackupLocation" xml:space="preserve">
     <value>Where should we save your backup data?</value>
+  </data>
+  <data name="SettingsView_PreviewFeatures" xml:space="preserve">
+    <value>Preview Features</value>
+  </data>
+  <data name="SettingsView_PreviewFeaturesDetail" xml:space="preserve">
+    <value>Enable/disable preview features</value>
   </data>
   <data name="SettingsView_Privacy" xml:space="preserve">
     <value>Privacy</value>

@@ -970,6 +970,15 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Preview Features.
+        /// </summary>
+        public static string PreviewFeaturesTitle {
+            get {
+                return ResourceManager.GetString("PreviewFeaturesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Release Notes.
         /// </summary>
         public static string ReleaseNotesView_Title {
@@ -1146,6 +1155,24 @@ namespace SharpCooking.Localization {
         public static string SettingsView_PickBackupLocation {
             get {
                 return ResourceManager.GetString("SettingsView_PickBackupLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preview Features.
+        /// </summary>
+        public static string SettingsView_PreviewFeatures {
+            get {
+                return ResourceManager.GetString("SettingsView_PreviewFeatures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable/disable preview features.
+        /// </summary>
+        public static string SettingsView_PreviewFeaturesDetail {
+            get {
+                return ResourceManager.GetString("SettingsView_PreviewFeaturesDetail", resourceCulture);
             }
         }
         

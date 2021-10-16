@@ -150,7 +150,6 @@ namespace SharpCooking.Droid.Services
             speechRecognizer.SetRecognitionListener(listener);
             speechRecognizer.StartListening(CreateSpeechIntent(true, culture));
 
-
             return () =>
             {
                 stop = true;

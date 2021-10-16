@@ -27,6 +27,7 @@
                 <RowDefinition Height="70" />
                 <RowDefinition Height="70" />
                 <RowDefinition Height="70" />
+                <RowDefinition Height="70" />
             </Grid.RowDefinitions>
             <StackLayout Padding="15" xe:Commands.Tap="{Binding StepIntervalCommand}" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
                 <Image>
@@ -125,6 +126,17 @@
                 <StackLayout Margin="10,0,0,0">
                     <Label FontSize="Medium" Text="{x:Static l:Resources.SettingsView_Credits}"></Label>
                     <Label FontSize="Small" TextColor="Gray" Text="{x:Static l:Resources.SettingsView_CreditsDetail}"></Label>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Padding="15" xe:Commands.Tap="{Binding PreviewFeaturesCommand}" Grid.Row="9" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
+                <Image>
+                    <Image.Source>
+                        <FontImageSource Color="{DynamicResource NavigationPrimary}" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.TagPlus}"/>
+                    </Image.Source>
+                </Image>
+                <StackLayout Margin="10,0,0,0">
+                    <Label FontSize="Medium" Text="{x:Static l:Resources.SettingsView_PreviewFeatures}"></Label>
+                    <Label FontSize="Small" TextColor="Gray" Text="{x:Static l:Resources.SettingsView_PreviewFeaturesDetail}"></Label>
                 </StackLayout>
             </StackLayout>
         </Grid>

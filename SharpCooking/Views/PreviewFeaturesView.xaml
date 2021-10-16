@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:vm="clr-namespace:SharpCooking.ViewModels"
+             xmlns:v="clr-namespace:SharpCooking.Views"
+             mc:Ignorable="d"
+             x:Class="SharpCooking.Views.PreviewFeaturesView"
+             Title="{Binding Title}"
+             x:DataType="vm:PreviewFeaturesViewModel"
+             v:ViewModelLocator.AutoWireViewModel="true">
+    <ScrollView>
+        <Grid Padding="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="50" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" FontSize="Medium" Text="Cook Mode" />
+            <Label Grid.Column="0" Grid.Row="1" FontSize="Small" Text="Focus on your cooking with this mode by providing narrated step-by-step of your recipe and voice control for those moments where your hands are not appropriate for a phone." />
+            <Switch Grid.Column="1" Grid.RowSpan="2" Grid.Row="0" />
+        </Grid>
+    </ScrollView>
+</ContentPage>
