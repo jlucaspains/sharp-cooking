@@ -10,6 +10,7 @@ using SharpCooking.Data;
 using SharpCooking.Localization;
 using SharpCooking.Models;
 using SharpCooking.ViewModels;
+using Xamarin.Forms;
 
 namespace SharpCooking.Services
 {
@@ -170,8 +171,11 @@ namespace SharpCooking.Services
                     foreach (var originalFile in originalFiles)
                     {
                         var fileName = Path.GetFileName(originalFile);
-                        await _fileHelper.DeleteAsync(fileName);
+                        if (!fileName.Contains("db3"))
+                            await _fileHelper.DeleteAsync(fileName);
                     }
+
+                    await _store.DeleteAllAsync<Recipe>();
                 }
 
                 foreach (var recipe in restoreRecipes)
@@ -191,9 +195,11 @@ namespace SharpCooking.Services
                     recipe.Id = 0;
                     await _store.InsertAsync(recipe);
                 }
-
-                return (true, null);
             }
+
+            MessagingCenter.Send<RecipePackager>(this, "RecipesImported");
+
+            return (true, null);
         }
 
         public async Task CleanupShareFile(string filePath = "import.zip")

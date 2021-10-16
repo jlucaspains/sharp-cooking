@@ -14,6 +14,7 @@ namespace SharpCooking.Data
         Task UpdateAsync<TEntity>(TEntity entity) where TEntity : class, new();
         Task UpsertAsync<TEntity>(TEntity entity) where TEntity : class, new();
         Task DeleteAsync<TEntity>(TEntity entity) where TEntity : class, new();
+        Task DeleteAllAsync<TEntity>() where TEntity : class, new();
     }
 
     public class DataStore : IDataStore
@@ -29,6 +30,12 @@ namespace SharpCooking.Data
         {
             var connection = _connectionFactory.GetConnection();
             await connection.DeleteAsync(entity);
+        }
+
+        public async Task DeleteAllAsync<TEntity>() where TEntity : class, new()
+        {
+            var connection = _connectionFactory.GetConnection();
+            await connection.DeleteAllAsync<TEntity>();
         }
 
         public async Task<IEnumerable<TEntity>> QueryAsync<TEntity>(Expression<Func<TEntity, bool>> where)
