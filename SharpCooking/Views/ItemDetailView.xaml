@@ -63,7 +63,7 @@
                             <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="50" />
-                            <ColumnDefinition Width="50" />
+                            <!--<ColumnDefinition Width="50" />-->
                         </Grid.ColumnDefinitions>
 
                         <Frame Grid.Column="1" BackgroundColor="{DynamicResource NavigationPrimary}"
@@ -128,7 +128,7 @@
                                     Glyph="{x:Static v:IconFont.Clock}"/>
                             </ImageButton.Source>
                         </ImageButton>
-                        <ImageButton BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="5" HeightRequest="50" 
+                        <!--<ImageButton IsVisible="{Binding CookModePreviewActivated}" BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="5" HeightRequest="50" 
                                      Padding="16" Command="{Binding ActivateCookingModeCommand}">
                             <ImageButton.CornerRadius>
                                 <OnPlatform x:TypeArguments="x:Int32">
@@ -143,7 +143,7 @@
                                     FontFamily="{DynamicResource MaterialFont}"
                                     Glyph="{x:Static v:IconFont.ChefHat}"/>
                             </ImageButton.Source>
-                        </ImageButton>
+                        </ImageButton>-->
                         <!--<ImageButton BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="4" HeightRequest="50" Padding="16">
                             <ImageButton.CornerRadius>
                                 <OnPlatform x:TypeArguments="x:Int32">

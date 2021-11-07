@@ -1,12 +1,34 @@
-﻿using SharpCooking.Localization;
+﻿using System.Threading.Tasks;
+using SharpCooking.Localization;
+using SharpCooking.Services;
 
 namespace SharpCooking.ViewModels
 {
     public class PreviewFeaturesViewModel : BaseViewModel
     {
-        public PreviewFeaturesViewModel()
+        private readonly IEssentials _essentials;
+
+        public PreviewFeaturesViewModel(IEssentials essentials)
         {
             Title = Resources.PreviewFeaturesTitle;
+            _essentials = essentials;
+        }
+
+        public bool CookModeIsActive { get; set; }
+
+        public override Task InitializeAsync()
+        {
+            CookModeIsActive = _essentials.GetBoolSetting("PreviewFeature_CookMode");
+
+            return Task.CompletedTask;
+        }
+
+#pragma warning disable CA1801 // Review unused parameters
+        public void OnPropertyChanged(string propertyName, object before, object after)
+#pragma warning restore CA1801 // Review unused parameters
+        {
+            if(propertyName == nameof(CookModeIsActive))
+                _essentials.SetBoolSetting("PreviewFeature_CookMode", CookModeIsActive);
         }
     }
 }

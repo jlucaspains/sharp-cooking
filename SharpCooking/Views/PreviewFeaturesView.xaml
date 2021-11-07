@@ -22,8 +22,8 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Label Grid.Column="0" Grid.Row="0" FontSize="Medium" Text="Cook Mode" />
-            <Label Grid.Column="0" Grid.Row="1" FontSize="Small" Text="Focus on your cooking with this mode by providing narrated step-by-step of your recipe and voice control for those moments where your hands are not appropriate for a phone." />
-            <Switch Grid.Column="1" Grid.RowSpan="2" Grid.Row="0" />
+            <Label Grid.Column="0" Grid.Row="1" FontSize="Small" Text="Focus on your cooking with this mode by providing step-by-step of your recipe." />
+            <Switch Grid.Column="1" Grid.RowSpan="2" Grid.Row="0" IsToggled="{Binding CookModeIsActive}" />
         </Grid>
     </ScrollView>
 </ContentPage>
