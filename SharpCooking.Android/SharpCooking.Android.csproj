@@ -51,6 +51,9 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <DefineConstants>__ANDROID__</DefineConstants>
   </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>8</LangVersion>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="System" />
