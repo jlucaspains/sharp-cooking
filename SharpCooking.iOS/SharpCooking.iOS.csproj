@@ -68,7 +68,7 @@
     <AppExtensionDebugBundleId />
   </PropertyGroup>
   <PropertyGroup>
-    <LangVersion>8</LangVersion>
+    <LangVersion>9</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />

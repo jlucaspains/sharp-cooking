@@ -52,7 +52,7 @@
     <DefineConstants>__ANDROID__</DefineConstants>
   </PropertyGroup>
   <PropertyGroup>
-    <LangVersion>8</LangVersion>
+    <LangVersion>9</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
