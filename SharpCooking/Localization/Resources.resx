@@ -442,7 +442,7 @@
     <value>At this moment we don't support selecting the language here, please change the language in your phone.</value>
   </data>
   <data name="SettingsView_CorruptedBackupFile" xml:space="preserve">
-    <value>Oh no! Your backup lookups corrupted and I wasn't able to restore it.</value>
+    <value>Oh no! Your backup looks corrupted and I wasn't able to restore it.</value>
   </data>
   <data name="SettingsView_CreatingBackup" xml:space="preserve">
     <value>Creating backup...</value>

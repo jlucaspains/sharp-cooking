@@ -70,7 +70,7 @@
     <value>Use a Camera</value>
   </data>
   <data name="EditItemView_Save" xml:space="preserve">
-    <value>Salve</value>
+    <value>Salvar</value>
   </data>
   <data name="EditItemView_Source" xml:space="preserve">
     <value>Fonte</value>

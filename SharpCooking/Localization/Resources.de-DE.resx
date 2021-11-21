@@ -235,7 +235,7 @@
     <value>Abbrechen</value>
   </data>
   <data name="EditItemView_ImportFailed" xml:space="preserve">
-    <value>Der Import ist fehlgeschlagen. </value>
+    <value>Der Import ist fehlgeschlagen. Bitte versuche es erneut.</value>
   </data>
   <data name="EditItemView_ImportOk" xml:space="preserve">
     <value>Okay</value>
@@ -280,7 +280,7 @@
     <value>Titel</value>
   </data>
   <data name="EditItemView_UnknownError" xml:space="preserve">
-    <value>Die Operation ist fehlgeschlagen. </value>
+    <value>Die operation ist fehlgeschlagen. Bitte versuche es erneut.</value>
   </data>
   <data name="EditRecipe" xml:space="preserve">
     <value>Rezept bearbeiten</value>
@@ -301,7 +301,7 @@
     <value>Bestätigen Sie</value>
   </data>
   <data name="ImportView_FailedToImport" xml:space="preserve">
-    <value>Fehler beim Importieren von Rezepten. </value>
+    <value>Fehler beim Importieren von Rezepten. Bitte versuche es erneut.</value>
   </data>
   <data name="ImportView_ImportCancelled" xml:space="preserve">
     <value>Import abgebrochen</value>
@@ -316,10 +316,10 @@
     <value>Importieren</value>
   </data>
   <data name="IngredientQuantityRegex" xml:space="preserve">
-    <value>^(?&amp;lt;CompositeFraction&amp;gt;\d+ \d+\/\d+)|(?&amp;lt;Fraction&amp;gt;\d+\/\d+)|^(?&amp;lt;Regular&amp;gt;\d+\.{0,1}\d*)</value>
+    <value>^(?&lt;CompositeFraction&gt;\d+ \d+\/\d+)|(?&lt;Fraction&gt;\d+\/\d+)|^(?&lt;Regular&gt;\d+\,{0,1}\d*)</value>
   </data>
   <data name="ItemDetailView_DayAbbreviation" xml:space="preserve">
-    <value>D</value>
+    <value>d</value>
   </data>
   <data name="ItemDetailView_Enjoy" xml:space="preserve">
     <value>Genießen!</value>
@@ -337,7 +337,7 @@
     <value>Löschen</value>
   </data>
   <data name="ItemDetailView_MoreDeleteConfirmation" xml:space="preserve">
-    <value>Bist du sicher? </value>
+    <value>Bist du sicher? Dies ist nicht reversibel.</value>
   </data>
   <data name="ItemDetailView_MoreDeleteNo" xml:space="preserve">
     <value>Nein</value>
@@ -352,7 +352,7 @@
     <value>Abbrechen</value>
   </data>
   <data name="ItemDetailView_MultiplierDescription" xml:space="preserve">
-    <value>Geben Sie den Dezimalwert der Menge ein. </value>
+    <value>Geben Sie den Dezimalwert der Menge ein. Z.B. 0,5 oder 2</value>
   </data>
   <data name="ItemDetailView_MultiplierOk" xml:space="preserve">
     <value>Okay</value>
@@ -400,7 +400,7 @@
     <value>Nein</value>
   </data>
   <data name="ItemsView_NothingToShow" xml:space="preserve">
-    <value>Nichts zu zeigen. </value>
+    <value>Nichts zu zeigen. Wie wäre es, wenn Sie ein paar leckere Rezepte hinzufügen?</value>
   </data>
   <data name="ItemsView_SearchItems" xml:space="preserve">
     <value>Artikel suchen...</value>
@@ -436,13 +436,13 @@
     <value>Sicherung</value>
   </data>
   <data name="SettingsView_BadBackupFile" xml:space="preserve">
-    <value>Hmm... Diese Datei sieht komisch aus. </value>
+    <value>Hmm... Diese datei sieht komisch aus. Sind Sie sicher, dass es sich um eine Sharp Cooking-Sicherungsdatei handelt?</value>
   </data>
   <data name="SettingsView_CannotChangeCulture" xml:space="preserve">
     <value>Im Moment unterstützen wir die Auswahl der Sprache hier nicht, bitte ändern Sie die Sprache in Ihrem Telefon.</value>
   </data>
   <data name="SettingsView_CorruptedBackupFile" xml:space="preserve">
-    <value>Ach nein! </value>
+    <value>Ach nein! Ihr backup sieht beschädigt aus und ich konnte es nicht wiederherstellen.</value>
   </data>
   <data name="SettingsView_CreatingBackup" xml:space="preserve">
     <value>Backup erstellen...</value>
@@ -496,7 +496,7 @@
     <value>Lesen Sie unsere Datenschutzerklärung</value>
   </data>
   <data name="SettingsView_ResourceCancelledContent" xml:space="preserve">
-    <value>Kein Problem. </value>
+    <value>Kein problem. Wir können dies später tun.</value>
   </data>
   <data name="SettingsView_RestoreBackup" xml:space="preserve">
     <value>Backup wiederherstellen</value>
@@ -559,12 +559,12 @@
     <value>Titel</value>
   </data>
   <data name="SortItemsView_TitleDescription" xml:space="preserve">
-    <value>Sortiert alphabetisch nach Titel. </value>
+    <value>Sortiert alphabetisch nach Titel. Dies ist die Standardsortierung.</value>
   </data>
   <data name="SortItems_Title" xml:space="preserve">
     <value>Sortieren</value>
   </data>
   <data name="StepTimeIdentifierRegex" xml:space="preserve">
-    <value>(?&amp;lt;Minuten&amp;gt;\d+\.{0,1}\d*)\s*(Minuten|Minute|min)\b|(?&amp;lt;Stunden&amp;gt;\d+\.{0,1}\d*)\ </value>
+    <value>(?&lt;Minutes&gt;\d+\.{0,1}\d*)\s*(minute|minuten|min)\b|(?&lt;Hours&gt;\d+\.{0,1}\d*)\s*(stunde|stunden)\b|(?&lt;Days&gt;\d+\.{0,1}\d*)\s*(tag)\b</value>
   </data>
 </root>
