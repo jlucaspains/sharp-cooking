@@ -12,6 +12,7 @@ using SharpCooking.Droid.Services;
 namespace SharpCooking.Droid
 {
     [Activity(Label = "@string/app_name", Icon = "@mipmap/icon", Theme = "@style/MainTheme",
+        MainLauncher = true,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
         ScreenOrientation = ScreenOrientation.Portrait)]
     [IntentFilter(new[] { Intent.ActionSend },

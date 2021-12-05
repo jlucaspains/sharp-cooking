@@ -47,6 +47,10 @@
 	<array>
 		<string>en</string>
 		<string>pt-BR</string>
+		<string>fr</string>
+		<string>es</string>
+		<string>it-IT</string>
+		<string>de-DE</string>
 	</array>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>This app needs access to photo library to add photos taken for a recipe</string>

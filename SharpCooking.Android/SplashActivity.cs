@@ -6,7 +6,7 @@ using Xamarin.Forms.Platform.Android;
 namespace SharpCooking.Droid
 {
     [Activity(Label = "@string/app_name", Theme = "@style/SplashTheme", Icon = "@mipmap/icon", 
-        MainLauncher = true, NoHistory = true)]
+        MainLauncher = false, NoHistory = true)]
     public class SplashActivity : FormsAppCompatActivity
     {
         public override void OnCreate(Bundle savedInstanceState, PersistableBundle persistentState)
