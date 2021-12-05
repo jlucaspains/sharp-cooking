@@ -6,6 +6,9 @@
         <NeutralLanguage>en-US</NeutralLanguage>
         <LangVersion>9</LangVersion>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+      <Optimize>False</Optimize>
+    </PropertyGroup>
     <ItemGroup>
         <EmbeddedResource Include="InitialRecipes.zip" />
     </ItemGroup>
