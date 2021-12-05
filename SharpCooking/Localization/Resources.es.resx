@@ -565,6 +565,6 @@
     <value>Clasificar</value>
   </data>
   <data name="StepTimeIdentifierRegex" xml:space="preserve">
-    <value>(?&lt;Minutos&gt;\d+\.{0,1}\d*)\s*(minutos|minuto|min)\b|(?&lt;Hours&gt;\d+\.{0,1}\d*)\s*(horas|hora)\b|(?&lt;Days&gt;\d+\.{0,1}\d*)\s*(dias|día)\b</value>
+    <value>(?&lt;Minutes&gt;\d+\.{0,1}\d*)\s*(minutos|minuto|min)\b|(?&lt;Hours&gt;\d+\.{0,1}\d*)\s*(horas|hora)\b|(?&lt;Days&gt;\d+\.{0,1}\d*)\s*(dias|día)\b</value>
   </data>
 </root>
