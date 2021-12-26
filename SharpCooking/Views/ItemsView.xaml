@@ -14,7 +14,7 @@
              x:Name="ItemsViewRoot"
              v:ViewModelLocator.AutoWireViewModel="true"
              x:DataType="vm:ItemsViewModel">
-    <Shell.SearchHandler>
+    <!--<Shell.SearchHandler>
         <v:RecipeSearchHandler Placeholder="{x:Static l:Resources.ItemsView_EnterSearchTerm}"
                                ShowsResults="true"
                                IsSearchEnabled="True">
@@ -58,7 +58,7 @@
                 </DataTemplate>
             </v:RecipeSearchHandler.ItemTemplate>
         </v:RecipeSearchHandler>
-    </Shell.SearchHandler>
+    </Shell.SearchHandler>-->
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Command="{Binding AddItemCommand}">
@@ -91,12 +91,12 @@
             <SearchBar.Behaviors>
                 <b:EventToCommandBehavior EventName="TextChanged" Command="{Binding FilterListCommand}" />
             </SearchBar.Behaviors>
-            <SearchBar.IsVisible>
+            <!--<SearchBar.IsVisible>
                 <OnPlatform x:TypeArguments="x:Boolean">
                     <On Platform="Android" Value="false" />
                     <On Platform="iOS" Value="true" />
                 </OnPlatform>
-            </SearchBar.IsVisible>
+            </SearchBar.IsVisible>-->
         </SearchBar>
 
         <StackLayout Grid.Row="1" IsVisible="{Binding NoDataToShow}" VerticalOptions="Center" Margin="50">
