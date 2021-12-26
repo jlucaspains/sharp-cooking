@@ -25,7 +25,7 @@
     <value>Seu aplicativo de culinária pessoal.</value>
   </data>
   <data name="AppName" xml:space="preserve">
-    <value>Cozinha Afiada</value>
+    <value>Sharp Cooking</value>
   </data>
   <data name="AppShell_About" xml:space="preserve">
     <value>Sobre</value>
@@ -70,7 +70,7 @@
     <value>Use a Camera</value>
   </data>
   <data name="EditItemView_Save" xml:space="preserve">
-    <value>Salve</value>
+    <value>Salvar</value>
   </data>
   <data name="EditItemView_Source" xml:space="preserve">
     <value>Fonte</value>
@@ -392,5 +392,74 @@
   </data>
   <data name="ItemDetailView_ToggleScreenOn" xml:space="preserve">
     <value>Desativado bloqueio automático de tela</value>
+  </data>
+  <data name="SettingsView_Review" xml:space="preserve">
+    <value>Resenha</value>
+  </data>
+  <data name="SettingsView_ReviewDetail" xml:space="preserve">
+    <value>Escreva uma resenha e ajude os desenvolvedores</value>
+  </data>
+  <data name="CookModeView_MicrophoneToggle" xml:space="preserve">
+    <value>Ligar/Desligar o Microfone</value>
+  </data>
+  <data name="CookModeView_NarrationToggle" xml:space="preserve">
+    <value>Ligar/Desligar Narração</value>
+  </data>
+  <data name="CookModelView_MoreCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="CookModelView_MoreTitle" xml:space="preserve">
+    <value>Opções</value>
+  </data>
+  <data name="CookModeView_DisableMicrophone" xml:space="preserve">
+    <value>Desativar Microfone</value>
+  </data>
+  <data name="CookModeView_DisableNarration" xml:space="preserve">
+    <value>Desativar Narração</value>
+  </data>
+  <data name="CookModeView_EnableMicrophone" xml:space="preserve">
+    <value>Ativar Microfone</value>
+  </data>
+  <data name="CookModeView_EnableNarration" xml:space="preserve">
+    <value>Ativar Narração</value>
+  </data>
+  <data name="CookModeView_Ingredient" xml:space="preserve">
+    <value>Ingrediente</value>
+  </data>
+  <data name="CookModeView_Ingredients" xml:space="preserve">
+    <value>Ingredientes</value>
+  </data>
+  <data name="CookModeView_Next" xml:space="preserve">
+    <value>próximo</value>
+  </data>
+  <data name="CookModeView_Previous" xml:space="preserve">
+    <value>anterior</value>
+  </data>
+  <data name="CookModeView_StartTimer" xml:space="preserve">
+    <value>iniciar cronômetro</value>
+  </data>
+  <data name="CookModeView_Step" xml:space="preserve">
+    <value>Passo</value>
+  </data>
+  <data name="CookModeView_StepByStep" xml:space="preserve">
+    <value>Passo-a-passo</value>
+  </data>
+  <data name="CookModeView_Stop" xml:space="preserve">
+    <value>Parar</value>
+  </data>
+  <data name="CookModeView_StopTimer" xml:space="preserve">
+    <value>parar o cronômetro</value>
+  </data>
+  <data name="CookModeView_Title" xml:space="preserve">
+    <value>Modo de preparo</value>
+  </data>
+  <data name="PreviewFeaturesTitle" xml:space="preserve">
+    <value>Acesso Antecipado</value>
+  </data>
+  <data name="SettingsView_PreviewFeatures" xml:space="preserve">
+    <value>Acesso Antecipado</value>
+  </data>
+  <data name="SettingsView_PreviewFeaturesDetail" xml:space="preserve">
+    <value>Ativar/Desativar Acesso Antecipado</value>
   </data>
 </root>

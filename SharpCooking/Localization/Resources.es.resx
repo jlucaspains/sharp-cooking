@@ -118,453 +118,453 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutView_KnownIssues" xml:space="preserve">
-    <value>Known Issues</value>
+    <value>Problemas conocidos</value>
   </data>
   <data name="AboutView_LoadingReleaseNotes" xml:space="preserve">
-    <value>Loading release notes...</value>
+    <value>Cargando notas de la versión ...</value>
   </data>
   <data name="AboutView_Title" xml:space="preserve">
-    <value>About</value>
+    <value>Sobre</value>
   </data>
   <data name="AboutView_WhatsNew" xml:space="preserve">
-    <value>What's new</value>
+    <value>Qué hay de nuevo</value>
   </data>
   <data name="AddRecipe" xml:space="preserve">
-    <value>Add</value>
+    <value>Agregar</value>
   </data>
   <data name="AllRecipes" xml:space="preserve">
-    <value>All Recipes</value>
+    <value>Todas las recetas</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>Your personal cooking app.</value>
+    <value>Tu aplicación de cocina personal.</value>
   </data>
   <data name="AppName" xml:space="preserve">
     <value>Sharp Cooking</value>
   </data>
   <data name="AppShell_About" xml:space="preserve">
-    <value>About</value>
+    <value>Sobre</value>
   </data>
   <data name="AppShell_Recipes" xml:space="preserve">
-    <value>Recipes</value>
+    <value>Recetas</value>
   </data>
   <data name="AppShell_Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Ajustes</value>
   </data>
   <data name="BackupSetupView_Title" xml:space="preserve">
-    <value>Backup</value>
+    <value>Respaldo</value>
   </data>
   <data name="CancelEditRecipe" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Cancelar</value>
   </data>
   <data name="CookModelView_MoreCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Cancelar</value>
   </data>
   <data name="CookModelView_MoreTitle" xml:space="preserve">
-    <value>Options</value>
+    <value>Opciones</value>
   </data>
   <data name="CookModeView_DisableMicrophone" xml:space="preserve">
-    <value>Disable Microphone</value>
+    <value>Desactivar micrófono</value>
   </data>
   <data name="CookModeView_DisableNarration" xml:space="preserve">
-    <value>Disable Narration</value>
+    <value>Desactivar narración</value>
   </data>
   <data name="CookModeView_EnableMicrophone" xml:space="preserve">
-    <value>Enable Microphone</value>
+    <value>Habilitar micrófono</value>
   </data>
   <data name="CookModeView_EnableNarration" xml:space="preserve">
-    <value>Enable Narration</value>
+    <value>Habilitar narración</value>
   </data>
   <data name="CookModeView_Ingredient" xml:space="preserve">
-    <value>Ingredient</value>
+    <value>Ingrediente</value>
   </data>
   <data name="CookModeView_Ingredients" xml:space="preserve">
-    <value>Ingredients</value>
+    <value>Ingredientes</value>
   </data>
   <data name="CookModeView_MicrophoneToggle" xml:space="preserve">
-    <value>Toggle Microphone on/off</value>
+    <value>Activar/desactivar micrófono</value>
   </data>
   <data name="CookModeView_NarrationToggle" xml:space="preserve">
-    <value>Toggle Narration on/off</value>
+    <value>Activar/desactivar narración</value>
   </data>
   <data name="CookModeView_Next" xml:space="preserve">
-    <value>next</value>
+    <value>Siguiente</value>
   </data>
   <data name="CookModeView_Previous" xml:space="preserve">
-    <value>previous</value>
+    <value>anterior</value>
   </data>
   <data name="CookModeView_StartTimer" xml:space="preserve">
-    <value>start timer</value>
+    <value>iniciar temporizador</value>
   </data>
   <data name="CookModeView_Step" xml:space="preserve">
-    <value>Step</value>
+    <value>Paso</value>
   </data>
   <data name="CookModeView_StepByStep" xml:space="preserve">
-    <value>Step-by-step</value>
+    <value>Paso a paso</value>
   </data>
   <data name="CookModeView_Stop" xml:space="preserve">
-    <value>stop</value>
+    <value>parada</value>
   </data>
   <data name="CookModeView_StopTimer" xml:space="preserve">
-    <value>stop timer</value>
+    <value>detener el temporizador</value>
   </data>
   <data name="CookModeView_Title" xml:space="preserve">
-    <value>Cook mode</value>
+    <value>Modo de cocción</value>
   </data>
   <data name="CreditsTitle" xml:space="preserve">
-    <value>Credits</value>
+    <value>Créditos</value>
   </data>
   <data name="CreditsView_Thanks" xml:space="preserve">
-    <value>The Sharp Cooking team thanks the following amazing projects:</value>
+    <value>El equipo de Sharp Cooking agradece los siguientes proyectos increíbles:</value>
   </data>
   <data name="DropBoxProviderName" xml:space="preserve">
     <value>Dropbox</value>
   </data>
   <data name="EditItemView_AddressWrong" xml:space="preserve">
-    <value>This address doesn't look right...</value>
+    <value>Esta dirección no parece correcta ...</value>
   </data>
   <data name="EditItemView_CopyUrl" xml:space="preserve">
-    <value>Please copy and paste the recipe address from your browser</value>
+    <value>Copie y pegue la dirección de la receta de su navegador</value>
   </data>
   <data name="EditItemView_DownloadingRecipe" xml:space="preserve">
-    <value>Downloading recipe...</value>
+    <value>Descargando receta ...</value>
   </data>
   <data name="EditItemView_FailedToParse" xml:space="preserve">
-    <value>Failed to parse recipe id</value>
+    <value>No se pudo analizar el ID de la receta</value>
   </data>
   <data name="EditItemView_ImportCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Cancelar</value>
   </data>
   <data name="EditItemView_ImportFailed" xml:space="preserve">
-    <value>The import failed. Please try again.</value>
+    <value>La importación falló. Inténtalo de nuevo.</value>
   </data>
   <data name="EditItemView_ImportOk" xml:space="preserve">
-    <value>Ok</value>
+    <value>OK</value>
   </data>
   <data name="EditItemView_ImportRecipe" xml:space="preserve">
-    <value>Import Recipe</value>
+    <value>Importar receta</value>
   </data>
   <data name="EditItemView_Ingredients" xml:space="preserve">
-    <value>Ingredients</value>
+    <value>Ingredientes</value>
   </data>
   <data name="EditItemView_Instructions" xml:space="preserve">
-    <value>Instructions</value>
+    <value>Instrucciones</value>
   </data>
   <data name="EditItemView_Notes" xml:space="preserve">
-    <value>Notes</value>
+    <value>Notas</value>
   </data>
   <data name="EditItemView_PickImageCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Cancelar</value>
   </data>
   <data name="EditItemView_PickImagePickImage" xml:space="preserve">
-    <value>Pick from library</value>
+    <value>Elija de la biblioteca</value>
   </data>
   <data name="EditItemView_PickImageTitle" xml:space="preserve">
-    <value>Where is your image?</value>
+    <value>¿Dónde está tu imagen?</value>
   </data>
   <data name="EditItemView_PickImageUseCamera" xml:space="preserve">
-    <value>Use Camera</value>
+    <value>Usar cámara</value>
   </data>
   <data name="EditItemView_Rating" xml:space="preserve">
-    <value>Rating</value>
+    <value>Opiniones</value>
   </data>
   <data name="EditItemView_Save" xml:space="preserve">
-    <value>Save</value>
+    <value>Ahorrar</value>
   </data>
   <data name="EditItemView_SomethingWrong" xml:space="preserve">
-    <value>Something wrong</value>
+    <value>Algo mal</value>
   </data>
   <data name="EditItemView_Source" xml:space="preserve">
-    <value>Source</value>
+    <value>Fuente</value>
   </data>
   <data name="EditItemView_Title" xml:space="preserve">
-    <value>Title</value>
+    <value>Título</value>
   </data>
   <data name="EditItemView_UnknownError" xml:space="preserve">
-    <value>The operation failed. Please try again.</value>
+    <value>La operación falló. Inténtalo de nuevo.</value>
   </data>
   <data name="EditRecipe" xml:space="preserve">
-    <value>Edit Recipe</value>
+    <value>Editar receta</value>
   </data>
   <data name="ErrorOk" xml:space="preserve">
-    <value>Ok</value>
+    <value>OK</value>
   </data>
   <data name="ErrorTitle" xml:space="preserve">
-    <value>Failure</value>
+    <value>Falla</value>
   </data>
   <data name="FavoriteRecipe" xml:space="preserve">
-    <value>Favorite</value>
+    <value>Favorito</value>
   </data>
   <data name="ImportView_Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Cancelar</value>
   </data>
   <data name="ImportView_Confirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>Confirmar</value>
   </data>
   <data name="ImportView_FailedToImport" xml:space="preserve">
-    <value>Failed to import recipes. Please try again.</value>
+    <value>No se pudieron importar las recetas. Inténtalo de nuevo.</value>
   </data>
   <data name="ImportView_ImportCancelled" xml:space="preserve">
-    <value>Import cancelled</value>
+    <value>Importación cancelada</value>
   </data>
   <data name="ImportView_ImportSuccessful" xml:space="preserve">
-    <value>Import successful</value>
+    <value>Importación exitosa</value>
   </data>
   <data name="ImportView_ShortDescription" xml:space="preserve">
-    <value>This file contain the following recipes, do you want to add them to your recipe book?</value>
+    <value>Este archivo contiene las siguientes recetas, ¿desea agregarlas a su libro de recetas?</value>
   </data>
   <data name="ImportView_Title" xml:space="preserve">
-    <value>Import</value>
+    <value>Importar</value>
   </data>
   <data name="IngredientQuantityRegex" xml:space="preserve">
-    <value>^(?&lt;CompositeFraction&gt;\d+ \d+\/\d+)|(?&lt;Fraction&gt;\d+\/\d+)|^(?&lt;Regular&gt;\d+\.{0,1}\d*)</value>
+    <value>^(?&lt;CompositeFraction&gt;\d+ \d+\/\d+)|(?&lt;Fraction&gt;\d+\/\d+)|^(?&lt;Regular&gt;\d+\,{0,1}\d*)</value>
   </data>
   <data name="ItemDetailView_DayAbbreviation" xml:space="preserve">
     <value>d</value>
   </data>
   <data name="ItemDetailView_Enjoy" xml:space="preserve">
-    <value>Enjoy!</value>
+    <value>¡Disfrutar!</value>
   </data>
   <data name="ItemDetailView_FailedToParseInputId" xml:space="preserve">
-    <value>Failed to parse input id</value>
+    <value>No se pudo analizar el ID de entrada</value>
   </data>
   <data name="ItemDetailView_Ingredients" xml:space="preserve">
-    <value>Ingredients</value>
+    <value>Ingredientes</value>
   </data>
   <data name="ItemDetailView_MoreCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Cancelar</value>
   </data>
   <data name="ItemDetailView_MoreDelete" xml:space="preserve">
-    <value>Delete</value>
+    <value>Borrar</value>
   </data>
   <data name="ItemDetailView_MoreDeleteConfirmation" xml:space="preserve">
-    <value>Are you sure? This is not reversible.</value>
+    <value>¿Está seguro? Esto no es reversible.</value>
   </data>
   <data name="ItemDetailView_MoreDeleteNo" xml:space="preserve">
     <value>No</value>
   </data>
   <data name="ItemDetailView_MoreDeleteYes" xml:space="preserve">
-    <value>Yes</value>
+    <value>sí</value>
   </data>
   <data name="ItemDetailView_MoreTitle" xml:space="preserve">
-    <value>Options</value>
+    <value>Opciones</value>
   </data>
   <data name="ItemDetailView_MultiplierCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Cancelar</value>
   </data>
   <data name="ItemDetailView_MultiplierDescription" xml:space="preserve">
-    <value>Enter decimal value of quantity. E.g. 0.5 or 2</value>
+    <value>Ingrese el valor decimal de la cantidad. p.ej. 0.5 o 2</value>
   </data>
   <data name="ItemDetailView_MultiplierOk" xml:space="preserve">
-    <value>Ok</value>
+    <value>OK</value>
   </data>
   <data name="ItemDetailView_MultiplierTitle" xml:space="preserve">
-    <value>Multiplier</value>
+    <value>Multiplicador</value>
   </data>
   <data name="ItemDetailView_Notes" xml:space="preserve">
-    <value>Notes</value>
+    <value>Notas</value>
   </data>
   <data name="ItemDetailView_RecipeDeleted" xml:space="preserve">
-    <value>Recipe deleted</value>
+    <value>Receta eliminada</value>
   </data>
   <data name="ItemDetailView_Share" xml:space="preserve">
-    <value>Share Recipe Text</value>
+    <value>Compartir texto de receta</value>
   </data>
   <data name="ItemDetailView_ShareFile" xml:space="preserve">
-    <value>Share Recipe as file</value>
+    <value>Compartir receta como archivo</value>
   </data>
   <data name="ItemDetailView_Source" xml:space="preserve">
-    <value>Source</value>
+    <value>Fuente</value>
   </data>
   <data name="ItemDetailView_StartTimeCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Cancelar</value>
   </data>
   <data name="ItemDetailView_StartTimeOk" xml:space="preserve">
-    <value>Ok</value>
+    <value>OK</value>
   </data>
   <data name="ItemDetailView_StartTimeTitle" xml:space="preserve">
-    <value>Start Time</value>
+    <value>Hora de inicio</value>
   </data>
   <data name="ItemDetailView_Step" xml:space="preserve">
-    <value>Step</value>
+    <value>Paso</value>
   </data>
   <data name="ItemDetailView_ToggleScreenOff" xml:space="preserve">
-    <value>Disabled keep screen on</value>
+    <value>Deshabilitado mantener la pantalla encendida</value>
   </data>
   <data name="ItemDetailView_ToggleScreenOn" xml:space="preserve">
-    <value>Enabled keep screen on</value>
+    <value>Habilitado mantener la pantalla encendida</value>
   </data>
   <data name="ItemsView_EnterSearchTerm" xml:space="preserve">
-    <value>Enter search term</value>
+    <value>Ingrese término de búsqueda</value>
   </data>
   <data name="ItemsView_No" xml:space="preserve">
     <value>No</value>
   </data>
   <data name="ItemsView_NothingToShow" xml:space="preserve">
-    <value>Nothing to show. How about you add some yummy recipes?</value>
+    <value>Nada que mostrar. ¿Qué tal si agregas algunas recetas deliciosas?</value>
   </data>
   <data name="ItemsView_SearchItems" xml:space="preserve">
-    <value>Search items...</value>
+    <value>Buscar elementos ...</value>
   </data>
   <data name="ItemsView_ViewReleaseNotes" xml:space="preserve">
-    <value>Would you like to see the release notes?</value>
+    <value>¿Le gustaría ver las notas de la versión?</value>
   </data>
   <data name="ItemsView_WelcomeToVersion" xml:space="preserve">
-    <value>Welcome to version</value>
+    <value>Bienvenidos a la versión</value>
   </data>
   <data name="ItemsView_Yes" xml:space="preserve">
-    <value>Yes</value>
+    <value>sí</value>
   </data>
   <data name="MultiplierQuantityAggregator" xml:space="preserve">
-    <value>and</value>
+    <value>y</value>
   </data>
   <data name="NewRecipe" xml:space="preserve">
-    <value>New Recipe</value>
+    <value>Nueva receta</value>
   </data>
   <data name="PreviewFeaturesTitle" xml:space="preserve">
-    <value>Preview Features</value>
+    <value>Funciones de vista previa</value>
   </data>
   <data name="ReleaseNotesView_Title" xml:space="preserve">
-    <value>Release Notes</value>
+    <value>Notas de lanzamiento</value>
   </data>
   <data name="SelectCultureView_Title" xml:space="preserve">
-    <value>Culture</value>
+    <value>Cultura</value>
   </data>
   <data name="SettingsView_BackingUpTo" xml:space="preserve">
-    <value>Backing up to</value>
+    <value>Haciendo copias de seguridad a</value>
   </data>
   <data name="SettingsView_Backup" xml:space="preserve">
-    <value>Backup</value>
+    <value>Copia de Seguridad</value>
   </data>
   <data name="SettingsView_BadBackupFile" xml:space="preserve">
-    <value>Humm... That file looks weird. Are you sure it is a Sharp Cooking backup file?</value>
+    <value>Humm ... Ese archivo se ve extraño. ¿Estás seguro de que es un archivo de copia de seguridad de Cocina Afilada?</value>
   </data>
   <data name="SettingsView_CannotChangeCulture" xml:space="preserve">
-    <value>At this moment we don't support selecting the language here, please change the language in your phone.</value>
+    <value>En este momento no admitimos seleccionar el idioma aquí, cambie el idioma en su teléfono.</value>
   </data>
   <data name="SettingsView_CorruptedBackupFile" xml:space="preserve">
-    <value>Oh no! Your backup looks corrupted and I wasn't able to restore it.</value>
+    <value>¡Oh, no! Su copia de seguridad parece dañada y no pude restaurarla.</value>
   </data>
   <data name="SettingsView_CreatingBackup" xml:space="preserve">
-    <value>Creating backup...</value>
+    <value>Creando copia de seguridad ...</value>
   </data>
   <data name="SettingsView_Credits" xml:space="preserve">
-    <value>Open Source Credits</value>
+    <value>Créditos de código abierto</value>
   </data>
   <data name="SettingsView_CreditsDetail" xml:space="preserve">
-    <value>View open source projects used by Sharp Cooking</value>
+    <value>Ver proyectos de código abierto utilizados por Sharp Cooking</value>
   </data>
   <data name="SettingsView_ExportBackup" xml:space="preserve">
-    <value>Export a new backup to file</value>
+    <value>Exportar una nueva copia de seguridad a un archivo</value>
   </data>
   <data name="SettingsView_Help" xml:space="preserve">
-    <value>Help</value>
+    <value>Ayuda</value>
   </data>
   <data name="SettingsView_HelpContact" xml:space="preserve">
-    <value>Contact developer</value>
+    <value>Desarrollador de contacto</value>
   </data>
   <data name="SettingsView_Language" xml:space="preserve">
-    <value>Language</value>
+    <value>Idioma</value>
   </data>
   <data name="SettingsView_MultiplierResultFormat" xml:space="preserve">
-    <value>Multiplier result format</value>
+    <value>Formato de resultado del multiplicador</value>
   </data>
   <data name="SettingsView_MultiplyResultDisplayUseDecimal" xml:space="preserve">
-    <value>Display decimals like 1.5</value>
+    <value>Mostrar decimales como 1,5</value>
   </data>
   <data name="SettingsView_MultiplyResultDisplayUseFractions" xml:space="preserve">
-    <value>Display fractions like 1 1/2</value>
+    <value>Mostrar fracciones como 1 1/2</value>
   </data>
   <data name="SettingsView_NoRecipesToRestore" xml:space="preserve">
-    <value>Weird... There are no recipes in this backup.</value>
+    <value>Raro ... No hay recetas en esta copia de seguridad.</value>
   </data>
   <data name="SettingsView_NotSupported" xml:space="preserve">
-    <value>Not supported</value>
+    <value>No soportado</value>
   </data>
   <data name="SettingsView_PickBackupLocation" xml:space="preserve">
-    <value>Where should we save your backup data?</value>
+    <value>¿Dónde deberíamos guardar sus datos de respaldo?</value>
   </data>
   <data name="SettingsView_PreviewFeatures" xml:space="preserve">
-    <value>Preview Features</value>
+    <value>Funciones de vista previa</value>
   </data>
   <data name="SettingsView_PreviewFeaturesDetail" xml:space="preserve">
-    <value>Enable/disable preview features</value>
+    <value>Activar / desactivar funciones de vista previa</value>
   </data>
   <data name="SettingsView_Privacy" xml:space="preserve">
-    <value>Privacy</value>
+    <value>Privacidad</value>
   </data>
   <data name="SettingsView_PrivacyPolicy" xml:space="preserve">
-    <value>Review our privacy policy</value>
+    <value>Revise nuestra política de privacidad</value>
   </data>
   <data name="SettingsView_ResourceCancelledContent" xml:space="preserve">
-    <value>No problem. We can do this later.</value>
+    <value>No hay problema. Podemos hacer esto más tarde.</value>
   </data>
   <data name="SettingsView_RestoreBackup" xml:space="preserve">
-    <value>Restore Backup</value>
+    <value>Restaurar copia de seguridad</value>
   </data>
   <data name="SettingsView_RestoreBackupFromFile" xml:space="preserve">
-    <value>Restore an existing backup from file</value>
+    <value>Restaurar una copia de seguridad existente desde un archivo</value>
   </data>
   <data name="SettingsView_RestoreCancelled" xml:space="preserve">
-    <value>Cancelled</value>
+    <value>Cancelado</value>
   </data>
   <data name="SettingsView_RestoreIsDone" xml:space="preserve">
-    <value>Restore is done.</value>
+    <value>La restauración está lista.</value>
   </data>
   <data name="SettingsView_RestoringBackup" xml:space="preserve">
-    <value>Restoring backup...</value>
+    <value>Restaurando copia de seguridad ...</value>
   </data>
   <data name="SettingsView_Review" xml:space="preserve">
-    <value>Review</value>
+    <value>Revisar</value>
   </data>
   <data name="SettingsView_ReviewDetail" xml:space="preserve">
-    <value>Help the developers by reviewing the app</value>
+    <value>Ayude a los desarrolladores revisando la aplicación</value>
   </data>
   <data name="SettingsView_SetupBackup" xml:space="preserve">
-    <value>Setup backup</value>
+    <value>Crear una copia de seguridad</value>
   </data>
   <data name="SettingsView_StepsInterval" xml:space="preserve">
-    <value>Steps Interval</value>
+    <value>Intervalo de pasos</value>
   </data>
   <data name="SettingsView_StepsIntervalCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Cancelar</value>
   </data>
   <data name="SettingsView_StepsIntervalDescription" xml:space="preserve">
-    <value>How many minutes between not steps without time information?</value>
+    <value>¿Cuántos minutos entre no pasos sin información de tiempo?</value>
   </data>
   <data name="SettingsView_StepsIntervalOk" xml:space="preserve">
-    <value>Ok</value>
+    <value>OK</value>
   </data>
   <data name="SettingsView_StepsIntervalTitle" xml:space="preserve">
-    <value>Step interval</value>
+    <value>Intervalo de paso</value>
   </data>
   <data name="SettingsView_TimeStepsDescriptoin" xml:space="preserve">
-    <value>minutes when no time information is given</value>
+    <value>minutos cuando no se da información de tiempo</value>
   </data>
   <data name="SortItemsView_HeaderTitle" xml:space="preserve">
-    <value>Sort By</value>
+    <value>Ordenar por</value>
   </data>
   <data name="SortItemsView_Rating" xml:space="preserve">
-    <value>Rating</value>
+    <value>Clasificación</value>
   </data>
   <data name="SortItemsView_RatingDescription" xml:space="preserve">
-    <value>Shows highest ratings first</value>
+    <value>Muestra las calificaciones más altas primero</value>
   </data>
   <data name="SortItemsView_Recent" xml:space="preserve">
-    <value>Recent</value>
+    <value>Reciente</value>
   </data>
   <data name="SortItemsView_RecentDescription" xml:space="preserve">
-    <value>Shows the recently created or imported recipes first</value>
+    <value>Muestra primero las recetas creadas o importadas recientemente</value>
   </data>
   <data name="SortItemsView_Title" xml:space="preserve">
-    <value>Title</value>
+    <value>Título</value>
   </data>
   <data name="SortItemsView_TitleDescription" xml:space="preserve">
-    <value>Sorts alphabetically by title. This is the default sort.</value>
+    <value>Ordena alfabéticamente por título. Esta es la clasificación predeterminada.</value>
   </data>
   <data name="SortItems_Title" xml:space="preserve">
-    <value>Sort</value>
+    <value>Clasificar</value>
   </data>
   <data name="StepTimeIdentifierRegex" xml:space="preserve">
-    <value>(?&lt;Minutes&gt;\d+\.{0,1}\d*)\s*(minutes|minute|min)\b|(?&lt;Hours&gt;\d+\.{0,1}\d*)\s*(hours|hour)\b|(?&lt;Days&gt;\d+\.{0,1}\d*)\s*(days|day)\b</value>
+    <value>(?&lt;Minutes&gt;\d+\.{0,1}\d*)\s*(minutos|minuto|min)\b|(?&lt;Hours&gt;\d+\.{0,1}\d*)\s*(horas|hora)\b|(?&lt;Days&gt;\d+\.{0,1}\d*)\s*(dias|día)\b</value>
   </data>
 </root>

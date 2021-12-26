@@ -1,8 +1,10 @@
-﻿using Plugin.FilePicker;
-using Plugin.FilePicker.Abstractions;
-using System;
+﻿using System;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
+using Plugin.FilePicker;
+using Plugin.FilePicker.Abstractions;
+using Plugin.StoreReview;
 using Xamarin.Essentials;
 
 namespace SharpCooking.Services
@@ -87,6 +89,25 @@ namespace SharpCooking.Services
             return DeviceDisplay.KeepScreenOn;
         }
 
+        public async Task RequestReview()
+        {
+#if DEBUG
+            var test = true;
+#else
+            var test = false;
+#endif
+
+            await CrossStoreReview.Current.RequestReview(test);
+        }
+
+        public void OpenStoreListing()
+        {
+            var appId = DeviceInfo.Platform == DevicePlatform.Android
+                      ? "com.lpains.sharpcooking"
+                      : "1522623942";
+            CrossStoreReview.Current.OpenStoreReviewPage(appId);
+        }
+
         public async Task<(bool Success, string FileName, Stream data)> PickFile(params string[] fileType)
         {
             FileData fileData = await CrossFilePicker.Current.PickFile(fileType);
@@ -94,6 +115,11 @@ namespace SharpCooking.Services
                 return (false, null, null); // user canceled file picking
 
             return (true, fileData.FileName, fileData.GetStream());
+        }
+
+        public async Task SpeakAsync(string speech, CancellationToken cancellationToken = default)
+        {
+            await TextToSpeech.SpeakAsync(speech, cancellationToken);
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System.IO;
 using Foundation;
+using SharpCooking.iOS.Services;
 using SharpCooking.Services;
+using TinyIoC;
 using UIKit;
 
 namespace SharpCooking.iOS
@@ -26,6 +28,7 @@ namespace SharpCooking.iOS
             XamEffects.iOS.Effects.Init();
 
             LoadApplication(new App());
+            RegisterContainer();
 
             return base.FinishedLaunching(app, options);
         }
@@ -42,6 +45,13 @@ namespace SharpCooking.iOS
             Xamarin.Forms.Shell.Current.GoToAsync("import");
 
             return true;
+        }
+
+        private void RegisterContainer()
+        {
+            var container = TinyIoCContainer.Current;
+
+            container.Register<ISpeechRecognizer, SpeechRecognizerImpl>();
         }
     }
 }

@@ -33,6 +33,8 @@ namespace SharpCooking.ViewModels
             ViewPrivacyPolicyCommand = new Command(async () => await ViewPrivacyPolicy());
             MultiplierResultFormatCommand = new Command(() => AdjustMultiplierResultFormat());
             ViewCreditsCommand = new Command(async () => await ViewCredits());
+            ReviewCommand = new Command(Review);
+            PreviewFeaturesCommand = new Command(async () => await PreviewFeatures());
 
             _essentials = essentials;
             _store = store;
@@ -49,6 +51,8 @@ namespace SharpCooking.ViewModels
         public Command ViewPrivacyPolicyCommand { get; }
         public Command MultiplierResultFormatCommand { get; }
         public Command ViewCreditsCommand { get; }
+        public Command ReviewCommand { get; }
+        public Command PreviewFeaturesCommand { get; }
 
         public int TimeBetweenStepsInterval { get; set; }
         public string DisplayTimeBetweenStepsInterval { get { return $"{TimeBetweenStepsInterval} {Resources.SettingsView_TimeStepsDescriptoin}"; } }
@@ -160,32 +164,14 @@ namespace SharpCooking.ViewModels
             _essentials.SetBoolSetting(AppConstants.MultiplierResultUseFractions, UseFractions);
         }
 
-        async Task<bool> QuickZip(string[] filesToZip, string destinationZipFullPath)
+        void Review()
         {
-            try
-            {
-                // Delete existing zip file if exists
-                if (await _fileHelper.ExistsAsync(destinationZipFullPath))
-                    await _fileHelper.DeleteAsync(destinationZipFullPath);
+            _essentials.OpenStoreListing();
+        }
 
-                await Task.Run(() =>
-                {
-                    using (ZipArchive zip = ZipFile.Open(destinationZipFullPath, ZipArchiveMode.Create))
-                    {
-                        foreach (var file in filesToZip)
-                        {
-                            zip.CreateEntryFromFile(file, Path.GetFileName(file), CompressionLevel.Optimal);
-                        }
-                    }
-                });
-
-                return await _fileHelper.ExistsAsync(destinationZipFullPath);
-            }
-            catch (Exception ex)
-            {
-                await TrackException(ex);
-                return false;
-            }
+        async Task PreviewFeatures()
+        {
+            await GoToAsync("previewFeatures");
         }
     }
 }

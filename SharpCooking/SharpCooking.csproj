@@ -1,49 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup Label="MultilingualAppToolkit">
-        <MultilingualAppToolkitVersion>4.0</MultilingualAppToolkitVersion>
-        <MultilingualFallbackLanguage>en-US</MultilingualFallbackLanguage>
-        <TranslationReport Condition="'$(Configuration)' == 'Release'">true</TranslationReport>
-        <SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
-        <LangVersion>8</LangVersion>
-    </PropertyGroup>
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
         <NeutralLanguage>en-US</NeutralLanguage>
+        <LangVersion>9</LangVersion>
     </PropertyGroup>
-    <Import Project="$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets" Label="MultilingualAppToolkit" Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\v$(MultilingualAppToolkitVersion)\Microsoft.Multilingual.ResxResources.targets')" />
-    <Target Name="MATPrerequisite" BeforeTargets="PrepareForBuild" Condition="!Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets')" Label="MultilingualAppToolkit">
-        <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
-    </Target>
-    <ItemGroup>
-        <None Remove="MultilingualResources\SharpCooking.pt-BR.xlf" />
-    </ItemGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+      <Optimize>True</Optimize>
+    </PropertyGroup>
     <ItemGroup>
         <EmbeddedResource Include="InitialRecipes.zip" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Acr.UserDialogs" Version="7.1.0.483" />
-        <PackageReference Include="HtmlAgilityPack" Version="1.11.33" />
-        <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.2.0" />
-        <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.2.0" />
+        <PackageReference Include="Acr.UserDialogs" Version="7.2.0.534" />
+        <PackageReference Include="HtmlAgilityPack" Version="1.11.37" />
+        <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.4.0" />
+        <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.4.0" />
         <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.2">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="PropertyChanged.Fody" Version="3.3.3" />
-        <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
+        <PackageReference Include="Plugin.StoreReview" Version="3.1.0" />
+        <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" />
+        <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
         <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
         <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
-        <PackageReference Include="Xamarin.DateTimePopups" Version="1.0.0.2" />
-        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
-        <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+        <PackageReference Include="Xamarin.DateTimePopups" Version="1.0.0.3" />
+        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2125" />
+        <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
         <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.44-beta" />
         <PackageReference Include="XamEffects" Version="1.6.3" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    </ItemGroup>
-    <ItemGroup>
-        <XliffResource Include="MultilingualResources\SharpCooking.pt-BR.xlf" />
     </ItemGroup>
     <ItemGroup>
         <Compile Update="Localization\Resources.Designer.cs">
@@ -53,6 +41,12 @@
         </Compile>
         <Compile Update="Views\AboutView.xaml.cs">
             <DependentUpon>AboutView.xaml</DependentUpon>
+        </Compile>
+        <Compile Update="Views\CookModeView.xaml.cs">
+          <DependentUpon>CookModeView.xaml</DependentUpon>
+        </Compile>
+        <Compile Update="Views\PreviewFeaturesView.xaml.cs">
+          <DependentUpon>PreviewFeaturesView.xaml</DependentUpon>
         </Compile>
         <Compile Update="Views\SortItemsView.xaml.cs">
           <DependentUpon>SortItemsView.xaml</DependentUpon>

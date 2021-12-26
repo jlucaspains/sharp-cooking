@@ -26,7 +26,9 @@ namespace SharpCooking.ViewModels
             AppVersion = _essentials.GetVersion();
 
             if (IsReleaseNotesLoaded)
+            {
                 return;
+            }
 
             try
             {

@@ -6,10 +6,13 @@ using Plugin.CurrentActivity;
 using Acr.UserDialogs;
 using Android.Content;
 using SharpCooking.Services;
+using TinyIoC;
+using SharpCooking.Droid.Services;
 
 namespace SharpCooking.Droid
 {
     [Activity(Label = "@string/app_name", Icon = "@mipmap/icon", Theme = "@style/MainTheme",
+        MainLauncher = true,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
         ScreenOrientation = ScreenOrientation.Portrait)]
     [IntentFilter(new[] { Intent.ActionSend },
@@ -36,8 +39,15 @@ namespace SharpCooking.Droid
             XamEffects.Droid.Effects.Init();
 
             LoadApplication(new App());
-
+            RegisterContainer();
             SaveImportFile();
+        }
+
+        private void RegisterContainer()
+        {
+            var container = TinyIoCContainer.Current;
+
+            container.Register<ISpeechRecognizer, SpeechRecognizerImpl>();
         }
 
         private void SaveImportFile()

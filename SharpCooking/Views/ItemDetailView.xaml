@@ -128,6 +128,22 @@
                                     Glyph="{x:Static v:IconFont.Clock}"/>
                             </ImageButton.Source>
                         </ImageButton>
+                        <!--<ImageButton IsVisible="{Binding CookModePreviewActivated}" BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="5" HeightRequest="50" 
+                                     Padding="16" Command="{Binding ActivateCookingModeCommand}">
+                            <ImageButton.CornerRadius>
+                                <OnPlatform x:TypeArguments="x:Int32">
+                                    <On Platform="iOS" Value="25" />
+                                    <On Platform="Android" Value="100" />
+                                </OnPlatform>
+                            </ImageButton.CornerRadius>
+                            <ImageButton.Source>
+                                <FontImageSource
+                                    Size="10"
+                                    Color="White"
+                                    FontFamily="{DynamicResource MaterialFont}"
+                                    Glyph="{x:Static v:IconFont.ChefHat}"/>
+                            </ImageButton.Source>
+                        </ImageButton>-->
                         <!--<ImageButton BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="4" HeightRequest="50" Padding="16">
                             <ImageButton.CornerRadius>
                                 <OnPlatform x:TypeArguments="x:Int32">
