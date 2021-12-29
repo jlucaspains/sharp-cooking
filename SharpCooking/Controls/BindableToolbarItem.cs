@@ -1,7 +1,9 @@
-﻿using Xamarin.Forms;
+﻿using PropertyChanged;
+using Xamarin.Forms;
 
 namespace SharpCooking.Controls
 {
+    [SuppressPropertyChangedWarnings]
     public class BindableToolbarItem : ToolbarItem
     {
         public static readonly BindableProperty IsVisibleProperty = BindableProperty.Create(nameof(IsVisible), typeof(bool), typeof(BindableToolbarItem), true, BindingMode.TwoWay, propertyChanged: OnIsVisibleChanged);
@@ -14,7 +16,7 @@ namespace SharpCooking.Controls
 
         private static void OnIsVisibleChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            if (!(bindable is BindableToolbarItem item) || item.Parent == null)
+            if (bindable is not BindableToolbarItem item || item.Parent == null)
                 return;
 
             var toolbarItems = ((ContentPage)item.Parent).ToolbarItems;

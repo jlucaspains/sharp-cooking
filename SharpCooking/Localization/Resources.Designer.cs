@@ -178,168 +178,6 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancel.
-        /// </summary>
-        public static string CookModelView_MoreCancel {
-            get {
-                return ResourceManager.GetString("CookModelView_MoreCancel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Options.
-        /// </summary>
-        public static string CookModelView_MoreTitle {
-            get {
-                return ResourceManager.GetString("CookModelView_MoreTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Disable Microphone.
-        /// </summary>
-        public static string CookModeView_DisableMicrophone {
-            get {
-                return ResourceManager.GetString("CookModeView_DisableMicrophone", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Disable Narration.
-        /// </summary>
-        public static string CookModeView_DisableNarration {
-            get {
-                return ResourceManager.GetString("CookModeView_DisableNarration", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enable Microphone.
-        /// </summary>
-        public static string CookModeView_EnableMicrophone {
-            get {
-                return ResourceManager.GetString("CookModeView_EnableMicrophone", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enable Narration.
-        /// </summary>
-        public static string CookModeView_EnableNarration {
-            get {
-                return ResourceManager.GetString("CookModeView_EnableNarration", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ingredient.
-        /// </summary>
-        public static string CookModeView_Ingredient {
-            get {
-                return ResourceManager.GetString("CookModeView_Ingredient", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ingredients.
-        /// </summary>
-        public static string CookModeView_Ingredients {
-            get {
-                return ResourceManager.GetString("CookModeView_Ingredients", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Toggle Microphone on/off.
-        /// </summary>
-        public static string CookModeView_MicrophoneToggle {
-            get {
-                return ResourceManager.GetString("CookModeView_MicrophoneToggle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Toggle Narration on/off.
-        /// </summary>
-        public static string CookModeView_NarrationToggle {
-            get {
-                return ResourceManager.GetString("CookModeView_NarrationToggle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to next.
-        /// </summary>
-        public static string CookModeView_Next {
-            get {
-                return ResourceManager.GetString("CookModeView_Next", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to previous.
-        /// </summary>
-        public static string CookModeView_Previous {
-            get {
-                return ResourceManager.GetString("CookModeView_Previous", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to start timer.
-        /// </summary>
-        public static string CookModeView_StartTimer {
-            get {
-                return ResourceManager.GetString("CookModeView_StartTimer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Step.
-        /// </summary>
-        public static string CookModeView_Step {
-            get {
-                return ResourceManager.GetString("CookModeView_Step", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Step-by-step.
-        /// </summary>
-        public static string CookModeView_StepByStep {
-            get {
-                return ResourceManager.GetString("CookModeView_StepByStep", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to stop.
-        /// </summary>
-        public static string CookModeView_Stop {
-            get {
-                return ResourceManager.GetString("CookModeView_Stop", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to stop timer.
-        /// </summary>
-        public static string CookModeView_StopTimer {
-            get {
-                return ResourceManager.GetString("CookModeView_StopTimer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cook mode.
-        /// </summary>
-        public static string CookModeView_Title {
-            get {
-                return ResourceManager.GetString("CookModeView_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Credits.
         /// </summary>
         public static string CreditsTitle {
@@ -588,6 +426,213 @@ namespace SharpCooking.Localization {
         public static string FavoriteRecipe {
             get {
                 return ResourceManager.GetString("FavoriteRecipe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string FocusModelView_MoreCancel {
+            get {
+                return ResourceManager.GetString("FocusModelView_MoreCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Options.
+        /// </summary>
+        public static string FocusModelView_MoreTitle {
+            get {
+                return ResourceManager.GetString("FocusModelView_MoreTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disable Microphone.
+        /// </summary>
+        public static string FocusModeView_DisableMicrophone {
+            get {
+                return ResourceManager.GetString("FocusModeView_DisableMicrophone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disable Narration.
+        /// </summary>
+        public static string FocusModeView_DisableNarration {
+            get {
+                return ResourceManager.GetString("FocusModeView_DisableNarration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable Microphone.
+        /// </summary>
+        public static string FocusModeView_EnableMicrophone {
+            get {
+                return ResourceManager.GetString("FocusModeView_EnableMicrophone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable Narration.
+        /// </summary>
+        public static string FocusModeView_EnableNarration {
+            get {
+                return ResourceManager.GetString("FocusModeView_EnableNarration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ingredient.
+        /// </summary>
+        public static string FocusModeView_Ingredient {
+            get {
+                return ResourceManager.GetString("FocusModeView_Ingredient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ingredients.
+        /// </summary>
+        public static string FocusModeView_Ingredients {
+            get {
+                return ResourceManager.GetString("FocusModeView_Ingredients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle Microphone on/off.
+        /// </summary>
+        public static string FocusModeView_MicrophoneToggle {
+            get {
+                return ResourceManager.GetString("FocusModeView_MicrophoneToggle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Narration will be turned on by default when using Focus Mode.
+        /// </summary>
+        public static string FocusModeView_NarrationDefaultDescription {
+            get {
+                return ResourceManager.GetString("FocusModeView_NarrationDefaultDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Narration will be turned off by default when using Focus Mode.
+        /// </summary>
+        public static string FocusModeView_NarrationDefaultDescriptionOff {
+            get {
+                return ResourceManager.GetString("FocusModeView_NarrationDefaultDescriptionOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Focus Mode Narration Default.
+        /// </summary>
+        public static string FocusModeView_NarrationDefaultTitle {
+            get {
+                return ResourceManager.GetString("FocusModeView_NarrationDefaultTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle Narration on/off.
+        /// </summary>
+        public static string FocusModeView_NarrationToggle {
+            get {
+                return ResourceManager.GetString("FocusModeView_NarrationToggle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to next.
+        /// </summary>
+        public static string FocusModeView_Next {
+            get {
+                return ResourceManager.GetString("FocusModeView_Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to previous.
+        /// </summary>
+        public static string FocusModeView_Previous {
+            get {
+                return ResourceManager.GetString("FocusModeView_Previous", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to start timer.
+        /// </summary>
+        public static string FocusModeView_StartTimer {
+            get {
+                return ResourceManager.GetString("FocusModeView_StartTimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step.
+        /// </summary>
+        public static string FocusModeView_Step {
+            get {
+                return ResourceManager.GetString("FocusModeView_Step", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step-by-step.
+        /// </summary>
+        public static string FocusModeView_StepByStep {
+            get {
+                return ResourceManager.GetString("FocusModeView_StepByStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step #{0} timer is done.
+        /// </summary>
+        public static string FocusModeView_StepTimerIsDone {
+            get {
+                return ResourceManager.GetString("FocusModeView_StepTimerIsDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to stop.
+        /// </summary>
+        public static string FocusModeView_Stop {
+            get {
+                return ResourceManager.GetString("FocusModeView_Stop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to stop timer.
+        /// </summary>
+        public static string FocusModeView_StopTimer {
+            get {
+                return ResourceManager.GetString("FocusModeView_StopTimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Focus Mode Timer.
+        /// </summary>
+        public static string FocusModeView_TimerNotificationTitle {
+            get {
+                return ResourceManager.GetString("FocusModeView_TimerNotificationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Focus mode.
+        /// </summary>
+        public static string FocusModeView_Title {
+            get {
+                return ResourceManager.GetString("FocusModeView_Title", resourceCulture);
             }
         }
         
@@ -975,6 +1020,24 @@ namespace SharpCooking.Localization {
         public static string PreviewFeaturesTitle {
             get {
                 return ResourceManager.GetString("PreviewFeaturesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Focus on your cooking with this mode by providing step-by-step of your recipe..
+        /// </summary>
+        public static string PreviewFeaturesView_FocusModeDescription {
+            get {
+                return ResourceManager.GetString("PreviewFeaturesView_FocusModeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Focus Mode.
+        /// </summary>
+        public static string PreviewFeaturesView_FocusModeTitle {
+            get {
+                return ResourceManager.GetString("PreviewFeaturesView_FocusModeTitle", resourceCulture);
             }
         }
         

@@ -36,6 +36,7 @@ namespace SharpCooking.Droid.Services
 
         public Action ListenUntilPause(Action<bool, string> callback, CultureInfo culture)
         {
+#pragma warning disable CA2000 // Dispose objects before losing scope
             var final = "";
             var listener = new SpeechRecognitionListener
             {
@@ -70,14 +71,17 @@ namespace SharpCooking.Droid.Services
                 speechRecognizer.Destroy();
                 speechRecognizer.Dispose();
             };
+#pragma warning restore CA2000 // Dispose objects before losing scope
         }
 
         public Action ContinuousDictation(Action<bool, string> callback, CultureInfo culture = null)
         {
             var stop = false;
             var currentIndex = 0;
+#pragma warning disable CA2000 // Dispose objects before losing scope
             var speechRecognizer = SpeechRecognizer.CreateSpeechRecognizer(Application.Context);
             var listener = new SpeechRecognitionListener();
+#pragma warning restore CA2000 // Dispose objects before losing scope
 
             //listener.ReadyForSpeech = () => this.ListenSubject.OnNext(true);
             listener.PartialResults = sentence =>

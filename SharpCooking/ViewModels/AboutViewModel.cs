@@ -35,7 +35,12 @@ namespace SharpCooking.ViewModels
                 IsBusy = true;
 
                 var url = string.Format(CultureInfo.CurrentCulture, AppConstants.ReleaseNotesConfigUrl, CultureInfo.CurrentUICulture.Name.Replace("-", ""));
+                var fallBackUrl = string.Format(CultureInfo.CurrentCulture, AppConstants.ReleaseNotesConfigUrl, "enUS");
                 var result = await _httpService.GetAsync<ReleaseNotesItem[]>(url);
+
+                if(result == null)
+                    result = await _httpService.GetAsync<ReleaseNotesItem[]>(fallBackUrl);
+
                 var thisVersion = result?.FirstOrDefault(item => item.Version == AppVersion);
 
                 NewInVersion = thisVersion?.New ?? Array.Empty<string>();

@@ -63,7 +63,7 @@
                             <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="50" />
-                            <!--<ColumnDefinition Width="50" />-->
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
                         <Frame Grid.Column="1" BackgroundColor="{DynamicResource NavigationPrimary}"
@@ -87,7 +87,7 @@
                                 </Image>
                             </StackLayout>
                         </Frame>
-                        <ImageButton BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="2" HeightRequest="50" 
+                        <ImageButton BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="2" HeightRequest="50" WidthRequest="50"
                                      Padding="16" Command="{Binding ToggleKeepScreenOnCommand}">
                             <ImageButton.CornerRadius>
                                 <OnPlatform x:TypeArguments="x:Int32">
@@ -103,7 +103,7 @@
                                     Glyph="{Binding ToggleScreenIcon}"/>
                             </ImageButton.Source>
                         </ImageButton>
-                        <Button BackgroundColor="{DynamicResource NavigationPrimary}" TextColor="White" Grid.Column="3" HeightRequest="50" 
+                        <Button BackgroundColor="{DynamicResource NavigationPrimary}" TextColor="White" Grid.Column="3" HeightRequest="50" WidthRequest="50"
                                 Command="{Binding ChangeMultiplierCommand}" Text="{Binding Multiplier, StringFormat='{0}x'}">
                             <Button.CornerRadius>
                                 <OnPlatform x:TypeArguments="x:Int32">
@@ -112,7 +112,7 @@
                                 </OnPlatform>
                             </Button.CornerRadius>
                         </Button>
-                        <ImageButton BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="4" HeightRequest="50" 
+                        <ImageButton BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="4" HeightRequest="50" WidthRequest="50"
                                      Padding="16" Command="{Binding ChangeStartTimeCommand}">
                             <ImageButton.CornerRadius>
                                 <OnPlatform x:TypeArguments="x:Int32">
@@ -128,7 +128,7 @@
                                     Glyph="{x:Static v:IconFont.Clock}"/>
                             </ImageButton.Source>
                         </ImageButton>
-                        <!--<ImageButton IsVisible="{Binding CookModePreviewActivated}" BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="5" HeightRequest="50" 
+                        <ImageButton IsVisible="{Binding FocusModePreviewActivated}" BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="5" HeightRequest="50" WidthRequest="50"
                                      Padding="16" Command="{Binding ActivateCookingModeCommand}">
                             <ImageButton.CornerRadius>
                                 <OnPlatform x:TypeArguments="x:Int32">
@@ -143,7 +143,7 @@
                                     FontFamily="{DynamicResource MaterialFont}"
                                     Glyph="{x:Static v:IconFont.ChefHat}"/>
                             </ImageButton.Source>
-                        </ImageButton>-->
+                        </ImageButton>
                         <!--<ImageButton BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="4" HeightRequest="50" Padding="16">
                             <ImageButton.CornerRadius>
                                 <OnPlatform x:TypeArguments="x:Int32">

@@ -49,7 +49,7 @@ namespace SharpCooking.ViewModels
         public bool HasMainImage { get { return !string.IsNullOrEmpty(Item?.MainImagePath); } }
         public bool KeepScreenOn { get; set; }
         public string ToggleScreenIcon { get { return KeepScreenOn ? IconFont.Cellphone : IconFont.CellphoneLock; } }
-        public bool CookModePreviewActivated { get; set; }
+        public bool FocusModePreviewActivated { get; set; }
 
         public ItemDetailViewModel(IDataStore dataStore, IEssentials essentials, IRecipePackager recipePackager, ISpeechRecognizer speechRecognizer)
         {
@@ -73,7 +73,7 @@ namespace SharpCooking.ViewModels
             {
                 IsBusy = true;
                 KeepScreenOn = _essentials.GetKeepScreenOn();
-                CookModePreviewActivated = _essentials.GetBoolSetting("PreviewFeature_CookMode");
+                FocusModePreviewActivated = _essentials.GetBoolSetting(AppConstants.PreviewFeatureFocusMode);
 
                 if (!int.TryParse(Id, out int parsedId))
                 {

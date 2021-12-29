@@ -156,59 +156,59 @@
   <data name="CancelEditRecipe" xml:space="preserve">
     <value>Annuler</value>
   </data>
-  <data name="CookModelView_MoreCancel" xml:space="preserve">
+  <data name="FocusModelView_MoreCancel" xml:space="preserve">
     <value>Annuler</value>
   </data>
-  <data name="CookModelView_MoreTitle" xml:space="preserve">
+  <data name="FocusModelView_MoreTitle" xml:space="preserve">
     <value>Options</value>
   </data>
-  <data name="CookModeView_DisableMicrophone" xml:space="preserve">
+  <data name="FocusModeView_DisableMicrophone" xml:space="preserve">
     <value>Désactiver le micro</value>
   </data>
-  <data name="CookModeView_DisableNarration" xml:space="preserve">
+  <data name="FocusModeView_DisableNarration" xml:space="preserve">
     <value>Désactiver la narration</value>
   </data>
-  <data name="CookModeView_EnableMicrophone" xml:space="preserve">
+  <data name="FocusModeView_EnableMicrophone" xml:space="preserve">
     <value>Activer le microphone</value>
   </data>
-  <data name="CookModeView_EnableNarration" xml:space="preserve">
+  <data name="FocusModeView_EnableNarration" xml:space="preserve">
     <value>Activer la narration</value>
   </data>
-  <data name="CookModeView_Ingredient" xml:space="preserve">
+  <data name="FocusModeView_Ingredient" xml:space="preserve">
     <value>Ingrédient</value>
   </data>
-  <data name="CookModeView_Ingredients" xml:space="preserve">
+  <data name="FocusModeView_Ingredients" xml:space="preserve">
     <value>Ingrédients</value>
   </data>
-  <data name="CookModeView_MicrophoneToggle" xml:space="preserve">
+  <data name="FocusModeView_MicrophoneToggle" xml:space="preserve">
     <value>Activer/désactiver le microphone</value>
   </data>
-  <data name="CookModeView_NarrationToggle" xml:space="preserve">
+  <data name="FocusModeView_NarrationToggle" xml:space="preserve">
     <value>Activer/désactiver la narration</value>
   </data>
-  <data name="CookModeView_Next" xml:space="preserve">
+  <data name="FocusModeView_Next" xml:space="preserve">
     <value>Suivant</value>
   </data>
-  <data name="CookModeView_Previous" xml:space="preserve">
+  <data name="FocusModeView_Previous" xml:space="preserve">
     <value>précédent</value>
   </data>
-  <data name="CookModeView_StartTimer" xml:space="preserve">
+  <data name="FocusModeView_StartTimer" xml:space="preserve">
     <value>démarrer la minuterie</value>
   </data>
-  <data name="CookModeView_Step" xml:space="preserve">
+  <data name="FocusModeView_Step" xml:space="preserve">
     <value>Étape</value>
   </data>
-  <data name="CookModeView_StepByStep" xml:space="preserve">
+  <data name="FocusModeView_StepByStep" xml:space="preserve">
     <value>Pas à pas</value>
   </data>
-  <data name="CookModeView_Stop" xml:space="preserve">
+  <data name="FocusModeView_Stop" xml:space="preserve">
     <value>arrêter</value>
   </data>
-  <data name="CookModeView_StopTimer" xml:space="preserve">
+  <data name="FocusModeView_StopTimer" xml:space="preserve">
     <value>arrêter la minuterie</value>
   </data>
-  <data name="CookModeView_Title" xml:space="preserve">
-    <value>Mode de cuisson</value>
+  <data name="FocusModeView_Title" xml:space="preserve">
+    <value>Mode de mise au point</value>
   </data>
   <data name="CreditsTitle" xml:space="preserve">
     <value>Crédits</value>
@@ -566,5 +566,26 @@
   </data>
   <data name="StepTimeIdentifierRegex" xml:space="preserve">
     <value>(?&lt;Minutes&gt;\d+\.{0,1}\d*)\s*(minutes|minute|min)\b|(?&lt;Hours&gt;\d+\.{0,1}\d*)\s*(heures|heure)\b|(?&lt;Days&gt;\d+\.{0,1}\d*)\s*(jours|jour)\b</value>
+  </data>
+  <data name="FocusModeView_NarrationDefaultDescription" xml:space="preserve">
+    <value>La narration sera activée par défaut lors de l'utilisation du mode de mise au point</value>
+  </data>
+  <data name="FocusModeView_NarrationDefaultDescriptionOff" xml:space="preserve">
+    <value>La narration sera désactivée par défaut lors de l'utilisation du mode de mise au point</value>
+  </data>
+  <data name="FocusModeView_NarrationDefaultTitle" xml:space="preserve">
+    <value>Mode de mise au point Narration par défaut</value>
+  </data>
+  <data name="FocusModeView_StepTimerIsDone" xml:space="preserve">
+    <value>La minuterie de l'étape #{0} est terminée</value>
+  </data>
+  <data name="FocusModeView_TimerNotificationTitle" xml:space="preserve">
+    <value>Minuterie du mode de mise au point</value>
+  </data>
+  <data name="PreviewFeaturesView_FocusModeDescription" xml:space="preserve">
+    <value>Concentrez-vous sur votre cuisine avec ce mode en fournissant étape par étape votre recette.</value>
+  </data>
+  <data name="PreviewFeaturesView_FocusModeTitle" xml:space="preserve">
+    <value>Mode de mise au point</value>
   </data>
 </root>

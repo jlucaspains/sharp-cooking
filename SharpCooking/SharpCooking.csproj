@@ -42,8 +42,11 @@
         <Compile Update="Views\AboutView.xaml.cs">
             <DependentUpon>AboutView.xaml</DependentUpon>
         </Compile>
-        <Compile Update="Views\CookModeView.xaml.cs">
-          <DependentUpon>CookModeView.xaml</DependentUpon>
+        <Compile Update="Views\FocusModeView.xaml.cs">
+          <DependentUpon>FocusModeView.xaml</DependentUpon>
+        </Compile>
+        <Compile Update="Views\FocusModeView.xaml.cs">
+          <DependentUpon>FocusModeView.xaml</DependentUpon>
         </Compile>
         <Compile Update="Views\PreviewFeaturesView.xaml.cs">
           <DependentUpon>PreviewFeaturesView.xaml</DependentUpon>
