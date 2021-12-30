@@ -212,7 +212,6 @@ namespace SharpCooking.ViewModels
                 if (!IsMicrophoneDisabled)
                     _speechRecognizerDisposer = _speechRecognizer.ContinuousDictation(async (success, term) => await ProcessDictation(success, term));
             }
-
             catch (Exception ex)
             {
                 await DisplayAlertAsync("Error", $"Failed to process next step. {ex}", "OK");

@@ -8,7 +8,6 @@ using G = Android.Graphics;
 
 namespace SharpCooking.Droid
 {
-
     public class MySearchBarRenderer : SearchBarRenderer
     {
         public MySearchBarRenderer(Android.Content.Context context) : base(context)
