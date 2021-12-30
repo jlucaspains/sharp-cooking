@@ -23,8 +23,8 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Label Grid.Column="0" Grid.Row="0" FontSize="Medium" Text="{x:Static l:Resources.PreviewFeaturesView_FocusModeTitle}" />
-            <Label Grid.Column="0" Grid.Row="1" FontSize="Small" Text="{x:Static l:Resources.PreviewFeaturesView_FocusModeDescription}" />
-            <Switch Grid.Column="1" Grid.RowSpan="2" Grid.Row="0" IsToggled="{Binding FocusModeIsActive, Mode=TwoWay}" />
+        <Label Grid.Column="0" Grid.Row="1" FontSize="Small" Text="{x:Static l:Resources.PreviewFeaturesView_FocusModeDescription}" />
+        <Switch Grid.Column="1" Grid.RowSpan="2" Grid.Row="0" IsToggled="{Binding FocusModeIsActive, Mode=TwoWay}" />
         </Grid>
     </ScrollView>
 </ContentPage>

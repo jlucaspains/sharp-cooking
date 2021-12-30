@@ -315,7 +315,5 @@ namespace SharpCooking.ViewModels
                 SetNarrationStatus(false);
             }
         }
-
-
     }
 }

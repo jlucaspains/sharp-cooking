@@ -12,7 +12,7 @@ namespace SharpCooking.ViewModels
         public bool HasTime { get; set; }
         public bool IsRunning { get; set; }
         public int NotificationId { get; set; }
-        public bool CanStartTimer { get { return HasTime && !IsRunning; } }
+        public bool CanStartTimer { get { return HasTime && !IsRunning && Time > TimeSpan.Zero; } }
         public bool CanStopTimer { get { return HasTime && IsRunning; } }
         public bool CanRestartTimer { get { return HasTime && (IsRunning || Time != OriginalTime); } }
     }

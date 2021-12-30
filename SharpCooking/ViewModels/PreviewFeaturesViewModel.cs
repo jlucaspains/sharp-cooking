@@ -14,7 +14,7 @@ namespace SharpCooking.ViewModels
             _essentials = essentials;
         }
 
-        public bool FocusModeIsActive { get; set; } = true;
+        public bool FocusModeIsActive { get; set; }
 
         public override Task InitializeAsync()
         {
@@ -29,6 +29,8 @@ namespace SharpCooking.ViewModels
         {
             if (propertyName == nameof(FocusModeIsActive))
                 _essentials.SetBoolSetting(AppConstants.PreviewFeatureFocusMode, FocusModeIsActive);
+
+            InvokePropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(propertyName));
         }
     }
 }

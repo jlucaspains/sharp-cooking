@@ -74,6 +74,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <BundleResource Include="Resources\pt-BR.lproj\InfoPlist.strings" />
+    <Compile Include="Services\NotificationService.cs" />
     <Compile Include="Services\SpeechRecognizerImpl.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />

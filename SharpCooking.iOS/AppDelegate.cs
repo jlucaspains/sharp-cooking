@@ -4,6 +4,7 @@ using SharpCooking.iOS.Services;
 using SharpCooking.Services;
 using TinyIoC;
 using UIKit;
+using UserNotifications;
 
 namespace SharpCooking.iOS
 {
@@ -26,6 +27,8 @@ namespace SharpCooking.iOS
             global::Xamarin.Forms.Forms.SetFlags("IndicatorView_Experimental");
             global::Xamarin.Forms.Forms.Init();
             XamEffects.iOS.Effects.Init();
+
+            UNUserNotificationCenter.Current.Delegate = new iOSNotificationReceiver();
 
             LoadApplication(new App());
             RegisterContainer();
@@ -52,6 +55,7 @@ namespace SharpCooking.iOS
             var container = TinyIoCContainer.Current;
 
             container.Register<ISpeechRecognizer, SpeechRecognizerImpl>();
+            container.Register<INotificationService, iOSNotificationService>();
         }
     }
 }
