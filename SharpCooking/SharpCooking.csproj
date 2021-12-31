@@ -39,6 +39,11 @@
             <AutoGen>True</AutoGen>
             <DependentUpon>Resources.resx</DependentUpon>
         </Compile>
+        <Compile Update="Printing\Template.cs">
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>Template.cshtml</DependentUpon>
+        </Compile>
         <Compile Update="Views\AboutView.xaml.cs">
             <DependentUpon>AboutView.xaml</DependentUpon>
         </Compile>
@@ -82,5 +87,11 @@
             <Generator>PublicResXFileCodeGenerator</Generator>
             <LastGenOutput>Resources.Designer.cs</LastGenOutput>
         </EmbeddedResource>
+    </ItemGroup>
+    <ItemGroup>
+      <None Update="Printing\Template.cshtml">
+        <Generator>RazorTemplatePreprocessor</Generator>
+        <LastGenOutput>Template.cs</LastGenOutput>
+      </None>
     </ItemGroup>
 </Project>

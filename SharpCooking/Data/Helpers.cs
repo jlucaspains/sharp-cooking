@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace SharpCooking.Data
@@ -110,6 +112,18 @@ namespace SharpCooking.Data
                 return new TimeSpan(days, hours, minutes, 0);
 
             return TimeSpan.Zero;
+        }
+
+        public static IEnumerable<string> BreakTextIntoList(string input)
+        {
+            var result = new List<string>();
+
+            if (string.IsNullOrEmpty(input))
+                return result;
+
+            return input.Split(new string[] { "\r\n", "\n\r", "\n" }, StringSplitOptions.RemoveEmptyEntries)?
+                .Where(Item => !string.IsNullOrEmpty(Item?.Trim()))?
+                .ToList();
         }
     }
 }

@@ -64,6 +64,7 @@
                             <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
                         <Frame Grid.Column="1" BackgroundColor="{DynamicResource NavigationPrimary}"
@@ -142,6 +143,22 @@
                                     Color="White"
                                     FontFamily="{DynamicResource MaterialFont}"
                                     Glyph="{x:Static v:IconFont.ChefHat}"/>
+                            </ImageButton.Source>
+                        </ImageButton>
+                        <ImageButton BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="6" HeightRequest="50" WidthRequest="50"
+                                     Padding="16" Command="{Binding PrintCommand}">
+                            <ImageButton.CornerRadius>
+                                <OnPlatform x:TypeArguments="x:Int32">
+                                    <On Platform="iOS" Value="25" />
+                                    <On Platform="Android" Value="100" />
+                                </OnPlatform>
+                            </ImageButton.CornerRadius>
+                            <ImageButton.Source>
+                                <FontImageSource
+                                    Size="10"
+                                    Color="White"
+                                    FontFamily="{DynamicResource MaterialFont}"
+                                    Glyph="{x:Static v:IconFont.Printer}"/>
                             </ImageButton.Source>
                         </ImageButton>
                         <!--<ImageButton BackgroundColor="{DynamicResource NavigationPrimary}" Grid.Column="4" HeightRequest="50" Padding="16">

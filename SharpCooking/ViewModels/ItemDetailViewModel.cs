@@ -1,18 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Globalization;
+using System.Linq;
+using System.Threading.Tasks;
 using SharpCooking.Data;
 using SharpCooking.Localization;
 using SharpCooking.Models;
 using SharpCooking.Services;
 using SharpCooking.Views;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Xamarin.DateTimePopups;
 using Xamarin.Forms;
 
@@ -25,6 +21,8 @@ namespace SharpCooking.ViewModels
         private readonly IEssentials _essentials;
         private readonly IRecipePackager _recipePackager;
         private readonly ISpeechRecognizer _speechRecognizer;
+        private readonly IPrintService _printService;
+        private readonly IFileHelper _fileHelper;
 
         public RecipeViewModel Item { get; set; }
         public Recipe Model { get; set; }
@@ -38,6 +36,7 @@ namespace SharpCooking.ViewModels
         public Command ChangeStartTimeCommand { get; }
         public Command ToggleKeepScreenOnCommand { get; }
         public Command ActivateCookingModeCommand { get; }
+        public Command PrintCommand { get; }
 
         public ObservableCollection<StepViewModel> Steps { get; } = new ObservableCollection<StepViewModel>();
         public decimal Multiplier { get; set; }
@@ -51,13 +50,15 @@ namespace SharpCooking.ViewModels
         public string ToggleScreenIcon { get { return KeepScreenOn ? IconFont.Cellphone : IconFont.CellphoneLock; } }
         public bool FocusModePreviewActivated { get; set; }
 
-        public ItemDetailViewModel(IDataStore dataStore, IEssentials essentials, IRecipePackager recipePackager, ISpeechRecognizer speechRecognizer)
+        public ItemDetailViewModel(IDataStore dataStore, IEssentials essentials, IRecipePackager recipePackager,
+            ISpeechRecognizer speechRecognizer, IPrintService printService, IFileHelper fileHelper)
         {
             _dataStore = dataStore;
             _essentials = essentials;
             _recipePackager = recipePackager;
             _speechRecognizer = speechRecognizer;
-
+            _printService = printService;
+            _fileHelper = fileHelper;
             EditCommand = new Command(async () => await GotoEdit());
             ChangeMultiplierCommand = new Command(async () => await ChangeMultiplier());
             MoreCommand = new Command(async () => await ShowMoreOptions());
@@ -65,6 +66,7 @@ namespace SharpCooking.ViewModels
             ChangeStartTimeCommand = new Command(async () => await ChangeStartTime());
             ToggleKeepScreenOnCommand = new Command(async () => await ToggleKeepScreenOn());
             ActivateCookingModeCommand = new Command(async () => await ActivateCookingMode());
+            PrintCommand = new Command(async () => await Print());
         }
 
         public override async Task InitializeAsync()
@@ -122,7 +124,8 @@ namespace SharpCooking.ViewModels
 
             start = start.AddMinutes(StandardStepTimeInterval);
 
-            var instructions = Item.Instructions?.Split(new string[] { "\r\n", "\n\r", "\n" }, StringSplitOptions.RemoveEmptyEntries)?.Where(Item => !string.IsNullOrEmpty(Item))?.Select((item, i) => (i, item))
+            var instructions = Helpers.BreakTextIntoList(Item.Instructions)
+                .Select((item, i) => (i, item))
                 ?? Array.Empty<(int i, string item)>();
 
             var previous = start;
@@ -272,10 +275,33 @@ namespace SharpCooking.ViewModels
         async Task ActivateCookingMode()
         {
             await GoToAsync("items/cook", new Dictionary<string, object> { { "id", Item.Id } });
+        }
 
-            //Action<bool, string> action = (bool success, string term) => Debug.WriteLine($"Success: {success}; Spoken: {term}");
-            //await _speechRecognizer.RequestAccess();
-            //var disposer = _speechRecognizer.ContinuousDictation(action);
+        async Task Print()
+        {
+            try
+            {
+                var template = new Printing.Template
+                {
+                    Model = RecipePrintViewModel.FromModel(Model, _fileHelper)
+                };
+
+                var html = template.GenerateString();
+
+                var webview = new WebView
+                {
+                    Source = new HtmlWebViewSource
+                    {
+                        Html = html
+                    }
+                };
+
+                _printService.Print(Item.Title, webview);
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlertAsync("Failed", $"Failed to generate print document: {ex}", "OK");
+            }
         }
     }
 }

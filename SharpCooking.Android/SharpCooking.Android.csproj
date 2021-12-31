@@ -109,6 +109,7 @@
     <Compile Include="SearchBarRenderer.cs" />
     <Compile Include="Services\AlarmHandler.cs" />
     <Compile Include="Services\AndroidNotificationService.cs" />
+    <Compile Include="Services\AndroidPrintService.cs" />
     <Compile Include="Services\SpeechRecognitionListener.cs" />
     <Compile Include="Services\SpeechRecognizer.cs" />
     <Compile Include="SplashActivity.cs" />

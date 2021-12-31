@@ -7,6 +7,7 @@ namespace SharpCooking.ViewModels
     {
         public TimeSpan Time { get; set; }
         public TimeSpan OriginalTime { get; set; }
+        public int SectionIndex { get; set; }
         public string Title { get; set; }
         public string SubTitle { get; set; }
         public bool HasTime { get; set; }

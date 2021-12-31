@@ -126,9 +126,10 @@ namespace SharpCooking.ViewModels
                 new FocusModeStepViewModel { SubTitle = model.Title },
                 new FocusModeStepViewModel { SubTitle = Resources.FocusModeView_Ingredients }
             };
-            var ingredientSteps = ingredients.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries)
+            var ingredientSteps = Helpers.BreakTextIntoList(ingredients)
                 .Select((item, index) => new FocusModeStepViewModel
                 {
+                    SectionIndex = index,
                     Title = $"{Resources.FocusModeView_Ingredient} {index + 1}",
                     SubTitle = item
                 }).ToArray();
@@ -138,9 +139,10 @@ namespace SharpCooking.ViewModels
                 new FocusModeStepViewModel { SubTitle = Resources.FocusModeView_StepByStep }
             };
 
-            var instructions = model.Instructions.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries)
+            var instructions = Helpers.BreakTextIntoList(model.Instructions)
                 .Select((item, index) => new FocusModeStepViewModel
                 {
+                    SectionIndex = index,
                     Title = $"{Resources.FocusModeView_Step} {index + 1}",
                     SubTitle = item,
                     Time = Helpers.GetImpliedTimeFromString(item, Resources.StepTimeIdentifierRegex)
@@ -225,7 +227,7 @@ namespace SharpCooking.ViewModels
             if (currentStep.HasTime && !currentStep.IsRunning)
             {
                 var notificationTitle = Resources.FocusModeView_TimerNotificationTitle;
-                var notificationMessage = string.Format(CultureInfo.CurrentCulture, Resources.FocusModeView_StepTimerIsDone, Position);
+                var notificationMessage = string.Format(CultureInfo.CurrentCulture, Resources.FocusModeView_StepTimerIsDone, currentStep.SectionIndex + 1);
                 currentStep.NotificationId = _notificationService.SendNotification(notificationTitle, notificationMessage, DateTime.Now.Add(currentStep.Time));
 
                 var oneSecond = TimeSpan.FromSeconds(1);

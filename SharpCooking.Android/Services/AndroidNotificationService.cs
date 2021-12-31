@@ -57,7 +57,7 @@ namespace SharpCooking.Droid.Services
 
                 result = _pendingIntentId++;
 
-                PendingIntent pendingIntent = PendingIntent.GetBroadcast(AndroidApp.Context, result, intent, PendingIntentFlags.CancelCurrent);
+                PendingIntent pendingIntent = PendingIntent.GetBroadcast(AndroidApp.Context, _pendingIntentId++, intent, PendingIntentFlags.CancelCurrent);
                 long triggerTime = GetNotifyTime(notifyTime.Value);
                 AlarmManager alarmManager = AndroidApp.Context.GetSystemService(Context.AlarmService) as AlarmManager;
                 alarmManager.Set(AlarmType.RtcWakeup, triggerTime, pendingIntent);

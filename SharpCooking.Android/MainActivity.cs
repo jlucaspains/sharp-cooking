@@ -78,6 +78,7 @@ namespace SharpCooking.Droid
 
             container.Register<ISpeechRecognizer, SpeechRecognizerImpl>();
             container.Register<INotificationService, AndroidNotificationService>();
+            container.Register<IPrintService, AndroidPrintService>();
         }
 
         private void SaveImportFile()

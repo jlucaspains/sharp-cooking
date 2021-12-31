@@ -5,9 +5,9 @@
         internal const string TimeBetweenStepsInterval = "TimeBetweenStepsInterval";
         internal const string MultiplierResultUseFractions = "MultiplierResultUseFractions";
         internal const int DefaultTimeBetweenStepsInterval = 5;
-        internal const string SupportUri = "http://sharpcooking.net/documentation";
+        internal const string SupportUri = "https://sharpcooking.net/documentation";
         internal const string Language = "DisplayLanguage";
-        internal const string PrivacyPolicyUrl = "http://sharpcooking.net/privacypolicy";
+        internal const string PrivacyPolicyUrl = "https://sharpcooking.net/privacypolicy";
         internal const string DropBoxAccessToken = "DropBoxAccessToken";
         internal static string[] BackupFileMimeTypes = new string[] { "application/zip", "com.pkware.zip-archive" };
         internal const string BackupRecipeFileName = "SharpBackup_Recipe.json";
