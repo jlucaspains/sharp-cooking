@@ -8,7 +8,7 @@
              xmlns:v="clr-namespace:SharpCooking.Views"
              xmlns:vm="clr-namespace:SharpCooking.ViewModels"
              xmlns:l="clr-namespace:SharpCooking.Localization"
-             xmlns:controls="clr-namespace:SharpCooking.Controls"
+             xmlns:controls="clr-namespace:SharpCooking.Controls" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              Title="{Binding Title}"
              v:ViewModelLocator.AutoWireViewModel="true"
              x:DataType="vm:ItemDetailViewModel">
@@ -34,11 +34,12 @@
     <ScrollView>
         <StackLayout>
             <Grid>
-                <Image IsVisible="{Binding HasMainImage}" Aspect="AspectFill" HeightRequest="250">
-                    <Image.Source>
+                <ffimageloading:CachedImage Aspect="AspectFill" HeightRequest="250"
+                                            IsVisible="{Binding HasMainImage}" DownsampleToViewSize="true">
+                    <ffimageloading:CachedImage.Source>
                         <FileImageSource File="{Binding Item.MainImagePath}" />
-                    </Image.Source>
-                </Image>
+                    </ffimageloading:CachedImage.Source>
+                </ffimageloading:CachedImage>
                 <Grid IsVisible="{Binding DoesNotHaveMainImage}"
                       HeightRequest="250"
                       BackgroundColor="{DynamicResource NavigationSecondary}">
