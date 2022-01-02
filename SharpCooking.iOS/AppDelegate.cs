@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using FFImageLoading.Forms.Platform;
 using Foundation;
 using SharpCooking.iOS.Services;
 using SharpCooking.Services;
@@ -28,7 +27,6 @@ namespace SharpCooking.iOS
             global::Xamarin.Forms.Forms.SetFlags("IndicatorView_Experimental");
             global::Xamarin.Forms.Forms.Init();
             XamEffects.iOS.Effects.Init();
-            CachedImageRenderer.Init();
 
             UNUserNotificationCenter.Current.Delegate = new iOSNotificationReceiver();
 

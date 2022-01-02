@@ -9,7 +9,7 @@
              xmlns:l="clr-namespace:SharpCooking.Localization"
              xmlns:m="clr-namespace:SharpCooking.Models"
              xmlns:vm="clr-namespace:SharpCooking.ViewModels"
-             xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
              Title="{Binding Title}"
              x:Name="ItemsViewRoot"
              v:ViewModelLocator.AutoWireViewModel="true"
@@ -45,12 +45,6 @@
             <SearchBar.Behaviors>
                 <b:EventToCommandBehavior EventName="TextChanged" Command="{Binding FilterListCommand}" />
             </SearchBar.Behaviors>
-            <!--<SearchBar.IsVisible>
-                <OnPlatform x:TypeArguments="x:Boolean">
-                    <On Platform="Android" Value="false" />
-                    <On Platform="iOS" Value="true" />
-                </OnPlatform>
-            </SearchBar.IsVisible>-->
         </SearchBar>
 
         <StackLayout Grid.Row="1" IsVisible="{Binding NoDataToShow}" VerticalOptions="Center" Margin="50">
@@ -80,12 +74,12 @@
                                     <RowDefinition Height="190" />
                                     <RowDefinition Height="30" />
                                 </Grid.RowDefinitions>
-                                <ffimageloading:CachedImage Aspect="AspectFill" Grid.Row="0" Grid.Column="0"
-                                               IsVisible="{Binding HasMainImage}" DownsampleToViewSize="true">
-                                    <ffimageloading:CachedImage.Source>
+                                <Image Aspect="AspectFill" Grid.Row="0" Grid.Column="0"
+                                               IsVisible="{Binding HasMainImage}">
+                                    <Image.Source>
                                         <FileImageSource File="{Binding MainImagePath}" />
-                                    </ffimageloading:CachedImage.Source>
-                                </ffimageloading:CachedImage>
+                                    </Image.Source>
+                                </Image>
                                 <Grid Grid.Row="0" Grid.Column="0"
                                                IsVisible="{Binding DoesNotHaveMainImage}"
                                                BackgroundColor="{DynamicResource NavigationSecondary}">

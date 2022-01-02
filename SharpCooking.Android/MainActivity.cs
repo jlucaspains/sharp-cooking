@@ -8,7 +8,6 @@ using Android.Content;
 using SharpCooking.Services;
 using TinyIoC;
 using SharpCooking.Droid.Services;
-using FFImageLoading.Forms.Platform;
 
 namespace SharpCooking.Droid
 {
@@ -37,7 +36,6 @@ namespace SharpCooking.Droid
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             UserDialogs.Init(this);
-            CachedImageRenderer.Init(true);
             Xamarin.DateTimePopups.Platform.Init(this, savedInstanceState);
             XamEffects.Droid.Effects.Init();
 
