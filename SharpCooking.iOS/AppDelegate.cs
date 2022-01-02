@@ -23,10 +23,9 @@ namespace SharpCooking.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
-            global::Xamarin.Forms.Forms.SetFlags("IndicatorView_Experimental");
             global::Xamarin.Forms.Forms.Init();
             XamEffects.iOS.Effects.Init();
+            Xamarin.Forms.Nuke.FormsHandler.Init(debug: false);
 
             UNUserNotificationCenter.Current.Delegate = new iOSNotificationReceiver();
 
