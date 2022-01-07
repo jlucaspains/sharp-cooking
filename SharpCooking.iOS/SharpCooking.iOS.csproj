@@ -152,9 +152,6 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2125" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
-    <PackageReference Include="Xamarin.Forms.Nuke">
-      <Version>10.3.1</Version>
-    </PackageReference>
     <PackageReference Include="Xamarin.Plugin.FilePicker">
       <Version>2.1.44-beta</Version>
     </PackageReference>

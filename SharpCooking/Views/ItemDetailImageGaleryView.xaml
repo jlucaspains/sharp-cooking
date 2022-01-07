@@ -5,6 +5,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:vm="clr-namespace:SharpCooking.ViewModels"
              xmlns:v="clr-namespace:SharpCooking.Views"
+             xmlns:zoom="clr-namespace:Xamarin.Forms.PinchZoomImage;assembly=Xamarin.Forms.PinchZoomImage"
              mc:Ignorable="d"
              x:Class="SharpCooking.Views.ItemDetailImageGaleryView"
              x:DataType="vm:ItemDetailImageGaleryViewModel"
@@ -12,10 +13,14 @@
              v:ViewModelLocator.AutoWireViewModel="true"
              Shell.PresentationMode="ModalAnimated">
     <Grid>
-        <Image>
-            <Image.Source>
-                <FileImageSource File="{Binding ImagePath}" />
-            </Image.Source>
-        </Image>
+        <zoom:PinchZoom>
+            <zoom:PinchZoom.Content>
+                <Image>
+                    <Image.Source>
+                        <FileImageSource File="{Binding ImagePath}" />
+                    </Image.Source>
+                </Image>
+            </zoom:PinchZoom.Content>
+        </zoom:PinchZoom>
     </Grid>
 </ContentPage>

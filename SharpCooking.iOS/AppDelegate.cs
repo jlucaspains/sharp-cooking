@@ -25,7 +25,6 @@ namespace SharpCooking.iOS
         {
             Xamarin.Forms.Forms.Init();
             XamEffects.iOS.Effects.Init();
-            Xamarin.Forms.Nuke.FormsHandler.Init(debug: false);
 
             UNUserNotificationCenter.Current.Delegate = new iOSNotificationReceiver();
 

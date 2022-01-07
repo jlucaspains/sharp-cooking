@@ -29,6 +29,7 @@
         <PackageReference Include="Xamarin.DateTimePopups" Version="1.0.0.3" />
         <PackageReference Include="Xamarin.Forms" Version="5.0.0.2125" />
         <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+        <PackageReference Include="Xamarin.Forms.PinchZoomImage" Version="1.2.0" />
         <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.44-beta" />
         <PackageReference Include="XamEffects" Version="1.6.3" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
