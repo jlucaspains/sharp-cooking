@@ -44,6 +44,9 @@
           <AutoGen>True</AutoGen>
           <DependentUpon>Template.cshtml</DependentUpon>
         </Compile>
+        <Compile Update="Views\ItemDetailImageGaleryView.xaml.cs">
+          <DependentUpon>ItemDetailImageGaleryView.xaml</DependentUpon>
+        </Compile>
         <Compile Update="Views\AboutView.xaml.cs">
             <DependentUpon>AboutView.xaml</DependentUpon>
         </Compile>

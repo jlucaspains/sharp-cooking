@@ -37,6 +37,7 @@ namespace SharpCooking.ViewModels
         public Command ToggleKeepScreenOnCommand { get; }
         public Command ActivateCookingModeCommand { get; }
         public Command PrintCommand { get; }
+        public Command ShowImageGaleryCommand { get; }
 
         public ObservableCollection<StepViewModel> Steps { get; } = new ObservableCollection<StepViewModel>();
         public decimal Multiplier { get; set; }
@@ -67,6 +68,7 @@ namespace SharpCooking.ViewModels
             ToggleKeepScreenOnCommand = new Command(async () => await ToggleKeepScreenOn());
             ActivateCookingModeCommand = new Command(async () => await ActivateCookingMode());
             PrintCommand = new Command(async () => await Print());
+            ShowImageGaleryCommand = new Command(async () => await GotoImageGalery());
         }
 
         public override async Task InitializeAsync()
@@ -156,6 +158,11 @@ namespace SharpCooking.ViewModels
         async Task GotoEdit()
         {
             await GoToAsync("items/edit", new Dictionary<string, object> { { "id", Item.Id } });
+        }
+
+        async Task GotoImageGalery()
+        {
+            await GoToAsync("imageGalery", new Dictionary<string, object> { { "id", Item.Id } });
         }
 
         async Task ChangeMultiplier()

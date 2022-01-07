@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:vm="clr-namespace:SharpCooking.ViewModels"
+             xmlns:v="clr-namespace:SharpCooking.Views"
+             mc:Ignorable="d"
+             x:Class="SharpCooking.Views.ItemDetailImageGaleryView"
+             x:DataType="vm:ItemDetailImageGaleryViewModel"
+             Title="{Binding Title}"
+             v:ViewModelLocator.AutoWireViewModel="true"
+             Shell.PresentationMode="ModalAnimated">
+    <Grid>
+        <Image>
+            <Image.Source>
+                <FileImageSource File="{Binding ImagePath}" />
+            </Image.Source>
+        </Image>
+    </Grid>
+</ContentPage>

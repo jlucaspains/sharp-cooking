@@ -23,7 +23,7 @@ namespace SharpCooking.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.Init();
+            Xamarin.Forms.Forms.Init();
             XamEffects.iOS.Effects.Init();
             Xamarin.Forms.Nuke.FormsHandler.Init(debug: false);
 

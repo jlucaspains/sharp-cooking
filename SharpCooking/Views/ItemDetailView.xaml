@@ -34,7 +34,10 @@
         <StackLayout>
             <Grid>
                 <Image Aspect="AspectFill" HeightRequest="250"
-                       IsVisible="{Binding HasMainImage}" >
+                       IsVisible="{Binding HasMainImage}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShowImageGaleryCommand}" />
+                    </Image.GestureRecognizers>
                     <Image.Source>
                         <FileImageSource File="{Binding Item.MainImagePath}" />
                     </Image.Source>

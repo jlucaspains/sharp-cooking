@@ -14,7 +14,6 @@ namespace SharpCooking.Droid
     [Activity(Label = "@string/app_name", Icon = "@mipmap/icon", Theme = "@style/MainTheme",
         MainLauncher = true,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
-        ScreenOrientation = ScreenOrientation.Portrait,
         LaunchMode =LaunchMode.SingleTop)]
     [IntentFilter(new[] { Intent.ActionSend },
         Categories = new[] { Intent.CategoryDefault },
