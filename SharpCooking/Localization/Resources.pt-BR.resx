@@ -483,4 +483,7 @@
   <data name="PreviewFeaturesView_FocusModeTitle" xml:space="preserve">
     <value>Modo de fóco</value>
   </data>
+  <data name="ItemDetailImageGaleryView_Title" xml:space="preserve">
+    <value>Imagens da Receita</value>
+  </data>
 </root>

@@ -709,6 +709,15 @@ namespace SharpCooking.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recipe Images.
+        /// </summary>
+        public static string ItemDetailImageGaleryView_Title {
+            get {
+                return ResourceManager.GetString("ItemDetailImageGaleryView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to d.
         /// </summary>
         public static string ItemDetailView_DayAbbreviation {

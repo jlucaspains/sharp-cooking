@@ -10,8 +10,7 @@
              x:Class="SharpCooking.Views.ItemDetailImageGaleryView"
              x:DataType="vm:ItemDetailImageGaleryViewModel"
              Title="{Binding Title}"
-             v:ViewModelLocator.AutoWireViewModel="true"
-             Shell.PresentationMode="ModalAnimated">
+             v:ViewModelLocator.AutoWireViewModel="true">
         <zoom:PinchZoom>
             <zoom:PinchZoom.Content>
                 <Image>

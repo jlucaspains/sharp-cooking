@@ -588,4 +588,7 @@
   <data name="PreviewFeaturesView_FocusModeTitle" xml:space="preserve">
     <value>Modo de enfoque</value>
   </data>
+  <data name="ItemDetailImageGaleryView_Title" xml:space="preserve">
+    <value>Imágenes de Recetas</value>
+  </data>
 </root>

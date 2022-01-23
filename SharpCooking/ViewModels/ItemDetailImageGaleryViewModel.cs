@@ -13,7 +13,7 @@ namespace SharpCooking.ViewModels
 
         public ItemDetailImageGaleryViewModel(IDataStore dataStore)
         {
-            Title = Resources.AboutView_Title;
+            Title = Resources.ItemDetailImageGaleryView_Title;
             _dataStore = dataStore;
         }
 

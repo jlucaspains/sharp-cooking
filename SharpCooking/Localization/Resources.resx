@@ -588,4 +588,7 @@
   <data name="PreviewFeaturesView_FocusModeDescription" xml:space="preserve">
     <value>Focus on your cooking with this mode by providing step-by-step of your recipe.</value>
   </data>
+  <data name="ItemDetailImageGaleryView_Title" xml:space="preserve">
+    <value>Recipe Images</value>
+  </data>
 </root>
