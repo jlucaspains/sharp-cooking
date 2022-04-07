@@ -39,7 +39,7 @@ namespace SharpCooking.iOS
             if (url == null) return false;
 
             var docsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
-            var filePath = System.IO.Path.Combine(docsPath, "import.zip");
+            var filePath = Path.Combine(docsPath, "import.zip");
 
             File.Copy(url.Path, filePath, true);
 

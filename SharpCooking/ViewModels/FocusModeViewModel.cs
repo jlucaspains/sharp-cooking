@@ -78,7 +78,7 @@ namespace SharpCooking.ViewModels
                 if (Position < 0)
                     Position = 0;
 
-                await _speechRecognizer.RequestAccess();
+                //await _speechRecognizer.RequestAccess();
             }
             catch (Exception ex)
             {
@@ -97,23 +97,16 @@ namespace SharpCooking.ViewModels
         {
             _essentials.KeepScreenOn(false);
 
-            if (_speechRecognizerDisposer != null)
-            {
-                _speechRecognizerDisposer();
-                _speechRecognizerDisposer = null;
-            }
+            TryStopSpeechRecognizer();
+            TryStopNarration();
 
             return Task.CompletedTask;
         }
 
         public void Dispose()
         {
-            if (_cancellationTokenSource != null)
-            {
-                _cancellationTokenSource.Cancel();
-                _cancellationTokenSource.Dispose();
-                _cancellationTokenSource = null;
-            }
+            TryStopSpeechRecognizer();
+            TryStopNarration();
         }
 
         private void PrepareRecipeToDisplay(Recipe model)
@@ -189,21 +182,12 @@ namespace SharpCooking.ViewModels
         {
             try
             {
-                if (_speechRecognizerDisposer != null)
-                {
-                    _speechRecognizerDisposer();
-                    _speechRecognizerDisposer = null;
-                }
+                TryStopSpeechRecognizer();
 
                 if (Position < 0 || string.IsNullOrEmpty(Steps.ElementAt(Position)?.SubTitle))
                     return;
 
-                if (_cancellationTokenSource != null)
-                {
-                    _cancellationTokenSource.Cancel();
-                    _cancellationTokenSource.Dispose();
-                    _cancellationTokenSource = null;
-                }
+                TryStopNarration();
 
                 if (!IsNarrationDisabled)
                 {
@@ -277,17 +261,17 @@ namespace SharpCooking.ViewModels
             IsNarrationDisabled = !enabled;
 
             _essentials.SetBoolSetting(AppConstants.FocusModeIsNarrationEnabled, enabled);
+
+            if (IsNarrationDisabled)
+                TryStopNarration();
         }
 
         private void SetMicrophoneStatus(bool enabled)
         {
             IsMicrophoneDisabled = !enabled;
 
-            if (IsMicrophoneDisabled && _speechRecognizerDisposer != null)
-            {
-                _speechRecognizerDisposer();
-                _speechRecognizerDisposer = null;
-            }
+            if (IsMicrophoneDisabled)
+                TryStopSpeechRecognizer();
         }
 
         private async Task MoreOptions()
@@ -314,6 +298,25 @@ namespace SharpCooking.ViewModels
             else if (result == Resources.FocusModeView_DisableNarration)
             {
                 SetNarrationStatus(false);
+            }
+        }
+
+        private void TryStopNarration()
+        {
+            if (_cancellationTokenSource != null)
+            {
+                _cancellationTokenSource.Cancel();
+                _cancellationTokenSource.Dispose();
+                _cancellationTokenSource = null;
+            }
+        }
+
+        private void TryStopSpeechRecognizer()
+        {
+            if (_speechRecognizerDisposer != null)
+            {
+                _speechRecognizerDisposer();
+                _speechRecognizerDisposer = null;
             }
         }
     }

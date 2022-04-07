@@ -26,7 +26,7 @@
     <StackLayout Padding="15">
         <CarouselView ItemsSource="{Binding Steps}" Position="{Binding Position}"
                       IndicatorView="indicatorView"  CurrentItemChangedCommand="{Binding CurrentItemChanged}"
-                      Loop="false" HorizontalScrollBarVisibility="Never" VerticalOptions="Center">
+                      Loop="false" HorizontalScrollBarVisibility="Never" VerticalOptions="Fill">
             <CarouselView.ItemTemplate>
                 <DataTemplate x:DataType="vm:FocusModeStepViewModel">
                     <Grid>
@@ -85,7 +85,7 @@
         <IndicatorView x:Name="indicatorView"
                    Position="{Binding Position, Mode=TwoWay}"
                    IndicatorColor="LightGray"
-                   SelectedIndicatorColor="DarkGray"
+                   SelectedIndicatorColor="{StaticResource NavigationPrimary}"
                    HorizontalOptions="Center" />
     </StackLayout>
 </ContentPage>

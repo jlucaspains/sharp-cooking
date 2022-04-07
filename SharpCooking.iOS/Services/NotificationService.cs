@@ -15,6 +15,11 @@ namespace SharpCooking.iOS.Services
 
         public event EventHandler NotificationReceived;
 
+        public iOSNotificationService()
+        {
+            Initialize();
+        }
+
         public void Initialize()
         {
             // request the permission to use local notifications
