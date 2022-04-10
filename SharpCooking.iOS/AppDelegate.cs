@@ -5,6 +5,7 @@ using SharpCooking.Services;
 using TinyIoC;
 using UIKit;
 using UserNotifications;
+using Xamarin.Forms;
 
 namespace SharpCooking.iOS
 {
@@ -43,9 +44,23 @@ namespace SharpCooking.iOS
 
             File.Copy(url.Path, filePath, true);
 
-            Xamarin.Forms.Shell.Current.GoToAsync("import");
+            Shell.Current.GoToAsync("import");
 
             return true;
+        }
+
+        public override void DidEnterBackground(UIApplication uiApplication)
+        {
+            MessagingCenter.Send(Shell.Current, "Backgrounded");
+
+            base.DidEnterBackground(uiApplication);
+        }
+
+        public override void WillEnterForeground(UIApplication uiApplication)
+        {
+            MessagingCenter.Send(Shell.Current, "Foregrounded");
+
+            base.WillEnterForeground(uiApplication);
         }
 
         private void RegisterContainer()

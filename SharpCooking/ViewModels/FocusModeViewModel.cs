@@ -79,6 +79,9 @@ namespace SharpCooking.ViewModels
                     Position = 0;
 
                 //await _speechRecognizer.RequestAccess();
+
+                MessagingCenter.Subscribe<Shell>(this, "Backgrounded", sender => AppWasSentToBackground());
+                MessagingCenter.Subscribe<Shell>(this, "Foregrounded", sender => AppWasSentToForeground());
             }
             catch (Exception ex)
             {
@@ -99,6 +102,9 @@ namespace SharpCooking.ViewModels
 
             TryStopSpeechRecognizer();
             TryStopNarration();
+
+            MessagingCenter.Unsubscribe<Shell>(this, "Backgrounded");
+            MessagingCenter.Unsubscribe<Shell>(this, "Foregrounded");
 
             return Task.CompletedTask;
         }
@@ -317,6 +323,28 @@ namespace SharpCooking.ViewModels
             {
                 _speechRecognizerDisposer();
                 _speechRecognizerDisposer = null;
+            }
+        }
+
+        private void AppWasSentToBackground()
+        {
+            var currentStep = Steps.ElementAt(Position);
+            var now = DateTime.UtcNow;
+
+            currentStep.ExpectedEndDateTime = now
+                .AddTicks(-(now.Ticks % TimeSpan.TicksPerSecond))
+                .Add(currentStep.Time);
+        }
+
+        private void AppWasSentToForeground()
+        {
+            var currentStep = Steps.ElementAt(Position);
+
+            if (currentStep.IsRunning)
+            {
+                var now = DateTime.UtcNow;
+                var remaining = currentStep.ExpectedEndDateTime - now.AddTicks(-(now.Ticks % TimeSpan.TicksPerSecond));
+                currentStep.Time = remaining > TimeSpan.Zero ? remaining : TimeSpan.Zero;
             }
         }
     }

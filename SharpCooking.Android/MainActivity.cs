@@ -8,6 +8,7 @@ using Android.Content;
 using SharpCooking.Services;
 using TinyIoC;
 using SharpCooking.Droid.Services;
+using Xamarin.Forms;
 
 namespace SharpCooking.Droid
 {
@@ -96,6 +97,20 @@ namespace SharpCooking.Droid
             System.IO.File.WriteAllBytes(filePath, memStream.ToArray());
 
             Xamarin.Forms.Shell.Current.GoToAsync("import");
+        }
+
+        protected override void OnResume()
+        {
+            MessagingCenter.Send(Shell.Current, "Foregrounded");
+
+            base.OnResume();
+        }
+
+        protected override void OnStop()
+        {
+            MessagingCenter.Send(Shell.Current, "Backgrounded");
+
+            base.OnStop();
         }
     }
 }

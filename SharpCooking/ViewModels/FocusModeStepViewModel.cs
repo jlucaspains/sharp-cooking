@@ -16,5 +16,7 @@ namespace SharpCooking.ViewModels
         public bool CanStartTimer { get { return HasTime && !IsRunning && Time > TimeSpan.Zero; } }
         public bool CanStopTimer { get { return HasTime && IsRunning; } }
         public bool CanRestartTimer { get { return HasTime && (IsRunning || Time != OriginalTime); } }
+
+        public DateTime ExpectedEndDateTime { get; set; }
     }
 }
