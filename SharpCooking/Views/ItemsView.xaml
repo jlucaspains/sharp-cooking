@@ -14,52 +14,6 @@
              x:Name="ItemsViewRoot"
              v:ViewModelLocator.AutoWireViewModel="true"
              x:DataType="vm:ItemsViewModel">
-    <!--<Shell.SearchHandler>
-        <v:RecipeSearchHandler Placeholder="{x:Static l:Resources.ItemsView_EnterSearchTerm}"
-                               ShowsResults="true"
-                               IsSearchEnabled="True">
-            <v:RecipeSearchHandler.SearchBoxVisibility>
-                <OnPlatform x:TypeArguments="SearchBoxVisibility">
-                    <On Platform="iOS" Value="Hidden"></On>
-                    <On Platform="Android" Value="Collapsible"></On>
-                </OnPlatform>
-            </v:RecipeSearchHandler.SearchBoxVisibility>
-            <v:RecipeSearchHandler.ItemTemplate>
-                <DataTemplate x:DataType="m:RecipeViewModel">
-                    <Grid Padding="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.15*" />
-                            <ColumnDefinition Width="0.85*" />
-                        </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" 
-                                IsVisible="{Binding DoesNotHaveMainImage}"
-                                Aspect="AspectFill"
-                                HeightRequest="40">
-                            <Image.Source>
-                                <FontImageSource FontFamily="{DynamicResource MaterialFont}"
-                                                Color="{DynamicResource NavigationSecondary}"
-                                                Size="10"
-                                                Glyph="{x:Static v:IconFont.ImageBrokenVariant}"/>
-                            </Image.Source>
-                        </Image>
-                        <Image Grid.Column="0"
-                               Aspect="AspectFill"
-                               IsVisible="{Binding HasMainImage}"
-                               HeightRequest="40">
-                            <Image.Source>
-                                <FileImageSource File="{Binding MainImagePath}" />
-                            </Image.Source>
-                        </Image>
-                        <Label Grid.Column="1"
-                               Text="{Binding Title}"
-                               TextColor="Black"
-                               FontAttributes="Bold" />
-                    </Grid>
-                </DataTemplate>
-            </v:RecipeSearchHandler.ItemTemplate>
-        </v:RecipeSearchHandler>
-    </Shell.SearchHandler>-->
-
     <ContentPage.ToolbarItems>
         <ToolbarItem Command="{Binding AddItemCommand}">
             <ToolbarItem.IconImageSource>
@@ -91,12 +45,6 @@
             <SearchBar.Behaviors>
                 <b:EventToCommandBehavior EventName="TextChanged" Command="{Binding FilterListCommand}" />
             </SearchBar.Behaviors>
-            <!--<SearchBar.IsVisible>
-                <OnPlatform x:TypeArguments="x:Boolean">
-                    <On Platform="Android" Value="false" />
-                    <On Platform="iOS" Value="true" />
-                </OnPlatform>
-            </SearchBar.IsVisible>-->
         </SearchBar>
 
         <StackLayout Grid.Row="1" IsVisible="{Binding NoDataToShow}" VerticalOptions="Center" Margin="50">

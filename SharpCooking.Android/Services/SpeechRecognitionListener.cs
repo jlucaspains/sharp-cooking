@@ -46,12 +46,18 @@ namespace SharpCooking.Droid.Services
 
         public void OnPartialResults(Bundle bundle)
         {
+            if (bundle == null)
+                return;
+
             Debug.WriteLine("OnPartialResults");
             SendResults(bundle, PartialResults);
         }
 
         public void OnResults(Bundle bundle)
         {
+            if (bundle == null)
+                return;
+
             Debug.WriteLine("Speech Results");
             SendResults(bundle, FinalResults);
         }

@@ -14,11 +14,11 @@ namespace SharpCooking.ViewModels
             _essentials = essentials;
         }
 
-        public bool CookModeIsActive { get; set; }
+        public bool FocusModeIsActive { get; set; }
 
         public override Task InitializeAsync()
         {
-            CookModeIsActive = _essentials.GetBoolSetting("PreviewFeature_CookMode");
+            FocusModeIsActive = _essentials.GetBoolSetting(AppConstants.PreviewFeatureFocusMode);
 
             return Task.CompletedTask;
         }
@@ -27,8 +27,10 @@ namespace SharpCooking.ViewModels
         public void OnPropertyChanged(string propertyName, object before, object after)
 #pragma warning restore CA1801 // Review unused parameters
         {
-            if(propertyName == nameof(CookModeIsActive))
-                _essentials.SetBoolSetting("PreviewFeature_CookMode", CookModeIsActive);
+            if (propertyName == nameof(FocusModeIsActive))
+                _essentials.SetBoolSetting(AppConstants.PreviewFeatureFocusMode, FocusModeIsActive);
+
+            InvokePropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(propertyName));
         }
     }
 }

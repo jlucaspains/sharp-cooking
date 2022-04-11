@@ -16,18 +16,18 @@
     <ScrollView>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="70" />
-                <RowDefinition Height="70" />
-                <RowDefinition Height="70" />
-                <RowDefinition Height="70" />
-                <RowDefinition Height="70" />
-                <RowDefinition Height="70" />
-                <RowDefinition Height="70" />
-                <RowDefinition Height="70" />
-                <RowDefinition Height="70" />
-                <RowDefinition Height="70" />
-                <RowDefinition Height="70" />
-                <RowDefinition Height="70" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <StackLayout Padding="15" xe:Commands.Tap="{Binding StepIntervalCommand}" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
                 <Image>
@@ -51,18 +51,7 @@
                     <Label FontSize="Small" TextColor="Gray" Text="{Binding MultiplierResultDisplay}"></Label>
                 </StackLayout>
             </StackLayout>
-            <StackLayout Padding="15" xe:Commands.Tap="{Binding ChangeCultureCommand}" Grid.Row="2" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
-                <Image>
-                    <Image.Source>
-                        <FontImageSource Color="{DynamicResource NavigationPrimary}" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.Translate}"/>
-                    </Image.Source>
-                </Image>
-                <StackLayout Margin="10,0,0,0">
-                    <Label FontSize="Medium" Text="{x:Static l:Resources.SettingsView_Language}"></Label>
-                    <Label FontSize="Small" TextColor="Gray" Text="{Binding CurrentLanguage}"></Label>
-                </StackLayout>
-            </StackLayout>
-            <StackLayout Padding="15" xe:Commands.Tap="{Binding ReviewCommand}" Grid.Row="3" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
+            <StackLayout Padding="15" xe:Commands.Tap="{Binding ReviewCommand}" Grid.Row="2" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
                 <Image>
                     <Image.Source>
                         <FontImageSource Color="{DynamicResource NavigationPrimary}" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.Star}"/>
@@ -73,7 +62,7 @@
                     <Label FontSize="Small" TextColor="Gray" Text="{x:Static l:Resources.SettingsView_ReviewDetail}"></Label>
                 </StackLayout>
             </StackLayout>
-            <StackLayout Padding="15" xe:Commands.Tap="{Binding BackupCommand}" Grid.Row="4" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
+            <StackLayout Padding="15" xe:Commands.Tap="{Binding BackupCommand}" Grid.Row="3" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
                 <Image>
                     <Image.Source>
                         <FontImageSource Color="{DynamicResource NavigationPrimary}" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.ContentSave}"/>
@@ -84,7 +73,7 @@
                     <Label FontSize="Small" TextColor="Gray" Text="{x:Static l:Resources.SettingsView_ExportBackup}"></Label>
                 </StackLayout>
             </StackLayout>
-            <StackLayout Padding="15" xe:Commands.Tap="{Binding RestoreBackupCommand}" Grid.Row="5" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
+            <StackLayout Padding="15" xe:Commands.Tap="{Binding RestoreBackupCommand}" Grid.Row="4" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
                 <Image>
                     <Image.Source>
                         <FontImageSource Color="{DynamicResource NavigationPrimary}" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.Restore}"/>
@@ -93,6 +82,23 @@
                 <StackLayout Margin="10,0,0,0">
                     <Label FontSize="Medium" Text="{x:Static l:Resources.SettingsView_RestoreBackup}"></Label>
                     <Label FontSize="Small" TextColor="Gray" Text="{x:Static l:Resources.SettingsView_RestoreBackupFromFile}"></Label>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Padding="15" IsVisible="{Binding FocusModePreviewActivated}" xe:Commands.Tap="{Binding ToggleFocusModeNarrationCommand}" Grid.Row="5" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
+                <Image IsVisible="{Binding IsFocusModeNarrationEnabled}">
+                    <Image.Source>
+                        <FontImageSource Color="{DynamicResource NavigationPrimary}" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.Bullhorn}"/>
+                    </Image.Source>
+                </Image>
+                <Image IsVisible="{Binding IsFocusModeNarrationDisabled}">
+                    <Image.Source>
+                        <FontImageSource Color="{DynamicResource NavigationPrimary}" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.BullhornOutline}"/>
+                    </Image.Source>
+                </Image>
+                <StackLayout Margin="10,0,0,0">
+                    <Label FontSize="Medium" Text="{x:Static l:Resources.FocusModeView_NarrationDefaultTitle}"></Label>
+                    <Label FontSize="Small" IsVisible="{Binding IsFocusModeNarrationEnabled}" TextColor="Gray" Text="{x:Static l:Resources.FocusModeView_NarrationDefaultDescription}"></Label>
+                    <Label FontSize="Small" IsVisible="{Binding IsFocusModeNarrationDisabled}" TextColor="Gray" Text="{x:Static l:Resources.FocusModeView_NarrationDefaultDescriptionOff}"></Label>
                 </StackLayout>
             </StackLayout>
             <StackLayout Padding="15" xe:Commands.Tap="{Binding GetHelpCommand}" Grid.Row="6" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
@@ -128,7 +134,7 @@
                     <Label FontSize="Small" TextColor="Gray" Text="{x:Static l:Resources.SettingsView_CreditsDetail}"></Label>
                 </StackLayout>
             </StackLayout>
-            <!--<StackLayout Padding="15" xe:Commands.Tap="{Binding PreviewFeaturesCommand}" Grid.Row="9" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
+            <StackLayout Padding="15" xe:Commands.Tap="{Binding PreviewFeaturesCommand}" Grid.Row="9" Orientation="Horizontal" xe:TouchEffect.Color="{DynamicResource NavigationPrimary}">
                 <Image>
                     <Image.Source>
                         <FontImageSource Color="{DynamicResource NavigationPrimary}" FontFamily="{DynamicResource MaterialFont}" Glyph="{x:Static v:IconFont.TagPlus}"/>
@@ -138,7 +144,7 @@
                     <Label FontSize="Medium" Text="{x:Static l:Resources.SettingsView_PreviewFeatures}"></Label>
                     <Label FontSize="Small" TextColor="Gray" Text="{x:Static l:Resources.SettingsView_PreviewFeaturesDetail}"></Label>
                 </StackLayout>
-            </StackLayout>-->
+            </StackLayout>
         </Grid>
     </ScrollView>
 </ContentPage>

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace SharpCooking.Data
@@ -36,10 +38,12 @@ namespace SharpCooking.Data
                 var compositeFractionGroup = match.Groups["CompositeFraction"];
                 var fractionGroup = match.Groups["Fraction"];
                 var regularGroup = match.Groups["Regular"];
+                var originalFraction = string.Empty;
                 decimal parsedMatch = 0;
 
                 if (compositeFractionGroup.Success)
                 {
+                    originalFraction = compositeFractionGroup.Value;
                     var parts = compositeFractionGroup.Value.Split(' ');
                     var first = parts[0];
                     var second = parts[1];
@@ -57,6 +61,8 @@ namespace SharpCooking.Data
                 }
                 else if (fractionGroup.Success)
                 {
+                    originalFraction = fractionGroup.Value;
+
                     var parts = fractionGroup.Value.Split('/');
                     var numeratorResult = decimal.TryParse(parts[0], out var fracNumerator);
                     var fracResult = decimal.TryParse(parts[1], out var fracDecimal);
@@ -74,10 +80,14 @@ namespace SharpCooking.Data
                         return "0";
                 }
 
-                var newIngredientValue = parsedMatch * multiplier;
+                var newIngredientValue = Math.Round(parsedMatch * multiplier, 2);
 
                 if (!useFractionsOverDecimal)
                     return newIngredientValue.ToString("G29", CultureInfo.CurrentCulture);
+
+                // HACK: we don't want to convert a fraction to number and back if it is not necessary
+                if(multiplier == 1 && !string.IsNullOrEmpty(originalFraction))
+                    return originalFraction;
 
                 var whole = decimal.Floor(newIngredientValue);
 
@@ -110,6 +120,18 @@ namespace SharpCooking.Data
                 return new TimeSpan(days, hours, minutes, 0);
 
             return TimeSpan.Zero;
+        }
+
+        public static IEnumerable<string> BreakTextIntoList(string input)
+        {
+            var result = new List<string>();
+
+            if (string.IsNullOrEmpty(input))
+                return result;
+
+            return input.Split(new string[] { "\r\n", "\n\r", "\n" }, StringSplitOptions.RemoveEmptyEntries)?
+                .Where(Item => !string.IsNullOrEmpty(Item?.Trim()))?
+                .ToList();
         }
     }
 }

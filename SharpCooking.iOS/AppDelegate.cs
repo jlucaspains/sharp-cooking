@@ -4,6 +4,8 @@ using SharpCooking.iOS.Services;
 using SharpCooking.Services;
 using TinyIoC;
 using UIKit;
+using UserNotifications;
+using Xamarin.Forms;
 
 namespace SharpCooking.iOS
 {
@@ -22,10 +24,10 @@ namespace SharpCooking.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
-            global::Xamarin.Forms.Forms.SetFlags("IndicatorView_Experimental");
-            global::Xamarin.Forms.Forms.Init();
+            Xamarin.Forms.Forms.Init();
             XamEffects.iOS.Effects.Init();
+
+            UNUserNotificationCenter.Current.Delegate = new iOSNotificationReceiver();
 
             LoadApplication(new App());
             RegisterContainer();
@@ -38,13 +40,27 @@ namespace SharpCooking.iOS
             if (url == null) return false;
 
             var docsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
-            var filePath = System.IO.Path.Combine(docsPath, "import.zip");
+            var filePath = Path.Combine(docsPath, "import.zip");
 
             File.Copy(url.Path, filePath, true);
 
-            Xamarin.Forms.Shell.Current.GoToAsync("import");
+            Shell.Current.GoToAsync("import");
 
             return true;
+        }
+
+        public override void DidEnterBackground(UIApplication uiApplication)
+        {
+            MessagingCenter.Send(Shell.Current, "Backgrounded");
+
+            base.DidEnterBackground(uiApplication);
+        }
+
+        public override void WillEnterForeground(UIApplication uiApplication)
+        {
+            MessagingCenter.Send(Shell.Current, "Foregrounded");
+
+            base.WillEnterForeground(uiApplication);
         }
 
         private void RegisterContainer()
@@ -52,6 +68,8 @@ namespace SharpCooking.iOS
             var container = TinyIoCContainer.Current;
 
             container.Register<ISpeechRecognizer, SpeechRecognizerImpl>();
+            container.Register<INotificationService, iOSNotificationService>();
+            container.Register<IPrintService, iOSPrintService>();
         }
     }
 }

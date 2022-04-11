@@ -1,0 +1,64 @@
+﻿@using SharpCooking.Models;
+@using SharpCooking.Localization;
+
+@model RecipePrintViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .source {
+        margin-bottom: 30px;
+    }
+
+        .source > div {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+    footer {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        font-size: 0.8em;
+    }
+</style>
+<body>
+    <h1>@Model.Title</h1>
+    <div class="source">
+        @if (!string.IsNullOrEmpty(Model.Source))
+        {
+            <div><span>@string.Format("{0}: {1}", Resources.EditItemView_Source, Model.Source)</span></div>
+        }
+        @if (Model.Rating > 0)
+        {
+            <div><span>@string.Format("{0}: {1}", Resources.EditItemView_Rating, new string('⭐', Model.Rating))</span></div>
+        }
+    </div>
+    <div><img src="data:image/png;base64,@Model.Base64MainImage" width="50%" height="auto" /></div>
+    <div>
+        <h2>@Resources.EditItemView_Ingredients</h2>
+        <ul>
+            @foreach (var item in Model.Ingredients)
+            {
+                <li>@item</li>
+            }
+        </ul>
+    </div>
+    <div>
+        <h2>@Resources.EditItemView_Instructions</h2>
+        <ol>
+            @foreach (var item in Model.Instructions)
+            {
+                <li>@item</li>
+            }
+        </ol>
+    </div>
+    <div>
+        <h2>@Resources.EditItemView_Notes</h2>
+        <span>@Model.Notes</span>
+    </div>
+    <footer>
+        <span>https://sharpcooking.net</span>
+    </footer>
+</body>
+</html>

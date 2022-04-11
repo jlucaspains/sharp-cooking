@@ -399,59 +399,56 @@
   <data name="SettingsView_ReviewDetail" xml:space="preserve">
     <value>Escreva uma resenha e ajude os desenvolvedores</value>
   </data>
-  <data name="CookModeView_MicrophoneToggle" xml:space="preserve">
+  <data name="FocusModeView_MicrophoneToggle" xml:space="preserve">
     <value>Ligar/Desligar o Microfone</value>
   </data>
-  <data name="CookModeView_NarrationToggle" xml:space="preserve">
+  <data name="FocusModeView_NarrationToggle" xml:space="preserve">
     <value>Ligar/Desligar Narração</value>
   </data>
-  <data name="CookModelView_MoreCancel" xml:space="preserve">
+  <data name="FocusModelView_MoreCancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
-  <data name="CookModelView_MoreTitle" xml:space="preserve">
+  <data name="FocusModelView_MoreTitle" xml:space="preserve">
     <value>Opções</value>
   </data>
-  <data name="CookModeView_DisableMicrophone" xml:space="preserve">
+  <data name="FocusModeView_DisableMicrophone" xml:space="preserve">
     <value>Desativar Microfone</value>
   </data>
-  <data name="CookModeView_DisableNarration" xml:space="preserve">
+  <data name="FocusModeView_DisableNarration" xml:space="preserve">
     <value>Desativar Narração</value>
   </data>
-  <data name="CookModeView_EnableMicrophone" xml:space="preserve">
+  <data name="FocusModeView_EnableMicrophone" xml:space="preserve">
     <value>Ativar Microfone</value>
   </data>
-  <data name="CookModeView_EnableNarration" xml:space="preserve">
+  <data name="FocusModeView_EnableNarration" xml:space="preserve">
     <value>Ativar Narração</value>
   </data>
-  <data name="CookModeView_Ingredient" xml:space="preserve">
+  <data name="FocusModeView_Ingredient" xml:space="preserve">
     <value>Ingrediente</value>
   </data>
-  <data name="CookModeView_Ingredients" xml:space="preserve">
+  <data name="FocusModeView_Ingredients" xml:space="preserve">
     <value>Ingredientes</value>
   </data>
-  <data name="CookModeView_Next" xml:space="preserve">
+  <data name="FocusModeView_Next" xml:space="preserve">
     <value>próximo</value>
   </data>
-  <data name="CookModeView_Previous" xml:space="preserve">
+  <data name="FocusModeView_Previous" xml:space="preserve">
     <value>anterior</value>
   </data>
-  <data name="CookModeView_StartTimer" xml:space="preserve">
+  <data name="FocusModeView_StartTimer" xml:space="preserve">
     <value>iniciar cronômetro</value>
   </data>
-  <data name="CookModeView_Step" xml:space="preserve">
+  <data name="FocusModeView_Step" xml:space="preserve">
     <value>Passo</value>
   </data>
-  <data name="CookModeView_StepByStep" xml:space="preserve">
+  <data name="FocusModeView_StepByStep" xml:space="preserve">
     <value>Passo-a-passo</value>
   </data>
-  <data name="CookModeView_Stop" xml:space="preserve">
+  <data name="FocusModeView_Stop" xml:space="preserve">
     <value>Parar</value>
   </data>
-  <data name="CookModeView_StopTimer" xml:space="preserve">
+  <data name="FocusModeView_StopTimer" xml:space="preserve">
     <value>parar o cronômetro</value>
-  </data>
-  <data name="CookModeView_Title" xml:space="preserve">
-    <value>Modo de preparo</value>
   </data>
   <data name="PreviewFeaturesTitle" xml:space="preserve">
     <value>Acesso Antecipado</value>
@@ -461,5 +458,32 @@
   </data>
   <data name="SettingsView_PreviewFeaturesDetail" xml:space="preserve">
     <value>Ativar/Desativar Acesso Antecipado</value>
+  </data>
+  <data name="FocusModeView_NarrationDefaultDescription" xml:space="preserve">
+    <value>A narração será ativada por padrão ao usar o modo de foco</value>
+  </data>
+  <data name="FocusModeView_NarrationDefaultDescriptionOff" xml:space="preserve">
+    <value>A narração será desativada por padrão ao usar o modo de foco</value>
+  </data>
+  <data name="FocusModeView_NarrationDefaultTitle" xml:space="preserve">
+    <value>Modo de foco padrão de narração</value>
+  </data>
+  <data name="FocusModeView_StepTimerIsDone" xml:space="preserve">
+    <value>O cronômetro da etapa #{0} foi concluído</value>
+  </data>
+  <data name="FocusModeView_TimerNotificationTitle" xml:space="preserve">
+    <value>Cronômetro do modo de Foco</value>
+  </data>
+  <data name="FocusModeView_Title" xml:space="preserve">
+    <value>Modo de fóco</value>
+  </data>
+  <data name="PreviewFeaturesView_FocusModeDescription" xml:space="preserve">
+    <value>Concentre-se em sua cozinha com este modo, fornecendo o passo a passo de sua receita.</value>
+  </data>
+  <data name="PreviewFeaturesView_FocusModeTitle" xml:space="preserve">
+    <value>Modo de fóco</value>
+  </data>
+  <data name="ItemDetailImageGaleryView_Title" xml:space="preserve">
+    <value>Imagens da Receita</value>
   </data>
 </root>

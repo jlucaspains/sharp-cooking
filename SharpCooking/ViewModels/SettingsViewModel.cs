@@ -35,6 +35,7 @@ namespace SharpCooking.ViewModels
             ViewCreditsCommand = new Command(async () => await ViewCredits());
             ReviewCommand = new Command(Review);
             PreviewFeaturesCommand = new Command(async () => await PreviewFeatures());
+            ToggleFocusModeNarrationCommand = new Command(ToggleFocusModeNarration);
 
             _essentials = essentials;
             _store = store;
@@ -53,6 +54,7 @@ namespace SharpCooking.ViewModels
         public Command ViewCreditsCommand { get; }
         public Command ReviewCommand { get; }
         public Command PreviewFeaturesCommand { get; }
+        public Command ToggleFocusModeNarrationCommand { get; }
 
         public int TimeBetweenStepsInterval { get; set; }
         public string DisplayTimeBetweenStepsInterval { get { return $"{TimeBetweenStepsInterval} {Resources.SettingsView_TimeStepsDescriptoin}"; } }
@@ -62,9 +64,16 @@ namespace SharpCooking.ViewModels
 
         public string CurrentLanguage { get; set; }
 
+        public bool FocusModePreviewActivated { get; set; }
+
+        public bool IsFocusModeNarrationEnabled { get; set; }
+        public bool IsFocusModeNarrationDisabled { get { return !IsFocusModeNarrationEnabled; } }
+
         public override Task InitializeAsync()
         {
             TimeBetweenStepsInterval = _essentials.GetIntSetting(AppConstants.TimeBetweenStepsInterval);
+            FocusModePreviewActivated = _essentials.GetBoolSetting(AppConstants.PreviewFeatureFocusMode);
+            IsFocusModeNarrationEnabled = _essentials.GetBoolSetting(AppConstants.FocusModeIsNarrationEnabled);
 
             if (TimeBetweenStepsInterval == 0)
                 TimeBetweenStepsInterval = AppConstants.DefaultTimeBetweenStepsInterval;
@@ -172,6 +181,13 @@ namespace SharpCooking.ViewModels
         async Task PreviewFeatures()
         {
             await GoToAsync("previewFeatures");
+        }
+
+        void ToggleFocusModeNarration()
+        {
+            IsFocusModeNarrationEnabled = !IsFocusModeNarrationEnabled;
+
+            _essentials.SetBoolSetting(AppConstants.FocusModeIsNarrationEnabled, IsFocusModeNarrationEnabled);
         }
     }
 }

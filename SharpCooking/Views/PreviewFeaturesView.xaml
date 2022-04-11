@@ -5,6 +5,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:vm="clr-namespace:SharpCooking.ViewModels"
              xmlns:v="clr-namespace:SharpCooking.Views"
+             xmlns:l="clr-namespace:SharpCooking.Localization"
              mc:Ignorable="d"
              x:Class="SharpCooking.Views.PreviewFeaturesView"
              Title="{Binding Title}"
@@ -21,9 +22,9 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Label Grid.Column="0" Grid.Row="0" FontSize="Medium" Text="Cook Mode" />
-            <Label Grid.Column="0" Grid.Row="1" FontSize="Small" Text="Focus on your cooking with this mode by providing step-by-step of your recipe." />
-            <Switch Grid.Column="1" Grid.RowSpan="2" Grid.Row="0" IsToggled="{Binding CookModeIsActive}" />
+            <Label Grid.Column="0" Grid.Row="0" FontSize="Medium" Text="{x:Static l:Resources.PreviewFeaturesView_FocusModeTitle}" />
+        <Label Grid.Column="0" Grid.Row="1" FontSize="Small" Text="{x:Static l:Resources.PreviewFeaturesView_FocusModeDescription}" />
+        <Switch Grid.Column="1" Grid.RowSpan="2" Grid.Row="0" IsToggled="{Binding FocusModeIsActive, Mode=TwoWay}" />
         </Grid>
     </ScrollView>
 </ContentPage>

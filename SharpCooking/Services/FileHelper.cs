@@ -31,6 +31,14 @@ namespace SharpCooking.Services
             return File.OpenRead(filepath);
         }
 
+        public byte[] ReadBytes(string filename)
+        {
+            if (string.IsNullOrEmpty(filename)) throw new ArgumentNullException(nameof(filename));
+
+            string filepath = GetFilePath(filename);
+            return File.ReadAllBytes(filepath);
+        }
+
         public async Task WriteStreamAsync(string filename, Stream stream)
         {
             if (stream == null) throw new ArgumentNullException(nameof(stream));

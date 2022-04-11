@@ -45,7 +45,8 @@ namespace SharpCooking.Services
 
         public async Task<bool> LaunchUri(string uri)
         {
-            return await Launcher.TryOpenAsync(new Uri(uri));
+            await Launcher.OpenAsync(new Uri(uri));
+            return true;
         }
 
         public int GetIntSetting(string key)

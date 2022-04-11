@@ -8,13 +8,14 @@ using Android.Content;
 using SharpCooking.Services;
 using TinyIoC;
 using SharpCooking.Droid.Services;
+using Xamarin.Forms;
 
 namespace SharpCooking.Droid
 {
     [Activity(Label = "@string/app_name", Icon = "@mipmap/icon", Theme = "@style/MainTheme",
         MainLauncher = true,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
-        ScreenOrientation = ScreenOrientation.Portrait)]
+        LaunchMode =LaunchMode.SingleTop)]
     [IntentFilter(new[] { Intent.ActionSend },
         Categories = new[] { Intent.CategoryDefault },
         DataHost = "*",
@@ -29,18 +30,45 @@ namespace SharpCooking.Droid
 
             base.OnCreate(savedInstanceState);
 
-            Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
-            Xamarin.Forms.Forms.SetFlags("IndicatorView_Experimental");
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             UserDialogs.Init(this);
             Xamarin.DateTimePopups.Platform.Init(this, savedInstanceState);
             XamEffects.Droid.Effects.Init();
+            Android.Glide.Forms.Init(this);
 
             LoadApplication(new App());
             RegisterContainer();
             SaveImportFile();
+            CreateNotificationFromIntent(Intent);
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        {
+            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        protected override void OnNewIntent(Intent intent)
+        {
+            CreateNotificationFromIntent(intent);
+        }
+
+        private void CreateNotificationFromIntent(Intent intent)
+        {
+            if (intent?.Extras != null)
+            {
+                string title = intent.GetStringExtra(AndroidNotificationService.TitleKey);
+                string message = intent.GetStringExtra(AndroidNotificationService.MessageKey);
+
+                if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(message))
+                    return;
+
+                TinyIoCContainer.Current.Resolve<INotificationService>().ReceiveNotification(title, message);
+            }
         }
 
         private void RegisterContainer()
@@ -48,6 +76,8 @@ namespace SharpCooking.Droid
             var container = TinyIoCContainer.Current;
 
             container.Register<ISpeechRecognizer, SpeechRecognizerImpl>();
+            container.Register<INotificationService, AndroidNotificationService>();
+            container.Register<IPrintService, AndroidPrintService>();
         }
 
         private void SaveImportFile()
@@ -69,12 +99,18 @@ namespace SharpCooking.Droid
             Xamarin.Forms.Shell.Current.GoToAsync("import");
         }
 
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        protected override void OnResume()
         {
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            MessagingCenter.Send(Shell.Current, "Foregrounded");
 
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            base.OnResume();
+        }
+
+        protected override void OnStop()
+        {
+            MessagingCenter.Send(Shell.Current, "Backgrounded");
+
+            base.OnStop();
         }
     }
 }

@@ -61,10 +61,7 @@ namespace SharpCooking.ViewModels
 
         protected async Task GoBackAsync()
         {
-            if (Shell.Navigation.ModalStack.Count > 0)
-                await Shell.GoToAsync("..", true);
-            else
-                await Shell.Navigation.PopAsync(true);
+            await Shell.GoToAsync("..", true);
         }
 
         protected async Task<string> DisplayActionSheetAsync(string title, string cancel, string destruction = null, params string[] buttons)

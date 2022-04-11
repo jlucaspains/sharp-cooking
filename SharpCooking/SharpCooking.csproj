@@ -29,6 +29,7 @@
         <PackageReference Include="Xamarin.DateTimePopups" Version="1.0.0.3" />
         <PackageReference Include="Xamarin.Forms" Version="5.0.0.2125" />
         <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+        <PackageReference Include="Xamarin.Forms.PinchZoomImage" Version="1.2.0" />
         <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.44-beta" />
         <PackageReference Include="XamEffects" Version="1.6.3" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
@@ -39,11 +40,22 @@
             <AutoGen>True</AutoGen>
             <DependentUpon>Resources.resx</DependentUpon>
         </Compile>
+        <Compile Update="Printing\Template.cs">
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>Template.cshtml</DependentUpon>
+        </Compile>
+        <Compile Update="Views\ItemDetailImageGaleryView.xaml.cs">
+          <DependentUpon>ItemDetailImageGaleryView.xaml</DependentUpon>
+        </Compile>
         <Compile Update="Views\AboutView.xaml.cs">
             <DependentUpon>AboutView.xaml</DependentUpon>
         </Compile>
-        <Compile Update="Views\CookModeView.xaml.cs">
-          <DependentUpon>CookModeView.xaml</DependentUpon>
+        <Compile Update="Views\FocusModeView.xaml.cs">
+          <DependentUpon>FocusModeView.xaml</DependentUpon>
+        </Compile>
+        <Compile Update="Views\FocusModeView.xaml.cs">
+          <DependentUpon>FocusModeView.xaml</DependentUpon>
         </Compile>
         <Compile Update="Views\PreviewFeaturesView.xaml.cs">
           <DependentUpon>PreviewFeaturesView.xaml</DependentUpon>
@@ -79,5 +91,11 @@
             <Generator>PublicResXFileCodeGenerator</Generator>
             <LastGenOutput>Resources.Designer.cs</LastGenOutput>
         </EmbeddedResource>
+    </ItemGroup>
+    <ItemGroup>
+      <None Update="Printing\Template.cshtml">
+        <Generator>RazorTemplatePreprocessor</Generator>
+        <LastGenOutput>Template.cs</LastGenOutput>
+      </None>
     </ItemGroup>
 </Project>
