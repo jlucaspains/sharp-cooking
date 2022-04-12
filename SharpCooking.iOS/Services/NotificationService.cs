@@ -104,8 +104,8 @@ namespace SharpCooking.iOS.Services
             UILocalNotification[] localNotifications = UIApplication.SharedApplication.ScheduledLocalNotifications;
 
             //Traverse this array to get the UILocalNotification we want according to the key
-            var toCancel = localNotifications
-                .FirstOrDefault(item => item.UserInfo.ObjectForKey(new NSString("key")).ToString() == id.ToString(CultureInfo.InvariantCulture));
+            var toCancel = localNotifications?
+                .FirstOrDefault(item => item?.UserInfo?.ObjectForKey(new NSString("key"))?.ToString() == id.ToString(CultureInfo.InvariantCulture));
 
             if (toCancel != null)
                 UIApplication.SharedApplication.CancelLocalNotification(toCancel);
